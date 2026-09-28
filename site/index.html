@@ -230,6 +230,23 @@ a:hover { text-decoration-thickness: 2px; }
 .steps li + li { margin-top: 6px; }
 .steps li::marker { font: 700 14px var(--font-display); color: var(--accent); }
 
+.caption {
+  margin: 0;
+  padding: 10px 16px;
+  font-size: 15px;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-2);
+}
+.direct {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 4px;
+}
+.direct .headline { font-size: 18px; margin: 2px 0 0; }
+.direct .headline .mono { font-weight: 600; color: var(--muted); }
 .toast {
   margin: 0;
   padding: 10px 16px;
@@ -364,10 +381,11 @@ footer p { margin: 0 0 8px; max-width: 80ch; }
   </header>
 
   <section class="intro">
-    <h1>Do small towns educate children better?</h1>
-    <p>In England, the raw numbers say yes. Whether that survives depends on the arrows you draw.
-      <strong>Build a causal graph below</strong> and every estimate updates instantly: each one is DoWhy
-      run on 1,082 English towns.</p>
+    <h1>Do small towns really educate children better?</h1>
+    <p>The <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/educationandchildcare/articles/whydochildrenandyoungpeopleinsmallertownsdobetteracademicallythanthoseinlargertowns/2023-07-25">ONS found</a>
+      that children in England's smaller towns do better at school. That is a correlation.
+      <strong>Draw the causes and the story changes:</strong> the gap is about deprivation, and among towns
+      equally deprived, larger ones come out ahead. Every estimate below is DoWhy run on 1,082 English towns.</p>
   </section>
 
   <main class="workspace">
@@ -376,6 +394,7 @@ footer p { margin: 0 0 8px; max-width: 80ch; }
         <span class="label">Start from</span>
         <div class="presets" id="presets"></div>
       </div>
+      <p class="caption" id="caption"></p>
       <p class="toast" id="toast" role="status" hidden></p>
       <div class="canvas-scroll">
         <svg id="canvas" viewBox="0 0 800 470" role="img" aria-label="Causal graph. Drag blocks to move them; drag from a block's round handle to draw an arrow."></svg>
@@ -391,7 +410,7 @@ footer p { margin: 0 0 8px; max-width: 80ch; }
           <ol class="steps">
             <li>Add <b>Region</b> and draw arrows from it into Town size and Education score.</li>
             <li>Add <b>Deprivation</b>. Draw Town size → Deprivation → Education score.</li>
-            <li>Now reverse the arrow between Town size and Deprivation. Watch the sign.</li>
+            <li>Compare the total and direct effects. Then reverse the arrow between Town size and Deprivation and watch the sign.</li>
           </ol>
         </div>
       </div>

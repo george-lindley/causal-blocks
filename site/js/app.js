@@ -65,13 +65,15 @@ const SLOTS = [
 ];
 
 const PRESETS = {
-  headline: {
-    label: "The headline",
+  ons: {
+    label: "ONS: size alone",
+    caption: "What the ONS compared: town size and attainment, nothing else. With one arrow, the estimate is just the correlation.",
     pos: { town_size: [190, 205], education_score: [480, 205] },
     edges: [["town_size", "education_score"]],
   },
-  article: {
-    label: "The article's graph",
+  deprivation: {
+    label: "The deprivation story",
+    caption: "Larger towns tend to be more deprived, and deprivation drives attainment. Compare the total effect with the direct effect below it.",
     pos: {
       region: [24, 40], coastal: [24, 380], town_size: [240, 130],
       deprivation: [350, 330], education_score: [620, 215],
@@ -81,8 +83,9 @@ const PRESETS = {
       ["town_size", "deprivation"], ["town_size", "education_score"], ["deprivation", "education_score"],
     ],
   },
-  mistake: {
-    label: "A tempting mistake",
+  reversed: {
+    label: "If deprivation shaped size",
+    caption: "An alternative assumption: deprivation decides which towns grow, not the other way round. DoWhy then holds deprivation fixed.",
     pos: {
       region: [24, 40], coastal: [24, 380], town_size: [240, 130],
       deprivation: [350, 330], education_score: [620, 215],
@@ -120,7 +123,7 @@ const state = {
   edges: [], // [parent, child]
   treatment: "town_size",
   outcome: "education_score",
-  preset: "headline",
+  preset: "ons",
   selectedNode: null,
   selectedEdge: null, // index into edges
   drag: null, // {id, dx, dy, moved}
@@ -175,6 +178,8 @@ function toast(message) {
 function loadPreset(key) {
   const p = PRESETS[key];
   state.preset = key;
+  $("caption").textContent = p.caption;
+  $("caption").hidden = false;
   state.pos = new Map(Object.entries(p.pos).map(([id, [x, y]]) => [id, { x, y }]));
   state.edges = p.edges.map((e) => [...e]);
   state.treatment = "town_size";
@@ -185,6 +190,7 @@ function loadPreset(key) {
 
 function edited() {
   state.preset = null;
+  $("caption").hidden = true;
 }
 
 function place(id) {
@@ -477,17 +483,36 @@ function drawPanel(analysis) {
   const r = resultFor(adjust);
   const sign = Math.abs(r.effect) < 0.005 ? "zero" : r.effect < 0 ? "neg" : "pos";
   const excludesZero = r.ci[0] > 0 || r.ci[1] < 0;
+
+  // With a mediator, the total effect hides the direct one. Show both: the
+  // difference between them is what flows through the mediator.
+  const mediatorIds = Object.keys(roleMap).filter((n) => roleMap[n].includes(Role.MEDIATOR));
+  let direct = "";
+  if (mediatorIds.length) {
+    const dId = dowhyBackdoor(g, state.treatment, state.outcome, { directEffect: true });
+    const d = dId.adjustmentSet ? resultFor(dId.adjustmentSet) : null;
+    if (d) {
+      const via = listText(mediatorIds);
+      direct = `<div class="direct">
+        <span class="label">Direct effect, holding ${via} fixed</span>
+        <p class="headline">${headline(d.effect)} <span class="mono">${fmt(d.effect)}</span></p>
+        <p class="lede">The difference between the two, <span class="mono">${fmt(r.effect - d.effect)}</span>, is the part that runs through ${via}.
+          95% interval <span class="mono">${fmt(d.ci[0])}</span> to <span class="mono">${fmt(d.ci[1])}</span>.</p>
+      </div>`;
+    }
+  }
   const adjustedText = adjust.length ? `adjusting for <b>${listText(adjust)}</b>` : "with <b>no adjustment</b>";
 
   result.innerHTML = `
-    <span class="label">DoWhy estimate, ${adjust.length ? `adjusting for ${listText(adjust)}` : "no adjustment"}</span>
+    <span class="label">${direct ? "Total effect" : "DoWhy estimate"}, ${adjust.length ? `adjusting for ${listText(adjust)}` : "no adjustment"}</span>
     <div class="estimate-value ${sign}">${fmt(r.effect)}</div>
     <p class="headline">${headline(r.effect)}</p>
     <p class="lede">${WORDS[state.treatment].per}, if your graph is right.</p>
     ${intervalSvg(r, adjust.length ? naive : null)}
     <p class="meta">95% interval <span class="mono">${fmt(r.ci[0])}</span> to <span class="mono">${fmt(r.ci[1])}</span>.
       ${excludesZero ? "It does not include zero." : "It includes zero, so the data cannot tell this apart from no effect."}
-      ${adjust.length && naive ? ` The hollow marker is the raw association with no adjustment: <span class="mono">${fmt(naive.effect)}</span>.` : ""}</p>`;
+      ${adjust.length && naive ? ` The hollow marker is the raw association with no adjustment: <span class="mono">${fmt(naive.effect)}</span>.` : ""}</p>
+    ${direct}`;
 
   // What the graph did to the estimate
   const of = (role) => Object.keys(roleMap).filter((n) => primaryRole(roleMap[n]) === role);
@@ -508,7 +533,7 @@ function drawPanel(analysis) {
   const mediators = of(Role.MEDIATOR);
   if (mediators.length) {
     note(Role.MEDIATOR, `This is the <b>total effect</b>. It includes the part of the effect that runs through ${listText(mediators)}.
-      Adjusting for a mediator would answer a different question: the direct effect.`);
+      Holding it fixed answers a different question, the direct effect, shown under the total.`);
   }
   const blocked = of(Role.CONFOUNDER).filter((n) => !adjust.includes(n));
   if (blocked.length) {
@@ -554,9 +579,7 @@ function drawPanel(analysis) {
     <p class="caution"><strong>${allPass ? "Passing proves less than it seems." : "Something is off."}</strong>
       ${!allPass
         ? "At least one check failed, so this estimate is fragile even if your graph is right."
-        : state.preset === "mistake"
-          ? "This graph draws deprivation as a cause of town size, and it passes all three checks anyway. The checks test whether an estimate is stable, not whether the graph is right."
-          : "These checks test whether the estimate is stable, not whether your graph is right. “A tempting mistake” passes all three too, with the opposite sign."}</p>`;
+        : "These checks test whether the estimate is stable, not whether your graph is right. “The deprivation story” and “If deprivation shaped size” both pass all three, with opposite signs."}</p>`;
   checks.hidden = false;
 
   drawHistory(adjust, r);
@@ -733,4 +756,4 @@ $("outcome").addEventListener("change", (e) => setQuestion("outcome", e.target.v
 const demo = await fetch("data/demo.json").then((r) => r.json());
 state.vars = demo.variables;
 state.results = demo.results;
-loadPreset("headline");
+loadPreset("ons");

@@ -56,7 +56,7 @@ def run_js(cases):
     return json.loads(proc.stdout)
 
 
-def dowhy_identify(case):
+def dowhy_identify(case, estimand="ate"):
     """DoWhy's own answer, plus every set tied with it under DoWhy's tie-breaking rule."""
     from dowhy.causal_identifier import AutoIdentifier, EstimandType
     from dowhy.graph import get_instruments
@@ -66,7 +66,8 @@ def dowhy_identify(case):
     g.add_edges_from(case["graph"]["edges"])
     t, y = case["treatment"], case["outcome"]
 
-    estimand = AutoIdentifier(EstimandType.NONPARAMETRIC_ATE).identify_effect(
+    estimand_type = {"ate": EstimandType.NONPARAMETRIC_ATE, "cde": EstimandType.NONPARAMETRIC_CDE}[estimand]
+    estimand = AutoIdentifier(estimand_type).identify_effect(
         g, [t], [y], list(g.nodes)
     )
     if estimand.no_directed_path:
@@ -121,6 +122,22 @@ def test_adjustment_set_matches_dowhy(results):
         assert frozenset(js["adjustmentSet"]) in py["tied"], where
         if len(py["tied"]) == 1:
             assert frozenset(js["adjustmentSet"]) == py["chosen"], where
+
+
+def test_direct_effect_set_matches_dowhy(results):
+    """The controlled direct effect (DoWhy's nonparametric-cde) the page shows beside the total."""
+    for case, js in results:
+        py = dowhy_identify(case, estimand="cde")
+        where = f"{case['treatment']} -> {case['outcome']} in {case['graph']}"
+        if py["no_directed_path"]:
+            continue
+        if py["chosen"] is None:
+            assert js["directAdjustmentSet"] is None, where
+            continue
+        assert py["chosen"] in py["tied"], where
+        assert frozenset(js["directAdjustmentSet"]) in py["tied"], where
+        if len(py["tied"]) == 1:
+            assert frozenset(js["directAdjustmentSet"]) == py["chosen"], where
 
 
 def test_roles_match_causalblocks(results):

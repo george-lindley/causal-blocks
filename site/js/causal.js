@@ -180,6 +180,10 @@ function* combinations(items, size, start = 0, prefix = []) {
  * The backdoor adjustment set DoWhy's identify_effect() picks by default, for a
  * graph where every node is observed.
  *
+ * With {directEffect: true} this is the set for the controlled direct effect
+ * (DoWhy's estimand_type="nonparametric-cde"): only the treatment -> outcome
+ * arrow is cut, and mediators become eligible for adjustment.
+ *
  * Returns {noDirectedPath: true} when the graph says the effect is zero, else
  * {adjustmentSet, instruments, candidates}. adjustmentSet is null if no valid
  * backdoor set exists.
@@ -188,18 +192,22 @@ function* combinations(items, size, start = 0, prefix = []) {
  * which depends on string hashing and so varies between runs. Here ties go to
  * the first set in sorted order. The estimate is still one DoWhy could return.
  */
-export function dowhyBackdoor(g, treatment, outcome) {
+export function dowhyBackdoor(g, treatment, outcome, { directEffect = false } = {}) {
   assertAcyclic(g);
   if (!descendants(g, treatment).has(outcome)) return { noDirectedPath: true };
 
-  const backdoorGraph = withoutEdges(g, ([p]) => p !== treatment);
+  const backdoorGraph = directEffect
+    ? withoutEdges(g, ([p, c]) => !(p === treatment && c === outcome))
+    : withoutEdges(g, ([p]) => p !== treatment);
   const valid = (set) => dSeparated(backdoorGraph, [treatment], [outcome], set);
   const sets = [];
   if (valid([])) sets.push([]);
 
-  const descT = descendants(g, treatment);
+  // Total effect: nothing downstream of the treatment. Direct effect: nothing
+  // downstream of the outcome.
+  const excluded = descendants(g, directEffect ? outcome : treatment);
   const eligible = g.nodes
-    .filter((n) => n !== treatment && n !== outcome && !descT.has(n))
+    .filter((n) => n !== treatment && n !== outcome && !excluded.has(n))
     // A variable d-separated from both treatment and outcome cannot matter.
     .filter((v) => !dSeparated(g, [treatment], [v], []) || !dSeparated(g, [outcome], [v], []))
     .sort();
