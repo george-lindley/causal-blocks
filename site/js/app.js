@@ -10,14 +10,42 @@ const BH = 56;
 const VIEW = { w: 800, h: 470 };
 
 // How to say "one unit of X" and "a change in Y" in words, per variable.
+// Plain-English pieces for the headline sentence. As a treatment, each
+// variable is a kind of town and a unit of comparison; as an outcome, it says
+// how that town differs, given the size and sign of the effect.
 const WORDS = {
-  town_size: { cause: "being one size band larger (small → medium → large)", unit: "size bands" },
-  education_score: { cause: "a one-point higher education score", unit: "points" },
-  deprivation: { cause: "being one deprivation band higher (lower → mid → higher)", unit: "deprivation bands" },
-  adult_qualifications: { cause: "one band more adults with degrees (low → medium → high)", unit: "qualification bands" },
-  coastal: { cause: "being on the coast", chance: "being on the coast" },
-  university: { cause: "having a university", chance: "having a university" },
+  town_size: {
+    towns: "Larger towns",
+    per: "Per size band (small → medium → large)",
+    differ: (x, up) => `are ${x} size bands ${up ? "larger" : "smaller"}`,
+  },
+  education_score: {
+    towns: "Towns with a higher education score",
+    per: "Per point of education score",
+    differ: (x, up) => `score ${x} points ${up ? "higher" : "lower"} on education`,
+  },
+  deprivation: {
+    towns: "More deprived towns",
+    per: "Per deprivation band (lower → mid → higher)",
+    differ: (x, up) => `are ${x} deprivation bands ${up ? "more" : "less"} deprived`,
+  },
+  adult_qualifications: {
+    towns: "Towns with more adults holding degrees",
+    per: "Per band of adults with degrees (low → medium → high)",
+    differ: (x, up) => `sit ${x} bands ${up ? "higher" : "lower"} on adults with degrees`,
+  },
+  coastal: {
+    towns: "Coastal towns",
+    per: "Compared with inland towns",
+    differ: (x, up) => `are ${pp(x)} percentage points ${up ? "more" : "less"} likely to be on the coast`,
+  },
+  university: {
+    towns: "Towns with a university",
+    per: "Compared with towns without one",
+    differ: (x, up) => `are ${pp(x)} percentage points ${up ? "more" : "less"} likely to have a university`,
+  },
 };
+const pp = (x) => (Number(x) * 100).toFixed(1);
 
 const ROLE_TEXT = {
   [Role.CONFOUNDER]: "Confounder",
@@ -388,14 +416,11 @@ function drawControls() {
     .join("");
 }
 
-function effectSentence(value) {
-  const cause = WORDS[state.treatment].cause;
-  const out = WORDS[state.outcome];
-  const lead = cause[0].toUpperCase() + cause.slice(1);
-  if (out.chance) {
-    return `${lead} changes the chance of ${out.chance} by <b>${fmt(value * 100, 1)} percentage points</b>.`;
-  }
-  return `${lead} changes ${label(state.outcome).toLowerCase()} by <b>${fmt(value)} ${out.unit}</b>.`;
+function headline(value) {
+  const t = WORDS[state.treatment];
+  const size = Math.abs(value).toFixed(2);
+  if (Number(size) === 0) return `${t.towns} show no difference in ${label(state.outcome).toLowerCase()}.`;
+  return `${t.towns} ${WORDS[state.outcome].differ(size, value > 0)}.`;
 }
 
 function intervalSvg(r, naive) {
@@ -457,7 +482,8 @@ function drawPanel(analysis) {
   result.innerHTML = `
     <span class="label">DoWhy estimate, ${adjust.length ? `adjusting for ${listText(adjust)}` : "no adjustment"}</span>
     <div class="estimate-value ${sign}">${fmt(r.effect)}</div>
-    <p class="lede">If your graph is right, ${effectSentence(r.effect).replace(/^./, (c) => c.toLowerCase())}</p>
+    <p class="headline">${headline(r.effect)}</p>
+    <p class="lede">${WORDS[state.treatment].per}, if your graph is right.</p>
     ${intervalSvg(r, adjust.length ? naive : null)}
     <p class="meta">95% interval <span class="mono">${fmt(r.ci[0])}</span> to <span class="mono">${fmt(r.ci[1])}</span>.
       ${excludesZero ? "It does not include zero." : "It includes zero, so the data cannot tell this apart from no effect."}
