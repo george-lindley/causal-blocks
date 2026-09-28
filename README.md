@@ -1,4 +1,4 @@
-# causal-duplo
+# causal-blocks
 
 **Do small towns provide better education?** England's smaller towns post better
 educational outcomes than its larger ones. Adjust for deprivation and the
@@ -33,7 +33,7 @@ chances to write it differently.
 So you author it once:
 
 ```python
-from duplo import CausalDAG
+from causalblocks import CausalDAG
 
 dag = (
     CausalDAG()
@@ -92,7 +92,7 @@ path-tracing rule. So you can plant an effect and check an estimator finds it:
 
 ```python
 import statsmodels.api as sm
-from duplo import simulate, true_total_effect, m_bias
+from causalblocks import simulate, true_total_effect, m_bias
 
 def ols(df, treatment, outcome, controls=()):
     design = sm.add_constant(df[[treatment, *controls]])
@@ -131,7 +131,7 @@ Python 3.11+, and [Graphviz](https://graphviz.org/download/)
 (`brew install graphviz` / `apt install graphviz`).
 
 ```bash
-git clone https://github.com/oozr/causal-duplo && cd causal-duplo
+git clone https://github.com/oozr/causal-blocks && cd causal-blocks
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 pytest
@@ -143,7 +143,7 @@ jupyter lab notebooks/
 ## Layout
 
 ```
-duplo/
+causalblocks/
   dag.py        CausalDAG: build, infer roles, explain, draw, export
   simulate.py   linear-Gaussian SCM + closed-form ground truth
   examples.py   three graphs with known answers

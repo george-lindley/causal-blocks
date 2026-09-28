@@ -34,7 +34,7 @@ jobs:
         run: pytest -v
 
   notebooks:
-    # The tests cover duplo/, but the notebooks are the actual deliverable and
+    # The tests cover causalblocks/, but the notebooks are the actual deliverable and
     # they exercise DoWhy far harder. A DoWhy 0.14 regression broke one of them
     # in a way the unit tests could not see, so they get executed here too.
     runs-on: ubuntu-latest

@@ -9,7 +9,7 @@ import numpy as np
 import pytest
 import statsmodels.api as sm
 
-from duplo import (
+from causalblocks import (
     CausalDAG,
     CyclicGraphError,
     confounded,

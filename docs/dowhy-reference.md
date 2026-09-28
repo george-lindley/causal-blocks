@@ -116,9 +116,9 @@ dowhy.datasets.xy_dataset(effect=1.2, sd_error=0.2)
 | `sd_error` | noise standard deviation |
 | `treatment_is_binary` | make treatment 0/1 rather than continuous |
 
-`duplo.simulate` covers the same ground from a DAG you wrote yourself, with
+`causalblocks.simulate` covers the same ground from a DAG you wrote yourself, with
 `true_total_effect()` as the ground truth. Use DoWhy's when you want a standard
-setup; use `duplo`'s when the graph shape is the thing you are studying.
+setup; use `causalblocks`'s when the graph shape is the thing you are studying.
 
 ### Fat-tailed noise
 

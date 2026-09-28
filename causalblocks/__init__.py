@@ -1,6 +1,6 @@
-"""causal-duplo: build a causal DAG once, and derive everything else from it.
+"""causal-blocks: build a causal DAG once, and derive everything else from it.
 
-    from duplo import CausalDAG, simulate, true_total_effect
+    from causalblocks import CausalDAG, simulate, true_total_effect
 
     dag = (
         CausalDAG()

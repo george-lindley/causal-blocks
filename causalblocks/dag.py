@@ -71,7 +71,7 @@ class CausalDAG:
         dag.add("town_size", to={"income": 0.4, "attainment": 0.7})
         dag.add("income", to={"attainment": 2.1})
 
-    Edge weights are only used by :func:`duplo.simulate.simulate`; they default
+    Edge weights are only used by :func:`causalblocks.simulate.simulate`; they default
     to 1.0 and can be ignored entirely if you are not simulating.
     """
 

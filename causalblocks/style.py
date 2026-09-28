@@ -1,7 +1,7 @@
 """Colour palette, shared by the DAG renderer and the matplotlib charts.
 
 Colours are keyed by *role*, not by node, so a diagram cannot say something the
-graph does not. See :mod:`duplo.dag` for where roles come from.
+graph does not. See :mod:`causalblocks.dag` for where roles come from.
 """
 
 from .dag import Role

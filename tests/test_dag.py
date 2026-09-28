@@ -3,7 +3,7 @@
 import networkx as nx
 import pytest
 
-from duplo import CausalDAG, CyclicGraphError, Role, confounded, m_bias, mediated
+from causalblocks import CausalDAG, CyclicGraphError, Role, confounded, m_bias, mediated
 
 
 class TestConstruction:

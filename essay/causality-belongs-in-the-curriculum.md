@@ -199,7 +199,7 @@ material answers the question you were hired to answer.
 
 *The full analysis, the simulated worked examples, and the small library that
 derives variable roles from graph structure are in
-[causal-duplo](https://github.com/oozr/causal-duplo). Data: ONS,
+[causal-blocks](https://github.com/oozr/causal-blocks). Data: ONS,
 [Educational attainment of young people in English towns](https://www.ons.gov.uk/peoplepopulationandcommunity/educationandchildcare/datasets/educationalattainmentofyoungpeopleinenglishtownsdata)
 (2023), Open Government Licence v3.0.*
 
