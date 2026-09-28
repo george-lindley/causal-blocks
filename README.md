@@ -131,7 +131,7 @@ Python 3.11+, and [Graphviz](https://graphviz.org/download/)
 (`brew install graphviz` / `apt install graphviz`).
 
 ```bash
-git clone https://github.com/oozr/causal-blocks && cd causal-blocks
+git clone https://github.com/george-lindley/causal-blocks && cd causal-blocks
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 pytest
