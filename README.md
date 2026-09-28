@@ -115,9 +115,19 @@ graph has to come first. [Worked through here](notebooks/00_concepts.ipynb).
 
 ---
 
-## Install
+## Reading it
 
-Python 3.11+, and [Graphviz](https://graphviz.org/download/) for rendering
+Nothing to install. Both notebooks render on GitHub with every chart, table and
+printed result inline, exactly as they ran:
+
+- **[01_small_towns.ipynb](notebooks/01_small_towns.ipynb)** — the analysis
+- **[00_concepts.ipynb](notebooks/00_concepts.ipynb)** — the mechanics, on
+  simulated data where the true answer is known
+
+<details>
+<summary>Running it yourself</summary>
+
+Python 3.11+, and [Graphviz](https://graphviz.org/download/)
 (`brew install graphviz` / `apt install graphviz`).
 
 ```bash
@@ -127,6 +137,8 @@ pip install -e ".[dev]"
 pytest
 jupyter lab notebooks/
 ```
+
+</details>
 
 ## Layout
 
