@@ -1,7 +1,5 @@
 # Do small towns really educate children better?
 
-*My analytics degree taught me to control for everything. Here, that flips the answer, and nothing warns you.*
-
 In 2023 the Office for National Statistics asked a question in a headline: *why
 do children and young people in smaller towns do better academically than those
 in larger towns?* The data is public, and across 1,082 English towns the gap is
