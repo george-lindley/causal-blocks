@@ -63,6 +63,11 @@ def large_vs_small(df: pd.DataFrame, extra: str = "") -> float:
     return fit.params[term]
 
 
+def signed(v: float) -> str:
+    """+0.30 / −0.81, with a real minus sign."""
+    return f"{v:+.2f}".replace("-", "\u2212")
+
+
 def title(ax, text: str, sub: str) -> None:
     ax.set_title(text, loc="left", fontsize=17, fontweight="bold", color=INK, pad=30)
     ax.text(0, 1.02, sub, transform=ax.transAxes, fontsize=12.5, color=MUTED, va="bottom")
@@ -82,7 +87,7 @@ def attainment_by_size(df: pd.DataFrame) -> None:
     bars[0].set_color("#7f8c8d")
     ax.axhline(0, color=MUTED, linewidth=1)
     for bar, v in zip(bars, means.values):
-        ax.annotate(f"{v:+.2f}", (bar.get_x() + bar.get_width() / 2, v),
+        ax.annotate(signed(v), (bar.get_x() + bar.get_width() / 2, v),
                     xytext=(0, 6 if v >= 0 else -6), textcoords="offset points",
                     ha="center", va="bottom" if v >= 0 else "top", fontweight="bold", color=INK)
     ax.set_ylim(-1.15, 0.65)
@@ -137,14 +142,14 @@ def three_readings(df: pd.DataFrame) -> None:
         ("The correlation (ONS)", correlation, QUIET),
         ("Control for everything", everything, QUIET),
         ("Total effect", total, TOTAL),
-        ("   through deprivation", via, VIA),
-        ("   direct effect, deprivation held fixed", direct, DIRECT),
+        ("↳ through deprivation", via, VIA),
+        ("↳ direct effect, deprivation held fixed", direct, DIRECT),
     ]
     fig, ax = plt.subplots(figsize=(9, 4.6))
     y = [0, 1, 2.6, 3.6, 4.6]
     for yi, (label, v, color) in zip(y, rows):
         ax.barh(yi, v, color=color, height=0.62, edgecolor="white", linewidth=2)
-        ax.text(v + (0.06 if v >= 0 else -0.06), yi, f"{v:+.2f}", va="center",
+        ax.text(v + (0.06 if v >= 0 else -0.06), yi, signed(v), va="center",
                 ha="left" if v >= 0 else "right", fontweight="bold", color=INK)
     ax.set_yticks(y, [r[0] for r in rows])
     for tick, (_, _, color) in zip(ax.get_yticklabels(), rows):
