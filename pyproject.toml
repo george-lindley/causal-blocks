@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "causal-duplo"
+version = "0.1.0"
+description = "Build causal DAGs by hand, see them, and hand them to DoWhy without rewriting them."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "George Lindley", email = "george.j.lindley@gmail.com" }]
+dependencies = [
+    "pandas>=2.0",
+    "numpy>=1.24",
+    "networkx>=3.0",
+    "graphviz>=0.20",
+    "matplotlib>=3.7",
+    "statsmodels>=0.14",
+    "dowhy>=0.12",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4", "seaborn>=0.13", "jupyter>=1.0", "nbconvert>=7.0"]
+
+[tool.setuptools.packages.find]
+include = ["duplo*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning", "ignore::FutureWarning"]
