@@ -15,31 +15,37 @@ const VIEW = { w: 800, h: 470 };
 // how that town differs, given the size and sign of the effect.
 const WORDS = {
   town_size: {
+    same: "every town were the same size",
     towns: "Larger towns",
     per: "Per size band (small → medium → large)",
     differ: (x, up) => `are ${x} size bands ${up ? "larger" : "smaller"}`,
   },
   education_score: {
+    same: "every town had the same education score",
     towns: "Towns with a higher education score",
     per: "Per point of education score",
     differ: (x, up) => `score ${x} points ${up ? "higher" : "lower"} on education`,
   },
   deprivation: {
+    same: "every town were equally deprived",
     towns: "More deprived towns",
     per: "Per deprivation band (lower → mid → higher)",
     differ: (x, up) => `are ${x} deprivation bands ${up ? "more" : "less"} deprived`,
   },
   adult_qualifications: {
+    same: "every town had the same share of adults with degrees",
     towns: "Towns with more adults holding degrees",
     per: "Per band of adults with degrees (low → medium → high)",
     differ: (x, up) => `sit ${x} bands ${up ? "higher" : "lower"} on adults with degrees`,
   },
   coastal: {
+    same: "no town differed in being coastal",
     towns: "Coastal towns",
     per: "Compared with inland towns",
     differ: (x, up) => `are ${pp(x)} percentage points ${up ? "more" : "less"} likely to be on the coast`,
   },
   university: {
+    same: "no town differed in having a university",
     towns: "Towns with a university",
     per: "Compared with towns without one",
     differ: (x, up) => `are ${pp(x)} percentage points ${up ? "more" : "less"} likely to have a university`,
@@ -83,18 +89,7 @@ const PRESETS = {
       ["town_size", "deprivation"], ["town_size", "education_score"], ["deprivation", "education_score"],
     ],
   },
-  reversed: {
-    label: "If deprivation shaped size",
-    caption: "An alternative assumption: deprivation decides which towns grow, not the other way round. DoWhy then holds deprivation fixed.",
-    pos: {
-      region: [24, 40], coastal: [24, 380], town_size: [240, 130],
-      deprivation: [350, 330], education_score: [620, 215],
-    },
-    edges: [
-      ["region", "town_size"], ["region", "deprivation"], ["coastal", "deprivation"],
-      ["deprivation", "town_size"], ["town_size", "education_score"], ["deprivation", "education_score"],
-    ],
-  },
+
 };
 
 const REFUTERS = {
@@ -422,11 +417,16 @@ function drawControls() {
     .join("");
 }
 
-function headline(value) {
+const WOULD = { score: "would score", are: "would be", sit: "would sit", show: "would show" };
+
+/** "Larger towns score 0.70 points lower on education." With would: "...would score...". */
+function headline(value, would = false) {
   const t = WORDS[state.treatment];
   const size = Math.abs(value).toFixed(2);
-  if (Number(size) === 0) return `${t.towns} show no difference in ${label(state.outcome).toLowerCase()}.`;
-  return `${t.towns} ${WORDS[state.outcome].differ(size, value > 0)}.`;
+  const phrase = Number(size) === 0
+    ? `show no difference in ${label(state.outcome).toLowerCase()}`
+    : WORDS[state.outcome].differ(size, value > 0);
+  return `${t.towns} ${would ? phrase.replace(/^\w+/, (v) => WOULD[v] ?? v) : phrase}.`;
 }
 
 function intervalSvg(r, naive) {
@@ -495,7 +495,8 @@ function drawPanel(analysis) {
       const via = listText(mediatorIds);
       direct = `<div class="direct">
         <span class="label">Direct effect, holding ${via} fixed</span>
-        <p class="headline">${headline(d.effect)} <span class="mono">${fmt(d.effect)}</span></p>
+        <p class="headline">If ${mediatorIds.length === 1 ? WORDS[mediatorIds[0]].same : `${via} were the same in every town`},
+          ${headline(d.effect, true).replace(/^./, (c) => c.toLowerCase())} <span class="mono">${fmt(d.effect)}</span></p>
         <p class="lede">The difference between the two, <span class="mono">${fmt(r.effect - d.effect)}</span>, is the part that runs through ${via}.
           95% interval <span class="mono">${fmt(d.ci[0])}</span> to <span class="mono">${fmt(d.ci[1])}</span>.</p>
       </div>`;
@@ -579,7 +580,7 @@ function drawPanel(analysis) {
     <p class="caution"><strong>${allPass ? "Passing proves less than it seems." : "Something is off."}</strong>
       ${!allPass
         ? "At least one check failed, so this estimate is fragile even if your graph is right."
-        : "These checks test whether the estimate is stable, not whether your graph is right. “The deprivation story” and “If deprivation shaped size” both pass all three, with opposite signs."}</p>`;
+        : "These checks test whether the estimate is stable, not whether your graph is right. “ONS: size alone” passes all three as well, and it ignores deprivation entirely."}</p>`;
   checks.hidden = false;
 
   drawHistory(adjust, r);
