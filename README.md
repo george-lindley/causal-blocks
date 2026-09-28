@@ -121,7 +121,7 @@ Needs [Graphviz](https://graphviz.org/download/) for rendering
 (`brew install graphviz` / `apt install graphviz`).
 
 ```bash
-git clone https://github.com/<you>/causal-duplo && cd causal-duplo
+git clone https://github.com/oozr/causal-duplo && cd causal-duplo
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 pytest
