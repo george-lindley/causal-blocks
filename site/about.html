@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Why Causation · Causal Blocks</title>
+<meta name="description" content="Everyone knows correlation is not causation. Causal Blocks is about what to do instead: draw your assumptions, and see what they do to the answer.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400&display=swap">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="./" aria-label="Causal Blocks home">
+      <span class="brand-mark" aria-hidden="true">
+        <span style="background: var(--role-treatment)"></span>
+        <span style="background: var(--role-confounder)"></span>
+        <span style="background: var(--role-mediator)"></span>
+        <span style="background: var(--role-outcome)"></span>
+      </span>
+      Causal Blocks
+    </a>
+    <nav>
+      <a href="./">The demo</a>
+      <a href="about.html" aria-current="page">Why causation</a>
+      <a href="https://github.com/george-lindley/causal-blocks/blob/main/essay/causality-belongs-in-the-curriculum.md">The essay</a>
+      <a href="https://github.com/george-lindley/causal-blocks">Code</a>
+    </nav>
+  </header>
+
+  <article class="prose">
+    <h1>Correlation is not causation. So what is?</h1>
+    <p class="standfirst">Everyone learns the slogan. Almost no one is taught what to do about it.
+      Causal Blocks is a small project to change that: draw what you believe causes what,
+      and see what those beliefs do to the answer.</p>
+
+    <h2>The question behind most questions</h2>
+    <p>Most questions people bring to data are really about cause. Will this treatment help?
+      Would a smaller class raise grades? Does the new pricing bring in customers, or were
+      they coming anyway? Each one asks what would happen <em>if we changed something</em>.</p>
+    <p>A correlation answers a different question: when one thing is higher, is the other
+      usually higher too? That can be true without either causing the other. Treating one
+      question as the other is the most common mistake in data analysis, and it is easy to
+      make without noticing.</p>
+
+    <h2>Three ways a correlation misleads</h2>
+    <ol class="reasons">
+      <li><b>A common cause.</b> People who carry lighters get lung cancer more often. Lighters
+        don't cause cancer; smoking causes both. The shared cause is called a
+        <span class="role-tag" style="--c: var(--role-confounder)">confounder</span>.</li>
+      <li><b>The arrow points the other way.</b> Areas with more police have more crime. That
+        is mostly because police are sent where crime is, not because police create it.</li>
+      <li><b>Only looking at some cases.</b> Among hospital patients, two unrelated illnesses
+        can look linked, because having either one is a reason to be in hospital. Selecting
+        on a shared result creates a pattern. That shared result is a
+        <span class="role-tag" style="--c: var(--role-collider)">collider</span>.</li>
+    </ol>
+
+    <h2>"Just control for it" is not the fix</h2>
+    <p>The usual response is to add more variables to the regression. Sometimes that
+      helps. Sometimes it quietly makes things worse. Adding a variable has three possible
+      effects, and the data alone cannot tell you which one you are getting:</p>
+    <div class="table-scroll">
+      <table class="roles">
+        <thead><tr><th>If the variable is a…</th><th>Adjusting for it…</th></tr></thead>
+        <tbody>
+          <tr><td><span class="role-tag" style="--c: var(--role-confounder)">confounder</span></td><td>removes bias. You need it.</td></tr>
+          <tr><td><span class="role-tag" style="--c: var(--role-mediator)">mediator</span></td><td>changes the question you answered, from the total effect to the direct one.</td></tr>
+          <tr><td><span class="role-tag" style="--c: var(--role-collider)">collider</span></td><td>creates bias that was not there before.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Which role a variable plays depends on how everything is connected. So the connections
+      have to be written down first.</p>
+
+    <h2>Draw your assumptions</h2>
+    <p>The tool for writing them down is a causal graph: a set of boxes and arrows, where each
+      arrow says "this directly affects that". Once the graph is drawn, a rule called the
+      <b>backdoor criterion</b> tells you exactly which variables to adjust for and which to leave
+      alone. Libraries such as <a href="https://www.pywhy.org/dowhy/">DoWhy</a> apply that rule
+      and estimate the effect.</p>
+    <p>The graph is an assumption, not a fact. That is its value. It puts your reasoning where
+      someone else can see it and argue with it, instead of leaving it hidden inside the choice
+      of control variables.</p>
+
+    <h2>What Causal Blocks is for</h2>
+    <p>Causal inference is decades old, standard in epidemiology and economics, and still missing
+      from many statistics, analytics and data science courses. Causal Blocks exists to make it
+      easier to pick up, especially for students:</p>
+    <ul>
+      <li><b>An interactive demo</b> where you draw a graph over real data and watch DoWhy's
+        estimate change with every arrow. Each variable is coloured by the role it plays, so
+        the graph explains itself.</li>
+      <li><b>Worked examples</b> that show the mistakes happening, on real data and on simulated
+        data where the true answer is known.</li>
+      <li><b>Open-source code</b>, so you can check every number.</li>
+    </ul>
+    <p>The first example uses data on education in English towns, because it shows all of this
+      in one dataset: the published correlation, the result you get by controlling for everything,
+      and a different story once the causes are drawn. <a href="./">Try the demo</a>. The subject
+      is only the example. The point is the habit of asking what causes what before fitting
+      anything.</p>
+
+    <h2>Read more</h2>
+    <ul class="reading">
+      <li>
+        <a href="http://bayes.cs.ucla.edu/WHY/">The Book of Why</a>
+        <span class="by">Judea Pearl and Dana Mackenzie, 2018</span>
+        <span class="why">The best place to start. A non-technical history and explanation of causal thinking from the person who formalised much of it.</span>
+      </li>
+      <li>
+        <a href="https://doi.org/10.1177/2515245917745629">Thinking Clearly About Correlations and Causation</a>
+        <span class="by">Julia Rohrer, 2018, <i>Advances in Methods and Practices in Psychological Science</i></span>
+        <span class="why">A short, readable paper on causal graphs for observational data. Good for a single sitting.</span>
+      </li>
+      <li>
+        <a href="https://theeffectbook.net/">The Effect</a>
+        <span class="by">Nick Huntington-Klein, 2021 <span class="free">Free online</span></span>
+        <span class="why">A friendly textbook on research design and causal inference, with causal graphs throughout.</span>
+      </li>
+      <li>
+        <a href="https://mixtape.scunning.com/">Causal Inference: The Mixtape</a>
+        <span class="by">Scott Cunningham, 2021 <span class="free">Free online</span></span>
+        <span class="why">An economist's introduction, with code in R, Stata and Python.</span>
+      </li>
+      <li>
+        <a href="https://miguelhernan.org/whatifbook">Causal Inference: What If</a>
+        <span class="by">Miguel Hernán and James Robins, 2020 <span class="free">Free online</span></span>
+        <span class="why">The standard text from epidemiology. More formal, and very clear.</span>
+      </li>
+      <li>
+        <a href="https://xcelab.net/rm/">Statistical Rethinking</a>
+        <span class="by">Richard McElreath, 2nd edition, 2020</span>
+        <span class="why">A statistics course that puts causal graphs at its centre. The recorded lectures are free.</span>
+      </li>
+      <li>
+        <a href="https://www.bradyneal.com/causal-inference-course">Introduction to Causal Inference</a>
+        <span class="by">Brady Neal <span class="free">Free course</span></span>
+        <span class="why">Lecture videos and notes, from the machine-learning side of the field.</span>
+      </li>
+      <li>
+        <a href="https://www.dagitty.net/">DAGitty</a>
+        <span class="by">Johannes Textor and colleagues <span class="free">Free tool</span></span>
+        <span class="why">Draw a causal graph in the browser and get the adjustment sets. The academic standard.</span>
+      </li>
+      <li>
+        <a href="https://tylervigen.com/spurious-correlations">Spurious Correlations</a>
+        <span class="by">Tyler Vigen</span>
+        <span class="why">Hundreds of real correlations with no causal link at all. A good reminder, and funny.</span>
+      </li>
+    </ul>
+
+    <p class="byline">Causal Blocks is made by George Lindley. The code and data are on
+      <a href="https://github.com/george-lindley/causal-blocks">GitHub</a>.</p>
+  </article>
+
+  <footer>
+    <p>Causal Blocks. Open source under the MIT licence.</p>
+  </footer>
+</div>
+</body>
+</html>

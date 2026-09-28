@@ -1,4 +1,6 @@
-# My analytics degree taught me to control for everything. That's how you get the answer backwards.
+# Do small towns really educate children better?
+
+*My analytics degree taught me to control for everything. That's how you get the answer backwards.*
 
 In 2023 the Office for National Statistics asked a question in a headline: *why
 do children and young people in smaller towns do better academically than those
