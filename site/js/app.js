@@ -100,6 +100,11 @@ const state = {
   seen: new Map(), // result key -> {adjust, effect}, for the current treatment/outcome
   roles: {}, // last computed roles; dragging moves blocks without changing them
   toastTimer: null,
+  // For "your last change didn't move the estimate": the last graph structure
+  // seen, the adjustment set it produced, and whether the latest edit kept it.
+  lastGraph: null,
+  lastAdjust: null,
+  unchanged: false,
 };
 
 const $ = (id) => document.getElementById(id);
@@ -421,7 +426,7 @@ function drawPanel(analysis) {
   const checks = $("checks");
   if (!state.results) return;
 
-  const { roles: roleMap, id } = analysis;
+  const { g, roles: roleMap, id } = analysis;
   const T = label(state.treatment);
   const Y = label(state.outcome);
   const naive = resultFor([]);
@@ -463,7 +468,16 @@ function drawPanel(analysis) {
   const notes = [];
   const note = (role, html) => notes.push(`<li><span class="sw" style="background: var(--role-${role})"></span><span>${html}</span></li>`);
 
-  notes.push(`<li><span class="sw" style="background: var(--role-treatment)"></span><span>DoWhy read your graph and estimated ${adjustedText}. That choice comes from the arrows, not from the data.</span></li>`);
+  if (state.unchanged) {
+    note(Role.TREATMENT, `<b>Your last change didn't change what DoWhy adjusts for</b>, so the estimate stayed the same.
+      Only arrows that open or close a backdoor path into ${T} move the number.`);
+  }
+  note(Role.TREATMENT, `DoWhy read your graph and estimated ${adjustedText}. That choice comes from the arrows, not from the data.`);
+  if (!g.edges.some(([, c]) => c === state.treatment)) {
+    note(Role.TREATMENT, `Nothing in your graph points into ${T}, so there are no backdoor paths to close.
+      Every graph where ${T} has no causes gives this same answer: the raw association.
+      To change it, draw an arrow into ${T} from something that also affects ${Y}.`);
+  }
 
   const mediators = of(Role.MEDIATOR);
   if (mediators.length) {
@@ -540,6 +554,22 @@ function drawHistory(adjust, r) {
   box.hidden = false;
 }
 
+// Did the latest edit leave DoWhy's adjustment set where it was? Moving or
+// selecting blocks is not an edit, so only the graph's structure is compared.
+function trackChange({ g, id }) {
+  const graph = [
+    state.treatment,
+    state.outcome,
+    [...g.nodes].sort().join(),
+    g.edges.map((e) => e.join(">")).sort().join(),
+  ].join("|");
+  if (graph === state.lastGraph) return;
+  const adjust = id.noDirectedPath ? "no-path" : (id.adjustmentSet ?? []).join();
+  state.unchanged = state.lastGraph !== null && state.preset === null && adjust === state.lastAdjust;
+  state.lastGraph = graph;
+  state.lastAdjust = adjust;
+}
+
 function update() {
   let analysis;
   try {
@@ -549,6 +579,7 @@ function update() {
     return;
   }
   state.roles = analysis.roles;
+  trackChange(analysis);
   drawCanvas(analysis.roles);
   drawControls();
   drawPanel(analysis);
@@ -663,6 +694,7 @@ function setQuestion(which, value) {
   place(value);
   place(state[other]);
   state.seen.clear();
+  state.lastGraph = null; // a new question is not an edit to the old one
   update();
 }
 $("treatment").addEventListener("change", (e) => setQuestion("treatment", e.target.value));
