@@ -117,7 +117,7 @@ graph has to come first. [Worked through here](notebooks/00_concepts.ipynb).
 
 ## Install
 
-Needs [Graphviz](https://graphviz.org/download/) for rendering
+Python 3.11+, and [Graphviz](https://graphviz.org/download/) for rendering
 (`brew install graphviz` / `apt install graphviz`).
 
 ```bash

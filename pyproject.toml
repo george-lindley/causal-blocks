@@ -7,7 +7,10 @@ name = "causal-duplo"
 version = "0.1.0"
 description = "Build causal DAGs by hand, see them, and hand them to DoWhy without rewriting them."
 readme = "README.md"
-requires-python = ">=3.10"
+# networkx 3.5+ requires 3.11, and older networkx ships a pydot workaround that
+# newer pydot breaks -- so on 3.10 the resolver produces a combination where
+# DoWhy cannot parse a DOT string at all. 3.11 is the real floor.
+requires-python = ">=3.11"
 license = { text = "MIT" }
 authors = [{ name = "George Lindley", email = "george.j.lindley@gmail.com" }]
 dependencies = [
