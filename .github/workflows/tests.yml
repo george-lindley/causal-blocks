@@ -32,3 +32,32 @@ jobs:
 
       - name: Run tests
         run: pytest -v
+
+  notebooks:
+    # The tests cover duplo/, but the notebooks are the actual deliverable and
+    # they exercise DoWhy far harder. A DoWhy 0.14 regression broke one of them
+    # in a way the unit tests could not see, so they get executed here too.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install Graphviz
+        run: sudo apt-get update && sudo apt-get install -y graphviz
+
+      - name: Install package
+        run: pip install -e ".[dev]"
+
+      - name: Execute notebooks
+        working-directory: notebooks
+        run: |
+          for nb in *.ipynb; do
+            echo "::group::$nb"
+            jupyter nbconvert --to notebook --execute --stdout \
+              --ExecutePreprocessor.timeout=900 "$nb" > /dev/null
+            echo "::endgroup::"
+          done
