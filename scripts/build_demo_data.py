@@ -71,7 +71,7 @@ VARIABLES = [
     },
     {
         "id": "adult_qualifications",
-        "label": "Adult qualifications",
+        "label": "Adult degrees",
         "kind": "ordinal",
         "column": "level4qual_residents35_64_2011",
         "levels": ["Low", "Medium", "High"],
