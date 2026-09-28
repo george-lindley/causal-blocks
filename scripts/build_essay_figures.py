@@ -142,8 +142,8 @@ def three_readings(df: pd.DataFrame) -> None:
         ("The correlation (ONS)", correlation, QUIET),
         ("Control for everything", everything, QUIET),
         ("Total effect", total, TOTAL),
-        ("↳ through deprivation", via, VIA),
-        ("↳ direct effect, deprivation held fixed", direct, DIRECT),
+        ("of which, through deprivation", via, VIA),
+        ("of which, direct effect (deprivation fixed)", direct, DIRECT),
     ]
     fig, ax = plt.subplots(figsize=(9, 4.6))
     y = [0, 1, 2.6, 3.6, 4.6]
