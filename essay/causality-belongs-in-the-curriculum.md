@@ -1,37 +1,56 @@
 # My analytics degree taught me to control for everything. That's how you get the answer backwards.
 
-England's smaller towns produce better educational outcomes than its larger
-ones. The Office for National Statistics published an analysis in 2023 with that
-finding in the title, and the data backs it: across 1,082 English towns, small
-towns average +0.30 on a standardised attainment score and large towns −0.81.
+In 2023 the Office for National Statistics asked a question in a headline: *why
+do children and young people in smaller towns do better academically than those
+in larger towns?* The data is public, and across 1,082 English towns the gap is
+real: small towns average +0.30 on a standardised attainment score, large towns
+−0.81.
 
-I spent a while with that dataset, and the number that stopped me was not the
-gap. It was what happened to the gap when I accounted for deprivation.
+I spent a while with that dataset. Here are three ways to read it. The first two
+are standard practice. Only the third tells you what is going on.
 
-It reversed.
+| Large vs small towns | Effect on attainment |
+|---|---|
+| **1. The correlation** (what the ONS reported) | −1.11 points |
+| **2. Control for everything** (what I was taught) | **+0.59** points |
+| **3. The causal story:** total effect | −1.28 points |
+| ↳ the part flowing through deprivation | −1.99 points |
+| ↳ the direct effect, deprivation held fixed | **+0.70** points |
 
-| Large vs small towns | Effect | p |
-|---|---|---|
-| Total effect (adjusting for region) | **−1.28** points | 0.001 |
-| ↳ the part flowing through deprivation | −1.99 points | |
-| Direct effect (deprivation held fixed) | **+0.70** points | 0.022 |
+The first says small towns are better. The second says large towns are better.
+Both are computed correctly, from the same data. Neither tells you why, and
+the one that looks more rigorous is the one that misleads you more quietly.
 
-Not "shrank toward zero." Not "lost significance." Compare towns at the same
-level of deprivation and the *large* ones come out ahead.
-
-The mechanism is not subtle once you look. 32% of small towns fall in the
-higher-deprivation band, against 69% of large towns. And the deprivation gap in
-attainment — 5.18 points, 1.43 standard deviations — is about four times larger
-than the biggest town-size gap. Town size is a proxy for wealth, and the
-headline is mostly measuring wealth while pointing at geography.
-
-Both numbers in that table are correct. They answer different questions. The
-whole difficulty is that nothing in a regression output tells you which question
-you asked.
+The third says something neither of them can: the small-town advantage is
+almost entirely about deprivation. Hold deprivation fixed and the *large* towns
+come out ahead.
 
 ---
 
-## The heuristic I was taught
+## 1. The correlation
+
+The ONS is careful with its words. It says town size, income deprivation and
+adult qualifications are all "related to" attainment, and that smaller towns do
+better "partly because a larger share of these towns have low levels of income
+deprivation." That is a fair description of a correlation.
+
+But the headline asks *why*, and a comparison of averages cannot answer a why
+question. It cannot separate what size does from what comes along with size.
+
+What comes along with size, in post-industrial England, is deprivation. 32% of
+small towns fall in the higher-deprivation band, against 69% of large towns.
+And the deprivation gap in attainment — 5.18 points, 1.43 standard deviations —
+is about four times larger than the biggest town-size gap. The headline is
+mostly measuring wealth while pointing at geography.
+
+"Partly because" undersells it. Deprivation is not a footnote to a town-size
+story. It is most of the story, and once it is accounted for, the size effect
+underneath points the other way.
+
+## 2. Control for everything
+
+So the obvious move is to control for deprivation. That is what I was trained
+to do, and it is where the second mistake starts.
 
 I have a Masters in Business Analytics. It was a good degree; I use it. It
 covered regression properly, then regularisation, cross-validation,
@@ -43,22 +62,27 @@ covariates in. Watch adjusted R² rise. More controls means fewer lurking
 variables, means a more defensible estimate. Rigour, operationalised as column
 count.
 
+Do that here — region, deprivation, coastal, university, adult qualifications,
+all in — and the town-size coefficient flips to **+0.59**, with p = 0.048.
+Large towns are better. It looks like the careful answer, and it is the kind of
+number that gets written up as a finding.
+
 That rule is not merely incomplete. It is wrong in two separate ways, and the
 second one is genuinely alarming.
 
-## Wrong the first way: it changes the question without telling you
+### Wrong the first way: it changes the question without telling you
 
-This is what happened above. Deprivation is not a confounder in the small-towns
-analysis — it is a **mediator**. Part of what it means to be a large town in
-post-industrial England *is* to carry more deprivation. Deprivation sits on the
-causal path from size to attainment, rather than sitting outside it muddying the
-comparison.
+Deprivation is not a confounder in the towns analysis — it is a **mediator**.
+Part of what it means to be a large town in post-industrial England *is* to
+carry more deprivation. Deprivation sits on the causal path from size to
+attainment, rather than sitting outside it muddying the comparison.
 
 Control for a confounder and you remove bias. Control for a mediator and you
 close off part of the causal effect you were trying to measure. You get an
-answer to "what if we changed town size but deprivation somehow stayed put?" —
-which may be interesting, but is not the question anyone asked, and is not what
-your reader will assume you reported.
+answer to "what if every town were equally deprived?" That can be a good
+question, and below I argue it is an important one here. But it is not the
+question the regression output claims to answer, and it is not what your reader
+will assume you reported.
 
 Adjusted R² goes *up* when you add the mediator. Every model-selection instinct
 I was trained on pushes toward the wrong specification.
@@ -77,7 +101,7 @@ each variable *is* from the graph itself, and never let anyone declare it. When
 two things have to agree, do not check them against each other — derive one from
 the other, and the disagreement becomes impossible to express.
 
-## Wrong the second way: it can create bias out of nothing
+### Wrong the second way: it can create bias out of nothing
 
 The first failure is subtle. This one should change how you work.
 
@@ -111,10 +135,11 @@ Berkson's paradox, or selection bias, and it is the reason "we only had data on
 people who signed up" is a sentence that should stop a meeting.
 
 You cannot detect any of this in the output. The fit looks fine. R² improves.
-Every diagnostic is unremarkable. The only way to know is to have written down
-what causes what, *before* fitting anything.
+Every diagnostic is unremarkable. "Control for everything" throws in the
+colliders along with the confounders, and nothing warns you. The only way to
+know is to have written down what causes what, *before* fitting anything.
 
-## The thing that was missing
+## 3. Causation: the real story
 
 Here is the same statistical operation — add a variable to a regression — with
 three different consequences:
@@ -141,8 +166,32 @@ variables that blocks every non-causal path from treatment to outcome, without
 opening any new ones. Note that it is a statement about a *graph*. Not about a
 dataframe, a p-value, or a fit statistic.
 
-This is not exotic. It is thirty years old, textbook material in epidemiology
-and economics, with mature tooling in Python. It just was not in my degree.
+For the towns, the graph I would defend is short. Region shapes both town size
+and deprivation, so it is a confounder. Town size affects deprivation, and
+deprivation affects attainment, so deprivation is a mediator. Draw that, and the
+graph tells you what to estimate and what each estimate means:
+
+- The **total effect** of being a large rather than a small town is **−1.28
+  points**. Adjust for region, and nothing else. This is the honest version of
+  the ONS comparison.
+- That total splits in two. **−1.99 points flow through deprivation.** The
+  **direct effect** — the answer to "what if every town were equally deprived?"
+  — is **+0.70 points**, in favour of large towns.
+
+These claims do not all rest on the same ground, and the graph shows that too.
+The total effect needs only the assumption that region is the confounder that
+matters. The direct effect needs more: that nothing unmeasured causes both
+deprivation and attainment. School funding history, local labour markets and
+decades of industrial decline are all plausible candidates, and none is in the
+data. So I hold the first part of the story firmly and the second part as a
+strong suggestion:
+
+- **Firm:** the small-town advantage is deprivation. Town size is standing in
+  for wealth.
+- **Suggestive:** among equally deprived towns, larger ones do better.
+
+That asymmetry is itself something the causal framework makes visible. A
+regression table would have printed both numbers with the same confidence.
 
 ## Why business analytics specifically
 
@@ -195,19 +244,20 @@ causality belongs in the curriculum — not as an advanced elective for people w
 have finished the real material, but as the thing that decides whether the real
 material answers the question you were hired to answer.
 
+**You can try all three readings yourself at
+[causalblocks.com](https://causalblocks.com):** draw the graph, and watch the
+estimate change as the arrows do.
+
 ---
 
 *The full analysis, the simulated worked examples, and the small library that
 derives variable roles from graph structure are in
 [causal-blocks](https://github.com/george-lindley/causal-blocks). Data: ONS,
 [Educational attainment of young people in English towns](https://www.ons.gov.uk/peoplepopulationandcommunity/educationandchildcare/datasets/educationalattainmentofyoungpeopleinenglishtownsdata)
-(2023), Open Government Licence v3.0.*
+(2023), Open Government Licence v3.0. The ONS article quoted is
+[Why do children and young people in smaller towns do better academically than those in larger towns?](https://www.ons.gov.uk/peoplepopulationandcommunity/educationandchildcare/articles/whydochildrenandyoungpeopleinsmallertownsdobetteracademicallythanthoseinlargertowns/2023-07-25)
+(25 July 2023).*
 
-*One caveat I would want a reader to carry: the reversal is the most interesting
-finding here and the least robust one. Estimating a direct effect by adjusting
-for a mediator requires that nothing unmeasured causes both deprivation and
-attainment — school funding history, local labour markets, decades of industrial
-decline are all plausible candidates and none is in the data. The total effect
-rests on weaker assumptions than the direct effect does. That asymmetry is
-itself part of what the causal framework makes visible, and it is discussed in
-the notebook rather than buried.*
+*Figures here compare large towns with small ones. The interactive demo reports
+the same models per size band (small → medium → large), so its numbers are
+roughly half these: a total effect of −0.70 per band against −1.28 here.*
