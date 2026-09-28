@@ -604,10 +604,8 @@ function drawPanel(analysis) {
   checks.innerHTML = `
     <h2>DoWhy's robustness checks</h2>
     <dl class="checks">${rows.join("")}</dl>
-    <p class="caution"><strong>${allPass ? "Passing proves less than it seems." : "Something is off."}</strong>
-      ${!allPass
-        ? "At least one check failed, so this estimate is fragile even if your graph is right."
-        : "These checks test whether the estimate is stable, not whether your graph is right. “ONS: size alone” passes all three as well, and it ignores deprivation entirely."}</p>`;
+    ${allPass ? "" : `<p class="caution"><strong>Something is off.</strong>
+      At least one check failed, so this estimate is fragile even if your graph is right.</p>`}`;
   checks.hidden = false;
 
   drawHistory(adjust, r);
