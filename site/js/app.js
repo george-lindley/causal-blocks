@@ -70,13 +70,10 @@ const SLOTS = [
   [24, 30], [24, 205], [24, 384], [230, 30], [230, 384], [430, 30], [430, 384], [626, 30], [626, 384], [230, 205],
 ];
 
+// Our graph first, then the two mistakes it argues against. A mistake preset
+// is drawn as a red button so no one mistakes it for a recommendation.
+const EVERYTHING = ["region", "deprivation", "university", "coastal", "adult_qualifications"];
 const PRESETS = {
-  ons: {
-    label: "ONS: size alone",
-    caption: "What the ONS compared: town size and attainment, nothing else. With one arrow, the estimate is just the correlation.",
-    pos: { town_size: [190, 205], education_score: [480, 205] },
-    edges: [["town_size", "education_score"]],
-  },
   deprivation: {
     label: "The deprivation story",
     caption: "Larger towns tend to be more deprived, and deprivation drives attainment. Compare the total effect with the direct effect below it.",
@@ -89,7 +86,27 @@ const PRESETS = {
       ["town_size", "deprivation"], ["town_size", "education_score"], ["deprivation", "education_score"],
     ],
   },
-
+  ons: {
+    label: "ONS: size alone",
+    mistake: true,
+    caption: "Mistake: reading a correlation as an effect. This is the ONS comparison, town size and attainment with nothing else in the graph.",
+    pos: { town_size: [190, 205], education_score: [480, 205] },
+    edges: [["town_size", "education_score"]],
+  },
+  everything: {
+    label: "Control for everything",
+    mistake: true,
+    caption: "Mistake: controlling for everything. Every variable is drawn as a background cause, so deprivation is held fixed too, and the result gets reported as the effect of town size.",
+    pos: {
+      region: [30, 30], deprivation: [318, 30], university: [606, 30],
+      town_size: [150, 205], education_score: [486, 205],
+      coastal: [150, 384], adult_qualifications: [486, 384],
+    },
+    edges: [
+      ...EVERYTHING.flatMap((v) => [[v, "town_size"], [v, "education_score"]]),
+      ["town_size", "education_score"],
+    ],
+  },
 };
 
 const REFUTERS = {
@@ -118,7 +135,7 @@ const state = {
   edges: [], // [parent, child]
   treatment: "town_size",
   outcome: "education_score",
-  preset: "ons",
+  preset: "deprivation",
   selectedNode: null,
   selectedEdge: null, // index into edges
   drag: null, // {id, dx, dy, moved}
@@ -174,6 +191,7 @@ function loadPreset(key) {
   const p = PRESETS[key];
   state.preset = key;
   $("caption").textContent = p.caption;
+  $("caption").classList.toggle("mistake", Boolean(p.mistake));
   $("caption").hidden = false;
   state.pos = new Map(Object.entries(p.pos).map(([id, [x, y]]) => [id, { x, y }]));
   state.edges = p.edges.map((e) => [...e]);
@@ -386,15 +404,24 @@ function tool(parent, x, y, action, arg, d, title) {
 // ---------------------------------------------------------------------------
 
 function drawControls() {
-  $("presets").replaceChildren(...Object.entries(PRESETS).map(([key, p]) => {
+  const chip = ([key, p]) => {
     const b = document.createElement("button");
-    b.className = "chip";
+    b.className = p.mistake ? "chip mistake" : "chip";
     b.type = "button";
     b.textContent = p.label;
     b.setAttribute("aria-pressed", String(state.preset === key));
     b.addEventListener("click", () => loadPreset(key));
     return b;
-  }));
+  };
+  const entries = Object.entries(PRESETS);
+  const mistakes = document.createElement("span");
+  mistakes.className = "label mistakes-label";
+  mistakes.textContent = "Common mistakes";
+  $("presets").replaceChildren(
+    ...entries.filter(([, p]) => !p.mistake).map(chip),
+    mistakes,
+    ...entries.filter(([, p]) => p.mistake).map(chip),
+  );
 
   const unplaced = state.vars.filter((v) => !state.pos.has(v.id));
   $("tray").replaceChildren(...(unplaced.length ? unplaced.map((v) => {
@@ -757,4 +784,4 @@ $("outcome").addEventListener("change", (e) => setQuestion("outcome", e.target.v
 const demo = await fetch("data/demo.json").then((r) => r.json());
 state.vars = demo.variables;
 state.results = demo.results;
-loadPreset("ons");
+loadPreset("deprivation");

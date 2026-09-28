@@ -24,6 +24,8 @@
   --good-bg: #e2f3ea;
   --warn: #a8500a;
   --warn-bg: #fcefdc;
+  --mistake: #c0392b;
+  --mistake-bg: #fbe9e7;
 
   /* Role colours: the same palette as causalblocks/style.py, so the site and
      the notebooks draw a confounder the same way. */
@@ -58,6 +60,8 @@
     --good-bg: #16302a;
     --warn: #f2a95a;
     --warn-bg: #362713;
+    --mistake: #f07a6c;
+    --mistake-bg: #3a1c1a;
     --role-precision: #c9d3d8;
   }
 }
@@ -76,6 +80,8 @@
   --good-bg: #16302a;
   --warn: #f2a95a;
   --warn-bg: #362713;
+  --mistake: #f07a6c;
+  --mistake-bg: #3a1c1a;
   --role-precision: #c9d3d8;
 }
 
@@ -170,6 +176,11 @@ a:hover { text-decoration-thickness: 2px; }
 }
 .chip:hover { border-color: var(--edge); }
 .chip[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.chip.mistake { color: var(--mistake); border-color: var(--mistake); background: transparent; }
+.chip.mistake:hover { background: var(--mistake-bg); }
+.chip.mistake[aria-pressed="true"] { background: var(--mistake); color: #fff; border-color: var(--mistake); }
+.presets { align-items: center; }
+.mistakes-label { margin-left: 8px; color: var(--mistake); }
 
 .canvas-scroll { overflow-x: auto; }
 #canvas {
@@ -230,6 +241,7 @@ a:hover { text-decoration-thickness: 2px; }
 .steps li + li { margin-top: 6px; }
 .steps li::marker { font: 700 14px var(--font-display); color: var(--accent); }
 
+.caption.mistake { color: var(--mistake); background: var(--mistake-bg); }
 .caption {
   margin: 0;
   padding: 10px 16px;
@@ -408,9 +420,9 @@ footer p { margin: 0 0 8px; max-width: 80ch; }
         <div>
           <span class="label">Try this</span>
           <ol class="steps">
-            <li>Add <b>Region</b> and draw arrows from it into Town size and Education score.</li>
-            <li>Add <b>Deprivation</b>. Draw Town size → Deprivation → Education score.</li>
             <li>Compare the total effect with the direct effect. The gap between them is deprivation.</li>
+            <li>Click <b>ONS: size alone</b>. That is the correlation the ONS reported.</li>
+            <li>Click <b>Control for everything</b>. The sign flips, and it gets reported as the effect of town size.</li>
           </ol>
         </div>
       </div>
