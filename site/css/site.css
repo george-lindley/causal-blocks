@@ -448,3 +448,29 @@ footer p { margin: 0 0 8px; max-width: 80ch; }
 .question select { max-width: 100%; text-overflow: ellipsis; }
 .try .tray { max-height: 260px; overflow-y: auto; align-content: flex-start; padding: 2px; }
 .try .tray button { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.dowhy-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0 0;
+  padding: 8px 12px;
+  border-radius: 9px;
+  font-size: 14px;
+  background: var(--surface-2);
+  color: var(--muted);
+}
+.dowhy-status.ok { background: var(--good-bg); color: var(--good); font-weight: 600; }
+.dowhy-status.off { background: var(--warn-bg); color: var(--warn); }
+.spinner {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--line);
+  border-top-color: var(--accent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .spinner { animation: spin 0.9s linear infinite; }
+}
+@keyframes spin { to { transform: rotate(360deg); } }

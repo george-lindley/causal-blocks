@@ -21,6 +21,7 @@ const state = {
   lastAdjust: null,
   unchanged: false,
   run: 0, // guards the robustness checks against a graph that has since changed
+  dowhy: { worker: null, state: "idle", message: "", version: "", verdict: null }, // verdict for state.run
 };
 
 const column = (id) => state.table.columns.find((c) => c.id === id);
@@ -66,6 +67,7 @@ function parse(source, name) {
       }
       state.fileName = name;
       state.treatment = state.outcome = null;
+      startDoWhy();
       renderColumns();
       $("columns-step").hidden = false;
       $("draw-step").hidden = true;
@@ -360,8 +362,10 @@ function drawResult(g, roleMap, id) {
     <p class="meta">95% interval <span class="mono">${fmt(r.ci[0])}</span> to <span class="mono">${fmt(r.ci[1])}</span>.
       ${excludesZero ? "It does not include zero." : "It includes zero, so the data cannot tell this apart from no effect."}
       ${adjust.length && naive ? ` The hollow marker is the raw association with no adjustment: <span class="mono">${fmt(naive.effect)}</span>.` : ""}</p>
+    <p class="dowhy-status" id="dowhy-status"></p>
     ${direct}`;
 
+  confirmWithDoWhy(data, g, main.spec, r);
   drawReading(g, roleMap, adjust);
   drawHistory(adjust, r);
   scheduleChecks(data, main.spec, r);
@@ -473,6 +477,89 @@ function drawHistory(adjust, r) {
   box.innerHTML = `<h2>Same data, your answers so far</h2><ul class="history">${items.join("")}</ul>
     <p class="meta" style="margin-top:10px">Effect of ${escapeHtml(label(state.treatment))} on ${escapeHtml(label(state.outcome))}. Only the graph changed.</p>`;
   box.hidden = false;
+}
+
+// ---------------------------------------------------------------------------
+// 5. Confirm with DoWhy, loaded in the background
+// ---------------------------------------------------------------------------
+
+function startDoWhy() {
+  const d = state.dowhy;
+  if (d.worker) return;
+  d.state = "loading";
+  d.message = "Loading DoWhy in your browser. The first time takes a little while.";
+  d.worker = new Worker("js/dowhy-worker.js", { type: "module" });
+  d.worker.onmessage = ({ data: m }) => {
+    if (m.type === "status") d.message = m.message;
+    if (m.type === "ready") {
+      d.state = "ready";
+      d.version = m.version;
+      update(); // confirm whatever is on screen now
+      return;
+    }
+    if (m.type === "failed") {
+      d.state = "failed";
+      d.message = m.message;
+    }
+    if (m.type === "result" && m.id === state.run) d.verdict = verdictFor(m);
+    renderDoWhy();
+  };
+  d.worker.onerror = () => {
+    d.state = "failed";
+    d.message = "The background worker stopped.";
+    renderDoWhy();
+  };
+}
+
+let pending = null; // what the page estimated for state.run, to compare with DoWhy
+
+function verdictFor(m) {
+  if (m.error) return { ok: false, text: `DoWhy couldn't run this estimate: ${escapeHtml(m.error)}` };
+  const same = (a, b) => Math.abs(a - b) <= 1e-6 * Math.max(1, Math.abs(b));
+  const matches = pending && same(pending.effect, m.effect) && same(pending.ci[0], m.ci[0]) && same(pending.ci[1], m.ci[1]);
+  if (!matches) return { ok: false, text: `DoWhy's own estimate is <span class="mono">${fmt(m.effect)}</span>, which differs from the one shown. Please report this on GitHub.` };
+  const sameSet = pending.adjust.join() === [...m.adjust].sort().join();
+  return {
+    ok: true,
+    text: sameSet
+      ? `Confirmed by DoWhy ${escapeHtml(state.dowhy.version)}: same adjustment, same estimate.`
+      : `Confirmed by DoWhy ${escapeHtml(state.dowhy.version)}. Reading your graph, DoWhy would adjust for ${listText(m.adjust)} instead, an equally valid choice here.`,
+  };
+}
+
+function renderDoWhy() {
+  const el = $("dowhy-status");
+  if (!el) return;
+  const d = state.dowhy;
+  let cls = "loading";
+  let html = `<span class="spinner" aria-hidden="true"></span>${escapeHtml(d.message)}`;
+  if (d.state === "failed") {
+    cls = "off";
+    html = `DoWhy couldn't load in this browser (${escapeHtml(d.message)}). The estimate above uses the same method, tested against DoWhy.`;
+  } else if (d.state === "ready" && !d.verdict) {
+    html = `<span class="spinner" aria-hidden="true"></span>Checking with DoWhy…`;
+  } else if (d.verdict) {
+    cls = d.verdict.ok ? "ok" : "off";
+    html = `${d.verdict.ok ? "✓ " : ""}${d.verdict.text}`;
+  }
+  el.className = `dowhy-status ${cls}`;
+  el.innerHTML = html;
+}
+
+function confirmWithDoWhy(data, g, spec, r) {
+  const d = state.dowhy;
+  d.verdict = null;
+  pending = { effect: r.effect, ci: r.ci, adjust: [...spec.adjust].sort() };
+  if (d.state === "ready") {
+    d.worker.postMessage({
+      type: "estimate",
+      id: state.run,
+      data,
+      graph: { nodes: g.nodes, edges: g.edges },
+      spec: { ...spec, categorical: [...spec.categorical] },
+    });
+  }
+  renderDoWhy();
 }
 
 function update() {
