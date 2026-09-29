@@ -374,3 +374,77 @@ footer p { margin: 0 0 8px; max-width: 80ch; }
   color: var(--good);
 }
 .byline { margin-top: 36px !important; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 16px; }
+
+/* ---------- Try your own data ---------- */
+.try { display: grid; gap: 20px; padding-bottom: 48px; }
+.step h2, .step-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 12px;
+  font: 700 22px/1.2 var(--font-display);
+}
+.step-no {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--surface);
+  font: 700 15px/1 var(--font-ui);
+}
+.dropzone {
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+  text-align: center;
+  padding: 36px 20px;
+  border: 2px dashed var(--edge);
+  border-radius: 14px;
+  background: var(--surface-2);
+  cursor: pointer;
+}
+.dropzone:hover, .dropzone.over { border-color: var(--accent); background: var(--warn-bg); }
+.dropzone:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+.dropzone input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.dz-main { font: 600 18px var(--font-ui); }
+.dz-sub { font-size: 15px; color: var(--muted); }
+.or-line { margin: 14px 0 0; font-size: 15px; color: var(--muted); }
+.link-button {
+  font: inherit;
+  color: var(--ink);
+  background: none;
+  border: 0;
+  padding: 0;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.link-button.small { font-size: 13px; margin-left: 8px; }
+.columns { border-collapse: collapse; width: 100%; font-size: 15px; }
+.columns th, .columns td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+.columns thead th { font: 600 12px var(--font-ui); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.columns tbody th { font-weight: 600; word-break: break-word; max-width: 28ch; }
+.columns .num { font-variant-numeric: tabular-nums; text-align: right; }
+.columns tr.excluded th, .columns tr.excluded .num { color: var(--muted); font-weight: 400; }
+.columns select { font: 15px var(--font-ui); padding: 5px 8px; border-radius: 7px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+.inline { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); }
+.step-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 16px; }
+.primary {
+  font: 600 16px var(--font-ui);
+  padding: 11px 18px;
+  border-radius: 10px;
+  border: 0;
+  background: var(--ink);
+  color: var(--surface);
+  cursor: pointer;
+}
+.primary:hover { background: #33424f; }
+.primary:disabled { background: var(--line); color: var(--muted); cursor: not-allowed; }
+.tray button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.question select { max-width: 100%; text-overflow: ellipsis; }
+.try .tray { max-height: 260px; overflow-y: auto; align-content: flex-start; padding: 2px; }
+.try .tray button { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

@@ -26,6 +26,8 @@ export const ROLE_TEXT = {
   [Role.TREATMENT]: "Treatment",
   [Role.OUTCOME]: "Outcome",
 };
+// Characters of a block's name that fit on it; longer names are cut with "…".
+const MAX_LABEL = 17;
 // Fills that need light text for contrast.
 const STRONG_FILL = new Set([Role.MEDIATOR, Role.COLLIDER]);
 
@@ -77,6 +79,13 @@ export function createBoard(svg, { label, locked = () => false, onEdit = () => {
   function load(pos, edges) {
     s.pos = new Map(Object.entries(pos).map(([id, [x, y]]) => [id, { x, y }]));
     s.edges = edges.map((e) => [...e]);
+    s.selectedNode = s.selectedEdge = s.connect = null;
+  }
+
+  /** Keep only the blocks in `ids` (and arrows between them), where they are. */
+  function retain(ids) {
+    for (const id of [...s.pos.keys()]) if (!ids.has(id)) s.pos.delete(id);
+    s.edges = s.edges.filter(([p, c]) => ids.has(p) && ids.has(c));
     s.selectedNode = s.selectedEdge = s.connect = null;
   }
 
@@ -188,7 +197,10 @@ export function createBoard(svg, { label, locked = () => false, onEdit = () => {
         stroke: selected ? "var(--ink)" : "rgba(0,0,0,0.18)",
         "stroke-dasharray": role === Role.COLLIDER ? "6 4" : "none",
       }, g);
-      el("text", { class: "name", x: 14, y: 26, fill: text }, g).textContent = label(id);
+      const full = label(id);
+      const name = el("text", { class: "name", x: 14, y: 26, fill: text }, g);
+      name.textContent = full.length > MAX_LABEL ? `${full.slice(0, MAX_LABEL - 1)}…` : full;
+      if (full.length > MAX_LABEL) el("title", {}, g).textContent = full;
       const all = roleMap[id] ?? [];
       el("text", { class: "role", x: 14, y: 45, fill: text, opacity: 0.85 }, g).textContent =
         all.length > 1 ? all.map((x) => ROLE_TEXT[x]).join(" + ") : ROLE_TEXT[role];
@@ -334,6 +346,7 @@ export function createBoard(svg, { label, locked = () => false, onEdit = () => {
 
   return {
     load,
+    retain,
     place,
     draw,
     has: (id) => s.pos.has(id),
