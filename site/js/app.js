@@ -2,12 +2,8 @@
 // estimate for whatever graph is drawn. Graph logic lives in causal.js; every
 // number comes from data/demo.json (see scripts/build_demo_data.py).
 
-import { Role, dowhyBackdoor, findCycle, primaryRole, roles } from "./causal.js";
-
-const SVG_NS = "http://www.w3.org/2000/svg";
-const BW = 164; // block width, in viewBox units
-const BH = 56;
-const VIEW = { w: 800, h: 470 };
+import { ROLE_TEXT, createBoard } from "./board.js";
+import { Role, dowhyBackdoor, primaryRole, roles } from "./causal.js";
 
 // How to say "one unit of X" and "a change in Y" in words, per variable.
 // Plain-English pieces for the headline sentence. As a treatment, each
@@ -52,23 +48,6 @@ const WORDS = {
   },
 };
 const pp = (x) => (Number(x) * 100).toFixed(1);
-
-const ROLE_TEXT = {
-  [Role.CONFOUNDER]: "Confounder",
-  [Role.MEDIATOR]: "Mediator",
-  [Role.COLLIDER]: "Collider",
-  [Role.INSTRUMENT]: "Instrument",
-  [Role.PRECISION]: "Outcome cause",
-  [Role.UNRELATED]: "Unrelated",
-  [Role.TREATMENT]: "Treatment",
-  [Role.OUTCOME]: "Outcome",
-};
-// Fills that need light text for contrast.
-const STRONG_FILL = new Set([Role.MEDIATOR, Role.COLLIDER]);
-
-const SLOTS = [
-  [24, 30], [24, 205], [24, 384], [230, 30], [230, 384], [430, 30], [430, 384], [626, 30], [626, 384], [230, 205],
-];
 
 // Our graph first, then the two mistakes it argues against. A mistake preset
 // is drawn as a red button so no one mistakes it for a recommendation.
@@ -131,17 +110,10 @@ const REFUTERS = {
 const state = {
   vars: [], // from demo.json
   results: null,
-  pos: new Map(), // id -> {x, y}
-  edges: [], // [parent, child]
   treatment: "town_size",
   outcome: "education_score",
   preset: "deprivation",
-  selectedNode: null,
-  selectedEdge: null, // index into edges
-  drag: null, // {id, dx, dy, moved}
-  connect: null, // {from, x, y, dragging, sx, sy}
   seen: new Map(), // result key -> {adjust, effect}, for the current treatment/outcome
-  roles: {}, // last computed roles; dragging moves blocks without changing them
   toastTimer: null,
   // For "your last change didn't move the estimate": the last graph structure
   // seen, the adjustment set it produced, and whether the latest edit kept it.
@@ -151,17 +123,9 @@ const state = {
 };
 
 const $ = (id) => document.getElementById(id);
-const svg = $("canvas");
 const byId = (id) => state.vars.find((v) => v.id === id);
 const label = (id) => byId(id)?.label ?? id;
 const estimable = () => state.vars.filter((v) => v.kind !== "nominal");
-
-function el(name, attrs = {}, parent) {
-  const node = document.createElementNS(SVG_NS, name);
-  for (const [k, v] of Object.entries(attrs)) node.setAttribute(k, v);
-  if (parent) parent.appendChild(node);
-  return node;
-}
 
 function fmt(x, digits = 2) {
   const s = Math.abs(x).toFixed(digits);
@@ -193,11 +157,9 @@ function loadPreset(key) {
   $("caption").textContent = p.caption;
   $("caption").classList.toggle("mistake", Boolean(p.mistake));
   $("caption").hidden = false;
-  state.pos = new Map(Object.entries(p.pos).map(([id, [x, y]]) => [id, { x, y }]));
-  state.edges = p.edges.map((e) => [...e]);
+  board.load(p.pos, p.edges);
   state.treatment = "town_size";
   state.outcome = "education_score";
-  state.selectedNode = state.selectedEdge = state.connect = null;
   update();
 }
 
@@ -206,68 +168,20 @@ function edited() {
   $("caption").hidden = true;
 }
 
-function place(id) {
-  if (state.pos.has(id)) return;
-  const free = SLOTS.find(([x, y]) =>
-    [...state.pos.values()].every((p) => Math.abs(p.x - x) > BW - 20 || Math.abs(p.y - y) > BH + 10),
-  ) ?? [VIEW.w / 2 - BW / 2, VIEW.h / 2 - BH / 2];
-  state.pos.set(id, { x: free[0], y: free[1] });
-  edited();
-}
-
-function removeNode(id) {
-  if (id === state.treatment || id === state.outcome) return;
-  state.pos.delete(id);
-  state.edges = state.edges.filter(([p, c]) => p !== id && c !== id);
-  state.selectedNode = null;
-  state.selectedEdge = null;
-  edited();
-  update();
-}
-
-function addEdge(from, to) {
-  if (from === to) return;
-  if (state.edges.some(([p, c]) => p === from && c === to)) return;
-  if (state.edges.some(([p, c]) => p === to && c === from)) {
-    toast(`There is already an arrow from ${label(to)} to ${label(from)}. Click it and choose Reverse to flip it.`);
-    return;
-  }
-  const next = [...state.edges, [from, to]];
-  const cycle = findCycle({ nodes: [...state.pos.keys()], edges: next });
-  if (cycle) {
-    toast(`That arrow would make a loop (${[...cycle, cycle[0]].map(label).join(" → ")}). A causal graph can't loop back on itself.`);
-    return;
-  }
-  state.edges = next;
-  edited();
-}
-
-function reverseEdge(i) {
-  const [p, c] = state.edges[i];
-  const next = state.edges.map((e, j) => (j === i ? [c, p] : e));
-  const cycle = findCycle({ nodes: [...state.pos.keys()], edges: next });
-  if (cycle) {
-    toast(`Reversing that arrow would make a loop (${[...cycle, cycle[0]].map(label).join(" → ")}).`);
-    return;
-  }
-  state.edges = next;
-  edited();
-  update();
-}
-
-function removeEdge(i) {
-  state.edges.splice(i, 1);
-  state.selectedEdge = null;
-  edited();
-  update();
-}
+const board = createBoard($("canvas"), {
+  label,
+  locked: (id) => id === state.treatment || id === state.outcome,
+  onEdit: edited,
+  onChange: () => update(),
+  toast,
+});
 
 // ---------------------------------------------------------------------------
 // Analysis
 // ---------------------------------------------------------------------------
 
 function analyse() {
-  const g = { nodes: [...state.pos.keys()], edges: state.edges };
+  const g = board.graph();
   const r = roles(g, state.treatment, state.outcome);
   const id = dowhyBackdoor(g, state.treatment, state.outcome);
   return { g, roles: r, id };
@@ -276,127 +190,6 @@ function analyse() {
 function resultFor(adjust) {
   if (!state.results) return null;
   return state.results[`${state.treatment}|${state.outcome}|${[...adjust].sort().join(",")}`] ?? null;
-}
-
-// ---------------------------------------------------------------------------
-// Canvas
-// ---------------------------------------------------------------------------
-
-function toView(evt) {
-  const pt = svg.createSVGPoint();
-  pt.x = evt.clientX;
-  pt.y = evt.clientY;
-  return pt.matrixTransform(svg.getScreenCTM().inverse());
-}
-
-function nodeAt(x, y) {
-  for (const [id, p] of state.pos) {
-    if (x >= p.x && x <= p.x + BW && y >= p.y && y <= p.y + BH) return id;
-  }
-  return null;
-}
-
-// Where the line from a block's centre towards (tx, ty) leaves its border.
-function exitPoint(p, tx, ty, pad = 0) {
-  const cx = p.x + BW / 2;
-  const cy = p.y + BH / 2;
-  const dx = tx - cx;
-  const dy = ty - cy;
-  if (!dx && !dy) return [cx, cy];
-  const sx = dx ? (BW / 2 + pad) / Math.abs(dx) : Infinity;
-  const sy = dy ? (BH / 2 + pad) / Math.abs(dy) : Infinity;
-  const s = Math.min(sx, sy);
-  return [cx + dx * s, cy + dy * s];
-}
-
-function drawCanvas(roleMap) {
-  svg.replaceChildren();
-  const defs = el("defs", {}, svg);
-  for (const [name, color] of [["arrow", "var(--edge)"], ["arrow-on", "var(--accent)"]]) {
-    const m = el("marker", {
-      id: name, viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 7, markerHeight: 7, orient: "auto-start-reverse",
-    }, defs);
-    el("path", { d: "M0,0 L10,5 L0,10 z", fill: color }, m);
-  }
-
-  // Edges
-  state.edges.forEach(([p, c], i) => {
-    const a = state.pos.get(p);
-    const b = state.pos.get(c);
-    const [x1, y1] = exitPoint(a, b.x + BW / 2, b.y + BH / 2, 2);
-    const [x2, y2] = exitPoint(b, a.x + BW / 2, a.y + BH / 2, 6);
-    const selected = state.selectedEdge === i;
-    const g = el("g", { class: `edge${selected ? " selected" : ""}`, "data-edge": i }, svg);
-    const d = `M${x1},${y1} L${x2},${y2}`;
-    el("path", { class: "hit", d }, g);
-    el("path", { class: "line", d, "marker-end": `url(#${selected ? "arrow-on" : "arrow"})` }, g);
-  });
-
-  // Line being drawn
-  if (state.connect) {
-    const a = state.pos.get(state.connect.from);
-    el("path", {
-      class: "pending",
-      d: `M${a.x + BW},${a.y + BH / 2} L${state.connect.x},${state.connect.y}`,
-    }, svg);
-  }
-
-  // Blocks
-  for (const [id, p] of state.pos) {
-    const role = primaryRole(roleMap[id] ?? [Role.UNRELATED]);
-    const g = el("g", {
-      class: `node${state.drag?.id === id ? " dragging" : ""}`,
-      "data-node": id,
-      transform: `translate(${p.x},${p.y})`,
-    }, svg);
-    const fill = `var(--role-${role})`;
-    const text = STRONG_FILL.has(role) ? "var(--on-role-strong)" : "var(--on-role)";
-    const selected = state.selectedNode === id;
-    el("rect", {
-      class: "body", width: BW, height: BH, rx: 12, fill,
-      stroke: selected ? "var(--ink)" : "rgba(0,0,0,0.18)",
-      "stroke-dasharray": role === Role.COLLIDER ? "6 4" : "none",
-    }, g);
-    const name = el("text", { class: "name", x: 14, y: 26, fill: text }, g);
-    name.textContent = label(id);
-    const r = el("text", { class: "role", x: 14, y: 45, fill: text, opacity: 0.85 }, g);
-    const all = roleMap[id] ?? [];
-    r.textContent = all.length > 1
-      ? all.map((x) => ROLE_TEXT[x]).join(" + ")
-      : ROLE_TEXT[role];
-
-    const port = el("g", {
-      class: `port${state.connect?.from === id ? " active" : ""}`,
-      "data-port": id,
-      transform: `translate(${BW},${BH / 2})`,
-    }, g);
-    el("circle", { r: 18, fill: "transparent" }, port);
-    el("circle", { class: "dot", r: 9 }, port);
-    el("path", { d: "M-4,0 H4 M0,-4 V4" }, port);
-
-    if (selected && id !== state.treatment && id !== state.outcome) {
-      tool(g, BW - 2, 2, "remove-node", id, "M-4,-4 L4,4 M4,-4 L-4,4", `Remove ${label(id)}`);
-    }
-  }
-
-  // Edge toolbar, drawn last so it sits on top
-  if (state.selectedEdge !== null && state.edges[state.selectedEdge]) {
-    const [p, c] = state.edges[state.selectedEdge];
-    const a = state.pos.get(p);
-    const b = state.pos.get(c);
-    const mx = (a.x + b.x) / 2 + BW / 2;
-    const my = (a.y + b.y) / 2 + BH / 2;
-    tool(svg, mx - 18, my, "reverse-edge", state.selectedEdge,
-      "M-5,-3 H5 L2,-6 M5,3 H-5 L-2,6", "Reverse arrow");
-    tool(svg, mx + 18, my, "remove-edge", state.selectedEdge, "M-4,-4 L4,4 M4,-4 L-4,4", "Remove arrow");
-  }
-}
-
-function tool(parent, x, y, action, arg, d, title) {
-  const g = el("g", { class: "tool", transform: `translate(${x},${y})`, "data-action": action, "data-arg": arg }, parent);
-  el("title", {}, g).textContent = title;
-  el("circle", { r: 14 }, g);
-  el("path", { d }, g);
 }
 
 // ---------------------------------------------------------------------------
@@ -423,13 +216,13 @@ function drawControls() {
     ...entries.filter(([, p]) => p.mistake).map(chip),
   );
 
-  const unplaced = state.vars.filter((v) => !state.pos.has(v.id));
+  const unplaced = state.vars.filter((v) => !board.has(v.id));
   $("tray").replaceChildren(...(unplaced.length ? unplaced.map((v) => {
     const b = document.createElement("button");
     b.type = "button";
     b.textContent = `+ ${v.label}`;
     b.title = v.description;
-    b.addEventListener("click", () => { place(v.id); update(); });
+    b.addEventListener("click", () => { board.place(v.id); update(); });
     return b;
   }) : [Object.assign(document.createElement("span"), { className: "empty", textContent: "Every column is on the canvas." })]));
 
@@ -583,7 +376,7 @@ function drawPanel(analysis) {
   for (const [n, rs] of multi) {
     note(primaryRole(rs), `${label(n)} plays two roles at once (${rs.map((x) => ROLE_TEXT[x].toLowerCase()).join(" and ")}). No adjustment choice for it is clean.`);
   }
-  const missing = state.vars.filter((v) => !state.pos.has(v.id)).map((v) => v.id);
+  const missing = state.vars.filter((v) => !board.has(v.id)).map((v) => v.id);
   if (missing.length) {
     note(Role.UNRELATED, `Not on your canvas: ${listText(missing)}. Leaving a block off says it does not cause both ${T} and ${Y}. If it does, this estimate is biased.`);
   }
@@ -653,121 +446,18 @@ function update() {
     toast(err.message);
     return;
   }
-  state.roles = analysis.roles;
   trackChange(analysis);
-  drawCanvas(analysis.roles);
+  board.draw(analysis.roles);
   drawControls();
   drawPanel(analysis);
 }
-
-// ---------------------------------------------------------------------------
-// Input
-// ---------------------------------------------------------------------------
-
-svg.addEventListener("pointerdown", (evt) => {
-  const target = evt.target.closest("[data-action], [data-port], [data-node], [data-edge]");
-  const p = toView(evt);
-
-  if (target?.dataset.action) {
-    const arg = target.dataset.arg;
-    if (target.dataset.action === "remove-node") removeNode(arg);
-    if (target.dataset.action === "reverse-edge") reverseEdge(Number(arg));
-    if (target.dataset.action === "remove-edge") removeEdge(Number(arg));
-    evt.preventDefault();
-    return;
-  }
-  if (target?.dataset.port) {
-    state.connect = { from: target.dataset.port, x: p.x, y: p.y, dragging: true, sx: p.x, sy: p.y };
-    state.selectedEdge = null;
-    evt.preventDefault();
-    update();
-    return;
-  }
-  if (target?.dataset.node) {
-    const id = target.dataset.node;
-    if (state.connect && !state.connect.dragging) {
-      addEdge(state.connect.from, id);
-      state.connect = null;
-      update();
-      return;
-    }
-    const pos = state.pos.get(id);
-    state.drag = { id, dx: p.x - pos.x, dy: p.y - pos.y, moved: false };
-    state.selectedEdge = null;
-    evt.preventDefault();
-    return;
-  }
-  if (target?.dataset.edge) {
-    state.selectedEdge = Number(target.dataset.edge);
-    state.selectedNode = null;
-    state.connect = null;
-    update();
-    return;
-  }
-  state.selectedEdge = state.selectedNode = state.connect = null;
-  update();
-});
-
-window.addEventListener("pointermove", (evt) => {
-  if (!state.drag && !state.connect) return;
-  const p = toView(evt);
-  if (state.drag) {
-    const x = Math.max(0, Math.min(VIEW.w - BW, p.x - state.drag.dx));
-    const y = Math.max(0, Math.min(VIEW.h - BH, p.y - state.drag.dy));
-    const pos = state.pos.get(state.drag.id);
-    if (Math.abs(pos.x - x) + Math.abs(pos.y - y) > 1) state.drag.moved = true;
-    state.pos.set(state.drag.id, { x, y });
-  } else {
-    state.connect.x = p.x;
-    state.connect.y = p.y;
-  }
-  drawCanvas(state.roles); // position only: roles and estimates are unchanged
-
-});
-
-window.addEventListener("pointerup", (evt) => {
-  if (state.drag) {
-    const { id, moved } = state.drag;
-    state.drag = null;
-    if (!moved) state.selectedNode = state.selectedNode === id ? null : id;
-    update();
-    return;
-  }
-  if (state.connect?.dragging) {
-    const p = toView(evt);
-    const target = nodeAt(p.x, p.y);
-    const travelled = Math.hypot(p.x - state.connect.sx, p.y - state.connect.sy);
-    if (target && target !== state.connect.from) {
-      addEdge(state.connect.from, target);
-      state.connect = null;
-    } else if (travelled < 12) {
-      // A tap on the handle: wait for a tap on the target block.
-      state.connect.dragging = false;
-      toast(`Now click the block that ${label(state.connect.from)} causes.`);
-    } else {
-      state.connect = null;
-    }
-    update();
-  }
-});
-
-window.addEventListener("keydown", (evt) => {
-  if (evt.target.closest?.("select, input, textarea")) return;
-  if (evt.key === "Escape") {
-    state.connect = state.selectedEdge = state.selectedNode = null;
-    update();
-  } else if (evt.key === "Delete" || evt.key === "Backspace") {
-    if (state.selectedEdge !== null) removeEdge(state.selectedEdge);
-    else if (state.selectedNode) removeNode(state.selectedNode);
-  }
-});
 
 function setQuestion(which, value) {
   const other = which === "treatment" ? "outcome" : "treatment";
   if (state[other] === value) state[other] = state[which]; // swap rather than collide
   state[which] = value;
-  place(value);
-  place(state[other]);
+  board.place(value);
+  board.place(state[other]);
   state.seen.clear();
   state.lastGraph = null; // a new question is not an edit to the old one
   update();
