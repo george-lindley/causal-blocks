@@ -128,6 +128,11 @@ export function createBoard(svg, { label, locked = () => false, onEdit = () => {
     onEdit();
   }
 
+  /** Add an arrow from code (no loop check needed by callers that know the graph). */
+  function link(from, to) {
+    if (s.pos.has(from) && s.pos.has(to) && !s.edges.some(([p, c]) => p === from && c === to)) s.edges.push([from, to]);
+  }
+
   function reverseEdge(i) {
     const [p, c] = s.edges[i];
     const next = s.edges.map((e, j) => (j === i ? [c, p] : e));
@@ -348,6 +353,7 @@ export function createBoard(svg, { label, locked = () => false, onEdit = () => {
     load,
     retain,
     place,
+    link,
     draw,
     has: (id) => s.pos.has(id),
     graph: () => ({ nodes: [...s.pos.keys()], edges: s.edges }),
