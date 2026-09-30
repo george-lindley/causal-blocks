@@ -1,6 +1,32 @@
-# causal-blocks
+# Causal Blocks
 
-**Do small towns provide better education?** England's smaller towns post better
+**Learn causal inference by drawing it.** Drag your data's columns onto a canvas
+as blocks, draw arrows for what you believe causes what, and watch a
+[DoWhy](https://github.com/py-why/dowhy) estimate change with every arrow. Each
+variable is coloured by the role your graph gives it — confounder, mediator,
+collider — so the graph explains itself.
+
+### → [causalblocks.com](https://causalblocks.com)
+
+- **[The demo](https://causalblocks.com/)** — do small towns in England really
+  educate children better? The published correlation, the result of
+  "controlling for everything", and the causal story, on one dataset.
+- **[Try your own data](https://causalblocks.com/try.html)** — upload a CSV and
+  draw your own graph. Estimates appear instantly and are then confirmed by
+  DoWhy running in your browser. Your data never leaves your computer.
+- **[Why causation](https://causalblocks.com/about.html)** — what causal
+  inference is, why "just control for it" is not the fix, and what to read next.
+
+[![The Causal Blocks demo](docs/screenshots/demo.png)](https://causalblocks.com)
+
+Everything here is open source: the site, the Python library behind the
+analysis, and the tests that check the site's answers against DoWhy itself.
+
+---
+
+## The example: do small towns provide better education?
+
+England's smaller towns post better
 educational outcomes than its larger ones. Adjust for deprivation and the
 advantage does not merely disappear — **it reverses.**
 
@@ -152,8 +178,17 @@ causalblocks/
 notebooks/
   00_concepts.ipynb     confounder / mediator / collider, on data with known truth
   01_small_towns.ipynb  the analysis
+site/           causalblocks.com: static pages, no server
+  js/causal.js      DoWhy's adjustment-set choice and variable roles, in JavaScript
+  js/estimate.js    DoWhy's linear-regression estimate and refuters, in JavaScript
+  js/dowhy-worker.js  real DoWhy in the browser (Pyodide), confirming each answer
+  data/demo.json    every DoWhy result the demo can show, precomputed
+scripts/
+  build_demo_data.py      runs DoWhy for every demo combination
+  build_essay_figures.py  the essay's charts, from the data
+essay/          the write-up, and its figures
 docs/dowhy-reference.md
-tests/          44 tests
+tests/          50 tests, including the site against DoWhy
 ```
 
 ## On the design
@@ -193,6 +228,15 @@ flawless model to a quantity that is not the one you meant, and nothing in the
 output will tell you. The small-towns result is what that looks like in
 practice: a correct regression, a real correlation, and an interpretation that
 points at scale when the answer is money.
+
+## Get in touch
+
+Causal Blocks is made by George Lindley. If you teach statistics, analytics or
+data science and would like to use it, have a dataset that would make a good
+lesson, or want to collaborate, email
+george.j.lindley+causalblocks@gmail.com or find me on
+[LinkedIn](https://www.linkedin.com/in/georgelindley/). Bugs and suggestions
+are welcome as [GitHub issues](https://github.com/george-lindley/causal-blocks/issues).
 
 ## Licence
 
