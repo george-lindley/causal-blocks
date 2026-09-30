@@ -490,3 +490,4 @@ footer p { margin: 0 0 8px; max-width: 80ch; }
 .contact dt { font: 600 13px/1.9 var(--font-ui); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
 .contact dd { margin: 0; overflow-wrap: anywhere; }
 @media (max-width: 480px) { .contact { grid-template-columns: minmax(0, 1fr); } .contact dd { margin-bottom: 8px; } }
+.top nav .ext { margin-left: 2px; font-size: 0.8em; color: var(--muted); text-decoration: none; display: inline-block; }
