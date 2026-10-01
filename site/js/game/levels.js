@@ -29,8 +29,9 @@ const BREAKFAST = {
 export const LEVELS = [
   {
     id: "cause",
+    hunch: "You're the detective. Your first job: turn the newspaper's claim into a theory you can test, by drawing it.",
     case: "Revision club",
-    caseIntro: "Hilltop School runs a revision club before the end-of-year test. Pupils who go seem to pass more often. Over three levels, you'll work out what's really going on.",
+    caseIntro: "Hilltop School runs a revision club before the end-of-year test.",
     title: "Meet the Cause and the Effect",
     teaches: "An arrow means “causes”",
     headline: "Revision club helps pupils pass",
@@ -60,6 +61,7 @@ export const LEVELS = [
   },
   {
     id: "poke",
+    hunch: "Is the paper right? Your theory: revision club really does cause passing. Draw it, then test it.",
     case: "Revision club",
     title: "Test it",
     teaches: "Test: send everyone and see what changes",
@@ -94,6 +96,7 @@ export const LEVELS = [
   },
   {
     id: "messenger",
+    hunch: "You think there's more to it. Revision club helps pupils understand the topic, and understanding is what gets them the pass. Draw that chain.",
     case: "Revision club",
     title: "The middle block",
     teaches: "Effects travel through other blocks",
@@ -131,8 +134,9 @@ export const LEVELS = [
   },
   {
     id: "confounder",
+    hunch: "You're not sure the paper's right. You wonder if family money is behind both: richer families can afford breakfast club, and their children pass more often. Draw that.",
     case: "Breakfast club",
-    caseIntro: "Hilltop runs a breakfast club before school. It costs £2 a morning. The local paper has noticed something about it.",
+    caseIntro: "Hilltop runs a breakfast club before school. It costs £2 a morning.",
     bonus: true,
     title: "The hidden puppet master",
     teaches: "A hidden common cause fakes a link",
@@ -164,6 +168,7 @@ export const LEVELS = [
   },
   {
     id: "freeze",
+    hunch: "You can't send everyone to breakfast club. But what if you looked only at the richer pupils, then only the poorer ones? That would freeze the effect of family money.",
     case: "Breakfast club",
     bonus: true,
     title: "Freeze",
@@ -195,8 +200,9 @@ export const LEVELS = [
   },
   {
     id: "bouncer",
+    hunch: "Something feels off about this one. Who exactly did the paper talk to?",
     case: "Scholarships",
-    caseIntro: "Hilltop gives scholarships to a few pupils each year. The paper has been interviewing them.",
+    caseIntro: "Hilltop gives scholarships to pupils who are sporty, or good at maths.",
     bonus: true,
     title: "Who got in?",
     teaches: "Looking only at who got in creates a fake link",

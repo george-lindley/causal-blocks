@@ -355,31 +355,25 @@ function startLevel(i) {
   $("paper-case").textContent = l.case;
   $("headline").textContent = `“${l.headline}”`;
   $("story").textContent = l.story;
-  $("case-card").innerHTML = l.caseIntro ? `
+  // The investigation: after the newspaper's claim, the detective's own hunch.
+  $("case-card").innerHTML = `
     <svg class="detective" viewBox="0 0 200 200" aria-hidden="true">${DETECTIVE}</svg>
-    <div><span class="label">${i === 0 ? "Your first case" : "New case"}</span><h2>${escapeHtml(l.case)}</h2><p>${escapeHtml(l.caseIntro)}</p></div>` : "";
+    <div><span class="label">${l.caseIntro ? (i === 0 ? "Your first case" : "New case") : "The investigation"}</span>
+      <h2>${escapeHtml(l.caseIntro ? l.case : "Your hunch")}</h2>
+      ${l.caseIntro ? `<p>${escapeHtml(l.caseIntro)}</p>` : ""}
+      <p class="hunch">${escapeHtml(l.hunch)}</p></div>`;
   history.replaceState(null, "", `#${l.id}`);
-  // One thing at a time: a new case first, then the front page, then the task.
-  $("case-card").hidden = !l.caseIntro;
-  $("case-next").hidden = !l.caseIntro;
-  $("paper").hidden = Boolean(l.caseIntro);
-  $("read-on").hidden = Boolean(l.caseIntro);
+  // One thing at a time: the newspaper's claim, then the investigation and the task.
+  $("read-on").hidden = false;
   $("level-body").hidden = true;
   setStage("watch");
   $("level").scrollIntoView({ block: "start" });
 }
 
-$("case-next-btn").addEventListener("click", () => {
-  $("case-next").hidden = true;
-  $("paper").hidden = false;
-  $("read-on").hidden = false;
-  $("paper").scrollIntoView({ behavior: "smooth", block: "start" });
-});
-
 $("read-on-btn").addEventListener("click", () => {
   $("read-on").hidden = true;
   $("level-body").hidden = false;
-  $("stages").scrollIntoView({ behavior: "smooth", block: "start" });
+  $("case-card").scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 function setStage(stage) {
@@ -517,9 +511,16 @@ function buildPanel() {
       </ol>
       <button type="button" class="btn primary-btn" data-action="check">Check my arrow</button>`;
   }
+  const edges = board.graph().edges;
   return `
     <h3>Draw your theory</h3>
     <p>Drag from a block's round handle onto the block it causes. Click an arrow to flip or remove it.</p>
+    <div class="drawn">
+      <span class="label">What you've drawn</span>
+      ${edges.length
+        ? `<ul>${edges.map(([a, b]) => `<li><b>${escapeHtml(label(a))}</b> <span aria-label="causes">→</span> <b>${escapeHtml(label(b))}</b></li>`).join("")}</ul>`
+        : `<p class="meta">No arrows yet.</p>`}
+    </div>
     ${predictionLine()}
     <button type="button" class="btn primary-btn" data-action="make-it-happen">Test it →</button>`;
 }
@@ -528,8 +529,9 @@ function buildPanel() {
 function predictionLine() {
   const p = currentPrediction();
   if (p.effect === null) return "";
-  const who = lv().freezeOnly ? "Your frozen comparison predicts" : "Your theory predicts";
-  return `<p class="prediction">${who}: if everyone ${escapeHtml(actionPhrase())}, <b>${escapeHtml(WILL[q().outcome][dir(p.effect)])}</b>.</p>`;
+  const who = lv().freezeOnly ? "If you freeze that" : "If what you've drawn is right";
+  const test = lv().poke.label.replace(/^Magic: /, "");
+  return `<p class="prediction">${who}: ${escapeHtml(test.charAt(0).toLowerCase() + test.slice(1))}, and <b>${escapeHtml(WILL[q().outcome][dir(p.effect)])}</b>.</p>`;
 }
 function checkArrow() {
   const { treatment: t, outcome: y } = q();
@@ -701,7 +703,7 @@ function verdictPanel() {
   const why = l.tutorial ? "" : whyTheory();
   return `
     <h3 class="lose">${l.tutorial ? "Not quite" : "Theory busted!"}</h3>
-    ${l.tutorial ? "" : `<p class="big-result">Your theory said: ${escapeHtml(WILL[y][game.result.said])}. But ${escapeHtml(DID[y][game.result.did])}.</p>`}
+    ${l.tutorial ? "" : `<p class="big-result">What you drew predicted: ${escapeHtml(WILL[y][game.result.said])}. But ${escapeHtml(DID[y][game.result.did])}.</p>`}
     ${why ? `<p>${why}</p>` : ""}
     <p class="hint-box"><b>Hint:</b> ${escapeHtml(l.hint)}</p>
     <button type="button" class="btn primary-btn" data-action="rebuild">Try again</button>`;

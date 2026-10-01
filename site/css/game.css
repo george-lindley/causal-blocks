@@ -385,3 +385,10 @@
 .case-card .detective { width: 170px; height: 170px; }
 .case-card h2 { font-size: clamp(30px, 4vw, 42px) !important; }
 .case-card p { font-size: 19px !important; }
+
+/* ---- The investigation banner and the "what you've drawn" list ---- */
+.case-card { margin: 0 0 16px; }
+.case-card .hunch { margin-top: 6px !important; font: 700 20px/1.35 var(--font-game) !important; color: #fff !important; }
+.drawn { margin: 0 0 12px; padding: 10px 14px; border-radius: 12px; background: #fff; border: 2px dashed var(--line); }
+.drawn ul { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 4px; font-size: 17px; }
+.drawn li span { color: var(--muted); margin: 0 4px; }
