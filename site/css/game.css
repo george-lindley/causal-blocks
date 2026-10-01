@@ -332,3 +332,18 @@
 /* ---- The front page first; the task appears below once read ---- */
 .read-on { display: flex; justify-content: center; margin: 18px 0 8px; }
 .read-on .btn { font-size: 20px; padding: 12px 28px 10px; }
+
+/* ---- The data: real results, named as a correlation ---- */
+.data-label { margin: 0 0 6px; font: 700 13px var(--font-ui); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.correlation { margin: -6px 0 14px; padding: 10px 14px; border-radius: 12px; background: #fff; font-size: 17px; }
+.correlation .tag {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font: 700 13px var(--font-ui);
+  letter-spacing: 0.04em;
+  vertical-align: 1px;
+}

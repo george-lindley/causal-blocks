@@ -46,7 +46,7 @@ export const LEVELS = [
       },
     },
     watch: {
-      statement: "Pupils at revision club are {ratio} as likely to pass.",
+      statement: "{a} in 10 pupils who went to revision club passed. Only {b} in 10 of the others did.",
       groups: ["Went to revision club", "Didn't go"],
       outcome: "passed",
     },
@@ -77,7 +77,7 @@ export const LEVELS = [
       },
     },
     watch: {
-      statement: "Pupils at revision club are {ratio} as likely to pass.",
+      statement: "{a} in 10 pupils who went to revision club passed. Only {b} in 10 of the others did.",
       groups: ["Went to revision club", "Didn't go"],
       outcome: "passed",
     },
@@ -111,7 +111,7 @@ export const LEVELS = [
       },
     },
     watch: {
-      statement: "Pupils at revision club are {ratio} as likely to pass.",
+      statement: "{a} in 10 pupils who went to revision club passed. Only {b} in 10 of the others did.",
       groups: ["Went to revision club", "Didn't go"],
       outcome: "passed",
     },
@@ -143,7 +143,7 @@ export const LEVELS = [
     layout: { poorer: [318, 40], club: [70, 340], pass: [566, 340] },
     world: BREAKFAST,
     watch: {
-      statement: "Pupils at the free breakfast club are {ratio} as likely to pass.",
+      statement: "Only {a} in 10 pupils at the free breakfast club passed, against {b} in 10 of the others.",
       groups: ["Free breakfast", "No free breakfast"],
       outcome: "passed",
     },
@@ -176,7 +176,7 @@ export const LEVELS = [
     startEdges: [["poorer", "club"], ["poorer", "pass"], ["club", "pass"]],
     world: BREAKFAST,
     watch: {
-      statement: "Pupils at the free breakfast club are {ratio} as likely to pass.",
+      statement: "Only {a} in 10 pupils at the free breakfast club passed, against {b} in 10 of the others.",
       groups: ["Free breakfast", "No free breakfast"],
       outcome: "passed",
     },
@@ -217,7 +217,7 @@ export const LEVELS = [
     },
     watch: {
       everyone: "Across the whole school, sporty pupils are just as good at maths.",
-      statement: "Sporty pupils are much less likely to be good at maths.",
+      statement: "Of the sporty pupils the paper spoke to, only {a} in 10 were good at maths, against {b} in 10 of the others.",
       twist: "But the paper only interviewed scholarship pupils. Scholarships go to pupils who are sporty, or good at maths.",
       groups: ["Sporty", "Not sporty"],
       outcome: "good at maths",

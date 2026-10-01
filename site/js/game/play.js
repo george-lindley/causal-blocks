@@ -11,7 +11,7 @@ import { pokeResult, predict, simulate, trueGraph, verdict, watched } from "./wo
 
 const $ = (id) => document.getElementById(id);
 
-const STAGE_NAMES = { watch: "Watch", build: "Draw", freeze: "Freeze", poke: "Make it happen", verdict: "Verdict" };
+const STAGE_NAMES = { watch: "The data", build: "Draw", freeze: "Freeze", poke: "Make it happen", verdict: "Verdict" };
 const CAST_ORDER = [Role.TREATMENT, Role.OUTCOME, Role.MEDIATOR, Role.CONFOUNDER, Role.COLLIDER];
 
 // ---------------------------------------------------------------------------
@@ -391,13 +391,32 @@ document.addEventListener("change", (e) => {
 
 // ---- Watch ---------------------------------------------------------------
 
+/** The watch statement with this school's real counts filled in. */
+function factsSentence(template, [a, b]) {
+  return template.replace("{a}", Math.round(a * 10)).replace("{b}", Math.round(b * 10));
+}
+
+/** Names what the data shows: a correlation, which the headline turns into a causal claim. */
+function correlationNote(a, b) {
+  const { treatment: t } = q();
+  const as = `That's ${ratioWords(a, b)} as likely.`;
+  if (lv().tutorial) {
+    return `<p class="correlation"><span class="tag">Correlation</span> ${as} This is a <b>correlation</b>: ${escapeHtml(label(t).toLowerCase())} and passing go together.
+      The headline goes further. It says one <i>causes</i> the other. Is it right?</p>`;
+  }
+  return `<p class="correlation"><span class="tag">Correlation</span> ${as} They go together.
+    The headline turns that into a cause: <i>“${escapeHtml(lv().headline)}”</i></p>`;
+}
+
 function watchScreen() {
   const l = lv();
   const note = `Lit up: ${l.watch.outcome}`;
   if (l.world.select) return twistWatch(l, note);
   const [a, b] = rates(game.data);
   return `
-    <p class="statement">${escapeHtml(l.watch.statement.replace("{ratio}", ratioWords(a, b)))}<small>${inTen(a)} against ${inTen(b)}.</small></p>
+    <p class="data-label">This year's results at Hilltop</p>
+    <p class="statement">${escapeHtml(factsSentence(l.watch.statement, [a, b]))}</p>
+    ${correlationNote(a, b)}
     ${crowdPair([a, b], l.watch.groups, note)}
     <div class="controls">
       <button type="button" class="btn primary-btn" data-action="continue">${l.freezeOnly ? "Freeze a block →" : "Draw your theory →"}</button>
@@ -409,7 +428,9 @@ function twistWatch(l, note) {
   const [a, b] = rates(game.data);
   if (!game.twist) {
     return `
-      <p class="statement">${escapeHtml(l.watch.statement)}<small>${inTen(a)} against ${inTen(b)}, according to the paper.</small></p>
+      <p class="data-label">The paper's numbers</p>
+      <p class="statement">${escapeHtml(factsSentence(l.watch.statement, [a, b]))}</p>
+      <p class="correlation"><span class="tag">Correlation</span> Sport and maths seem to go against each other. The headline says sport <i>causes</i> worse maths.</p>
       ${crowdPair([a, b], l.watch.groups, note)}
       <div class="controls"><button type="button" class="btn primary-btn" data-action="twist">Where did these numbers come from? →</button></div>`;
   }
