@@ -20,9 +20,9 @@
 const BREAKFAST = {
   seed: 404,
   blocks: {
-    richer: { kind: "yesno", label: "Richer family", base: 0 },
-    club: { kind: "yesno", label: "Breakfast club", base: -1.73, from: { richer: 3.12 } },
-    pass: { kind: "yesno", label: "Passed the test", base: -1.39, from: { richer: 2.77 } },
+    richer: { kind: "yesno", say: ["Coming from a richer family", "pupils to come from richer families"], label: "Richer family", base: 0 },
+    club: { kind: "yesno", say: ["Breakfast club", "pupils to go to breakfast club"], label: "Breakfast club", base: -1.73, from: { richer: 3.12 } },
+    pass: { kind: "yesno", say: ["Passing the test", "pupils to pass the test"], label: "Passed the test", base: -1.39, from: { richer: 2.77 } },
   },
 };
 
@@ -44,8 +44,8 @@ export const LEVELS = [
     world: {
       seed: 101,
       blocks: {
-        revision: { kind: "yesno", label: "Revision club", base: 0 },
-        pass: { kind: "yesno", label: "Passed the test", base: -0.85, from: { revision: 2.24 } },
+        revision: { kind: "yesno", say: ["Revision club", "pupils to go to revision club"], label: "Revision club", base: 0 },
+        pass: { kind: "yesno", say: ["Passing the test", "pupils to pass the test"], label: "Passed the test", base: -0.85, from: { revision: 2.24 } },
       },
     },
     watch: {
@@ -76,8 +76,8 @@ export const LEVELS = [
     world: {
       seed: 102,
       blocks: {
-        revision: { kind: "yesno", label: "Revision club", base: 0 },
-        pass: { kind: "yesno", label: "Passed the test", base: -0.85, from: { revision: 2.24 } },
+        revision: { kind: "yesno", say: ["Revision club", "pupils to go to revision club"], label: "Revision club", base: 0 },
+        pass: { kind: "yesno", say: ["Passing the test", "pupils to pass the test"], label: "Passed the test", base: -0.85, from: { revision: 2.24 } },
       },
     },
     watch: {
@@ -110,9 +110,9 @@ export const LEVELS = [
     world: {
       seed: 103,
       blocks: {
-        revision: { kind: "yesno", label: "Revision club", base: 0 },
-        understand: { kind: "yesno", label: "Understands topic", base: -1.1, from: { revision: 2.83 } },
-        pass: { kind: "yesno", label: "Passed the test", base: -1.39, from: { understand: 2.77 } },
+        revision: { kind: "yesno", say: ["Revision club", "pupils to go to revision club"], label: "Revision club", base: 0 },
+        understand: { kind: "yesno", say: ["Understanding the topic", "pupils to understand the topic"], label: "Understands topic", base: -1.1, from: { revision: 2.83 } },
+        pass: { kind: "yesno", say: ["Passing the test", "pupils to pass the test"], label: "Passed the test", base: -1.39, from: { understand: 2.77 } },
       },
     },
     watch: {
@@ -217,9 +217,9 @@ export const LEVELS = [
     world: {
       seed: 606,
       blocks: {
-        sporty: { kind: "yesno", label: "Sporty", base: 0 },
-        maths: { kind: "yesno", label: "Good at maths", base: 0 },
-        scholar: { kind: "yesno", label: "Scholarship", base: -3, from: { sporty: 4, maths: 4 } },
+        sporty: { kind: "yesno", say: ["Being sporty", "pupils to be sporty"], label: "Sporty", base: 0 },
+        maths: { kind: "yesno", say: ["Being good at maths", "pupils to be good at maths"], label: "Good at maths", base: 0 },
+        scholar: { kind: "yesno", say: ["Getting a scholarship", "pupils to get a scholarship"], label: "Scholarship", base: -3, from: { sporty: 4, maths: 4 } },
       },
       // The headline only looks at scholarship pupils.
       select: ["scholar", 1],

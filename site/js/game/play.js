@@ -82,6 +82,13 @@ function list(ids) {
   return names.length <= 1 ? names.join("") : `${names.slice(0, -1).join(", ")} and ${names.at(-1)}`;
 }
 
+/** An arrow as a sentence: "Revision club causes pupils to understand the topic." */
+function claim(from, to) {
+  const [subject] = block(from).say ?? [label(from)];
+  const [, object] = block(to).say ?? [null, label(to).toLowerCase()];
+  return `<b>${escapeHtml(subject)}</b> causes <b>${escapeHtml(object)}</b>.`;
+}
+
 /** "8 in 10" */
 const inTen = (r) => `${Math.round(r * 10)} in 10`;
 
@@ -525,7 +532,7 @@ function buildPanel() {
     <div class="drawn">
       <span class="label">What you've drawn</span>
       ${edges.length
-        ? `<ul>${edges.map(([a, b]) => `<li><b>${escapeHtml(label(a))}</b> <span aria-label="causes">→</span> <b>${escapeHtml(label(b))}</b></li>`).join("")}</ul>`
+        ? `<ul>${edges.map(([a, b]) => `<li>${claim(a, b)}</li>`).join("")}</ul>`
         : `<p class="meta">No arrows yet.</p>`}
     </div>
     ${predictionLine()}
