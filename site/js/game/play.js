@@ -54,8 +54,7 @@ const game = {
   result: null,
   twist: false, // level 6: has the player found out where the numbers came from?
   wholeSchool: false, // level 6: showing everyone instead of the headline's pupils
-  switchOn: null, // make it happen: null (not yet), true (everyone), false (no one)
-  seen: { on: false, off: false },
+  switchOn: false, // make it happen: has the switch been flipped to everyone?
   newlyMet: [],
   toastTimer: null,
 };
@@ -323,9 +322,18 @@ function startLevel(i) {
   $("case-card").hidden = !l.caseIntro;
   $("case-card").innerHTML = l.caseIntro ? `<span class="label">${i === 0 ? "Your first case" : "New case"}</span><h2>${escapeHtml(l.case)}</h2><p>${escapeHtml(l.caseIntro)}</p>` : "";
   history.replaceState(null, "", `#${l.id}`);
+  // The front page comes first, on its own; the task appears below once read.
+  $("level-body").hidden = true;
+  $("read-on").hidden = false;
   setStage("watch");
   $("level").scrollIntoView({ block: "start" });
 }
+
+$("read-on-btn").addEventListener("click", () => {
+  $("read-on").hidden = true;
+  $("level-body").hidden = false;
+  $("stages").scrollIntoView({ behavior: "smooth", block: "start" });
+});
 
 function setStage(stage) {
   game.stage = stage;
@@ -499,8 +507,7 @@ function freezePanel() {
 function toMakeItHappen() {
   game.prediction = currentPrediction();
   game.model = board.graph().edges.map((e) => [...e]);
-  game.switchOn = null;
-  game.seen = { on: false, off: false };
+  game.switchOn = false;
   const t = q().treatment;
   setStage("poke");
   // Forcing a block cuts every arrow into it: let them visibly snap off, then remove them.
@@ -516,7 +523,6 @@ function toMakeItHappen() {
 
 function flip() {
   game.switchOn = !game.switchOn;
-  game.seen[game.switchOn ? "on" : "off"] = true;
   refresh();
 }
 
@@ -525,25 +531,24 @@ function makeItHappenPanel() {
   const { treatment: t } = q();
   const r = game.truth;
   const on = game.switchOn;
-  const both = game.seen.on && game.seen.off;
-  const showing = on === null ? null : on ? r.hi : r.lo;
+  const note = `Lit up: ${l.watch.outcome}`;
   return `
     ${l.introduces === "poke" ? makeItHappenIntro() : ""}
     <h3>${l.freezeOnly ? "Check with magic" : "Make it happen"}</h3>
-    <p>${l.freezeOnly ? "In real life you can't. In the game, you can: flip the switch both ways and watch the school." : "Flip the switch both ways and watch what happens to the school."}</p>
+    <p>${l.freezeOnly ? "In real life you can't. In the game you can: flip the switch to give everyone free breakfast." : `Flip the switch: ${escapeHtml(l.poke.label.toLowerCase())}.`}</p>
     <div class="switch-row">
-      <span class="${on === false ? "on" : ""}">No one</span>
-      <button type="button" class="switch" data-action="switch" role="switch" aria-checked="${Boolean(on)}" aria-label="${escapeHtml(l.poke.label)}"><span class="knob"></span></button>
+      <span class="${on ? "" : "on"}">No one</span>
+      <button type="button" class="switch" data-action="switch" role="switch" aria-checked="${on}" aria-label="${escapeHtml(l.poke.label)}"><span class="knob"></span></button>
       <span class="${on ? "on" : ""}">Everyone</span>
     </div>
-    <p class="switch-caption">${on === null ? `<b>${escapeHtml(label(t))}</b>: flip the switch.` : `<b>${escapeHtml(label(t))}</b> for ${on ? "everyone" : "no one"}:`}</p>
-    ${showing === null ? "" : crowd(on ? "Everyone" : "No one", showing)}
-    ${both ? `
-      <div class="diffs">
-        ${diffCard("Your theory said", game.prediction.effect, "theory")}
-        ${diffCard("What really happened", r.effect, "reality")}
-      </div>
-      <button type="button" class="btn primary-btn" data-action="verdict">Did my theory hold up? →</button>` : `<p class="meta">${game.seen.on || game.seen.off ? "Now flip it the other way." : ""}</p>`}`;
+    ${on
+      ? `${crowdPair([r.hi, r.lo], [`${label(t)} for everyone`, `${label(t)} for no one`], note)}
+        <div class="diffs">
+          ${diffCard("Your theory said", game.prediction.effect, "theory")}
+          ${diffCard("What really happened", r.effect, "reality")}
+        </div>
+        <button type="button" class="btn primary-btn" data-action="verdict">Did my theory hold up? →</button>`
+      : `<p class="switch-caption"><b>${escapeHtml(label(t))}</b> for no one, right now:</p>${crowd("No one", r.lo)}`}`;
 }
 
 // ---- Verdict -------------------------------------------------------------
