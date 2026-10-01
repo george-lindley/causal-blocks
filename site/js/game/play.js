@@ -1,7 +1,7 @@
 // The game. Chapter 1, Hilltop School: each level adds one idea and uses only
-// the steps it needs (Watch, Build, Freeze, Poke, Verdict), with an optional
-// bonus Experiment after a win. The engine is world.js; the drawing canvas
-// is the site's shared board.
+// the steps it needs (Watch, Draw, Freeze, Make it happen, Verdict), with an
+// optional bonus round on the later levels. The engine is world.js; the
+// drawing canvas is the site's shared board.
 
 import { createBoard } from "../board.js";
 import { Role, roles } from "../causal.js";
@@ -11,7 +11,7 @@ import { pokeResult, predict, simulate, trueGraph, verdict, watched } from "./wo
 
 const $ = (id) => document.getElementById(id);
 
-const STAGE_NAMES = { watch: "Watch", build: "Build", freeze: "Freeze", poke: "Poke", verdict: "Verdict" };
+const STAGE_NAMES = { watch: "Watch", build: "Draw", freeze: "Freeze", poke: "Make it happen", verdict: "Verdict" };
 const CAST_ORDER = [Role.TREATMENT, Role.OUTCOME, Role.MEDIATOR, Role.CONFOUNDER, Role.COLLIDER];
 
 // ---------------------------------------------------------------------------
@@ -47,13 +47,15 @@ const game = {
   stage: null,
   data: null, // what the headline looked at
   everyone: null, // the whole school, when the headline only looked at some of it
-  truth: null, // the poke, computed up front, shown only after poking
-  naive: 0,
+  truth: null, // what making it happen really does; shown only after the player does it
   model: [],
   freeze: new Set(),
   prediction: null,
   result: null,
-  narrowed: false, // bouncer level: looking only at who got in?
+  twist: false, // level 6: has the player found out where the numbers came from?
+  wholeSchool: false, // level 6: showing everyone instead of the headline's pupils
+  switchOn: null, // make it happen: null (not yet), true (everyone), false (no one)
+  seen: { on: false, off: false },
   newlyMet: [],
   toastTimer: null,
 };
@@ -75,13 +77,15 @@ function toast(message) {
   game.toastTimer = setTimeout(() => (t.hidden = true), 4000);
 }
 
-const pct = (v) => `${Math.round(v * 100)}%`;
+/** "8 in 10" */
+const inTen = (r) => `${Math.round(r * 10)} in 10`;
 
-/** A change in the outcome, signed: "+15 percentage points". */
-function change(e, { signed = true } = {}) {
-  const x = Math.round(e * 100);
-  const sign = !signed || x === 0 ? "" : x < 0 ? "−" : "+";
-  return `${sign}${Math.abs(x)} ${lv().units}`;
+/** A change in the outcome, counted in pupils: "5 more in every 10", "no change". */
+function change(e) {
+  const n = Math.round(Math.abs(e) * 10 * 2) / 2; // to the nearest half pupil
+  if (n === 0) return "no change";
+  const count = Number.isInteger(n) ? n : n.toFixed(1);
+  return `${count} ${e > 0 ? "more" : "fewer"} in every 10`;
 }
 
 /** "twice as likely", "half as likely", "2.6 times as likely". */
@@ -150,19 +154,22 @@ function currentPrediction() {
 }
 
 // ---------------------------------------------------------------------------
-// Pictures: crowds, the meter, and the two action animations
+// Pictures
 // ---------------------------------------------------------------------------
 
-/** A row of 10 figures with some of them lit up, and a big percentage. */
-function crowd(title, r) {
-  const hits = Math.round(r * 10);
-  const figs = Array.from({ length: 10 }, (_, k) => {
+function figures(lit, cls) {
+  return Array.from({ length: 10 }, (_, k) => {
     const x = 20 + k * 38;
-    return `<g class="fig ${k < hits ? "hit" : "off"}"><circle cx="${x}" cy="16" r="9"/><rect x="${x - 10}" y="27" width="20" height="25" rx="8"/></g>`;
+    return `<g class="fig ${k < lit ? cls : "off"}"><circle cx="${x}" cy="16" r="9"/><rect x="${x - 10}" y="27" width="20" height="25" rx="8"/></g>`;
   }).join("");
+}
+
+/** A row of 10 pupils with some lit up, and "8 in 10" in big type. */
+function crowd(title, r) {
+  const lit = Math.round(r * 10);
   return `<div class="crowd">
-    <div class="crowd-head"><span>${escapeHtml(title)}</span><b>${pct(r)}</b></div>
-    <svg viewBox="0 0 400 58" role="img" aria-label="${escapeHtml(title)}: ${hits} in 10">${figs}</svg>
+    <div class="crowd-head"><span>${escapeHtml(title)}</span><b>${lit} in 10</b></div>
+    <svg viewBox="0 0 400 58" role="img" aria-label="${escapeHtml(title)}: ${lit} in 10">${figures(lit, "hit")}</svg>
   </div>`;
 }
 
@@ -171,48 +178,49 @@ function crowdPair([a, b], names, note) {
     <p class="legend"><i class="dot"></i>${escapeHtml(note)}</p></div>`;
 }
 
-function meter(predicted, { truth = null } = {}) {
-  const span = Math.max(Math.abs(game.naive), Math.abs(game.truth.effect), Math.abs(predicted ?? 0), lv().tolerance * 3) * 1.25;
-  const x = (v) => 30 + ((v + span) / (2 * span)) * 540;
-  const anchor = (v) => (x(v) < 170 ? "start" : x(v) > 430 ? "end" : "middle");
-  const parts = [
-    `<line x1="30" x2="570" y1="74" y2="74" stroke="#c9d4de" stroke-width="5" stroke-linecap="round"/>`,
-    `<line x1="${x(0)}" x2="${x(0)}" y1="60" y2="88" stroke="#8a9aa8" stroke-width="3"/>`,
-  ];
-  if (truth === null || Math.abs(x(truth) - x(0)) > 40) parts.push(`<text x="${x(0)}" y="112" text-anchor="middle">0</text>`);
-  if (truth !== null) {
-    const tl = x(truth - lv().tolerance);
-    const tr = x(truth + lv().tolerance);
-    parts.push(
-      `<rect x="${tl}" y="56" width="${tr - tl}" height="36" rx="8" fill="#16a085" opacity="0.18"/>`,
-      `<line x1="${x(truth)}" x2="${x(truth)}" y1="50" y2="98" stroke="#16a085" stroke-width="6" stroke-linecap="round"/>`,
-      `<text x="${x(truth)}" y="136" text-anchor="${anchor(truth)}" class="m-truth">The school: ${escapeHtml(change(truth))}</text>`,
-    );
-  }
-  if (predicted !== null) {
-    parts.push(
-      `<path d="M${x(predicted) - 15},34 h30 l-15,22 z" fill="#fa953d" stroke="#1f2933" stroke-width="2.5" stroke-linejoin="round"/>`,
-      `<text x="${x(predicted)}" y="24" text-anchor="${anchor(predicted)}">Your model: ${escapeHtml(change(predicted))}</text>`,
-    );
-  }
-  return `<svg class="meter" viewBox="0 0 600 ${truth !== null ? 146 : 120}" role="img" aria-label="Your model predicts ${escapeHtml(change(predicted ?? 0))}${truth !== null ? `; the school did ${escapeHtml(change(truth))}` : ""}">${parts.join("")}</svg>`;
+/** "pass" / "are good at maths": the outcome as a verb phrase. */
+function outcomeVerb() {
+  return { pass: "pass", maths: "are good at maths" }[q().outcome] ?? label(q().outcome).toLowerCase();
 }
 
-/** New action: Poke. A finger presses a block; the arrows into it snap off. */
-function pokeIntro() {
+/** "who passes" / "who's good at maths": the outcome as a noun phrase. */
+function outcomeWho() {
+  return { pass: "who passes", maths: "who's good at maths" }[q().outcome] ?? label(q().outcome).toLowerCase();
+}
+
+/** "5 more in every 10 pass", or "No change in who passes". */
+function changeSentence(e) {
+  const c = change(e);
+  return c === "no change" ? `No change in ${outcomeWho()}` : `${c} ${outcomeVerb()}`;
+}
+
+/** A difference as pupils: green figures for more, red for fewer. */
+function diffCard(title, e, tone) {
+  const n = Math.min(10, Math.round(Math.abs(e) * 10));
+  const cls = e > 0 ? "more" : "fewer";
+  return `<div class="diff ${tone}">
+    <span class="label">${escapeHtml(title)}</span>
+    <p><b>${escapeHtml(changeSentence(e))}</b></p>
+    <svg viewBox="0 0 400 58" aria-hidden="true">${figures(n, cls)}</svg>
+  </div>`;
+}
+
+/** New action: Make it happen. A switch flips; the arrows into the block snap off. */
+function makeItHappenIntro() {
   return `<div class="action-intro">
-    <svg class="anim-poke" viewBox="0 0 320 150" aria-hidden="true">
-      <rect x="10" y="20" width="70" height="34" rx="9" fill="#cfd8df"/>
-      <rect x="10" y="96" width="70" height="34" rx="9" fill="#cfd8df"/>
-      <g class="snap snap-a"><path d="M80 37 L160 66" stroke="#74828f" stroke-width="4" fill="none"/><path d="M152 58 l10 9 l-13 3 z" fill="#74828f"/></g>
-      <g class="snap snap-b"><path d="M80 113 L160 86" stroke="#74828f" stroke-width="4" fill="none"/><path d="M149 81 l13 3 l-10 9 z" fill="#74828f"/></g>
-      <rect class="poked" x="165" y="56" width="110" height="40" rx="11" fill="#fa953d"/>
-      <text x="220" y="81" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2933">Forced</text>
-      <g class="finger"><circle cx="220" cy="24" r="12" fill="#f3c9a4" stroke="#1f2933" stroke-width="2.5"/><rect x="211" y="-20" width="18" height="44" rx="8" fill="#f3c9a4" stroke="#1f2933" stroke-width="2.5"/></g>
+    <svg class="anim-switch" viewBox="0 0 320 150" aria-hidden="true">
+      <rect x="10" y="22" width="70" height="30" rx="9" fill="#cfd8df"/>
+      <rect x="10" y="98" width="70" height="30" rx="9" fill="#cfd8df"/>
+      <g class="snap snap-a"><path d="M80 37 L150 66" stroke="#74828f" stroke-width="4" fill="none"/><path d="M142 58 l10 9 l-13 3 z" fill="#74828f"/></g>
+      <g class="snap snap-b"><path d="M80 113 L150 86" stroke="#74828f" stroke-width="4" fill="none"/><path d="M139 81 l13 3 l-10 9 z" fill="#74828f"/></g>
+      <rect class="forced" x="155" y="56" width="120" height="40" rx="11" fill="#fa953d"/>
+      <text x="215" y="81" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2933">Everyone</text>
+      <rect x="180" y="112" width="70" height="30" rx="15" fill="#e1e7ee" stroke="#1f2933" stroke-width="2.5"/>
+      <circle class="knob" cx="196" cy="127" r="11" fill="#fff" stroke="#1f2933" stroke-width="2.5"/>
     </svg>
-    <div><span class="label">New action</span><h4>Poke</h4>
-      <p>Poking a block forces it for everyone: here, every pupil goes to revision club. The arrows into it snap off,
-        because nothing else decides it any more. Whatever changes afterwards, the poke caused it.</p></div>
+    <div><span class="label">New action</span><h4>Make it happen</h4>
+      <p>Flip the switch to make something happen for everyone: here, every pupil goes to revision club.
+        The arrows into it snap off, because nothing else decides it any more. Whatever changes afterwards, it caused.</p></div>
   </div>`;
 }
 
@@ -263,7 +271,11 @@ function showMap() {
   $("level").hidden = true;
   $("map").hidden = false;
   $("cast-list").innerHTML = CAST_ORDER.map(castCard).join("");
-  $("levels").innerHTML = LEVELS.map((l, i) => `
+  let currentCase = null;
+  $("levels").innerHTML = LEVELS.map((l, i) => {
+    const heading = l.case !== currentCase ? `<li class="case-heading">${escapeHtml(l.case)}</li>` : "";
+    currentCase = l.case;
+    return `${heading}
     <li>
       <button type="button" class="level-card${progress.levels[l.id] ? " done" : ""}" data-level="${i}">
         <span class="level-no">${progress.levels[l.id] ? "✓" : i + 1}</span>
@@ -273,7 +285,8 @@ function showMap() {
           <span class="level-lesson">${escapeHtml(l.teaches)}${progress.bonus[l.id] ? " · ★ bonus" : ""}</span>
         </span>
       </button>
-    </li>`).join("");
+    </li>`;
+  }).join("");
   history.replaceState(null, "", location.pathname);
 }
 
@@ -294,18 +307,21 @@ function startLevel(i) {
   game.data = watched(l);
   game.everyone = l.world.select ? simulate(l.world, 5000) : null;
   game.truth = pokeResult(l);
-  game.naive = predict(l, { freeze: [], data: game.data }).effect;
   game.freeze = new Set();
   game.model = [];
   game.prediction = game.result = null;
-  game.narrowed = false;
+  game.twist = false;
+  game.wholeSchool = false;
   game.newlyMet = [];
   board.load(l.layout, l.startEdges ?? []);
   $("map").hidden = true;
   $("level").hidden = false;
   $("level-place").textContent = `Level ${i + 1} of ${LEVELS.length} · ${l.title}`;
+  $("paper-case").textContent = l.case;
   $("headline").textContent = `“${l.headline}”`;
   $("story").textContent = l.story;
+  $("case-card").hidden = !l.caseIntro;
+  $("case-card").innerHTML = l.caseIntro ? `<span class="label">${i === 0 ? "Your first case" : "New case"}</span><h2>${escapeHtml(l.case)}</h2><p>${escapeHtml(l.caseIntro)}</p>` : "";
   history.replaceState(null, "", `#${l.id}`);
   setStage("watch");
   $("level").scrollIntoView({ block: "start" });
@@ -319,7 +335,7 @@ function setStage(stage) {
     `<li class="${s === stage ? "current" : n < at || stage === "bonus" ? "past" : ""}">${STAGE_NAMES[s]}</li>`).join("");
   $("watch-screen").hidden = stage !== "watch";
   $("play-screen").hidden = stage === "watch";
-  $("stage-board").classList.remove("falling");
+  $("stage-board").classList.remove("busted");
   refresh();
 }
 
@@ -335,17 +351,18 @@ function refresh() {
     return;
   }
   drawBoard();
-  $("stage-panel").innerHTML = { build: buildPanel, freeze: freezePanel, poke: pokePanel, verdict: verdictPanel, bonus: bonusPanel }[game.stage]();
+  $("stage-panel").innerHTML = { build: buildPanel, freeze: freezePanel, poke: makeItHappenPanel, verdict: verdictPanel, bonus: bonusPanel }[game.stage]();
 }
 
 document.addEventListener("click", (e) => {
   const action = e.target.closest("[data-action]")?.dataset.action;
   if (!action || !game.level) return;
-  if (action === "narrow") { game.narrowed = true; refresh(); }
-  if (action === "widen") { game.narrowed = false; refresh(); }
+  if (action === "twist") { game.twist = true; refresh(); }
+  if (action === "whole-school") { game.wholeSchool = !game.wholeSchool; refresh(); }
   if (action === "continue") setStage(next(game.stage));
   if (action === "check") checkArrow();
-  if (action === "to-poke") toPoke();
+  if (action === "make-it-happen") toMakeItHappen();
+  if (action === "switch") flip();
   if (action === "verdict") judge();
   if (action === "rebuild") {
     board.load(lv().layout, game.model);
@@ -368,43 +385,50 @@ document.addEventListener("change", (e) => {
 
 function watchScreen() {
   const l = lv();
-  let statement;
-  let detail;
-  let visual;
-  let ready = true;
-  if (l.world.select) {
-    const data = game.narrowed ? game.data : game.everyone;
-    const [a, b] = rates(data);
-    statement = game.narrowed ? l.watch.statement : l.watch.everyone;
-    detail = game.narrowed
-      ? `${pct(a)} against ${pct(b)}. The headline only looks at the scholarship pupils.`
-      : `${pct(a)} against ${pct(b)}. That's everyone at Hilltop. But the headline didn't look at everyone.`;
-    visual = `<div class="gate">
-      ${crowdPair([a, b], l.watch.groups, `Lit up: ${l.watch.outcome}`)}
-      <div class="bouncer-box">
-        <div class="bubble">${game.narrowed ? "Sporty or good at maths? You're in. Everyone else, out!" : "I guard the scholarship door."}</div>
-        ${portrait(Role.COLLIDER, 130)}
-        ${game.narrowed
-          ? `<button type="button" class="btn ghost-btn" data-action="widen">Show the whole school</button>`
-          : `<button type="button" class="btn collider-btn" data-action="narrow">Look only at scholarship pupils</button>`}
-      </div>
-    </div>`;
-    ready = game.narrowed;
-  } else {
-    const [a, b] = rates(game.data);
-    statement = l.watch.statement.replace("{ratio}", ratioWords(a, b));
-    detail = `${pct(a)} against ${pct(b)}.`;
-    visual = crowdPair([a, b], l.watch.groups, `Lit up: ${l.watch.outcome}`);
-  }
+  const note = `Lit up: ${l.watch.outcome}`;
+  if (l.world.select) return twistWatch(l, note);
+  const [a, b] = rates(game.data);
   return `
-    <p class="statement">${escapeHtml(statement)}<small>${escapeHtml(detail)}</small></p>
-    ${visual}
+    <p class="statement">${escapeHtml(l.watch.statement.replace("{ratio}", ratioWords(a, b)))}<small>${inTen(a)} against ${inTen(b)}.</small></p>
+    ${crowdPair([a, b], l.watch.groups, note)}
     <div class="controls">
-      ${ready ? `<button type="button" class="btn primary-btn" data-action="continue">${l.freezeOnly ? "Freeze a block →" : "Draw what causes what →"}</button>` : ""}
+      <button type="button" class="btn primary-btn" data-action="continue">${l.freezeOnly ? "Freeze a block →" : "Draw your theory →"}</button>
     </div>`;
 }
 
-// ---- Build ---------------------------------------------------------------
+/** Level 6: first the paper's numbers; then where they came from; then the whole school. */
+function twistWatch(l, note) {
+  const [a, b] = rates(game.data);
+  if (!game.twist) {
+    return `
+      <p class="statement">${escapeHtml(l.watch.statement)}<small>${inTen(a)} against ${inTen(b)}, according to the paper.</small></p>
+      ${crowdPair([a, b], l.watch.groups, note)}
+      <div class="controls"><button type="button" class="btn primary-btn" data-action="twist">Where did these numbers come from? →</button></div>`;
+  }
+  const [wa, wb] = rates(game.everyone);
+  return `
+    <div class="gate">
+      <div>
+        <p class="statement">${escapeHtml(l.watch.twist)}<small>${game.wholeSchool
+          ? `Across the whole school: ${inTen(wa)} against ${inTen(wb)}. No link at all.`
+          : `Scholarship pupils only: ${inTen(a)} against ${inTen(b)}.`}</small></p>
+        ${game.wholeSchool ? crowdPair([wa, wb], l.watch.groups, note) : crowdPair([a, b], l.watch.groups, note)}
+      </div>
+      <div class="bouncer-box">
+        <div class="bubble">Sporty, or good at maths? You get a scholarship. Everyone else, no.</div>
+        ${portrait(Role.COLLIDER, 120)}
+        <button type="button" class="btn ${game.wholeSchool ? "ghost-btn" : "collider-btn"}" data-action="whole-school">${game.wholeSchool ? "Back to the paper's pupils" : "Show the whole school"}</button>
+      </div>
+    </div>
+    <div class="controls"><button type="button" class="btn primary-btn" data-action="continue">Draw your theory →</button></div>`;
+}
+
+// ---- Draw ----------------------------------------------------------------
+
+/** "went to revision club", "had free breakfast", "were sporty": for sentences about the switch. */
+function actionPhrase() {
+  return { revision: "went to revision club", club: "had free breakfast", sporty: "were sporty" }[q().treatment] ?? `had ${label(q().treatment).toLowerCase()}`;
+}
 
 function buildPanel() {
   const l = lv();
@@ -421,11 +445,11 @@ function buildPanel() {
   }
   const p = currentPrediction();
   return `
-    <h3>Draw what causes what</h3>
+    <h3>Draw your theory</h3>
     <p>Drag from a block's round handle onto the block it causes. Click an arrow to flip or remove it.</p>
-    <p class="meter-label">What your drawing predicts if you poke <b>${escapeHtml(label(t))}</b>:</p>
-    ${meter(p.effect)}
-    <button type="button" class="btn primary-btn" data-action="to-poke">Poke →</button>`;
+    <p>A theory makes a prediction: if everyone ${escapeHtml(actionPhrase())}, what would happen?</p>
+    ${p.effect === null ? "" : diffCard("Your theory says", p.effect, "theory")}
+    <button type="button" class="btn primary-btn" data-action="make-it-happen">Make it happen →</button>`;
 }
 
 function checkArrow() {
@@ -436,7 +460,7 @@ function checkArrow() {
   game.result = { stands: right };
   if (right) meet();
   setStage("verdict");
-  if (!right) $("stage-board").classList.add("falling");
+  if (!right) $("stage-board").classList.add("busted");
 }
 
 // ---- Freeze --------------------------------------------------------------
@@ -447,16 +471,16 @@ function freezePanel() {
   const others = Object.keys(l.world.blocks).filter((id) => id !== t && id !== y);
   const p = currentPrediction();
   const frozen = [...game.freeze].filter((id) => id !== y);
-  // What freezing does, with the real data: one pair of crowds per group.
+  const note = `Lit up: ${l.watch.outcome}`;
   let crowdsHtml;
   if (frozen.length === 1) {
     const z = frozen[0];
     crowdsHtml = [1, 0].map((v) => {
       const [a, b] = rates(game.data, (i) => game.data[z][i] === v);
-      return `<p class="group-title">❄ ${escapeHtml(label(z))}: ${v ? "yes" : "no"}</p>${crowdPair([a, b], l.watch.groups, `Lit up: ${l.watch.outcome}`)}`;
+      return `<p class="group-title">❄ ${escapeHtml(label(z))}: ${v ? "yes" : "no"}</p>${crowdPair([a, b], l.watch.groups, note)}`;
     }).join("");
   } else {
-    crowdsHtml = `<p class="group-title">Nothing frozen: everyone together</p>${crowdPair(rates(game.data), l.watch.groups, `Lit up: ${l.watch.outcome}`)}`;
+    crowdsHtml = `<p class="group-title">Nothing frozen: everyone together</p>${crowdPair(rates(game.data), l.watch.groups, note)}`;
   }
   return `
     ${l.introduces === "freeze" ? freezeIntro() : ""}
@@ -466,34 +490,60 @@ function freezePanel() {
       ${others.map((id) => `<label class="freeze-chip"><input type="checkbox" data-freeze="${id}" ${game.freeze.has(id) ? "checked" : ""}> ❄ ${escapeHtml(label(id))}</label>`).join("")}
     </div>
     <div class="freeze-crowds">${crowdsHtml}</div>
-    <p class="meter-label">What your frozen comparison predicts:</p>
-    ${meter(p.effect)}
-    <button type="button" class="btn primary-btn" data-action="to-poke">${escapeHtml(l.poke.label)} →</button>`;
+    ${diffCard("Your frozen comparison says", p.effect, "theory")}
+    <button type="button" class="btn primary-btn" data-action="make-it-happen">Check with magic →</button>`;
 }
 
-// ---- Poke ----------------------------------------------------------------
+// ---- Make it happen --------------------------------------------------------
 
-function toPoke() {
+function toMakeItHappen() {
   game.prediction = currentPrediction();
   game.model = board.graph().edges.map((e) => [...e]);
-  // Graph surgery: forcing a block cuts every arrow into it.
+  game.switchOn = null;
+  game.seen = { on: false, off: false };
   const t = q().treatment;
-  board.load(lv().layout, game.model.filter(([, c]) => c !== t));
   setStage("poke");
+  // Forcing a block cuts every arrow into it: let them visibly snap off, then remove them.
+  const into = game.model.map((e, i) => (e[1] === t ? i : -1)).filter((i) => i >= 0);
+  if (!into.length) return;
+  for (const i of into) $("canvas").querySelector(`[data-edge="${i}"]`)?.classList.add("snapping");
+  setTimeout(() => {
+    if (game.stage !== "poke") return;
+    board.load(lv().layout, game.model.filter(([, c]) => c !== t));
+    drawBoard();
+  }, 900);
 }
 
-function pokePanel() {
+function flip() {
+  game.switchOn = !game.switchOn;
+  game.seen[game.switchOn ? "on" : "off"] = true;
+  refresh();
+}
+
+function makeItHappenPanel() {
   const l = lv();
   const { treatment: t } = q();
   const r = game.truth;
-  const cut = game.model.filter(([, c]) => c === t);
+  const on = game.switchOn;
+  const both = game.seen.on && game.seen.off;
+  const showing = on === null ? null : on ? r.hi : r.lo;
   return `
-    ${l.introduces === "poke" ? pokeIntro() : ""}
-    <h3>${escapeHtml(l.poke.label)}!</h3>
-    ${cut.length && l.introduces !== "poke" ? `<p>The arrows into <b>${escapeHtml(label(t))}</b> snap off: nothing else decides it now.</p>` : ""}
-    ${crowdPair([r.hi, r.lo], [`${label(t)} for everyone`, `${label(t)} for no one`], `Lit up: ${l.watch.outcome}`)}
-    ${meter(game.prediction.effect, { truth: r.effect })}
-    <button type="button" class="btn primary-btn" data-action="verdict">Was my model right? →</button>`;
+    ${l.introduces === "poke" ? makeItHappenIntro() : ""}
+    <h3>${l.freezeOnly ? "Check with magic" : "Make it happen"}</h3>
+    <p>${l.freezeOnly ? "In real life you can't. In the game, you can: flip the switch both ways and watch the school." : "Flip the switch both ways and watch what happens to the school."}</p>
+    <div class="switch-row">
+      <span class="${on === false ? "on" : ""}">No one</span>
+      <button type="button" class="switch" data-action="switch" role="switch" aria-checked="${Boolean(on)}" aria-label="${escapeHtml(l.poke.label)}"><span class="knob"></span></button>
+      <span class="${on ? "on" : ""}">Everyone</span>
+    </div>
+    <p class="switch-caption">${on === null ? `<b>${escapeHtml(label(t))}</b>: flip the switch.` : `<b>${escapeHtml(label(t))}</b> for ${on ? "everyone" : "no one"}:`}</p>
+    ${showing === null ? "" : crowd(on ? "Everyone" : "No one", showing)}
+    ${both ? `
+      <div class="diffs">
+        ${diffCard("Your theory said", game.prediction.effect, "theory")}
+        ${diffCard("What really happened", r.effect, "reality")}
+      </div>
+      <button type="button" class="btn primary-btn" data-action="verdict">Did my theory hold up? →</button>` : `<p class="meta">${game.seen.on || game.seen.off ? "Now flip it the other way." : ""}</p>`}`;
 }
 
 // ---- Verdict -------------------------------------------------------------
@@ -516,7 +566,7 @@ function judge() {
   }
   board.load(l.layout, game.model);
   setStage("verdict");
-  $("stage-board").classList.add("falling");
+  $("stage-board").classList.add("busted");
 }
 
 function characterCard(role) {
@@ -529,26 +579,39 @@ function characterCard(role) {
   </div>`;
 }
 
+/** Why the theory predicted what it did, in a sentence, when that's the lesson. */
+function whyTheory() {
+  const { treatment: t, outcome: y } = q();
+  if (!game.prediction.noPath) return "";
+  return `Your theory has no arrow path from <b>${escapeHtml(label(t))}</b> to <b>${escapeHtml(label(y))}</b>,
+    so it says making ${escapeHtml(label(t).toLowerCase())} happen for everyone can't change ${escapeHtml(outcomeWho())}.`;
+}
+
 function verdictPanel() {
   const l = lv();
   const last = game.index + 1 >= LEVELS.length;
   const nextBtn = `<button type="button" class="btn primary-btn" data-action="next">${last ? "Back to the map" : "Next level →"}</button>`;
   if (game.result.stands) {
-    const score = l.tutorial ? "" : `<p>Your model predicted <b>${change(game.prediction.effect)}</b> and the school did <b>${change(game.truth.effect)}</b>.</p>`;
     return `
       ${celebrate()}
-      <h3 class="win">${l.tutorial ? "Your first causal claim!" : "Your model was right!"}</h3>
-      ${score}
+      <h3 class="win">${l.tutorial ? "Your first causal claim!" : "Theory confirmed!"}</h3>
+      ${l.tutorial ? "" : `<p>Your theory said: <b>${escapeHtml(changeSentence(game.prediction.effect).toLowerCase())}</b>. That's what happened.</p>`}
       <p>${escapeHtml(l.reveal)}</p>
       ${l.meets.map(characterCard).join("")}
       <div class="step-actions">
         ${nextBtn}
-        ${l.tutorial ? "" : `<button type="button" class="link-button" data-action="bonus">★ Bonus: experiment with this school</button>`}
+        ${l.bonus ? `<button type="button" class="link-button" data-action="bonus">★ Bonus: try to break this theory</button>` : ""}
       </div>`;
   }
+  const why = l.tutorial ? "" : whyTheory();
   return `
-    <h3 class="lose">${l.tutorial ? "Not quite" : "The tower falls!"}</h3>
-    ${l.tutorial ? "" : `<p>Your model predicted <b>${change(game.prediction.effect)}</b>, but the school did <b>${change(game.truth.effect)}</b>.</p>${meter(game.prediction.effect, { truth: game.truth.effect })}`}
+    <h3 class="lose">${l.tutorial ? "Not quite" : "Theory busted!"}</h3>
+    ${l.tutorial ? "" : `
+      <div class="diffs">
+        ${diffCard("Your theory said", game.prediction.effect, "theory")}
+        ${diffCard("What really happened", game.truth.effect, "reality")}
+      </div>
+      ${why ? `<p>${why}</p>` : ""}`}
     <p class="hint-box"><b>Hint:</b> ${escapeHtml(l.hint)}</p>
     <button type="button" class="btn primary-btn" data-action="rebuild">Try again</button>`;
 }
@@ -569,13 +632,16 @@ function bonusPanel() {
       .map((id) => `<label class="freeze-chip"><input type="checkbox" data-freeze="${id}" ${game.freeze.has(id) ? "checked" : ""}> ❄ ${escapeHtml(label(id))}</label>`).join("")}</div>`
     : "";
   return `
-    <h3>★ Bonus: experiment</h3>
-    <p>The board shows how this school really works. Now break it: ${l.freezeOnly ? "change what's frozen" : "move, flip or remove arrows"}
-      and watch your model's prediction drift away from what the school really does.</p>
+    <h3>★ Bonus: break the theory</h3>
+    <p>The board shows how this school really works. Now ${l.freezeOnly ? "change what's frozen" : "move, flip or remove arrows"}
+      and watch the theory's prediction drift away from what really happens.</p>
     ${chips}
-    ${meter(p.effect, { truth: game.truth.effect })}
-    <p class="${close ? "win" : "lose"}"><b>${close ? "This model would still stand." : "This model's tower would fall."}</b></p>
-    ${progress.bonus[l.id] ? `<p class="challenge done"><span class="label">★ Bonus earned</span> You found a model that gets this school wrong. That gap is exactly the mistake a headline makes.</p>` : ""}
+    <div class="diffs">
+      ${p.effect === null ? "" : diffCard("This theory says", p.effect, "theory")}
+      ${diffCard("What really happens", game.truth.effect, "reality")}
+    </div>
+    <p class="${close ? "win" : "lose"}"><b>${close ? "This theory still holds up." : "Theory busted!"}</b></p>
+    ${progress.bonus[l.id] ? `<p class="challenge done"><span class="label">★ Bonus earned</span> You built a theory that gets this school wrong. That's exactly the mistake the headline made.</p>` : ""}
     <div class="step-actions">
       <button type="button" class="btn primary-btn" data-action="next">${game.index + 1 < LEVELS.length ? "Next level →" : "Back to the map"}</button>
       <button type="button" class="link-button" data-action="map">All levels</button>

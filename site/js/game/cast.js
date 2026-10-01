@@ -11,6 +11,15 @@ const eyes = (x1, x2, y, look = 0) => `
   <circle cx="${x1}" cy="${y}" r="11" fill="#fff"/><circle cx="${x1 + look}" cy="${y + 1}" r="5.5" fill="#1f2933"/>
   <circle cx="${x2}" cy="${y}" r="11" fill="#fff"/><circle cx="${x2 + look}" cy="${y + 1}" r="5.5" fill="#1f2933"/>`;
 
+// A big white cartoon glove with the index finger out, pointing right.
+// `x, y` is the fist's top-left corner.
+const glove = (x, y) => `<g stroke="#1f2933" stroke-width="3.5" stroke-linejoin="round">
+  <rect x="${x + 34}" y="${y + 6}" width="56" height="20" rx="10" fill="#fff"/>
+  <rect x="${x}" y="${y}" width="46" height="44" rx="16" fill="#fff"/>
+  <path d="M${x + 12} ${y + 44} q-2 9 8 9" fill="none" stroke-linecap="round"/>
+  <path d="M${x + 9} ${y + 19} h26 M${x + 9} ${y + 30} h26" stroke-width="2.5" opacity="0.45" stroke-linecap="round"/>
+</g>`;
+
 const body = (color) => `<rect x="50" y="60" width="100" height="92" rx="24" fill="${color}"/>
   <rect x="50" y="136" width="100" height="16" rx="8" fill="#000" opacity="0.12"/>`;
 
@@ -21,9 +30,10 @@ export const CAST = {
     color: "#fa953d",
     line: "Always pushing. The headline says it makes things happen.",
     does: "The arrow starts here. The question is always whether its push really lands.",
-    art: `${body("#fa953d")}${eyes(82, 118, 98, 4)}
-      <path d="M84 126 q16 12 32 0" stroke="#1f2933" stroke-width="5" fill="none" stroke-linecap="round"/>
-      <path d="M150 104 h34 m-12 -12 l12 12 l-12 12" stroke="#1f2933" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+    // A big pointing finger, out at whatever it causes.
+    art: `<g transform="translate(-30 0)">${body("#fa953d")}${eyes(82, 118, 98, 4)}
+      <path d="M84 126 q16 12 32 0" stroke="#1f2933" stroke-width="5" fill="none" stroke-linecap="round"/></g>
+      ${glove(104, 96)}`,
   },
   [Role.OUTCOME]: {
     name: "The Effect",
@@ -31,9 +41,10 @@ export const CAST = {
     color: "#16a085",
     line: "Easily surprised. Things keep happening to it.",
     does: "Nothing. It's the one everybody is trying to move.",
-    art: `${body("#16a085")}${eyes(82, 118, 98, -3)}
-      <ellipse cx="100" cy="130" rx="9" ry="11" fill="#1f2933"/>
-      <path d="M16 104 h30 m-12 -12 l12 12 l-12 12" stroke="#1f2933" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+    // A big finger pointing at itself: "who, me?"
+    art: `<g transform="translate(30 0)">${body("#16a085")}${eyes(82, 118, 98, -3)}
+      <ellipse cx="100" cy="128" rx="9" ry="11" fill="#1f2933"/></g>
+      ${glove(4, 126)}`,
   },
   [Role.CONFOUNDER]: {
     name: "Mr Confounder",

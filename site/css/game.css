@@ -212,3 +212,119 @@
 .stage-panel .crowds { grid-template-columns: minmax(0, 1fr); gap: 8px; }
 .stage-panel .crowd { padding: 8px 12px 10px; }
 .stage-panel .crowd-head b { font-size: 26px; }
+
+/* ---- Front page (replaces the boxed headline) ---- */
+.newspaper {
+  max-width: none !important;
+  margin: 4px 0 0;
+  padding: 18px clamp(16px, 4vw, 48px) 22px !important;
+  border: 0 !important;
+  border-radius: 18px !important;
+  background: #fbfaf7 !important;
+  box-shadow: 0 1px 0 var(--line), 0 10px 24px -18px rgba(31, 41, 51, 0.35);
+  text-align: center;
+}
+.paper-name {
+  margin: 0;
+  font: 700 clamp(22px, 3vw, 30px)/1 "Source Serif 4", Georgia, serif !important;
+  font-style: normal !important;
+  letter-spacing: 0.02em;
+  color: var(--ink) !important;
+}
+.paper-edition {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px 22px;
+  margin: 10px auto 16px;
+  padding: 5px 0;
+  border-block: 1px solid #cfd6dc;
+  max-width: 760px;
+  font: 600 12px var(--font-ui);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.paper-headline { margin: 0 auto 8px !important; max-width: 22ch; }
+.paper-story { margin: 0 auto !important; max-width: 60ch; }
+.case-card {
+  display: grid;
+  gap: 4px;
+  margin: 0 0 14px;
+  padding: 14px 20px;
+  border-radius: 18px;
+  background: var(--ink);
+  color: #fff;
+}
+.case-card .label { color: #aebccb; }
+.case-card h2 { margin: 0; font: 800 28px/1.05 var(--font-game); }
+.case-card p { margin: 0; font-size: 17px; color: #e6edf3; max-width: 70ch; }
+
+/* ---- Map: levels grouped by case ---- */
+.case-heading { margin: 10px 0 -4px; font: 800 18px var(--font-game); color: var(--muted); letter-spacing: 0.01em; }
+
+/* ---- Make it happen: the switch ---- */
+.switch-row { display: flex; align-items: center; gap: 14px; margin: 6px 0 8px; font: 800 18px var(--font-game); color: var(--muted); }
+.switch-row .on { color: var(--ink); }
+.switch {
+  position: relative;
+  width: 84px;
+  height: 44px;
+  border-radius: 999px;
+  border: 3px solid var(--ink);
+  background: #e1e7ee;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #c9d4de;
+}
+.switch[aria-checked="true"] { background: var(--role-treatment); }
+.switch .knob {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--ink);
+}
+.switch[aria-checked="true"] .knob { left: 44px; }
+@media (prefers-reduced-motion: no-preference) { .switch .knob { transition: left 0.25s cubic-bezier(.5, 1.6, .5, 1); } }
+.switch:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.switch-caption { margin: 0 0 6px !important; }
+
+/* ---- Theory vs reality, counted in pupils ---- */
+.diffs { display: grid; gap: 8px; margin: 10px 0 12px; }
+.diff { padding: 10px 14px 8px; border-radius: 14px; background: #fff; border: 3px solid transparent; }
+.diff.theory { border-color: var(--role-treatment); }
+.diff.reality { border-color: var(--role-outcome); }
+.diff p { margin: 2px 0 4px !important; font: 700 19px/1.2 var(--font-game); }
+.diff svg { display: block; width: 100%; height: auto; }
+.fig.more circle, .fig.more rect { fill: var(--good); }
+.fig.fewer circle, .fig.fewer rect { fill: var(--mistake); }
+
+/* ---- Arrows snapping off when something is made to happen ---- */
+@media (prefers-reduced-motion: no-preference) {
+  .edge.snapping { animation: edge-snap 0.9s ease-in forwards; transform-box: fill-box; transform-origin: center; }
+  @keyframes edge-snap { 0% { opacity: 1; transform: none; } 30% { transform: rotate(-4deg); } 100% { opacity: 0; transform: translateY(40px) rotate(18deg); } }
+}
+
+/* ---- Theory busted: the board shakes ---- */
+@media (prefers-reduced-motion: no-preference) {
+  .stage-board.busted { animation: busted 0.6s ease-in-out; }
+  @keyframes busted { 0%, 100% { transform: none; } 20% { transform: translateX(-10px) rotate(-1deg); } 40% { transform: translateX(10px) rotate(1deg); } 60% { transform: translateX(-6px); } 80% { transform: translateX(6px); } }
+}
+.stage-board.busted { border-color: var(--mistake); }
+
+/* ---- New action: the switch animation ---- */
+@media (prefers-reduced-motion: no-preference) {
+  .anim-switch .knob { animation: knob 3s ease-in-out infinite; }
+  .anim-switch .snap { animation: snap 3s ease-in infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-switch .forced { animation: glow 3s ease-in-out infinite; }
+  @keyframes knob { 0%, 20% { transform: none; } 35%, 85% { transform: translateX(38px); } 100% { transform: none; } }
+  @keyframes snap { 0%, 35% { opacity: 1; transform: none; } 55%, 85% { opacity: 0; transform: translateY(26px) rotate(14deg); } 100% { opacity: 1; transform: none; } }
+  @keyframes glow { 0%, 35% { filter: none; } 45%, 80% { filter: drop-shadow(0 0 7px #fa953d); } 100% { filter: none; } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .anim-switch .snap { opacity: 0.25; }
+  .anim-switch .knob { transform: translateX(38px); }
+}
