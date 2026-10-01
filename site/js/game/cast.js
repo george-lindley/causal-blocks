@@ -53,7 +53,7 @@ export const CAST = {
     term: "Mediator",
     color: "#9b59b6",
     line: "Always in a hurry. Carries the Cause's message to the Effect.",
-    does: "The effect travels through him. Freeze him and the message never arrives.",
+    does: "The effect travels through him. Stop him from sending the message and the effect will never happen.",
     art: `<path d="M56 60 q44 -34 88 0 z" fill="#5e2d75"/><rect x="92" y="34" width="16" height="8" rx="4" fill="#5e2d75"/>
       ${body("#9b59b6")}${eyes(82, 118, 98, 5)}
       <path d="M86 126 q14 10 28 0" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/>

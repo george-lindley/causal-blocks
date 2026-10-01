@@ -7,7 +7,7 @@ import { createBoard } from "../board.js";
 import { Role, roles } from "../causal.js";
 import { CAST, CHARACTER_TEXT, portrait, silhouette } from "./cast.js";
 import { LEVELS } from "./levels.js";
-import { pokeResult, predict, simulate, trueGraph, verdict, watched } from "./world.js";
+import { direction, pokeResult, predict, simulate, trueGraph, verdict, watched } from "./world.js";
 
 const $ = (id) => document.getElementById(id);
 
@@ -86,6 +86,18 @@ function change(e) {
   const count = Number.isInteger(n) ? n : n.toFixed(1);
   return `${count} ${e > 0 ? "more" : "fewer"} in every 10`;
 }
+
+// How to say "more / fewer / no change" for each outcome, before and after it happens.
+const WILL = {
+  pass: { more: "more pupils will pass", fewer: "fewer pupils will pass", same: "the same number will pass" },
+  maths: { more: "more pupils will be good at maths", fewer: "fewer pupils will be good at maths", same: "the same number will be good at maths" },
+};
+const DID = {
+  pass: { more: "more pupils passed", fewer: "fewer pupils passed", same: "the same number passed" },
+  maths: { more: "more pupils were good at maths", fewer: "fewer pupils were good at maths", same: "just as many were good at maths" },
+};
+const PAST = { pass: "passed", maths: "were good at maths" };
+const dir = (e) => direction(e, lv().tolerance);
 
 /** "twice as likely", "half as likely", "2.6 times as likely". */
 function ratioWords(a, b) {
@@ -401,13 +413,11 @@ function correlationNote(a, b) {
   const { treatment: t } = q();
   const as = `That's ${ratioWords(a, b)} as likely.`;
   if (lv().tutorial) {
-    return `<p class="correlation"><span class="tag">Correlation</span> ${as} This is a <b>correlation</b>: ${escapeHtml(label(t).toLowerCase())} and passing go together.
-      The headline goes further. It says one <i>causes</i> the other. Is it right?</p>`;
+    return `<p class="correlation">${as} A <b>correlation</b> means two things go together: here, ${escapeHtml(label(t).toLowerCase())} and passing.
+      The newspaper goes further. It says one <i>causes</i> the other. Is it right?</p>`;
   }
-  return `<p class="correlation"><span class="tag">Correlation</span> ${as} They go together.
-    The headline turns that into a cause: <i>“${escapeHtml(lv().headline)}”</i></p>`;
+  return `<p class="correlation">${as} They go together. The newspaper turns that into a cause: <i>“${escapeHtml(lv().headline)}”</i></p>`;
 }
-
 function watchScreen() {
   const l = lv();
   const note = `Lit up: ${l.watch.outcome}`;
@@ -415,7 +425,7 @@ function watchScreen() {
   const [a, b] = rates(game.data);
   return `
     <p class="data-label">This year's results at Hilltop</p>
-    <p class="statement">${escapeHtml(factsSentence(l.watch.statement, [a, b]))}</p>
+    <p class="statement"><span class="tag">Correlation</span> ${escapeHtml(factsSentence(l.watch.statement, [a, b]))}</p>
     ${correlationNote(a, b)}
     ${crowdPair([a, b], l.watch.groups, note)}
     <div class="controls">
@@ -429,8 +439,8 @@ function twistWatch(l, note) {
   if (!game.twist) {
     return `
       <p class="data-label">The paper's numbers</p>
-      <p class="statement">${escapeHtml(factsSentence(l.watch.statement, [a, b]))}</p>
-      <p class="correlation"><span class="tag">Correlation</span> Sport and maths seem to go against each other. The headline says sport <i>causes</i> worse maths.</p>
+      <p class="statement"><span class="tag">Correlation</span> ${escapeHtml(factsSentence(l.watch.statement, [a, b]))}</p>
+      <p class="correlation">Sport and maths seem to go against each other. The newspaper says sport <i>causes</i> worse maths.</p>
       ${crowdPair([a, b], l.watch.groups, note)}
       <div class="controls"><button type="button" class="btn primary-btn" data-action="twist">Where did these numbers come from? →</button></div>`;
   }
@@ -472,15 +482,20 @@ function buildPanel() {
       </ol>
       <button type="button" class="btn primary-btn" data-action="check">Check my arrow</button>`;
   }
-  const p = currentPrediction();
   return `
     <h3>Draw your theory</h3>
     <p>Drag from a block's round handle onto the block it causes. Click an arrow to flip or remove it.</p>
-    <p>A theory makes a prediction: if everyone ${escapeHtml(actionPhrase())}, what would happen?</p>
-    ${p.effect === null ? "" : diffCard("Your theory says", p.effect, "theory")}
-    <button type="button" class="btn primary-btn" data-action="make-it-happen">Make it happen →</button>`;
+    ${predictionLine()}
+    <button type="button" class="btn primary-btn" data-action="make-it-happen">Check it: make it happen →</button>`;
 }
 
+/** "Your theory predicts: if everyone went to revision club, more pupils will pass." */
+function predictionLine() {
+  const p = currentPrediction();
+  if (p.effect === null) return "";
+  const who = lv().freezeOnly ? "Your frozen comparison predicts" : "Your theory predicts";
+  return `<p class="prediction">${who}: if everyone ${escapeHtml(actionPhrase())}, <b>${escapeHtml(WILL[q().outcome][dir(p.effect)])}</b>.</p>`;
+}
 function checkArrow() {
   const { treatment: t, outcome: y } = q();
   const edges = board.graph().edges;
@@ -498,7 +513,6 @@ function freezePanel() {
   const l = lv();
   const { treatment: t, outcome: y } = q();
   const others = Object.keys(l.world.blocks).filter((id) => id !== t && id !== y);
-  const p = currentPrediction();
   const frozen = [...game.freeze].filter((id) => id !== y);
   const note = `Lit up: ${l.watch.outcome}`;
   let crowdsHtml;
@@ -519,8 +533,8 @@ function freezePanel() {
       ${others.map((id) => `<label class="freeze-chip"><input type="checkbox" data-freeze="${id}" ${game.freeze.has(id) ? "checked" : ""}> ❄ ${escapeHtml(label(id))}</label>`).join("")}
     </div>
     <div class="freeze-crowds">${crowdsHtml}</div>
-    ${diffCard("Your frozen comparison says", p.effect, "theory")}
-    <button type="button" class="btn primary-btn" data-action="make-it-happen">Check with magic →</button>`;
+    ${predictionLine()}
+    <button type="button" class="btn primary-btn" data-action="make-it-happen">Check it with magic →</button>`;
 }
 
 // ---- Make it happen --------------------------------------------------------
@@ -549,29 +563,42 @@ function flip() {
 
 function makeItHappenPanel() {
   const l = lv();
-  const { treatment: t } = q();
+  const { treatment: t, outcome: y } = q();
   const r = game.truth;
   const on = game.switchOn;
-  const note = `Lit up: ${l.watch.outcome}`;
+  const lo = Math.round(r.lo * 10);
+  const hi = Math.round(r.hi * 10);
+  // One crowd of 10: flipping the switch gives everyone the cause (a badge),
+  // then the pupils whose result changes light up (or go out) one at a time.
+  const figs = Array.from({ length: 10 }, (_, k) => {
+    const x = 20 + k * 38;
+    let cls = k < lo ? "hit" : "off";
+    let delay = 0;
+    if (on) {
+      if (k < Math.min(lo, hi)) cls = "hit";
+      else if (k >= lo && k < hi) { cls = "hit newly"; delay = 0.5 + (k - lo) * 0.25; }
+      else if (k >= hi && k < lo) { cls = "off going"; delay = 0.5 + (k - hi) * 0.25; }
+      else cls = "off";
+    }
+    const badge = on ? `<circle class="badge" cx="${x + 9}" cy="6" r="6"/>` : "";
+    return `<g class="fig ${cls}" style="--delay:${delay}s"><circle cx="${x}" cy="16" r="9"/><rect x="${x - 10}" y="27" width="20" height="25" rx="8"/>${badge}</g>`;
+  }).join("");
+  const caption = on
+    ? `Everyone ${escapeHtml(actionPhrase())}: <b>${hi} in 10 ${PAST[y] ?? ""}</b>${hi === lo ? ", just like before" : `, ${hi > lo ? "up" : "down"} from ${lo} in 10`}.`
+    : `No one ${escapeHtml(actionPhrase())}: <b>${lo} in 10 ${PAST[y] ?? ""}</b>.`;
   return `
     ${l.introduces === "poke" ? makeItHappenIntro() : ""}
-    <h3>${l.freezeOnly ? "Check with magic" : "Make it happen"}</h3>
-    <p>${l.freezeOnly ? "In real life you can't. In the game you can: flip the switch to give everyone free breakfast." : `Flip the switch: ${escapeHtml(l.poke.label.toLowerCase())}.`}</p>
+    <h3>${l.freezeOnly ? "Check it with magic" : "Make it happen"}</h3>
+    <p>${l.freezeOnly ? "In real life you can't. In the game you can." : "Flip the switch and watch the school."}</p>
     <div class="switch-row">
       <span class="${on ? "" : "on"}">No one</span>
       <button type="button" class="switch" data-action="switch" role="switch" aria-checked="${on}" aria-label="${escapeHtml(l.poke.label)}"><span class="knob"></span></button>
       <span class="${on ? "on" : ""}">Everyone</span>
     </div>
-    ${on
-      ? `${crowdPair([r.hi, r.lo], [`${label(t)} for everyone`, `${label(t)} for no one`], note)}
-        <div class="diffs">
-          ${diffCard("Your theory said", game.prediction.effect, "theory")}
-          ${diffCard("What really happened", r.effect, "reality")}
-        </div>
-        <button type="button" class="btn primary-btn" data-action="verdict">Did my theory hold up? →</button>`
-      : `<p class="switch-caption"><b>${escapeHtml(label(t))}</b> for no one, right now:</p>${crowd("No one", r.lo)}`}`;
+    <div class="crowd happen"><svg viewBox="0 0 400 58" role="img" aria-label="${on ? hi : lo} in 10">${figs}</svg></div>
+    <p class="happen-caption">${caption}</p>
+    ${on ? `<button type="button" class="btn primary-btn reveal-late" data-action="verdict">What does it mean? →</button>` : ""}`;
 }
-
 // ---- Verdict -------------------------------------------------------------
 
 function meet() {
@@ -617,11 +644,17 @@ function verdictPanel() {
   const l = lv();
   const last = game.index + 1 >= LEVELS.length;
   const nextBtn = `<button type="button" class="btn primary-btn" data-action="next">${last ? "Back to the map" : "Next level →"}</button>`;
+  const y = q().outcome;
   if (game.result.stands) {
+    const did = game.result.did;
+    const headline = l.tutorial ? "Your first causal claim!" : "Congratulations!";
+    const lead = l.tutorial ? "" : `<p class="big-result">That's what happened: ${escapeHtml(DID[y][did])}. ${did === "same"
+      ? "You showed the newspaper's link was fake."
+      : "You found a causal link."}</p>`;
     return `
       ${celebrate()}
-      <h3 class="win">${l.tutorial ? "Your first causal claim!" : "Theory confirmed!"}</h3>
-      ${l.tutorial ? "" : `<p>Your theory said: <b>${escapeHtml(changeSentence(game.prediction.effect).toLowerCase())}</b>. That's what happened.</p>`}
+      <h3 class="win">${headline}</h3>
+      ${lead}
       <p>${escapeHtml(l.reveal)}</p>
       ${l.meets.map(characterCard).join("")}
       <div class="step-actions">
@@ -632,16 +665,11 @@ function verdictPanel() {
   const why = l.tutorial ? "" : whyTheory();
   return `
     <h3 class="lose">${l.tutorial ? "Not quite" : "Theory busted!"}</h3>
-    ${l.tutorial ? "" : `
-      <div class="diffs">
-        ${diffCard("Your theory said", game.prediction.effect, "theory")}
-        ${diffCard("What really happened", game.truth.effect, "reality")}
-      </div>
-      ${why ? `<p>${why}</p>` : ""}`}
+    ${l.tutorial ? "" : `<p class="big-result">Your theory said: ${escapeHtml(WILL[y][game.result.said])}. But ${escapeHtml(DID[y][game.result.did])}.</p>`}
+    ${why ? `<p>${why}</p>` : ""}
     <p class="hint-box"><b>Hint:</b> ${escapeHtml(l.hint)}</p>
     <button type="button" class="btn primary-btn" data-action="rebuild">Try again</button>`;
 }
-
 // ---- Bonus ---------------------------------------------------------------
 
 function bonusPanel() {

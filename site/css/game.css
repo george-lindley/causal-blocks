@@ -347,3 +347,31 @@
   letter-spacing: 0.04em;
   vertical-align: 1px;
 }
+
+/* ---- Simpler make-it-happen: one crowd, animated ---- */
+.statement .tag {
+  display: inline-block;
+  margin: 0 8px 4px 0;
+  padding: 3px 12px 2px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font: 700 15px var(--font-ui);
+  letter-spacing: 0.04em;
+  vertical-align: 6px;
+}
+.crowd.happen { margin: 4px 0 8px; }
+.fig .badge { fill: var(--role-treatment); stroke: #1f2933; stroke-width: 1.5; }
+.happen-caption { font: 700 19px/1.3 var(--font-game); }
+.big-result { font: 700 21px/1.3 var(--font-game); }
+@media (prefers-reduced-motion: no-preference) {
+  .fig .badge { animation: badge-pop 0.35s ease-out both; }
+  @keyframes badge-pop { from { transform: scale(0); } to { transform: scale(1); } }
+  .fig .badge { transform-box: fill-box; transform-origin: center; }
+  .fig.newly circle:not(.badge), .fig.newly rect { animation: light-up 0.4s ease-out var(--delay) both; }
+  @keyframes light-up { from { fill: #d3dbe2; } to { fill: var(--g-hit); } }
+  .fig.going circle:not(.badge), .fig.going rect { animation: go-out 0.4s ease-out var(--delay) both; }
+  @keyframes go-out { from { fill: var(--g-hit); } to { fill: #d3dbe2; } }
+  .reveal-late { animation: appear 0.3s ease-out 1.6s both; }
+  @keyframes appear { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+}

@@ -43,3 +43,20 @@ def test_every_trap_clearly_loses(levels):
         for trap in lv["traps"]:
             gap = abs(trap["effect"] - lv["truth"])
             assert gap >= 2 * lv["tolerance"], f"{lv['id']} / {trap['name']}: only misses by {gap:.3f}"
+
+
+def _direction(effect, tolerance):
+    """Mirror of world.js direction(): more, fewer or same."""
+    if abs(effect) < tolerance:
+        return "same"
+    return "more" if effect > 0 else "fewer"
+
+
+def test_players_see_the_right_direction(levels):
+    """The game judges more / fewer / no change, so that is what must separate right from wrong."""
+    for lv in levels:
+        truth = _direction(lv["truth"], lv["tolerance"])
+        for model in [lv["right"], *lv["alsoRight"]]:
+            assert _direction(model["effect"], lv["tolerance"]) == truth, f"{lv['id']}: right answer says the wrong direction"
+        for trap in lv["traps"]:
+            assert _direction(trap["effect"], lv["tolerance"]) != truth, f"{lv['id']} / {trap['name']}: trap gives the true direction"

@@ -145,9 +145,19 @@ export function predict(level, { graph, freeze, data = watched(level) }) {
   return { effect: estimate(data, level, id.adjustmentSet), adjust: id.adjustmentSet };
 }
 
-/** Did the model's prediction match what the town did? */
+/**
+ * Which way an effect goes, as a player would say it: "more", "fewer" or
+ * "same". Anything within the level's tolerance of zero counts as no change.
+ */
+export function direction(effect, tolerance) {
+  if (effect === null) return null;
+  if (Math.abs(effect) < tolerance) return "same";
+  return effect > 0 ? "more" : "fewer";
+}
+
+/** Did the theory predict the right thing: more, fewer or no change? */
 export function verdict(level, predicted, truth) {
-  if (predicted === null) return { stands: false, gap: null };
-  const gap = Math.abs(predicted - truth);
-  return { stands: gap <= level.tolerance, gap };
+  const said = direction(predicted, level.tolerance);
+  const did = direction(truth, level.tolerance);
+  return { stands: said !== null && said === did, said, did };
 }
