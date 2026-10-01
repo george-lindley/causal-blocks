@@ -360,12 +360,13 @@ function startLevel(i) {
     <svg class="detective" viewBox="0 0 200 200" aria-hidden="true">${DETECTIVE}</svg>
     <div><span class="label">${l.caseIntro ? (i === 0 ? "Your first case" : "New case") : "The investigation"}</span>
       <h2>${escapeHtml(l.caseIntro ? l.case : "Your hunch")}</h2>
-      ${l.caseIntro ? `<p>${escapeHtml(l.caseIntro)}</p>` : ""}
       <p class="hunch">${escapeHtml(l.hunch)}</p></div>`;
   history.replaceState(null, "", `#${l.id}`);
-  // One thing at a time: the newspaper's claim, then the investigation and the task.
+  // One thing at a time: the newspaper's claim, then the investigation, then the task.
   $("read-on").hidden = false;
   $("level-body").hidden = true;
+  $("to-task").hidden = false;
+  $("task").hidden = true;
   setStage("watch");
   $("level").scrollIntoView({ block: "start" });
 }
@@ -374,6 +375,12 @@ $("read-on-btn").addEventListener("click", () => {
   $("read-on").hidden = true;
   $("level-body").hidden = false;
   $("case-card").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+$("to-task-btn").addEventListener("click", () => {
+  $("to-task").hidden = true;
+  $("task").hidden = false;
+  $("stages").scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 function setStage(stage) {
