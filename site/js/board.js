@@ -56,9 +56,10 @@ function exitPoint(p, tx, ty, pad = 0) {
  * @param options  label(id): display name; locked(id): true if the block can't
  *                 be removed; onEdit(): the graph's structure was changed by
  *                 the user; onChange(): anything visible changed, re-render;
- *                 toast(message): show a short message
+ *                 toast(message): show a short message; unknownCaption: the
+ *                 caption for a block with no role given (the game leaves it blank)
  */
-export function createBoard(svg, { label, locked = () => false, onEdit = () => {}, onChange, toast }) {
+export function createBoard(svg, { label, locked = () => false, onEdit = () => {}, onChange, toast, unknownCaption = ROLE_TEXT[Role.UNRELATED] }) {
   const s = {
     pos: new Map(), // id -> {x, y}
     edges: [], // [parent, child]
@@ -208,7 +209,7 @@ export function createBoard(svg, { label, locked = () => false, onEdit = () => {
       if (full.length > MAX_LABEL) el("title", {}, g).textContent = full;
       const all = roleMap[id] ?? [];
       el("text", { class: "role", x: 14, y: 45, fill: text, opacity: 0.85 }, g).textContent =
-        all.length > 1 ? all.map((x) => ROLE_TEXT[x]).join(" + ") : ROLE_TEXT[role];
+        !(id in roleMap) ? unknownCaption : all.length > 1 ? all.map((x) => ROLE_TEXT[x]).join(" + ") : ROLE_TEXT[role];
 
       const port = el("g", {
         class: `port${s.connect?.from === id ? " active" : ""}`,
