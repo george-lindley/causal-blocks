@@ -70,7 +70,7 @@ export const LEVELS = [
     meets: [],
     question: { treatment: "revision", outcome: "pass" },
     poke: { label: "Send everyone to revision club" },
-    layout: { revision: [130, 205], pass: [500, 205] },
+    layout: { pass: [110, 150], revision: [520, 300] },
     world: {
       seed: 102,
       blocks: {
@@ -103,7 +103,7 @@ export const LEVELS = [
     meets: ["mediator"],
     question: { treatment: "revision", outcome: "pass" },
     poke: { label: "Send everyone to revision club" },
-    layout: { revision: [40, 205], understand: [318, 205], pass: [596, 205] },
+    layout: { understand: [70, 60], pass: [560, 70], revision: [318, 350] },
     world: {
       seed: 103,
       blocks: {
@@ -142,6 +142,7 @@ export const LEVELS = [
     meets: ["confounder"],
     question: { treatment: "club", outcome: "pass" },
     poke: { label: "Send everyone to breakfast club" },
+    introducesSwitchOff: true,
     layout: { richer: [318, 40], club: [70, 340], pass: [566, 340] },
     world: BREAKFAST,
     watch: {

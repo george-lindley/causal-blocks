@@ -76,6 +76,12 @@ function toast(message) {
   game.toastTimer = setTimeout(() => (t.hidden = true), 4000);
 }
 
+/** Block names, bold and joined: "A", "A and B", "A, B and C". */
+function list(ids) {
+  const names = ids.map((id) => `<b>${escapeHtml(label(id))}</b>`);
+  return names.length <= 1 ? names.join("") : `${names.slice(0, -1).join(", ")} and ${names.at(-1)}`;
+}
+
 /** "8 in 10" */
 const inTen = (r) => `${Math.round(r * 10)} in 10`;
 
@@ -216,22 +222,40 @@ function diffCard(title, e, tone) {
   </div>`;
 }
 
-/** New action: Test. A switch flips; the arrows into the block snap off. */
+/** New action: Test. Flip the switch and the block happens for everyone. */
 function makeItHappenIntro() {
   return `<div class="action-intro">
     <svg class="anim-switch" viewBox="0 0 320 150" aria-hidden="true">
-      <rect x="10" y="22" width="70" height="30" rx="9" fill="#cfd8df"/>
-      <rect x="10" y="98" width="70" height="30" rx="9" fill="#cfd8df"/>
-      <g class="snap snap-a"><path d="M80 37 L150 66" stroke="#74828f" stroke-width="4" fill="none"/><path d="M142 58 l10 9 l-13 3 z" fill="#74828f"/></g>
-      <g class="snap snap-b"><path d="M80 113 L150 86" stroke="#74828f" stroke-width="4" fill="none"/><path d="M139 81 l13 3 l-10 9 z" fill="#74828f"/></g>
+      <rect class="forced" x="100" y="30" width="120" height="40" rx="11" fill="#fa953d"/>
+      <text x="160" y="55" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2933">Everyone</text>
+      <rect x="125" y="92" width="70" height="30" rx="15" fill="#e1e7ee" stroke="#1f2933" stroke-width="2.5"/>
+      <circle class="knob" cx="141" cy="107" r="11" fill="#fff" stroke="#1f2933" stroke-width="2.5"/>
+    </svg>
+    <div><span class="label">New action</span><h4>Test</h4>
+      <p>To test a theory, flip the switch: every pupil goes to revision club. Then watch what changes.
+        If more pupils pass, revision club caused it.</p></div>
+  </div>`;
+}
+
+/** New idea (breakfast club): testing switches off every arrow into the block. */
+function switchOffIntro() {
+  const { treatment: t } = q();
+  const cut = game.model.filter(([, c]) => c === t).map(([p]) => p);
+  const what = cut.length
+    ? `The arrow from ${list(cut)} switches off: it no longer decides who goes. Only your switch does.`
+    : "Any arrow into it switches off: nothing else decides who goes now. Only your switch does.";
+  return `<div class="action-intro">
+    <svg class="anim-switch" viewBox="0 0 320 150" aria-hidden="true">
+      <rect x="10" y="22" width="80" height="30" rx="9" fill="#3498db"/>
+      <g class="snap snap-a"><path d="M90 37 L150 62" stroke="#74828f" stroke-width="4" fill="none"/><path d="M142 54 l10 9 l-13 3 z" fill="#74828f"/></g>
       <rect class="forced" x="155" y="56" width="120" height="40" rx="11" fill="#fa953d"/>
       <text x="215" y="81" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2933">Everyone</text>
       <rect x="180" y="112" width="70" height="30" rx="15" fill="#e1e7ee" stroke="#1f2933" stroke-width="2.5"/>
       <circle class="knob" cx="196" cy="127" r="11" fill="#fff" stroke="#1f2933" stroke-width="2.5"/>
     </svg>
-    <div><span class="label">New action</span><h4>Test</h4>
-      <p>To test a theory, flip the switch: make something happen for everyone. Here, every pupil goes to revision club.
-        The arrows into it snap off, because nothing else decides it any more. Whatever changes afterwards, it caused.</p></div>
+    <div><span class="label">New idea</span><h4>Testing switches arrows off</h4>
+      <p>When you send everyone to <b>${escapeHtml(label(t))}</b>, nothing else gets a say in who goes.
+        ${what} That's what makes a test fair.</p></div>
   </div>`;
 }
 
@@ -599,6 +623,7 @@ function makeItHappenPanel() {
     : `No one ${escapeHtml(actionPhrase())}: <b>${lo} in 10 ${PAST[y] ?? ""}</b>.`;
   return `
     ${l.introduces === "poke" ? makeItHappenIntro() : ""}
+    ${l.introducesSwitchOff ? switchOffIntro() : ""}
     <h3>${l.freezeOnly ? "Test it with magic" : "Test it"}</h3>
     <p>${l.freezeOnly ? "In real life you can't. In the game you can." : "Flip the switch and watch the school."}</p>
     <div class="switch-row">
@@ -608,7 +633,7 @@ function makeItHappenPanel() {
     </div>
     <div class="crowd happen"><svg viewBox="0 0 400 58" role="img" aria-label="${on ? hi : lo} in 10">${figs}</svg></div>
     <p class="happen-caption">${caption}</p>
-    ${on ? `<button type="button" class="btn primary-btn reveal-late" data-action="verdict">What does it mean? →</button>` : ""}`;
+    ${on ? `<button type="button" class="btn primary-btn reveal-late" data-action="verdict">Was my theory right? →</button>` : ""}`;
 }
 // ---- Verdict -------------------------------------------------------------
 
