@@ -8,7 +8,7 @@ collider — so the graph explains itself.
 
 ### → [causalblocks.com](https://causalblocks.com)
 
-- **[The demo](https://causalblocks.com/)** — do small towns in England really
+- **[Case study](https://causalblocks.com/towns.html)** — do small towns in England really
   educate children better? The published correlation, the result of
   "controlling for everything", and the causal story, on one dataset.
 - **[Try your own data](https://causalblocks.com/try.html)** — upload a CSV and
