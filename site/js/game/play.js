@@ -1,17 +1,17 @@
 // The game. Chapter 1, Hilltop School: each level adds one idea and uses only
-// the steps it needs (Watch, Draw, Freeze, Make it happen, Verdict), with an
+// the steps it needs (The data, Draw, Freeze, Test, Verdict), with an
 // optional bonus round on the later levels. The engine is world.js; the
 // drawing canvas is the site's shared board.
 
 import { createBoard } from "../board.js";
 import { Role, roles } from "../causal.js";
-import { CAST, CHARACTER_TEXT, portrait, silhouette } from "./cast.js";
+import { CAST, CHARACTER_TEXT, DETECTIVE, portrait, silhouette } from "./cast.js";
 import { LEVELS } from "./levels.js";
 import { direction, pokeResult, predict, simulate, trueGraph, verdict, watched } from "./world.js";
 
 const $ = (id) => document.getElementById(id);
 
-const STAGE_NAMES = { watch: "The data", build: "Draw", freeze: "Freeze", poke: "Make it happen", verdict: "Verdict" };
+const STAGE_NAMES = { watch: "The data", build: "Draw", freeze: "Freeze", poke: "Test", verdict: "Verdict" };
 const CAST_ORDER = [Role.TREATMENT, Role.OUTCOME, Role.MEDIATOR, Role.CONFOUNDER, Role.COLLIDER];
 
 // ---------------------------------------------------------------------------
@@ -54,7 +54,7 @@ const game = {
   result: null,
   twist: false, // level 6: has the player found out where the numbers came from?
   wholeSchool: false, // level 6: showing everyone instead of the headline's pupils
-  switchOn: false, // make it happen: has the switch been flipped to everyone?
+  switchOn: false, // test: has the switch been flipped to everyone?
   newlyMet: [],
   toastTimer: null,
 };
@@ -216,7 +216,7 @@ function diffCard(title, e, tone) {
   </div>`;
 }
 
-/** New action: Make it happen. A switch flips; the arrows into the block snap off. */
+/** New action: Test. A switch flips; the arrows into the block snap off. */
 function makeItHappenIntro() {
   return `<div class="action-intro">
     <svg class="anim-switch" viewBox="0 0 320 150" aria-hidden="true">
@@ -229,8 +229,8 @@ function makeItHappenIntro() {
       <rect x="180" y="112" width="70" height="30" rx="15" fill="#e1e7ee" stroke="#1f2933" stroke-width="2.5"/>
       <circle class="knob" cx="196" cy="127" r="11" fill="#fff" stroke="#1f2933" stroke-width="2.5"/>
     </svg>
-    <div><span class="label">New action</span><h4>Make it happen</h4>
-      <p>Flip the switch to make something happen for everyone: here, every pupil goes to revision club.
+    <div><span class="label">New action</span><h4>Test</h4>
+      <p>To test a theory, flip the switch: make something happen for everyone. Here, every pupil goes to revision club.
         The arrows into it snap off, because nothing else decides it any more. Whatever changes afterwards, it caused.</p></div>
   </div>`;
 }
@@ -331,15 +331,26 @@ function startLevel(i) {
   $("paper-case").textContent = l.case;
   $("headline").textContent = `“${l.headline}”`;
   $("story").textContent = l.story;
-  $("case-card").hidden = !l.caseIntro;
-  $("case-card").innerHTML = l.caseIntro ? `<span class="label">${i === 0 ? "Your first case" : "New case"}</span><h2>${escapeHtml(l.case)}</h2><p>${escapeHtml(l.caseIntro)}</p>` : "";
+  $("case-card").innerHTML = l.caseIntro ? `
+    <svg class="detective" viewBox="0 0 200 200" aria-hidden="true">${DETECTIVE}</svg>
+    <div><span class="label">${i === 0 ? "Your first case" : "New case"}</span><h2>${escapeHtml(l.case)}</h2><p>${escapeHtml(l.caseIntro)}</p></div>` : "";
   history.replaceState(null, "", `#${l.id}`);
-  // The front page comes first, on its own; the task appears below once read.
+  // One thing at a time: a new case first, then the front page, then the task.
+  $("case-card").hidden = !l.caseIntro;
+  $("case-next").hidden = !l.caseIntro;
+  $("paper").hidden = Boolean(l.caseIntro);
+  $("read-on").hidden = Boolean(l.caseIntro);
   $("level-body").hidden = true;
-  $("read-on").hidden = false;
   setStage("watch");
   $("level").scrollIntoView({ block: "start" });
 }
+
+$("case-next-btn").addEventListener("click", () => {
+  $("case-next").hidden = true;
+  $("paper").hidden = false;
+  $("read-on").hidden = false;
+  $("paper").scrollIntoView({ behavior: "smooth", block: "start" });
+});
 
 $("read-on-btn").addEventListener("click", () => {
   $("read-on").hidden = true;
@@ -466,7 +477,7 @@ function twistWatch(l, note) {
 
 /** "went to revision club", "had free breakfast", "were sporty": for sentences about the switch. */
 function actionPhrase() {
-  return { revision: "went to revision club", club: "had free breakfast", sporty: "were sporty" }[q().treatment] ?? `had ${label(q().treatment).toLowerCase()}`;
+  return { revision: "went to revision club", club: "went to breakfast club", sporty: "were sporty" }[q().treatment] ?? `had ${label(q().treatment).toLowerCase()}`;
 }
 
 function buildPanel() {
@@ -486,7 +497,7 @@ function buildPanel() {
     <h3>Draw your theory</h3>
     <p>Drag from a block's round handle onto the block it causes. Click an arrow to flip or remove it.</p>
     ${predictionLine()}
-    <button type="button" class="btn primary-btn" data-action="make-it-happen">Check it: make it happen →</button>`;
+    <button type="button" class="btn primary-btn" data-action="make-it-happen">Test it →</button>`;
 }
 
 /** "Your theory predicts: if everyone went to revision club, more pupils will pass." */
@@ -534,10 +545,10 @@ function freezePanel() {
     </div>
     <div class="freeze-crowds">${crowdsHtml}</div>
     ${predictionLine()}
-    <button type="button" class="btn primary-btn" data-action="make-it-happen">Check it with magic →</button>`;
+    <button type="button" class="btn primary-btn" data-action="make-it-happen">Test it with magic →</button>`;
 }
 
-// ---- Make it happen --------------------------------------------------------
+// ---- Test ------------------------------------------------------------------
 
 function toMakeItHappen() {
   game.prediction = currentPrediction();
@@ -588,7 +599,7 @@ function makeItHappenPanel() {
     : `No one ${escapeHtml(actionPhrase())}: <b>${lo} in 10 ${PAST[y] ?? ""}</b>.`;
   return `
     ${l.introduces === "poke" ? makeItHappenIntro() : ""}
-    <h3>${l.freezeOnly ? "Check it with magic" : "Make it happen"}</h3>
+    <h3>${l.freezeOnly ? "Test it with magic" : "Test it"}</h3>
     <p>${l.freezeOnly ? "In real life you can't. In the game you can." : "Flip the switch and watch the school."}</p>
     <div class="switch-row">
       <span class="${on ? "" : "on"}">No one</span>

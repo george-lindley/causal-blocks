@@ -100,3 +100,20 @@ export function silhouette(size = 120) {
     <rect x="50" y="60" width="100" height="92" rx="24" fill="#d5dee6"/>
     <text x="100" y="124" text-anchor="middle" font-size="56" font-weight="800" fill="#ffffff" font-family="sans-serif">?</text></svg>`;
 }
+
+/**
+ * The detective: the player. A block in a deerstalker hat, peering through a
+ * magnifying glass that makes one eye look huge.
+ */
+export const DETECTIVE = `
+  <path d="M46 62 q54 -46 108 0 z" fill="#8b6b4a"/>
+  <path d="M46 62 q54 -18 108 0" fill="none" stroke="#6f5338" stroke-width="5"/>
+  <path d="M60 48 l-18 -10 M140 48 l18 -10" stroke="#6f5338" stroke-width="7" stroke-linecap="round"/>
+  <rect x="50" y="60" width="100" height="92" rx="24" fill="#5b6b7a"/>
+  <rect x="50" y="136" width="100" height="16" rx="8" fill="#000" opacity="0.12"/>
+  <circle cx="80" cy="98" r="10" fill="#fff"/><circle cx="83" cy="99" r="5" fill="#1f2933"/>
+  <path d="M84 128 q12 6 22 -2" stroke="#1f2933" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M146 132 l26 26" stroke="#6f5338" stroke-width="11" stroke-linecap="round"/>
+  <circle cx="124" cy="104" r="30" fill="#dff1fb" fill-opacity="0.85" stroke="#1f2933" stroke-width="7"/>
+  <circle cx="124" cy="104" r="15" fill="#fff"/><circle cx="129" cy="106" r="8" fill="#1f2933"/>
+  <path d="M106 90 q8 -8 18 -8" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.9"/>`;
