@@ -369,17 +369,26 @@ function startLevel(i) {
       <h2>${escapeHtml(l.caseIntro ? l.case : "Your hunch")}</h2>
       <p class="hunch">${escapeHtml(l.hunch)}</p></div>`;
   history.replaceState(null, "", `#${l.id}`);
-  // One thing at a time: the newspaper's claim, then the investigation, then the task.
+  // One thing at a time: the headline, its data, the investigation, then the task.
   $("read-on").hidden = false;
+  $("watch-screen").hidden = true;
+  $("to-investigation").hidden = true;
   $("level-body").hidden = true;
   $("to-task").hidden = false;
   $("task").hidden = true;
-  setStage("watch");
+  setStage(taskStages()[0]);
   $("level").scrollIntoView({ block: "start" });
 }
 
 $("read-on-btn").addEventListener("click", () => {
   $("read-on").hidden = true;
+  $("watch-screen").hidden = false;
+  renderData();
+  $("watch-screen").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+$("to-investigation-btn").addEventListener("click", () => {
+  $("to-investigation").hidden = true;
   $("level-body").hidden = false;
   $("case-card").scrollIntoView({ behavior: "smooth", block: "start" });
 });
@@ -387,32 +396,33 @@ $("read-on-btn").addEventListener("click", () => {
 $("to-task-btn").addEventListener("click", () => {
   $("to-task").hidden = true;
   $("task").hidden = false;
+  refresh();
   $("stages").scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
+/** The task's steps: everything after the newspaper's data. */
+const taskStages = () => lv().stages.filter((s) => s !== "watch");
+
 function setStage(stage) {
   game.stage = stage;
-  const stages = lv().stages;
+  const stages = taskStages();
   const at = stages.indexOf(stage);
   $("stages").innerHTML = stages.map((s, n) =>
     `<li class="${s === stage ? "current" : n < at || stage === "bonus" ? "past" : ""}">${STAGE_NAMES[s]}</li>`).join("");
-  $("watch-screen").hidden = stage !== "watch";
-  $("play-screen").hidden = stage === "watch";
   $("stage-board").classList.remove("busted");
   refresh();
 }
 
-function next(stage) {
-  const stages = lv().stages;
-  return stages[stages.indexOf(stage) + 1];
+/** The detail under the headline. Continue appears once there's nothing left to uncover. */
+function renderData() {
+  const l = lv();
+  $("watch-screen").innerHTML = watchScreen();
+  const ready = !l.world.select || game.twist;
+  $("to-investigation").hidden = !ready || !$("level-body").hidden;
 }
 
 function refresh() {
   if (!game.level) return;
-  if (game.stage === "watch") {
-    $("watch-screen").innerHTML = watchScreen();
-    return;
-  }
   drawBoard();
   $("stage-panel").innerHTML = { build: buildPanel, freeze: freezePanel, poke: makeItHappenPanel, verdict: verdictPanel, bonus: bonusPanel }[game.stage]();
 }
@@ -420,9 +430,8 @@ function refresh() {
 document.addEventListener("click", (e) => {
   const action = e.target.closest("[data-action]")?.dataset.action;
   if (!action || !game.level) return;
-  if (action === "twist") { game.twist = true; refresh(); }
-  if (action === "whole-school") { game.wholeSchool = !game.wholeSchool; refresh(); }
-  if (action === "continue") setStage(next(game.stage));
+  if (action === "twist") { game.twist = true; renderData(); }
+  if (action === "whole-school") { game.wholeSchool = !game.wholeSchool; renderData(); }
   if (action === "check") checkArrow();
   if (action === "make-it-happen") toMakeItHappen();
   if (action === "switch") flip();
@@ -470,10 +479,7 @@ function watchScreen() {
     <p class="data-label">This year's results at Hilltop</p>
     <p class="statement"><span class="tag">Correlation</span> ${escapeHtml(factsSentence(l.watch.statement, [a, b]))}</p>
     ${correlationNote(a, b)}
-    ${crowdPair([a, b], l.watch.groups, note)}
-    <div class="controls">
-      <button type="button" class="btn primary-btn" data-action="continue">${l.freezeOnly ? "Freeze a block →" : "Draw your theory →"}</button>
-    </div>`;
+    ${crowdPair([a, b], l.watch.groups, note)}`;
 }
 
 /** Level 6: first the paper's numbers; then where they came from; then the whole school. */
@@ -502,7 +508,7 @@ function twistWatch(l, note) {
         <button type="button" class="btn ${game.wholeSchool ? "ghost-btn" : "collider-btn"}" data-action="whole-school">${game.wholeSchool ? "Back to the paper's pupils" : "Show the whole school"}</button>
       </div>
     </div>
-    <div class="controls"><button type="button" class="btn primary-btn" data-action="continue">Draw your theory →</button></div>`;
+    `;
 }
 
 // ---- Draw ----------------------------------------------------------------

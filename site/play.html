@@ -60,26 +60,27 @@
         <p class="paper-story" id="story"></p>
       </article>
 
-      <div class="read-on" id="read-on"><button type="button" class="btn primary-btn" id="read-on-btn">Investigate →</button></div>
+      <div class="read-on" id="read-on"><button type="button" class="btn primary-btn" id="read-on-btn">Learn more →</button></div>
+
+      <!-- The detail behind the headline: this year's results, a correlation. -->
+      <div id="watch-screen" class="watch" hidden aria-live="polite"></div>
+      <div class="read-on" id="to-investigation" hidden><button type="button" class="btn primary-btn" id="to-investigation-btn">Continue →</button></div>
 
       <div id="level-body" hidden>
-      <div class="case-card" id="case-card"></div>
-      <div class="read-on" id="to-task"><button type="button" class="btn primary-btn" id="to-task-btn">Continue →</button></div>
-      <div id="task" hidden>
-      <ol class="stages" id="stages" aria-label="Steps"></ol>
-
-      <div id="watch-screen" class="watch" hidden aria-live="polite"></div>
-
-      <div class="stage-layout" id="play-screen" hidden>
-        <div class="stage-board" id="stage-board">
-          <p class="toast" id="toast" role="status" hidden></p>
-          <div class="canvas-scroll">
-            <svg id="canvas" viewBox="0 0 800 470" role="img" aria-label="Your model. Drag from a block's round handle onto another block to draw an arrow."></svg>
+        <div class="case-card" id="case-card"></div>
+        <div class="read-on" id="to-task"><button type="button" class="btn primary-btn" id="to-task-btn">Investigate →</button></div>
+        <div id="task" hidden>
+          <ol class="stages" id="stages" aria-label="Steps"></ol>
+          <div class="stage-layout" id="play-screen">
+            <div class="stage-board" id="stage-board">
+              <p class="toast" id="toast" role="status" hidden></p>
+              <div class="canvas-scroll">
+                <svg id="canvas" viewBox="0 0 800 470" role="img" aria-label="Your theory. Drag from a block's round handle onto another block to draw an arrow."></svg>
+              </div>
+            </div>
+            <div class="stage-panel" id="stage-panel" aria-live="polite"></div>
           </div>
         </div>
-        <div class="stage-panel" id="stage-panel" aria-live="polite"></div>
-      </div>
-      </div>
       </div>
     </section>
   </main>
