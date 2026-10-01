@@ -4,14 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Causal Blocks</title>
-<meta name="description" content="A game about what really causes what. Build a model, poke the town, and see if your model was right.">
+<meta name="description" content="A game about what really causes what. Build a model of the town, poke it, and see if your model was right.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400&display=swap">
 <link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/game.css">
 </head>
-<body>
+<body class="game-page">
 <div class="wrap">
   <header class="top">
     <a class="brand" href="play.html" aria-label="Causal Blocks: back to the level map">
@@ -35,11 +36,18 @@
     <section id="map" aria-labelledby="map-title">
       <h1 id="map-title" class="game-title">What really causes what?</h1>
       <p class="game-sub">Every headline makes a claim. Build a model of the town, poke it, and see if you were right.</p>
+
+      <div class="cast-row" aria-labelledby="cast-title">
+        <h2 id="cast-title" class="cast-title">The cast</h2>
+        <div class="cast-list" id="cast-list"></div>
+      </div>
+
+      <h2 class="levels-title">Levels</h2>
       <ol class="levels" id="levels"></ol>
     </section>
 
     <!-- One level -->
-    <section id="level" hidden aria-live="polite">
+    <section id="level" hidden>
       <div class="level-bar">
         <button type="button" class="link-button" id="to-map">← All levels</button>
         <span class="label" id="level-place"></span>
@@ -53,14 +61,16 @@
 
       <ol class="stages" id="stages" aria-label="Steps"></ol>
 
-      <div class="stage-layout">
+      <div id="watch-screen" class="watch" hidden aria-live="polite"></div>
+
+      <div class="stage-layout" id="play-screen" hidden>
         <div class="stage-board" id="stage-board">
           <p class="toast" id="toast" role="status" hidden></p>
           <div class="canvas-scroll">
             <svg id="canvas" viewBox="0 0 800 470" role="img" aria-label="Your model. Drag from a block's round handle onto another block to draw an arrow."></svg>
           </div>
         </div>
-        <div class="stage-panel card" id="stage-panel"></div>
+        <div class="stage-panel" id="stage-panel" aria-live="polite"></div>
       </div>
     </section>
   </main>

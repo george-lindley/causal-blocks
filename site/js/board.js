@@ -59,7 +59,12 @@ function exitPoint(p, tx, ty, pad = 0) {
  *                 toast(message): show a short message; unknownCaption: the
  *                 caption for a block with no role given (the game leaves it blank)
  */
-export function createBoard(svg, { label, locked = () => false, onEdit = () => {}, onChange, toast, unknownCaption = ROLE_TEXT[Role.UNRELATED] }) {
+export function createBoard(svg, {
+  label, locked = () => false, onEdit = () => {}, onChange, toast,
+  unknownCaption = ROLE_TEXT[Role.UNRELATED],
+  roleText = ROLE_TEXT, // captions per role; the game uses character names
+  faces = false, // give blocks with a known role a pair of eyes
+}) {
   const s = {
     pos: new Map(), // id -> {x, y}
     edges: [], // [parent, child]
@@ -68,6 +73,7 @@ export function createBoard(svg, { label, locked = () => false, onEdit = () => {
     drag: null, // {id, dx, dy, moved}
     connect: null, // {from, x, y, dragging, sx, sy}
     roles: {}, // last roles drawn; dragging redraws without recomputing them
+    frozen: new Set(),
   };
 
   function edited() {
@@ -161,8 +167,13 @@ export function createBoard(svg, { label, locked = () => false, onEdit = () => {
     el("path", { d }, g);
   }
 
-  function draw(roleMap = s.roles) {
+  /**
+   * Redraw. `roleMap` colours and captions each block; `frozen` (a Set of
+   * ids) marks blocks held steady, as the game's Freeze step shows them.
+   */
+  function draw(roleMap = s.roles, { frozen = s.frozen } = {}) {
     s.roles = roleMap;
+    s.frozen = frozen;
     svg.replaceChildren();
     const defs = el("defs", {}, svg);
     for (const [name, color] of [["arrow", "var(--edge)"], ["arrow-on", "var(--accent)"]]) {
@@ -200,7 +211,8 @@ export function createBoard(svg, { label, locked = () => false, onEdit = () => {
       const selected = s.selectedNode === id;
       el("rect", {
         class: "body", width: BW, height: BH, rx: 12, fill: `var(--role-${role})`,
-        stroke: selected ? "var(--ink)" : "rgba(0,0,0,0.18)",
+        stroke: frozen.has(id) ? "var(--frozen, #7cc4ef)" : selected ? "var(--ink)" : "rgba(0,0,0,0.18)",
+        "stroke-width": frozen.has(id) ? 5 : 2,
         "stroke-dasharray": role === Role.COLLIDER ? "6 4" : "none",
       }, g);
       const full = label(id);
@@ -209,7 +221,16 @@ export function createBoard(svg, { label, locked = () => false, onEdit = () => {
       if (full.length > MAX_LABEL) el("title", {}, g).textContent = full;
       const all = roleMap[id] ?? [];
       el("text", { class: "role", x: 14, y: 45, fill: text, opacity: 0.85 }, g).textContent =
-        !(id in roleMap) ? unknownCaption : all.length > 1 ? all.map((x) => ROLE_TEXT[x]).join(" + ") : ROLE_TEXT[role];
+        frozen.has(id) ? "❄ Frozen"
+          : !(id in roleMap) ? unknownCaption
+          : all.length > 1 ? all.map((x) => roleText[x]).join(" + ") : roleText[role];
+      if (faces && id in roleMap) {
+        // Two eyes peeking over the top edge: it's a character now.
+        for (const ex of [BW - 46, BW - 28]) {
+          el("circle", { cx: ex, cy: 0, r: 8, fill: "#fff", stroke: "rgba(0,0,0,0.18)", "stroke-width": 1.5 }, g);
+          el("circle", { cx: ex + 1.5, cy: 1, r: 3.8, fill: "#1f2933" }, g);
+        }
+      }
 
       const port = el("g", {
         class: `port${s.connect?.from === id ? " active" : ""}`,

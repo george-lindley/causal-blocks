@@ -1,3 +1,7 @@
+// © 2026 George Lindley. All rights reserved. The level stories, headlines
+// and explanations in this file are not covered by the repository's MIT
+// licence; see CONTENT-LICENSE.md.
+//
 // The levels. Each one is a small fictional town (its true equations), a
 // headline to test, and the words around it. The towns are invented, with
 // realistic-looking numbers; because we made them, we know the true answer.
@@ -15,6 +19,20 @@ export const LEVELS = [
     place: "The school",
     lesson: "Effects pass through things",
     headline: "Revising raises test scores",
+    meets: "mediator",
+    watch: {
+      statement: "Pupils who revised scored {diff} higher.",
+      detail: "Average score: {a} for pupils who went to revision club, {b} for those who didn't.",
+      groups: ["Revised", "Didn't revise"],
+    },
+    challenge: {
+      text: "Build a model that says revising does nothing, then see how far its prediction lands from the truth.",
+      model: { edges: [["knowledge", "revised"], ["knowledge", "score"], ["revised", "score"]] },
+    },
+    prompts: [
+      "Draw an arrow from Knowledge to Revised instead. Your model now freezes Knowledge. What happens to the prediction?",
+      "Remove the arrow into Knowledge. Is revising still connected to the score?",
+    ],
     story: "Some pupils at Hilltop School went to revision club before the maths test. Did it help?",
     question: { treatment: "revised", outcome: "score" },
     poke: { block: "revised", label: "Send everyone to revision club" },
@@ -45,6 +63,20 @@ export const LEVELS = [
     place: "The beach",
     lesson: "A hidden common cause fakes a link",
     headline: "Ice cream causes sunburn!",
+    meets: "confounder",
+    watch: {
+      statement: "Ice-cream eaters are {ratio} as likely to get sunburnt.",
+      detail: "{a} of children with an ice cream went home burnt. Only {b} of those without one did.",
+      groups: ["With ice cream", "No ice cream"],
+    },
+    challenge: {
+      text: "Build the newspaper's model, where ice cream causes sunburn and nothing else matters.",
+      model: { edges: [["icecream", "sunburn"]] },
+    },
+    prompts: [
+      "Delete the arrow from Sunny day to Ice cream. What does your model predict now, and why?",
+      "Add an arrow from Ice cream to Sunburn, keeping both arrows from Sunny day. Does the prediction move?",
+    ],
     story: "At Seaview beach, children eating ice cream are far more likely to go home sunburnt. Should the ice cream van be banned?",
     question: { treatment: "icecream", outcome: "sunburn" },
     poke: { block: "icecream", label: "Hand everyone an ice cream" },
@@ -74,6 +106,21 @@ export const LEVELS = [
     place: "The football ground",
     lesson: "Only looking at winners creates a link",
     headline: "Lucky players are less talented",
+    meets: "collider",
+    watch: {
+      everyone: "In the whole town, luck and talent aren't linked.",
+      everyoneDetail: "The line is flat: lucky and unlucky players are just as talented.",
+      statement: "On the team, luckier players are less talented.",
+      detail: "Only {kept} of {total} players made the team. Among them, the line slopes down.",
+    },
+    challenge: {
+      text: "Build the scouts' model, where luck really does lower talent.",
+      model: { edges: [["luck", "talent"], ["talent", "team"], ["luck", "team"]] },
+    },
+    prompts: [
+      "Draw an arrow from Luck to Talent. The model now trusts the team-only data. What does it predict?",
+      "Remove Made the team from your thinking: if you could see everyone, would luck and talent be linked?",
+    ],
     story: "Scouts studied the players who made Riverside's team. The luckiest ones turned out to be the least talented. Does luck make you worse?",
     question: { treatment: "luck", outcome: "talent" },
     poke: { block: "luck", label: "Give everyone a lucky break" },
@@ -105,6 +152,20 @@ export const LEVELS = [
     place: "The detective's office",
     lesson: "Freeze the right block",
     headline: "Breakfast club lowers grades!",
+    meets: "confounder",
+    watch: {
+      statement: "Children at breakfast club score {absdiff} lower.",
+      detail: "Average grade: {a} at breakfast club, {b} for everyone else.",
+      groups: ["Breakfast club", "No breakfast club"],
+    },
+    challenge: {
+      text: "Freeze nothing, like the council did, and see what that predicts.",
+      model: { freeze: [] },
+    },
+    prompts: [
+      "Freeze Morning energy as well as Family income. Why does the effect disappear?",
+      "Freeze only Morning energy. What goes wrong?",
+    ],
     story: "Pupils who go to Oakfield's free breakfast club get lower grades. The council wants to close it. You can't send every child to breakfast club to find out, so you'll have to be a detective.",
     question: { treatment: "club", outcome: "grades" },
     poke: { block: "club", label: "Send every child to breakfast club" },

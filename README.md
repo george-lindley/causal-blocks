@@ -240,5 +240,6 @@ are welcome as [GitHub issues](https://github.com/george-lindley/causal-blocks/i
 
 ## Licence
 
-Code MIT. Data Crown copyright under [OGL v3.0](data/README.md) — contains
+Code MIT. The game's characters and level stories are © George Lindley, all
+rights reserved: see [CONTENT-LICENSE.md](CONTENT-LICENSE.md). Data Crown copyright under [OGL v3.0](data/README.md) — contains
 public sector information licensed under the Open Government Licence v3.0.
