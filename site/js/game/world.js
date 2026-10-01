@@ -99,11 +99,12 @@ export function observe(world, data) {
 const mean = (xs) => xs.reduce((s, x) => s + x, 0) / xs.length;
 
 /**
- * What really happens when you poke the treatment: everyone yes vs everyone
- * no for a yes/no block, or everyone one unit higher for a number. Measured
- * on the whole town, because a poke reaches everyone.
+ * What really happens when you poke the treatment, measured on the whole town
+ * (a poke reaches everyone). For a yes/no block: the outcome's average with
+ * everyone yes (`hi`) and everyone no (`lo`). For a number: everyone one unit
+ * higher (`hi`) against the town as it is (`lo`).
  */
-export function truthEffect(level, n = level.sampleSize ?? SAMPLE) {
+export function pokeResult(level, n = level.sampleSize ?? SAMPLE) {
   const { world, question } = level;
   const t = question.treatment;
   const y = question.outcome;
@@ -111,7 +112,12 @@ export function truthEffect(level, n = level.sampleSize ?? SAMPLE) {
   const base = simulate(world, n);
   const hi = simulate(world, n, { force: { [t]: yesno ? 1 : (_, i) => base[t][i] + 1 } });
   const lo = yesno ? simulate(world, n, { force: { [t]: 0 } }) : base;
-  return mean(hi[y]) - mean(lo[y]);
+  return { hi: mean(hi[y]), lo: mean(lo[y]), effect: mean(hi[y]) - mean(lo[y]) };
+}
+
+/** The true effect of the treatment on the outcome. */
+export function truthEffect(level, n) {
+  return pokeResult(level, n).effect;
 }
 
 /** Data as the player sees it: the watched town (after any selection). */

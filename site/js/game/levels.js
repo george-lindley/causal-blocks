@@ -11,6 +11,7 @@
 export const LEVELS = [
   {
     id: "school",
+    layout: { revised: [40, 205], knowledge: [318, 205], score: [596, 205] },
     place: "The school",
     lesson: "Effects pass through things",
     headline: "Revising raises test scores",
@@ -40,6 +41,7 @@ export const LEVELS = [
   },
   {
     id: "beach",
+    layout: { sunny: [318, 40], icecream: [70, 340], sunburn: [566, 340] },
     place: "The beach",
     lesson: "A hidden common cause fakes a link",
     headline: "Ice cream causes sunburn!",
@@ -68,6 +70,7 @@ export const LEVELS = [
   },
   {
     id: "football",
+    layout: { talent: [60, 60], luck: [60, 350], team: [540, 205] },
     place: "The football ground",
     lesson: "Only looking at winners creates a link",
     headline: "Lucky players are less talented",
@@ -98,11 +101,13 @@ export const LEVELS = [
   },
   {
     id: "detective",
+    layout: { income: [318, 30], club: [40, 250], energy: [318, 390], grades: [596, 250] },
     place: "The detective's office",
     lesson: "Freeze the right block",
     headline: "Breakfast club lowers grades!",
     story: "Pupils who go to Oakfield's free breakfast club get lower grades. The council wants to close it. You can't send every child to breakfast club to find out, so you'll have to be a detective.",
     question: { treatment: "club", outcome: "grades" },
+    poke: { block: "club", label: "Send every child to breakfast club" },
     freezeOnly: true,
     world: {
       seed: 404,

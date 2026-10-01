@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Causal Blocks</title>
+<meta name="description" content="A game about what really causes what. Build a model, poke the town, and see if your model was right.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400&display=swap">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="play.html" aria-label="Causal Blocks: back to the level map">
+      <span class="brand-mark" aria-hidden="true">
+        <span style="background: var(--role-treatment)"></span>
+        <span style="background: var(--role-confounder)"></span>
+        <span style="background: var(--role-mediator)"></span>
+        <span style="background: var(--role-outcome)"></span>
+      </span>
+      Causal Blocks
+    </a>
+    <nav>
+      <a href="try.html">Try your own data</a>
+      <a href="towns.html">Case study</a>
+      <a href="about.html">Why causation</a>
+    </nav>
+  </header>
+
+  <main class="game">
+    <!-- The level map -->
+    <section id="map" aria-labelledby="map-title">
+      <h1 id="map-title" class="game-title">What really causes what?</h1>
+      <p class="game-sub">Every headline makes a claim. Build a model of the town, poke it, and see if you were right.</p>
+      <ol class="levels" id="levels"></ol>
+    </section>
+
+    <!-- One level -->
+    <section id="level" hidden aria-live="polite">
+      <div class="level-bar">
+        <button type="button" class="link-button" id="to-map">← All levels</button>
+        <span class="label" id="level-place"></span>
+      </div>
+
+      <article class="newspaper">
+        <span class="paper-name">The Daily Correlation</span>
+        <h2 class="paper-headline" id="headline"></h2>
+        <p class="paper-story" id="story"></p>
+      </article>
+
+      <ol class="stages" id="stages" aria-label="Steps"></ol>
+
+      <div class="stage-layout">
+        <div class="stage-board" id="stage-board">
+          <p class="toast" id="toast" role="status" hidden></p>
+          <div class="canvas-scroll">
+            <svg id="canvas" viewBox="0 0 800 470" role="img" aria-label="Your model. Drag from a block's round handle onto another block to draw an arrow."></svg>
+          </div>
+        </div>
+        <div class="stage-panel card" id="stage-panel"></div>
+      </div>
+    </section>
+  </main>
+</div>
+<script type="module" src="js/game/play.js"></script>
+</body>
+</html>
