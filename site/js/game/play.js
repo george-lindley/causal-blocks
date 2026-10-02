@@ -53,6 +53,7 @@ const game = {
   prediction: null,
   result: null,
   twist: false, // level 6: has the player found out where the numbers came from?
+  split: false, // level 1: has the player split the school into two groups?
   wholeSchool: false, // level 6: showing everyone instead of the headline's pupils
   switchOn: false, // test: has the switch been flipped to everyone?
   newlyMet: [],
@@ -110,6 +111,9 @@ const DID = {
   maths: { more: "more pupils were good at maths", fewer: "fewer pupils were good at maths", same: "just as many were good at maths" },
 };
 const PAST = { pass: "passed", maths: "were good at maths" };
+const SHORT = { pass: "passed", maths: "good at maths" };
+// What the orange badge means: being in the treatment group.
+const BADGE = { revision: "went to revision club", club: "went to breakfast club", sporty: "sporty" };
 const dir = (e) => direction(e, lv().tolerance);
 
 /** "twice as likely", "half as likely", "2.6 times as likely". */
@@ -181,27 +185,32 @@ function currentPrediction() {
 // Pictures
 // ---------------------------------------------------------------------------
 
-function figures(lit, cls) {
+function figures(lit, cls, { badge = false } = {}) {
   return Array.from({ length: 10 }, (_, k) => {
     const x = 20 + k * 38;
-    return `<g class="fig ${k < lit ? cls : "off"}"><circle cx="${x}" cy="16" r="9"/><rect x="${x - 10}" y="27" width="20" height="25" rx="8"/></g>`;
+    const mark = badge ? `<circle class="badge" cx="${x + 9}" cy="6" r="6"/>` : "";
+    return `<g class="fig ${k < lit ? cls : "off"}"><circle cx="${x}" cy="16" r="9"/><rect x="${x - 10}" y="27" width="20" height="25" rx="8"/>${mark}</g>`;
   }).join("");
 }
-
 /** A row of 10 pupils with some lit up, and "8 in 10" in big type. */
-function crowd(title, r) {
+function crowd(title, r, { badge = false } = {}) {
   const lit = Math.round(r * 10);
+  const short = SHORT[q().outcome] ?? "";
   return `<div class="crowd">
-    <div class="crowd-head"><span>${escapeHtml(title)}</span><b>${lit} in 10</b></div>
-    <svg viewBox="0 0 400 58" role="img" aria-label="${escapeHtml(title)}: ${lit} in 10">${figures(lit, "hit")}</svg>
+    <div class="crowd-head"><span>${escapeHtml(title)}</span><b>${lit} ${escapeHtml(short)}</b></div>
+    <svg viewBox="0 0 400 58" role="img" aria-label="${escapeHtml(title)}: ${lit} ${escapeHtml(short)}">${figures(lit, "hit", { badge })}</svg>
   </div>`;
 }
-
 function crowdPair([a, b], names, note) {
-  return `<div class="crowd-block"><div class="crowds">${crowd(names[0], a)}${crowd(names[1], b)}</div>
-    <p class="legend"><i class="dot"></i>${escapeHtml(note)}</p></div>`;
+  return `<div class="crowd-block"><div class="crowds">${crowd(names[0], a, { badge: true })}${crowd(names[1], b)}</div>
+    ${legend(note)}</div>`;
 }
 
+/** What the lit figures and the orange badge mean. */
+function legend(note) {
+  const badge = BADGE[q().treatment];
+  return `<p class="legend"><span><i class="dot"></i>${escapeHtml(note)}</span>${badge ? `<span><i class="dot badge-key"></i>Orange badge: ${escapeHtml(badge)}</span>` : ""}</p>`;
+}
 /** "pass" / "are good at maths": the outcome as a verb phrase. */
 function outcomeVerb() {
   return { pass: "pass", maths: "are good at maths" }[q().outcome] ?? label(q().outcome).toLowerCase();
@@ -353,6 +362,7 @@ function startLevel(i) {
   game.model = [];
   game.prediction = game.result = null;
   game.twist = false;
+  game.split = false;
   game.wholeSchool = false;
   game.newlyMet = [];
   board.load(l.layout, l.startEdges ?? []);
@@ -417,7 +427,7 @@ function setStage(stage) {
 function renderData() {
   const l = lv();
   $("watch-screen").innerHTML = watchScreen();
-  const ready = !l.world.select || game.twist;
+  const ready = (!l.world.select || game.twist) && (!l.introducesGroups || game.split);
   $("to-investigation").hidden = !ready || !$("level-body").hidden;
 }
 
@@ -431,6 +441,7 @@ document.addEventListener("click", (e) => {
   const action = e.target.closest("[data-action]")?.dataset.action;
   if (!action || !game.level) return;
   if (action === "twist") { game.twist = true; renderData(); }
+  if (action === "split") { game.split = true; renderData(); }
   if (action === "whole-school") { game.wholeSchool = !game.wholeSchool; renderData(); }
   if (action === "check") checkArrow();
   if (action === "make-it-happen") toMakeItHappen();
@@ -470,10 +481,52 @@ function correlationNote(a, b) {
   }
   return `<p class="correlation">${as} They go together. The newspaper turns that into a cause: <i>“${escapeHtml(lv().headline)}”</i></p>`;
 }
+/**
+ * Level 1: the whole school, mixed together; split it and the pupils sort
+ * themselves into the two groups being compared.
+ */
+function splitWatch(l, [a, b], note) {
+  const went = Math.round(a * 10);
+  const didnt = Math.round(b * 10);
+  // A fixed shuffle, so the mixed school looks mixed but is the same every time.
+  const order = [7, 15, 2, 11, 19, 4, 13, 0, 17, 9, 5, 18, 1, 12, 8, 16, 3, 14, 10, 6];
+  const row = (r) => 40 + r * 92;
+  const figs = order.map((slot, p) => {
+    const goer = p < 10;
+    const passed = goer ? p < went : p - 10 < didnt;
+    const fromX = 20 + (slot % 10) * 38;
+    const fromY = row(Math.floor(slot / 10));
+    const toX = 20 + (goer ? p : p - 10) * 38;
+    const toY = row(goer ? 0 : 1);
+    const badge = goer ? `<circle class="badge" cx="${fromX + 9}" cy="${fromY - 10}" r="6"/>` : "";
+    return `<g class="fig ${passed ? "hit" : "off"} ${game.split ? "sorting" : ""}" style="--dx:${toX - fromX}px;--dy:${toY - fromY}px">
+      <circle cx="${fromX}" cy="${fromY}" r="9"/><rect x="${fromX - 10}" y="${fromY + 11}" width="20" height="25" rx="8"/>${badge}</g>`;
+  }).join("");
+  const labels = game.split
+    ? `<text class="row-label" x="0" y="${row(0) - 22}">${escapeHtml(l.watch.groups[0])}: ${went} passed</text>
+       <text class="row-label" x="0" y="${row(1) - 22}">${escapeHtml(l.watch.groups[1])}: ${didnt} passed</text>`
+    : "";
+  const picture = `<div class="crowd split"><svg viewBox="0 -4 400 182" role="img" aria-label="${game.split ? `Two groups: ${went} of 10 who went passed, ${didnt} of 10 who didn't` : "20 pupils, mixed together"}">${figs}${labels}</svg></div>`;
+  if (!game.split) {
+    return `
+      <div class="action-intro text-only"><div><span class="label">New idea</span><h4>Compare two groups</h4>
+        <p>Here's the whole school mixed together: 20 pupils. To find out whether revision club makes a difference,
+          a scientist splits them into two groups, those who went and those who didn't, and compares how many passed in each.</p></div></div>
+      ${picture}${legend(note)}
+      <div class="controls"><button type="button" class="btn primary-btn" data-action="split">Split into two groups</button></div>`;
+  }
+  return `
+    <p class="data-label">This year's results at Hilltop</p>
+    <p class="statement"><span class="tag">Correlation</span> ${escapeHtml(factsSentence(l.watch.statement, [a, b]))}</p>
+    ${correlationNote(a, b)}
+    ${picture}${legend(note)}`;
+}
+
 function watchScreen() {
   const l = lv();
   const note = `Lit up: ${l.watch.outcome}`;
   if (l.world.select) return twistWatch(l, note);
+  if (l.introducesGroups) return splitWatch(l, rates(game.data), note);
   const [a, b] = rates(game.data);
   return `
     <p class="data-label">This year's results at Hilltop</p>

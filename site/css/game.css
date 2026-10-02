@@ -392,3 +392,23 @@
 .drawn { margin: 0 0 12px; padding: 10px 14px; border-radius: 12px; background: #fff; border: 2px dashed var(--line); }
 .drawn ul { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 4px; font-size: 17px; }
 .drawn li span { color: var(--muted); margin: 0 4px; }
+
+/* ---- Two groups: badges, and level 1's split ---- */
+.legend { gap: 6px 22px; }
+.dot.badge-key { background: var(--role-treatment); border: 1.5px solid var(--ink); width: 13px; height: 13px; }
+.crowd.split svg { max-width: 560px; }
+.row-label { font: 700 13px var(--font-ui); fill: var(--ink); opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .fig.sorting { animation: to-group 1.4s ease-in-out forwards; }
+  @keyframes to-group { to { transform: translate(var(--dx), var(--dy)); } }
+  .row-label { animation: appear-label 0.4s ease-out 1.4s forwards; }
+  @keyframes appear-label { to { opacity: 1; } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fig.sorting { transform: translate(var(--dx), var(--dy)); }
+  .row-label { opacity: 1; }
+}
+/* The badge always shows group membership, whatever the pupil's result. */
+.fig circle.badge, .fig.hit circle.badge, .fig.off circle.badge { fill: var(--role-treatment); stroke: var(--ink); stroke-width: 1.5; }
+/* A new-idea card with no picture uses the full width. */
+.action-intro.text-only { grid-template-columns: minmax(0, 1fr); }
