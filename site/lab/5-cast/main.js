@@ -42,6 +42,7 @@ const LEVELS = [
     layout: { breakfast: [80, 90], pass: [560, 90], richer: [320, 330] },
     edges: [["richer", "breakfast"], ["richer", "pass"]],
     t: "breakfast", o: "pass",
+    locked: ["richer"],
     stages: [
       { show: ["breakfast", "pass"], dead: true },
       { show: ["breakfast", "pass", "richer"], arrive: "richer", meet: [Role.CONFOUNDER] },
@@ -66,6 +67,7 @@ const LEVELS = [
     layout: { revision: [60, 320], understand: [320, 200], pass: [580, 320], richer: [320, 30] },
     edges: [["richer", "revision"], ["revision", "understand"], ["understand", "pass"], ["richer", "pass"]],
     t: "revision", o: "pass",
+    locked: ["richer"],
     stages: [
       { show: ["revision", "pass"] },
       { show: ["revision", "pass", "richer"], arrive: "richer", meet: [Role.CONFOUNDER] },
@@ -115,6 +117,7 @@ const key = (pairs) => new Set(pairs.map(([a, b]) => [a, b].sort().join("|")));
 function problems(player) {
   const out = [];
   for (const id of stage().show) {
+    if (level().locked?.includes(id)) continue; // untestable: only the data speaks for it
     const truth = visibleMoves(secret(), id);
     const mine = visibleMoves(player, id);
     const missing = [...truth].find((n) => !mine.has(n));
@@ -144,6 +147,7 @@ function render() {
     { frozen: new Set(stage().freeze ? [stage().freeze] : []) });
   togetherLines(svg, togetherPairs(secret()));
   if (stage().door) badge(svg, stage().door, "🚪");
+  for (const id of level().locked ?? []) if (stage().show.includes(id)) badge(svg, id, "🔒");
   document.body.classList.toggle("wiggle-mode", state.mode === "wiggle" && !state.won);
   renderPanel();
 }
@@ -189,6 +193,11 @@ svg.addEventListener("pointerdown", (e) => {
   if (!node) return;
   e.stopPropagation();
   e.preventDefault();
+  if (level().locked?.includes(node.dataset.node)) {
+    react(svg, node.dataset.node, "🔒 You can't test me!");
+    toast("You can't pick a random half of families and make them richer.");
+    return;
+  }
   state.last = node.dataset.node;
   wiggle(svg, frozenCut(secret()), state.last);
   renderPanel();

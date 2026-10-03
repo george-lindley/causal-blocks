@@ -1,6 +1,7 @@
 // Secret graphs for the wiggle variants: the same Hilltop School blocks as the
 // prototype, one new shape per level. Every graph is already as lean as it can
 // be (no arrow is covered by a longer route), so its arrow count is the par.
+// `locked` blocks can't be tested in real life; the player has the data instead.
 
 export const LEVELS = [
   {
@@ -27,7 +28,9 @@ export const LEVELS = [
   },
   {
     id: "fork",
-    title: "One pulls two",
+    title: "Can't test that",
+    locked: { richer: "You can't pick a random half of families and make them richer." },
+    lockIntro: true,
     blocks: { breakfast: "Breakfast club", pass: "Pass exam", richer: "Richer family" },
     edges: [["richer", "breakfast"], ["richer", "pass"]],
     layout: { breakfast: [80, 90], pass: [560, 100], richer: [330, 340] },
@@ -49,8 +52,10 @@ export const LEVELS = [
   {
     id: "five",
     title: "Five blocks",
+    data: "locked",
+    locked: { richer: "You can't pick a random half of families and make them richer." },
     blocks: { breakfast: "Breakfast club", awake: "Wide awake", pass: "Pass exam", richer: "Richer family", tutor: "Private tutor" },
     edges: [["richer", "breakfast"], ["richer", "tutor"], ["breakfast", "awake"], ["awake", "pass"], ["tutor", "pass"]],
-    layout: { pass: [40, 50], richer: [600, 380], awake: [600, 50], tutor: [40, 380], breakfast: [320, 215] },
+    layout: { richer: [320, 30], pass: [600, 190], breakfast: [500, 390], awake: [130, 390], tutor: [40, 190] },
   },
 ];

@@ -2,8 +2,14 @@
 // (par for few arrows). Each level has a secret graph. Tap a block to wiggle
 // it and see what wiggles back; draw arrows; check. Blocks your graph gets
 // wrong shake and say what really happens.
+//
+// A level can lock blocks that can't be tested in real life (you can't make
+// a random half of families richer). Those levels also show the data: dotted
+// lines between blocks that go together, which is the only evidence about a
+// locked block.
 
-import { $, confetti, toast, testExplainer, testResult, drawPlain, escapeHtml, makeBoard, minimalArrows, moves, progress, stars, wiggle, wiggleMismatch, react } from "./lab.js";
+import { dSeparated } from "../js/causal.js";
+import { $, badge, confetti, toast, testExplainer, testResult, togetherLines, drawPlain, escapeHtml, makeBoard, minimalArrows, moves, progress, stars, wiggle, wiggleMismatch, react } from "./lab.js";
 
 export function runWiggleGame({ key, levels, scoring }) {
   const saved = progress(key);
@@ -12,6 +18,25 @@ export function runWiggleGame({ key, levels, scoring }) {
   const level = () => levels[state.i];
   const secret = () => ({ nodes: Object.keys(level().blocks), edges: level().edges });
   const label = (id) => level().blocks[id];
+  const locked = () => new Set(Object.keys(level().locked ?? {}));
+
+  /**
+   * Pairs of blocks that go together in data from graph g. With `data:
+   * "locked"` only pairs with a locked block count: in a bigger graph nearly
+   * everything goes together, and the tests already cover the rest.
+   */
+  function together(g) {
+    const ids = Object.keys(level().blocks);
+    const onlyLocked = level().data === "locked";
+    const out = [];
+    for (let x = 0; x < ids.length; x++) {
+      for (let y = x + 1; y < ids.length; y++) {
+        if (onlyLocked && !locked().has(ids[x]) && !locked().has(ids[y])) continue;
+        if (!dSeparated(g, [ids[x]], [ids[y]], [])) out.push(`${ids[x]}|${ids[y]}`);
+      }
+    }
+    return out;
+  }
 
   const board = makeBoard(svg, {
     label,
@@ -35,6 +60,11 @@ export function runWiggleGame({ key, levels, scoring }) {
   }
 
   function doWiggle(id) {
+    if (locked().has(id)) {
+      react(svg, id, "🔒 You can't test me!");
+      toast(level().locked[id]);
+      return;
+    }
     if (state.wiggles >= limit()) {
       react(svg, id, "No tests left!");
       return;
@@ -48,8 +78,13 @@ export function runWiggleGame({ key, levels, scoring }) {
 
   function check() {
     const player = board.graph();
-    const wrong = wiggleMismatch(player, secret());
-    if (!wrong.length) {
+    const wrong = wiggleMismatch(player, secret()).filter((id) => !locked().has(id));
+    // On levels with a lock, the theory must also explain the data.
+    const want = locked().size ? together(secret()) : [];
+    const have = locked().size ? together(player) : [];
+    const missingLinks = want.filter((p) => !have.includes(p));
+    const extraLinks = have.filter((p) => !want.includes(p));
+    if (!wrong.length && !missingLinks.length && !extraLinks.length) {
       win();
       return;
     }
@@ -63,7 +98,22 @@ export function runWiggleGame({ key, levels, scoring }) {
       const text = missing ? `Switching me changes ${label(missing)}!` : `Switching me doesn't change ${label(extra)}!`;
       react(svg, id, text);
     }
-    $("verdict").innerHTML = `<p class="big-line lose">Not quite. ${wrong.length === 1 ? "One block behaves" : `${wrong.length} blocks behave`} differently in tests than your theory says.</p>`;
+    const spoken = new Set(wrong.slice(0, 2));
+    for (const [pairs, says] of [[missingLinks, "and I go together!"], [extraLinks, "and I don't go together!"]]) {
+      for (const p of pairs) {
+        const [a, b] = p.split("|");
+        const who = locked().has(b) ? b : a; // let the locked block speak: it's the one they can't test
+        const other = who === a ? b : a;
+        if (spoken.size >= 2 || spoken.has(who)) continue;
+        spoken.add(who);
+        react(svg, who, `${label(other)} ${says}`);
+      }
+    }
+    const reasons = [
+      wrong.length ? "tests" : "",
+      missingLinks.length || extraLinks.length ? "the data" : "",
+    ].filter(Boolean).join(" or ");
+    $("verdict").innerHTML = `<p class="big-line lose">Not quite. Your theory doesn't fit ${reasons}.</p>`;
   }
 
   function score() {
@@ -101,6 +151,10 @@ export function runWiggleGame({ key, levels, scoring }) {
 
   function render() {
     drawPlain(board, secret().nodes);
+    if (locked().size) {
+      togetherLines(svg, together(secret()).map((p) => p.split("|")));
+      for (const id of locked()) badge(svg, id, "🔒");
+    }
     document.body.classList.toggle("wiggle-mode", state.mode === "wiggle" && !state.won);
     renderPanel();
   }
@@ -131,8 +185,9 @@ export function runWiggleGame({ key, levels, scoring }) {
       return;
     }
     $("panel-body").innerHTML = `
-      ${testExplainer(state.i === 0)}
+      ${l.lockIntro ? lockCard(l) : testExplainer(state.i === 0)}
       ${l.hint ? `<p class="meta">${escapeHtml(l.hint)}</p>` : ""}
+      ${locked().size && !l.lockIntro ? `<p class="meta legend">🔒 can't be tested · <svg width="44" height="10" aria-hidden="true"><path d="M2 5 H42" class="together-key"/></svg> go together in the data</p>` : ""}
       <div class="mode-toggle" role="group" aria-label="What tapping does">
         <button type="button" data-mode="wiggle" aria-pressed="${state.mode === "wiggle"}">🔀 Test</button>
         <button type="button" data-mode="draw" aria-pressed="${state.mode === "draw"}">✏️ Draw</button>
@@ -145,6 +200,16 @@ export function runWiggleGame({ key, levels, scoring }) {
     for (const b of $("panel-body").querySelectorAll("[data-mode]")) {
       b.onclick = () => { state.mode = b.dataset.mode; render(); };
     }
+  }
+
+  function lockCard(l) {
+    const [id, why] = Object.entries(l.locked)[0];
+    return `<div class="lock-card">
+      <p class="new-idea">New idea</p>
+      <p class="big-line">🔒 Some things can't be tested</p>
+      <p>${escapeHtml(why)} So you can't run a test on <b>${escapeHtml(label(id))}</b>.</p>
+      <p>Use the data instead. <svg width="44" height="10" aria-hidden="true"><path d="M2 5 H42" class="together-key"/></svg> means two blocks go together. Your theory has to fit the tests <i>and</i> the data.</p>
+    </div>`;
   }
 
   function start(i) {
