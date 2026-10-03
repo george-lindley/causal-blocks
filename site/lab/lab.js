@@ -107,8 +107,11 @@ export function react(svg, id, text, tone = "bad") {
   const bubble = document.createElementNS(ns, "g");
   bubble.setAttribute("class", `bubble-svg ${tone}`);
   const width = Math.max(90, text.length * 8.4 + 24);
-  bubble.innerHTML = `<rect x="${-width / 2 + 82}" y="-58" width="${width}" height="34" rx="12"/>
-    <path d="M74 -25 l8 10 l8 -10 z"/><text x="82" y="-36" text-anchor="middle">${escapeHtml(text)}</text>`;
+  // Keep the bubble inside the 800-wide board, wherever the block sits.
+  const bx = Number(/translate\(([-\d.]+)/.exec(el.getAttribute("transform"))?.[1] ?? 0);
+  const left = Math.min(Math.max(-width / 2 + 82, 4 - bx), 796 - bx - width);
+  bubble.innerHTML = `<rect x="${left}" y="-58" width="${width}" height="34" rx="12"/>
+    <path d="M74 -25 l8 10 l8 -10 z"/><text x="${left + width / 2}" y="-36" text-anchor="middle">${escapeHtml(text)}</text>`;
   el.appendChild(bubble);
   setTimeout(() => bubble.remove(), 2600);
 }
@@ -204,4 +207,27 @@ export function toast(message) {
   el.hidden = false;
   clearTimeout(toast.timer);
   toast.timer = setTimeout(() => { el.hidden = true; }, 3200);
+}
+
+// ---------------------------------------------------------------------------
+// Tests: what tapping a block means in real life
+// ---------------------------------------------------------------------------
+
+const TEST_MEANS = "A test is a real experiment: switch a block on for a random half of the kids, then see what changes for them compared with everyone else. The answer comes from the real world, not from your drawing.";
+
+/** One line on the first level; tucked behind "What's a test?" after that. */
+export function testExplainer(first) {
+  return first
+    ? `<p class="test-explainer">🔀 ${TEST_MEANS}</p>`
+    : `<details class="test-explainer"><summary>What's a test?</summary>${TEST_MEANS}</details>`;
+}
+
+/** A test's result: what really changed, beside what your theory predicted. */
+export function testResult(label, id, real, predicted) {
+  const list = (ids) => (ids.size ? [...ids].map((n) => `<b>${escapeHtml(label(n))}</b>`).join(", ") + " changed" : "nothing else changed");
+  const same = real.size === predicted.size && [...real].every((n) => predicted.has(n));
+  return `<li class="test-result ${same ? "pass" : "fail"}">
+    <span class="test-what">🔀 Test: switch on <b>${escapeHtml(label(id))}</b></span>
+    <span>🌍 Real world: ${list(real)}</span>
+    <span>✏️ Your theory: ${list(predicted)} ${same ? "✓" : "✗"}</span></li>`;
 }

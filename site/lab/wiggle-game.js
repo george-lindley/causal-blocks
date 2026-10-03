@@ -3,7 +3,7 @@
 // it and see what wiggles back; draw arrows; check. Blocks your graph gets
 // wrong shake and say what really happens.
 
-import { $, confetti, toast, drawPlain, escapeHtml, makeBoard, minimalArrows, moves, progress, stars, wiggle, wiggleMismatch, react } from "./lab.js";
+import { $, confetti, toast, testExplainer, testResult, drawPlain, escapeHtml, makeBoard, minimalArrows, moves, progress, stars, wiggle, wiggleMismatch, react } from "./lab.js";
 
 export function runWiggleGame({ key, levels, scoring }) {
   const saved = progress(key);
@@ -36,12 +36,11 @@ export function runWiggleGame({ key, levels, scoring }) {
 
   function doWiggle(id) {
     if (state.wiggles >= limit()) {
-      react(svg, id, "No wiggles left!");
+      react(svg, id, "No tests left!");
       return;
     }
     state.wiggles++;
-    const moved = [...moves(secret(), id)];
-    state.log.unshift({ id, moved });
+    state.log.unshift({ id, moved: moves(secret(), id) });
     // Show the real ripple on the board, whatever has been drawn.
     wiggle(svg, secret(), id);
     renderPanel();
@@ -61,10 +60,10 @@ export function runWiggleGame({ key, levels, scoring }) {
       const mine = moves(player, id);
       const missing = [...truth].find((n) => !mine.has(n));
       const extra = [...mine].find((n) => !truth.has(n));
-      const text = missing ? `${label(missing)} moves when I wiggle!` : `${label(extra)} doesn't move when I wiggle!`;
+      const text = missing ? `Switching me changes ${label(missing)}!` : `Switching me doesn't change ${label(extra)}!`;
       react(svg, id, text);
     }
-    $("verdict").innerHTML = `<p class="big-line lose">Not quite. ${wrong.length === 1 ? "One block wiggles" : `${wrong.length} blocks wiggle`} differently from your graph.</p>`;
+    $("verdict").innerHTML = `<p class="big-line lose">Not quite. ${wrong.length === 1 ? "One block behaves" : `${wrong.length} blocks behave`} differently in tests than your theory says.</p>`;
   }
 
   function score() {
@@ -115,10 +114,10 @@ export function runWiggleGame({ key, levels, scoring }) {
     const par = minimalArrows(secret()).length;
     const left = limit() - state.wiggles;
     const scoreLine = scoring === "stars"
-      ? `<p class="counter">Wiggles used: ${state.wiggles}${Number.isFinite(limit()) ? ` · ${left} left` : ""}</p>`
+      ? `<p class="counter">Tests used: ${state.wiggles}${Number.isFinite(limit()) ? ` · ${left} left` : ""}</p>`
       : `<p class="counter">Par ${par} · Your arrows: ${arrows}</p>`;
-    const log = state.log.slice(0, 6).map((w) =>
-      `<li><b>${escapeHtml(label(w.id))}</b> → ${w.moved.length ? w.moved.map((m) => escapeHtml(label(m))).join(", ") : "<span class='meta'>nothing moved</span>"}</li>`).join("");
+    // Predictions are from the theory as drawn now, so they update as you draw.
+    const log = state.log.slice(0, 4).map((w) => testResult(label, w.id, w.moved, moves(board.graph(), w.id))).join("");
     if (state.won) {
       const result = score();
       const last = state.i + 1 >= levels.length;
@@ -126,19 +125,20 @@ export function runWiggleGame({ key, levels, scoring }) {
         <h2 class="win">Solved!</h2>
         ${scoring === "stars" ? stars(result) : `<p class="big-line">${golf(result)} ${arrows} arrows on a par ${par}.</p>`}
         ${scoring === "par" ? scorecard() : ""}
-        <p>${scoring === "stars" ? `${state.wiggles} wiggle${state.wiggles === 1 ? "" : "s"}, ${state.checks} wrong guess${state.checks === 1 ? "" : "es"}.` : result > 0 ? "Some of your arrows were already covered by a longer route." : "As few arrows as possible."}</p>
+        <p>${scoring === "stars" ? `${state.wiggles} test${state.wiggles === 1 ? "" : "s"}, ${state.checks} wrong guess${state.checks === 1 ? "" : "es"}.` : result > 0 ? "Some of your arrows were already covered by a longer route." : "As few arrows as possible."}</p>
         <div class="row"><button type="button" class="btn primary-btn" id="next">${last ? "Play again from the start" : "Next →"}</button></div>`;
       $("next").onclick = () => start(last ? 0 : state.i + 1);
       return;
     }
     $("panel-body").innerHTML = `
+      ${testExplainer(state.i === 0)}
       ${l.hint ? `<p class="meta">${escapeHtml(l.hint)}</p>` : ""}
       <div class="mode-toggle" role="group" aria-label="What tapping does">
-        <button type="button" data-mode="wiggle" aria-pressed="${state.mode === "wiggle"}">👆 Wiggle</button>
+        <button type="button" data-mode="wiggle" aria-pressed="${state.mode === "wiggle"}">🔀 Test</button>
         <button type="button" data-mode="draw" aria-pressed="${state.mode === "draw"}">✏️ Draw</button>
       </div>
       ${scoreLine}
-      <ul class="evidence-list wiggle-log">${log || `<li class="meta">${state.mode === "wiggle" ? "Tap a block to wiggle it." : "Switch to Wiggle to test blocks."}</li>`}</ul>
+      <ul class="evidence-list wiggle-log">${log || `<li class="meta">${state.mode === "wiggle" ? "Tap a block to test it." : "Switch to Test, then tap a block."}</li>`}</ul>
       <div id="verdict"></div>
       <div class="row"><button type="button" class="btn primary-btn" id="check">Check my graph</button></div>`;
     $("check").onclick = check;

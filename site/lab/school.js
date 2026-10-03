@@ -6,7 +6,7 @@ export const LEVELS = [
   {
     id: "two",
     title: "Two blocks",
-    hint: "Tap a block to wiggle it. Then switch to Draw and drag from one block's dot to another.",
+    hint: "Tap a block to test it. Then switch to Draw and drag from one block's ⊕ to another to draw your theory.",
     blocks: { revision: "Revision club", pass: "Pass exam" },
     edges: [["revision", "pass"]],
     layout: { pass: [520, 300], revision: [120, 120] },

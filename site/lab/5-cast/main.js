@@ -9,7 +9,7 @@
 import { Role, dSeparated, roles, primaryRole } from "../../js/causal.js";
 import { CAST, portrait } from "../../js/game/cast.js";
 import {
-  $, arrive, badge, confetti, drawPlain, escapeHtml, makeBoard, moves, progress, react, toast, togetherLines, wiggle,
+  $, arrive, badge, confetti, drawPlain, escapeHtml, makeBoard, moves, progress, react, testExplainer, testResult, toast, togetherLines, wiggle,
 } from "../lab.js";
 
 const LEVELS = [
@@ -77,7 +77,7 @@ const LEVELS = [
 
 const saved = progress("cast");
 const svg = $("canvas");
-const state = { i: 0, s: 0, mode: "wiggle", won: false, busy: false, tries: 0 };
+const state = { i: 0, s: 0, mode: "wiggle", won: false, busy: false, tries: 0, last: null };
 const level = () => LEVELS[state.i];
 const stage = () => level().stages[state.s];
 const label = (id) => level().blocks[id];
@@ -119,8 +119,8 @@ function problems(player) {
     const mine = visibleMoves(player, id);
     const missing = [...truth].find((n) => !mine.has(n));
     const extra = [...mine].find((n) => !truth.has(n));
-    if (missing) out.push([id, `I move ${label(missing)}!`]);
-    else if (extra) out.push([id, `I don't move ${label(extra)}!`]);
+    if (missing) out.push([id, `Switching me changes ${label(missing)}!`]);
+    else if (extra) out.push([id, `Switching me doesn't change ${label(extra)}!`]);
   }
   const want = key(togetherPairs(secret()));
   const have = key(togetherPairs(player));
@@ -169,9 +169,10 @@ function renderPanel() {
     ${meet ? `<div class="row" style="justify-content:center">${meet}</div>` : ""}
     ${stage().freeze ? `<div class="portrait-pop" style="font-size:64px" aria-label="Frozen">❄️</div>` : ""}
     <p class="counter" aria-label="Stage ${state.s + 1} of ${l.stages.length}">${steps}</p>
-    ${state.i === 0 && state.s === 0 ? `<p class="meta">👆 tap a block to wiggle it. ✏️ drag from a dot to draw.</p>` : ""}
+    ${testExplainer(state.i === 0 && state.s === 0)}
+    ${state.last ? `<ul class="evidence-list">${testResult(label, state.last, visibleMoves(secret(), state.last), visibleMoves(board.graph(), state.last))}</ul>` : ""}
     <div class="mode-toggle" role="group" aria-label="What tapping does">
-      <button type="button" data-mode="wiggle" aria-pressed="${state.mode === "wiggle"}">👆 Wiggle</button>
+      <button type="button" data-mode="wiggle" aria-pressed="${state.mode === "wiggle"}">🔀 Test</button>
       <button type="button" data-mode="draw" aria-pressed="${state.mode === "draw"}">✏️ Draw</button>
     </div>
     <p class="meta legend"><svg width="44" height="10" aria-hidden="true"><path d="M2 5 H42" class="together-key"/></svg> go together in the data</p>
@@ -188,7 +189,9 @@ svg.addEventListener("pointerdown", (e) => {
   if (!node) return;
   e.stopPropagation();
   e.preventDefault();
-  wiggle(svg, frozenCut(secret()), node.dataset.node);
+  state.last = node.dataset.node;
+  wiggle(svg, frozenCut(secret()), state.last);
+  renderPanel();
 }, { capture: true });
 
 function check() {
@@ -216,13 +219,14 @@ function later(fn, ms) {
 
 function nextStage() {
   state.s++;
+  state.last = null;
   const st = stage();
   const pos = Object.fromEntries(st.show.map((id) => [id, level().layout[id]]));
   board.load(pos, board.graph().edges.filter(([p, c]) => p in pos && c in pos));
   state.mode = "wiggle";
   render();
   if (st.arrive) arrive(svg, st.arrive);
-  if (st.demo) later(() => { wiggle(svg, frozenCut(secret()), st.demo); renderPanel(); }, 500);
+  if (st.demo) later(() => { state.last = st.demo; wiggle(svg, frozenCut(secret()), st.demo); renderPanel(); }, 500);
 }
 
 function win() {
@@ -233,7 +237,7 @@ function win() {
 }
 
 function start(i) {
-  Object.assign(state, { i, s: 0, mode: "wiggle", won: false, busy: false, tries: 0 });
+  Object.assign(state, { i, s: 0, mode: "wiggle", won: false, busy: false, tries: 0, last: null });
   const pos = Object.fromEntries(stage().show.map((id) => [id, level().layout[id]]));
   board.load(pos, []);
   render();
