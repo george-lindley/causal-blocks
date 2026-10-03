@@ -1,6 +1,6 @@
-"""Every Causal Blocks v2 level's crowd must show what the level claims.
+"""Every Causal Blocks v7 level's crowd must show what the level claims.
 
-The validator lives in site/v2/js/validate.js so the game and the tests share
+The validator lives in site/play/v7/js/validate.js so the game and the tests share
 one definition of "link". This runs it on every level in levels/index.json,
 plus a few broken levels to make sure it really catches mistakes.
 """
@@ -13,7 +13,7 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).parent
-HARNESS = ROOT / "js" / "v2_levels_harness.mjs"
+HARNESS = ROOT / "js" / "v7_levels_harness.mjs"
 
 pytestmark = pytest.mark.skipif(shutil.which("node") is None, reason="node is not installed")
 
@@ -34,8 +34,8 @@ def validate_variant(change):
     """Validate the confounder level after applying a JS mutation to it."""
     return run_node(f"""
         import {{ readFileSync }} from "node:fs";
-        import {{ validateLevel }} from "./site/v2/js/validate.js";
-        const level = JSON.parse(readFileSync("site/v2/levels/confounder.json"));
+        import {{ validateLevel }} from "./site/play/v7/js/validate.js";
+        const level = JSON.parse(readFileSync("site/play/v7/levels/confounder.json"));
         {change}
         console.log(JSON.stringify(validateLevel(level)));
     """)

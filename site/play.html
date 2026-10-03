@@ -3,88 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Causal Blocks</title>
-<meta name="description" content="A game about what really causes what. Build a model of the town, poke it, and see if your model was right.">
+<meta name="robots" content="noindex">
+<title>Causal Blocks: game versions</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:wght@600;700&display=swap">
 <link rel="stylesheet" href="css/site.css">
 <link rel="stylesheet" href="css/game.css">
+<link rel="stylesheet" href="play/lab.css">
 </head>
 <body class="game-page">
 <div class="wrap">
-  <header class="top">
-    <a class="brand" href="play.html" aria-label="Causal Blocks: back to the level map">
-      <span class="brand-mark" aria-hidden="true">
-        <span style="background: var(--role-treatment)"></span>
-        <span style="background: var(--role-confounder)"></span>
-        <span style="background: var(--role-mediator)"></span>
-        <span style="background: var(--role-outcome)"></span>
-      </span>
-      Causal Blocks
-    </a>
-    <nav>
-      <a href="try.html">Try your own data</a>
-      <a href="towns.html">Case study</a>
-      <a href="about.html">Why causation</a>
-    </nav>
-  </header>
-
-  <main class="game">
-    <!-- The level map -->
-    <section id="map" aria-labelledby="map-title">
-      <h1 id="map-title" class="game-title">What really causes what?</h1>
-      <p class="game-sub">Every headline makes a claim. Draw what you think causes what, test it, and see if you were right.</p>
-
-      <div class="cast-row" aria-labelledby="cast-title">
-        <h2 id="cast-title" class="cast-title">The cast</h2>
-        <div class="cast-list" id="cast-list"></div>
-      </div>
-
-      <h2 class="levels-title">Chapter 1 · Hilltop School</h2>
-      <ol class="levels" id="levels"></ol>
-    </section>
-
-    <!-- One level -->
-    <section id="level" hidden>
-      <div class="level-bar">
-        <button type="button" class="link-button" id="to-map">← All levels</button>
-        <span class="label" id="level-place"></span>
-      </div>
-
-      <article class="newspaper" id="paper">
-        <p class="paper-name">The Daily Correlation</p>
-        <p class="paper-edition"><span id="paper-case"></span><span>Hilltop edition</span><span>Price: one theory</span></p>
-        <h2 class="paper-headline" id="headline"></h2>
-        <p class="paper-story" id="story"></p>
-      </article>
-
-      <div class="read-on" id="read-on"><button type="button" class="btn primary-btn" id="read-on-btn">Learn more →</button></div>
-
-      <!-- The detail behind the headline: this year's results, a correlation. -->
-      <div id="watch-screen" class="watch" hidden aria-live="polite"></div>
-      <div class="read-on" id="to-investigation" hidden><button type="button" class="btn primary-btn" id="to-investigation-btn">Continue →</button></div>
-
-      <div id="level-body" hidden>
-        <div class="case-card" id="case-card"></div>
-        <div class="read-on" id="to-task"><button type="button" class="btn primary-btn" id="to-task-btn">Investigate →</button></div>
-        <div id="task" hidden>
-          <ol class="stages" id="stages" aria-label="Steps"></ol>
-          <div class="stage-layout" id="play-screen">
-            <div class="stage-board" id="stage-board">
-              <p class="toast" id="toast" role="status" hidden></p>
-              <div class="canvas-scroll">
-                <svg id="canvas" viewBox="0 0 800 470" role="img" aria-label="Your theory. Drag from a block's round handle onto another block to draw an arrow."></svg>
-              </div>
-            </div>
-            <div class="stage-panel" id="stage-panel" aria-live="polite"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+  <div class="lab-top"><a class="brand" href="towns.html">Causal Blocks</a><span class="lab-tag">Game ideas</span></div>
+  <h1 class="game-title">Every version of the game</h1>
+  <p class="game-sub">Each idea is kept playable, so we can compare them and go back to any of them.</p>
+  <ol class="lab-list">
+    <li><a href="play/v1/"><b>1</b><div><strong>Hilltop School</strong><span>The first full prototype: newspaper headlines, a detective, six levels with the whole cast. Also saved as the git tag <code>prototype-v1</code>.</span></div></a></li>
+    <li><a href="play/v2/"><b>2</b><div><strong>Evidence</strong><span>Evidence cards, no article. Draw a theory that fits every card. Blocks you get wrong complain.</span></div></a></li>
+    <li><a href="play/v3/"><b>3</b><div><strong>Test</strong><span>A secret graph. Tap a block to run a test and see what really changes. Some blocks are 🔒 locked: only the data can tell you about them.</span></div></a></li>
+    <li><a href="play/v4/"><b>4</b><div><strong>Par</strong><span>Like Test, scored like golf: par is the fewest arrows that explain everything.</span></div></a></li>
+    <li><a href="play/v5/"><b>5</b><div><strong>Rapid fire</strong><span>Headlines against the clock: A causes B, B causes A, or something else causes both?</span></div></a></li>
+    <li><a href="play/v6/"><b>6</b><div><strong>Cast</strong><span>Almost no words. Each level has a twist: Mr Confounder sneaks on, the Messenger gets frozen, the Bouncer shuts the door.</span></div></a></li>
+    <li><a href="play/v7/"><b>7</b><div><strong>Crowd</strong><span>A crowd in a four-corner grid shows a link. Draw arrows to explain it, then watch the crowd split into piles.</span></div></a></li>
+    <li><a href="play/v8/"><b>8</b><div><strong>Hot day, cold day</strong><span>Ice cream and shark attacks. Two beaches side by side, one hot, one cold. Close the stand, close the sea, and draw what really causes what.</span></div></a></li>
+  </ol>
 </div>
-<script type="module" src="js/game/play.js"></script>
 </body>
 </html>

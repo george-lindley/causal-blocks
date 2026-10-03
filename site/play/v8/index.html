@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>v8 · Hot day, cold day · Causal Blocks</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:wght@600;700&display=swap">
+<link rel="stylesheet" href="../../css/site.css">
+<link rel="stylesheet" href="../../css/game.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="game-page">
+<div class="v8">
+  <header class="v8-top"><a class="brand" href="../../play.html">← All versions</a><span class="v8-tag">v8 · Hot day, cold day</span></header>
+
+  <section class="v8-bar" aria-live="polite">
+    <p class="v8-paper">📰 <span>Ice cream causes shark attacks!</span></p>
+    <div id="panel" class="v8-panel"></div>
+  </section>
+
+  <div class="v8-days">
+    <figure class="v8-day hot">
+      <figcaption>☀️ A hot day</figcaption>
+      <svg id="scene-hot" viewBox="0 0 400 300" role="img"></svg>
+      <p class="v8-count" id="count-hot"></p>
+    </figure>
+    <figure class="v8-day cold">
+      <figcaption>🌧️ A cold day</figcaption>
+      <svg id="scene-cold" viewBox="0 0 400 300" role="img"></svg>
+      <p class="v8-count" id="count-cold"></p>
+    </figure>
+  </div>
+
+  <section id="controls" class="v8-controls" hidden aria-label="Experiments">
+    <button type="button" class="v8-switch" id="stand" aria-pressed="true"><span class="knob"></span>🍦 Ice cream stand: <b>open</b></button>
+    <button type="button" class="v8-switch" id="swim" aria-pressed="true"><span class="knob"></span>🏊 Swimming: <b>allowed</b></button>
+  </section>
+
+  <section id="diagram" class="v8-diagram" hidden aria-label="Your theory">
+    <svg id="canvas" viewBox="0 0 600 250" role="img" aria-label="Your theory. Drag from a box's handle onto another box to draw an arrow."></svg>
+    <p id="toast" class="v8-toast" role="status" hidden></p>
+  </section>
+</div>
+<script type="module" src="main.js"></script>
+</body>
+</html>

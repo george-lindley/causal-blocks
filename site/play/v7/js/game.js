@@ -1,4 +1,4 @@
-// Causal Blocks v2: every level is a crowd showing a link between two things,
+// Causal Blocks v7 (crowd): every level is a crowd showing a link between two things,
 // and the player explains the link by drawing arrows. The engine knows
 // nothing about any particular story: levels are data (levels/*.json).
 //
@@ -6,9 +6,9 @@
 // (the crowd moves) → the reveal (boxes take their colours, the character
 // appears) or a kind hint and another go.
 
-import { createBoard } from "../../js/board.js";
-import { Role, roles, primaryRole } from "../../js/causal.js";
-import { CAST, portrait } from "../../js/game/cast.js";
+import { createBoard } from "../../../js/board.js";
+import { Role, roles, primaryRole } from "../../../js/causal.js";
+import { CAST, portrait } from "../../../js/game/cast.js";
 import { people } from "./crowd-math.js";
 import { createCrowd } from "./crowd-view.js";
 
