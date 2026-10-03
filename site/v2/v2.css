@@ -1,0 +1,75 @@
+/* Causal Blocks v2: the diagram and the crowd, both always on screen. */
+
+.v2-wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px 24px; }
+.v2-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 10px 0 6px; }
+.v2-level { font: 700 14px var(--font-ui); color: var(--muted); }
+
+.v2-bar { position: relative; overflow: hidden; display: grid; gap: 8px; padding: 12px 16px; border-radius: 18px; background: var(--g-stage); margin-bottom: 12px; }
+.v2-story { margin: 0; font: 800 clamp(22px, 3.4vw, 30px)/1.1 var(--font-game); }
+.v2-panel { display: grid; gap: 8px; justify-items: start; }
+.v2-panel p { margin: 0; font-size: 16px; }
+.v2-panel .hint-box { justify-self: stretch; }
+.v2-result { font: 800 24px/1.1 var(--font-game); }
+.v2-panel .new-character { margin: 0; justify-self: stretch; }
+
+.v2-halves { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; align-items: start; }
+@media (max-width: 860px) { .v2-halves { grid-template-columns: minmax(0, 1fr); gap: 8px; } }
+.v2-diagram, .v2-crowd { position: relative; background: #fff; border: 2px solid var(--line); border-radius: 18px; overflow: hidden; }
+.v2-canvas#canvas { display: block; width: 100%; min-width: 0; height: auto; }
+.v2-canvas.frozen { pointer-events: none; }
+.v2-canvas.frozen .port { display: none; }
+.v2-toast { position: absolute; left: 8px; right: 8px; bottom: 8px; margin: 0; padding: 8px 12px; border-radius: 10px; background: var(--warn-bg); color: var(--warn); font-size: 14px; }
+.v2-crowd-is { margin: 0; padding: 8px 12px 0; font-size: 14px; color: var(--muted); }
+#crowd { display: block; width: 100%; height: auto; }
+
+/* Bigger box names: the diagram is small on a phone. */
+.v2-canvas .node .name { font-size: 19px; }
+
+/* The link line: grey, curved, thickness set from the crowd. */
+.v2-canvas .link path { fill: none; stroke: #9aa7b2; stroke-linecap: round; transition: stroke-width 1.2s ease, opacity 1.2s ease; }
+.v2-canvas .link text { font: 700 13px var(--font-ui); fill: #7b8794; transition: opacity 1.2s ease; }
+.v2-canvas .link.real path { stroke: var(--ink); }
+.v2-canvas .link.real text { fill: var(--ink); }
+.v2-canvas .link.fake text { fill: var(--mistake); }
+.v2-canvas .hat { pointer-events: none; }
+
+/* A suspect drops into the diagram. */
+.v2-canvas .node.dropping { animation: v2-drop 0.8s cubic-bezier(.3, 1.4, .5, 1); }
+@keyframes v2-drop { from { translate: 0 -260px; } to { translate: 0 0; } }
+
+/* The crowd */
+#crowd .cell { fill: #f6f8fa; stroke: #e1e7ec; stroke-width: 1.5; }
+#crowd .cell.effect-yes { fill: #eef8f5; }
+#crowd .cell.empty { fill: #fff; stroke-dasharray: 5 5; stroke: #c9d3db; }
+#crowd .col-label { font: 800 13px var(--font-ui); fill: var(--ink); }
+#crowd .col-label.cause-yes { fill: #c4610f; }
+#crowd .row-label { font: 700 12px var(--font-ui); fill: var(--muted); }
+#crowd .row-label.effect-yes { fill: #10775f; }
+#crowd .pile { fill: none; stroke: #c9d3db; stroke-width: 2; }
+#crowd .pile.pile-yes { fill: #fff8e6; stroke: #f1b40f; }
+#crowd .pile-label { font: 800 15px var(--font-game); fill: var(--ink); }
+#crowd .person circle, #crowd .person rect { fill: #5b6b7a; transition: fill 0.8s ease; }
+#crowd .person.pile-yes circle, #crowd .person.pile-yes rect { fill: #e08a00; }
+@media (prefers-reduced-motion: no-preference) {
+  #crowd .person { transition: transform 1.3s cubic-bezier(.5, 0, .3, 1) var(--delay, 0s); }
+}
+#crowd .crowd-people.instant .person { transition: none; }
+#crowd .crowd-back { animation: v2-fade 0.6s ease; }
+@keyframes v2-fade { from { opacity: 0; } to { opacity: 1; } }
+.v2-canvas .link.fake path { stroke: var(--mistake); stroke-dasharray: 6 8; }
+
+/* Phones: keep the panel short so the crowd stays on screen. */
+@media (max-width: 600px) {
+  .v2-wrap { padding: 0 10px 16px; }
+  .v2-bar { padding: 10px 12px; gap: 6px; margin-bottom: 8px; }
+  .v2-story { font-size: 21px; }
+  .v2-panel p { font-size: 15px; line-height: 1.4; }
+  .v2-result { font-size: 20px; }
+  .v2-panel .new-character { grid-template-columns: 56px minmax(0, 1fr); gap: 10px; padding: 8px 10px; border-width: 2px; }
+  .v2-panel .new-character svg { width: 56px; height: 56px; }
+  .v2-panel .new-character h4 { font-size: 19px; margin: 0; }
+  .v2-panel .new-character p { font-size: 13px; }
+  .v2-crowd-is { font-size: 13px; padding-top: 6px; }
+  .v2-top { padding: 6px 0 4px; }
+  .v2-top .brand { font-size: 17px; }
+}

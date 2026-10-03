@@ -64,6 +64,7 @@ export function createBoard(svg, {
   unknownCaption = ROLE_TEXT[Role.UNRELATED],
   roleText = ROLE_TEXT, // captions per role; the game uses character names
   faces = false, // give blocks with a known role a pair of eyes
+  view = VIEW, // the drawing area in viewBox units; must match the svg's viewBox
 }) {
   const s = {
     pos: new Map(), // id -> {x, y}
@@ -100,7 +101,7 @@ export function createBoard(svg, {
     if (s.pos.has(id)) return false;
     const free = SLOTS.find(([x, y]) =>
       [...s.pos.values()].every((p) => Math.abs(p.x - x) > BW - 20 || Math.abs(p.y - y) > BH + 10),
-    ) ?? [VIEW.w / 2 - BW / 2, VIEW.h / 2 - BH / 2];
+    ) ?? [view.w / 2 - BW / 2, view.h / 2 - BH / 2];
     s.pos.set(id, { x: free[0], y: free[1] });
     onEdit();
     return true;
@@ -322,8 +323,8 @@ export function createBoard(svg, {
     if (!s.drag && !s.connect) return;
     const p = toView(evt);
     if (s.drag) {
-      const x = Math.max(0, Math.min(VIEW.w - BW, p.x - s.drag.dx));
-      const y = Math.max(0, Math.min(VIEW.h - BH, p.y - s.drag.dy));
+      const x = Math.max(0, Math.min(view.w - BW, p.x - s.drag.dx));
+      const y = Math.max(0, Math.min(view.h - BH, p.y - s.drag.dy));
       const pos = s.pos.get(s.drag.id);
       if (Math.abs(pos.x - x) + Math.abs(pos.y - y) > 1) s.drag.moved = true;
       s.pos.set(s.drag.id, { x, y });

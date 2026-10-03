@@ -1,0 +1,42 @@
+{
+  "id": "confounder",
+  "title": "Ice cream and sunburn",
+  "story": "Does eating ice cream cause sunburn?",
+  "crowdIs": "18 people at the beach. Each one went on a different day.",
+  "question": { "cause": "icecream", "effect": "sunburn" },
+  "boxes": {
+    "icecream": { "label": "Ice cream", "role": "cause", "yes": "Ice cream", "no": "No ice cream" },
+    "sunburn": { "label": "Sunburn", "role": "effect", "yes": "Sunburnt", "no": "Not sunburnt" },
+    "hot": { "label": "Hot day", "role": "confounder", "yes": "Hot day", "no": "Not hot" }
+  },
+  "suspects": ["hot"],
+  "layout": { "icecream": [14, 30], "sunburn": [262, 30], "hot": [138, 190] },
+  "crowd": [
+    { "n": 6, "icecream": true, "sunburn": true, "hot": true },
+    { "n": 2, "icecream": true, "sunburn": false, "hot": true },
+    { "n": 3, "icecream": false, "sunburn": true, "hot": true },
+    { "n": 1, "icecream": false, "sunburn": false, "hot": true },
+    { "n": 1, "icecream": true, "sunburn": false, "hot": false },
+    { "n": 5, "icecream": false, "sunburn": false, "hot": false }
+  ],
+  "correctArrows": [["hot", "icecream"], ["hot", "sunburn"]],
+  "linkReal": false,
+  "test": "split",
+  "splitBy": "hot",
+  "text": {
+    "link": "The ice cream eaters got sunburnt much more often. Look at the two columns.",
+    "suspects": "A suspect turns up:",
+    "draw": "Draw the arrows you think are real. An arrow means “causes”.",
+    "test": "Splitting the crowd: hot days on one side, the rest on the other.",
+    "reveal": "Inside each pile, ice cream makes no difference to sunburn. Hot days cause both, so ice cream and sunburn turn up together. The link was fake."
+  },
+  "hints": [
+    { "has": [["icecream", "sunburn"]], "text": "Look inside each pile. On hot days, eaters and non-eaters got burnt just as often. So does ice cream really cause sunburn?" },
+    { "has": [["sunburn", "icecream"]], "text": "Look inside each pile: sunburn and ice cream don't go together any more. Something else is behind both." },
+    { "has": [["icecream", "hot"]], "text": "Can eating an ice cream make the day hot? Arrows point from the cause to what it changes." },
+    { "has": [["sunburn", "hot"]], "text": "Can getting sunburnt make the day hot? Arrows point from the cause to what it changes." },
+    { "missing": [["hot", "sunburn"]], "text": "Look at the hot pile: almost everyone got burnt there. What does a hot day do to sunburn?" },
+    { "missing": [["hot", "icecream"]], "text": "Look at the hot pile: most people had ice cream there. What does a hot day do to ice cream?" }
+  ],
+  "fallbackHint": "Not quite. Watch the piles again and try a different set of arrows."
+}
