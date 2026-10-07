@@ -499,10 +499,12 @@ footer p { margin: 0 0 8px; max-width: 80ch; }
 .top nav a.nav-play:hover { text-decoration: underline; }
 .play-banner {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: stretch;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: clamp(16px, 2.5vw, 32px);
   margin: 4px 0 28px;
-  border-radius: 20px;
+  padding-right: clamp(16px, 2.5vw, 28px);
+  border-radius: 18px;
   overflow: hidden;
   border: 2px solid #e4d3c2;
   background: #fff7ef;
@@ -513,42 +515,40 @@ footer p { margin: 0 0 8px; max-width: 80ch; }
 .play-banner:hover { box-shadow: 0 12px 30px -18px rgba(31, 41, 51, 0.55); transform: translateY(-2px); }
 /* The lineup wall: height-chart lines behind the suspects, and a floor. */
 .play-lineup {
+  align-self: stretch;
   display: flex;
   align-items: flex-end;
-  justify-content: center;
-  padding: 10px clamp(12px, 3vw, 36px) 0;
+  padding: 6px clamp(10px, 2vw, 24px) 0;
   background:
-    linear-gradient(to top, #d9dee3 0 14px, transparent 14px),
-    repeating-linear-gradient(to bottom, transparent 0 24px, rgba(31, 41, 51, 0.09) 24px 26px),
+    linear-gradient(to top, #d9dee3 0 9px, transparent 9px),
+    repeating-linear-gradient(to bottom, transparent 0 17px, rgba(31, 41, 51, 0.09) 17px 19px),
     linear-gradient(#f1f3f5, #e6eaee);
   border-right: 2px solid #e4d3c2;
 }
-.play-lineup img { display: block; width: 100%; max-width: 640px; height: auto; margin-bottom: 2px; }
-.play-pitch { display: grid; align-content: center; justify-items: start; gap: 4px; padding: 18px clamp(18px, 3vw, 36px); }
-.play-kicker { font: 700 12px var(--font-ui); letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
-.play-pitch strong { font: 800 clamp(22px, 2.4vw, 28px)/1.1 var(--font-display); margin-bottom: 10px; }
+.play-lineup img { display: block; height: clamp(84px, 9vw, 112px); width: auto; margin-bottom: 1px; }
+.play-line { font: 800 clamp(19px, 2vw, 25px)/1.15 var(--font-display); }
 .play-button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 11px 22px;
+  padding: 11px 20px;
   border-radius: 12px;
   background: var(--ink);
   color: #fff;
   font: 700 17px/1 var(--font-ui);
+  white-space: nowrap;
   box-shadow: 0 3px 0 #000;
-  transition: background 0.15s, transform 0.15s;
+  transition: background 0.15s;
 }
+.play-button span { transition: transform 0.15s; }
 .play-banner:hover .play-button { background: var(--accent); }
 .play-banner:hover .play-button span { transform: translateX(3px); }
-.play-button span { transition: transform 0.15s; }
-@media (max-width: 720px) {
-  .play-banner { grid-template-columns: minmax(0, 1fr); }
-  .play-lineup { border-right: 0; border-bottom: 2px solid #e4d3c2; }
-  .play-pitch { grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 12px; padding: 14px 16px; }
-  .play-pitch .play-kicker { grid-column: 1; }
-  .play-pitch strong { grid-column: 1; margin: 0; font-size: 20px; }
-  .play-kicker { letter-spacing: 0.06em; font-size: 11px; }
-  .play-button { grid-column: 2; grid-row: 1 / span 2; }
+/* Narrow screens: the lineup across the top, the line and the button beside each other below. */
+@media (max-width: 760px) {
+  .play-banner { grid-template-columns: minmax(0, 1fr) auto; row-gap: 12px; padding: 0 14px 14px 0; }
+  .play-lineup { grid-column: 1 / -1; justify-content: center; border-right: 0; border-bottom: 2px solid #e4d3c2; }
+  .play-lineup img { height: auto; width: 100%; max-width: 420px; }
+  .play-line { padding-left: 14px; font-size: 18px; }
 }
 @media (prefers-reduced-motion: reduce) { .play-banner, .play-banner:hover { transition: none; transform: none; } }
+.play-line span { display: block; color: var(--accent); }
