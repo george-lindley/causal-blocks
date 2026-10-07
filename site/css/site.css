@@ -498,26 +498,27 @@ footer p { margin: 0 0 8px; max-width: 80ch; }
 .top nav a.nav-play { font-weight: 700; color: var(--accent); text-decoration: none; }
 .top nav a.nav-play:hover { text-decoration: underline; }
 .play-banner {
-  display: grid;
-  gap: 18px;
-  margin: 8px 0 28px;
-  padding: 22px clamp(16px, 3vw, 32px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px clamp(16px, 3vw, 40px);
+  margin: 4px 0 24px;
+  padding: 4px clamp(12px, 3vw, 32px);
   border-radius: 20px;
   background: #fff7ef;
   border: 2px solid #f3d3b4;
-  color: var(--ink);
   text-decoration: none;
   transition: box-shadow 0.2s, transform 0.2s;
 }
 .play-banner:hover { box-shadow: 0 10px 28px -16px rgba(217, 115, 31, 0.7); transform: translateY(-2px); }
-.play-cast { display: flex; justify-content: center; gap: clamp(4px, 2vw, 22px); }
-.play-cast figure { margin: 0; display: grid; justify-items: center; gap: 4px; min-width: 0; }
-.play-cast img { width: clamp(52px, 13vw, 104px); height: auto; }
-.play-cast figcaption { font: 700 clamp(11px, 1.6vw, 14px)/1.1 var(--font-ui); color: var(--muted); text-align: center; }
-.play-text { display: grid; gap: 6px; justify-items: center; text-align: center; }
-.play-kicker { font: 700 12px var(--font-ui); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
-.play-text strong { font: 800 clamp(24px, 3.6vw, 34px)/1.1 var(--font-display); }
-.play-text span:not(.play-kicker):not(.play-button) { color: var(--muted); max-width: 52ch; }
-.play-button { margin-top: 8px; display: inline-block; padding: 12px 26px; border-radius: 999px; background: var(--accent); color: #fff; font: 700 18px var(--font-ui); }
+.play-cast { display: flex; align-items: center; gap: clamp(0px, 1vw, 12px); min-width: 0; }
+.play-cast img { width: clamp(64px, 12vw, 150px); height: auto; margin: -6px 0; }
+.play-button { flex: none; padding: 14px 28px; border-radius: 999px; background: var(--accent); color: #fff; font: 700 19px var(--font-ui); white-space: nowrap; }
 .play-banner:hover .play-button { background: #c4610f; }
+@media (max-width: 640px) {
+  .play-banner { padding: 4px 8px 14px; }
+  .play-cast { width: 100%; justify-content: space-between; gap: 0; }
+  .play-cast img { width: 19%; margin: -2px 0; }
+}
 @media (prefers-reduced-motion: reduce) { .play-banner, .play-banner:hover { transition: none; transform: none; } }
