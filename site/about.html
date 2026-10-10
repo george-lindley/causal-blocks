@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Why Causation · Causal Blocks</title>
-<meta name="description" content="Everyone knows correlation is not causation. Causal Blocks is about what to do instead: draw your assumptions, and see what they do to the answer.">
+<meta name="description" content="Correlation isn't causation. So what is? Meet the suspects behind fake links, and learn how scientists find out what really causes what.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,82 +30,84 @@
     </nav>
   </header>
 
-  <article class="prose">
-    <h1>Correlation is not causation. So what is?</h1>
-    <p class="standfirst">Everyone learns the slogan. Almost no one is taught what to do about it.
-      Causal Blocks is a small project to change that: draw what you believe causes what,
-      and see what those beliefs do to the answer.</p>
+  <article class="prose why">
+    <h1>Correlation isn't causation. So what is?</h1>
+    <p class="standfirst">You've probably heard it: <i>correlation isn't causation</i>. Two things going up together
+      doesn't prove one causes the other. But hardly anyone tells you what to do next. That's what this site is for.</p>
 
-    <h2>The question behind most questions</h2>
-    <p>Most questions people bring to data are really about cause. Will this treatment help?
-      Would a smaller class raise grades? Does the new pricing bring in customers, or were
-      they coming anyway? Each one asks what would happen <em>if we changed something</em>.</p>
-    <p>A correlation answers a different question: when one thing is higher, is the other
-      usually higher too? That can be true without either causing the other. Treating one
-      question as the other is the most common mistake in data analysis, and it is easy to
-      make without noticing.</p>
+    <h2>Two things going up together</h2>
+    <p>On hot summer days, ice cream sales go up. So do shark attacks. A newspaper could print
+      <b>"Ice cream causes shark attacks!"</b> and the numbers would seem to back it up.</p>
+    <p>That pattern is a <b>correlation</b>: when one thing is high, the other tends to be high too.
+      A <b>cause</b> is different. It means that if you <i>changed</i> one thing, the other would change because of it.
+      Banning ice cream wouldn't save a single swimmer.</p>
 
-    <h2>Three ways a correlation misleads</h2>
-    <ol class="reasons">
-      <li><b>A common cause.</b> People who carry lighters get lung cancer more often. Lighters
-        don't cause cancer; smoking causes both. The shared cause is called a
-        <span class="role-tag" style="--c: var(--role-confounder)">confounder</span>.</li>
-      <li><b>The arrow points the other way.</b> Areas with more police have more crime. That
-        is mostly because police are sent where crime is, not because police create it.</li>
-      <li><b>Only looking at some cases.</b> Among hospital patients, two unrelated illnesses
-        can look linked, because having either one is a reason to be in hospital. Selecting
-        on a shared result creates a pattern. That shared result is a
-        <span class="role-tag" style="--c: var(--role-collider)">collider</span>.</li>
-    </ol>
+    <h2>Meet the suspects</h2>
+    <p>When two things go together, one of these is usually behind it.</p>
+    <div class="why-suspects">
+      <div class="why-suspect" style="--c: var(--role-confounder)">
+        <img src="https://play.causalblocks.com/img/cast/confounder.svg" alt="" width="80" height="84">
+        <div><h3>Mr Confounder: a hidden cause</h3>
+          <p>Something else causes both. Hot weather sells ice cream <i>and</i> sends people into the sea, where the sharks are.
+            He pulls two strings at once, so two things rise together without ever touching.</p></div>
+      </div>
+      <div class="why-suspect" style="--c: var(--edge)">
+        <span class="why-arrow" aria-hidden="true">⇄</span>
+        <div><h3>The arrow points the other way</h3>
+          <p>Towns with more police have more crime. The police don't cause the crime: police get sent to where the crime is.
+            The link is real, but it runs backwards.</p></div>
+      </div>
+      <div class="why-suspect" style="--c: var(--role-collider)">
+        <img src="https://play.causalblocks.com/img/cast/bouncer.svg" alt="" width="80" height="84">
+        <div><h3>Mr Bouncer: only looking at some people</h3>
+          <p>A club's bouncer lets you in if you're rich <i>or</i> good-looking. Inside, the rich people seem less good-looking.
+            Out in the town there's no link at all. Only looking at who got in made one up.</p></div>
+      </div>
+      <div class="why-suspect" style="--c: var(--role-mediator)">
+        <img src="https://play.causalblocks.com/img/cast/mediator.svg" alt="" width="80" height="84">
+        <div><h3>Mr Mediator: how a real cause travels</h3>
+          <p>He isn't a trick. Revision club helps you understand the topic, and understanding helps you pass.
+            The effect is real, and he carries it. Stop him and the effect stops too.</p></div>
+      </div>
+    </div>
 
-    <h2>"Just control for it" is not the fix</h2>
-    <p>The usual response is to add more variables to the regression. Sometimes that
-      helps. Sometimes it quietly makes things worse. Adding a variable has three possible
-      effects, and the data alone cannot tell you which one you are getting:</p>
+    <h2>So how do you find out what really causes what?</h2>
+    <h3>If you can, do an experiment</h3>
+    <p>The fairest test is to pick a <b>random</b> half of people, change one thing for them (say, send them to revision club),
+      and compare them with everyone else. Because the groups were picked at random, nothing else is different between them.
+      If the result changes, you've found a cause.</p>
+    <h3>If you can't, draw a map</h3>
+    <p>Often you can't experiment. You can't make half the world's summers hotter. So you draw your best guess as boxes and arrows,
+      where each arrow means "this causes that". Scientists call this a <b>causal diagram</b> (or a DAG). Then you make a
+      <b>fair comparison</b>: compare hot days with hot days, so the weather can't fool you. That's called <b>controlling for</b> the weather.</p>
+    <p>The catch is knowing what to hold fixed. Get it wrong and the answer gets worse, not better:</p>
     <div class="table-scroll">
       <table class="roles">
-        <thead><tr><th>If the variable is a…</th><th>Adjusting for it…</th></tr></thead>
+        <thead><tr><th>If it's…</th><th>Hold it fixed?</th></tr></thead>
         <tbody>
-          <tr><td><span class="role-tag" style="--c: var(--role-confounder)">confounder</span></td><td>removes bias. You need it.</td></tr>
-          <tr><td><span class="role-tag" style="--c: var(--role-mediator)">mediator</span></td><td>changes the question you answered, from the total effect to the direct one.</td></tr>
-          <tr><td><span class="role-tag" style="--c: var(--role-collider)">collider</span></td><td>creates bias that was not there before.</td></tr>
+          <tr><td><span class="role-tag" style="--c: var(--role-confounder)">Mr Confounder</span></td><td><b>Yes.</b> It stops him fooling you.</td></tr>
+          <tr><td><span class="role-tag" style="--c: var(--role-mediator)">Mr Mediator</span></td><td><b>No.</b> You'd block the real effect.</td></tr>
+          <tr><td><span class="role-tag" style="--c: var(--role-collider)">Mr Bouncer</span></td><td><b>Never.</b> You'd make up a link that isn't there.</td></tr>
         </tbody>
       </table>
     </div>
-    <p>Which role a variable plays depends on how everything is connected. So the connections
-      have to be written down first.</p>
+    <p>The numbers can't tell you which suspect is which. Your map can. That's why you draw it first.</p>
 
-    <h2>Draw your assumptions</h2>
-    <p>The tool for writing them down is a causal graph: a set of boxes and arrows, where each
-      arrow says "this directly affects that". Once the graph is drawn, a rule called the
-      <b>backdoor criterion</b> tells you exactly which variables to adjust for and which to leave
-      alone. Libraries such as <a href="https://www.pywhy.org/dowhy/">DoWhy</a> apply that rule
-      and estimate the effect.</p>
-    <p>The graph is an assumption, not a fact. That is its value. It puts your reasoning where
-      someone else can see it and argue with it, instead of leaving it hidden inside the choice
-      of control variables.</p>
+    <h2>Why it matters</h2>
+    <p>Headlines, adverts and even school decisions are full of claims like "pupils who eat breakfast get better grades".
+      Is it the breakfast, or something else about those pupils? Asking <b>"what else could cause this?"</b> is one of the most
+      useful habits you can have in a world full of numbers. Real researchers use exactly these ideas, with tools like
+      <a href="https://www.pywhy.org/dowhy/">DoWhy</a>.</p>
 
-    <h2>What Causal Blocks is for</h2>
-    <p>Causal inference is decades old, standard in epidemiology and economics, and still missing
-      from many statistics, analytics and data science courses. Causal Blocks exists to make it
-      easier to pick up, especially for students:</p>
-    <ul>
-      <li><b>An interactive demo</b> where you draw a graph over real data and watch DoWhy's
-        estimate change with every arrow. Each variable is coloured by the role it plays, so
-        the graph explains itself.</li>
-      <li><b><a href="try.html">Try your own data</a></b>: upload a CSV, draw your graph over its columns,
-        and get an estimate straight away, checked by DoWhy running in your browser. Your data never leaves your computer.</li>
-      <li><b>Worked examples</b> that show the mistakes happening, on real data and on simulated
-        data where the true answer is known.</li>
-      <li><b>Open-source code</b>, so you can check every number.</li>
+    <h2>Try it yourself</h2>
+    <ul class="why-try">
+      <li><a href="https://play.causalblocks.com"><b>Play the game</b></a>: read the headline, draw your map and catch the suspect.</li>
+      <li><a href="free-build.html"><b>Free Build</b></a>: real research data, from exam results in English towns to IELTS English tests.
+        Draw your theory and DoWhy works out the answer.</li>
     </ul>
-    <p>The first example uses data on education in English towns, because it shows all of this
-      in one dataset: the published correlation, the result you get by controlling for everything,
-      and a different story once the causes are drawn. <a href="towns.html">See the case study</a>. The subject
-      is only the example. The point is the habit of asking what causes what before fitting
-      anything.</p>
 
-    <h2>Read more</h2>
+    <details class="why-more">
+      <summary>Want to go further? Reading for older students and teachers</summary>
     <ul class="reading">
       <li>
         <a href="http://bayes.cs.ucla.edu/WHY/">The Book of Why</a>
@@ -154,10 +156,12 @@
       </li>
     </ul>
 
+    </details>
+
     <h2 id="contact">Get in touch</h2>
     <p>Causal Blocks is made by George Lindley. I'd like to hear from you if you:</p>
     <ul>
-      <li>teach statistics, analytics or data science and would like to use it with your students,</li>
+      <li>teach (at any level) and would like to use it with your students,</li>
       <li>have a dataset or example that would make a good lesson,</li>
       <li>want to collaborate on teaching causal thinking, or have ideas for what it should do next.</li>
     </ul>

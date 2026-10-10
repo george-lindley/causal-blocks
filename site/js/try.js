@@ -3,6 +3,7 @@
 
 import { ROLE_TEXT, createBoard } from "./board.js";
 import { CHARACTER } from "./names.js";
+import { SAMPLES } from "./samples.js";
 import { Role, dowhyBackdoor, primaryRole, roles } from "./causal.js";
 import { KIND_LABELS, Kind, allowedKinds, completeRows, estimable, readTable } from "./data.js";
 import { CollinearError, estimateEffect, refute, simulationBudget } from "./estimate.js";
@@ -12,6 +13,8 @@ const MAX_BLOCKS = 15;
 const $ = (id) => document.getElementById(id);
 
 const state = {
+  sample: null, // which sample dataset is loaded (null for your own file)
+  preset: null, // which of its preset graphs is showing (null once you edit it)
   table: null,
   fileName: "",
   treatment: null,
@@ -67,6 +70,9 @@ function parse(source, name) {
         return;
       }
       state.fileName = name;
+      state.sample = null;
+      state.preset = null;
+      renderPresets();
       state.treatment = state.outcome = null;
       startDoWhy();
       renderColumns();
@@ -96,10 +102,71 @@ dz.addEventListener("drop", (e) => {
   if (file) parse(file, file.name);
 });
 
-$("use-towns").addEventListener("click", async () => {
-  const text = await fetch("data/english_education.csv").then((r) => r.text());
-  parse(text, "english_education.csv");
-});
+// ---------------------------------------------------------------------------
+// Samples: known columns, so straight onto the map with preset graphs
+// ---------------------------------------------------------------------------
+
+async function loadSample(key) {
+  const sample = SAMPLES[key];
+  const text = await fetch(sample.file).then((r) => r.text());
+  Papa.parse(text, {
+    skipEmptyLines: "greedy",
+    complete: (res) => {
+      state.table = readTable(res.data);
+      for (const col of state.table.columns) {
+        const how = sample.columns[col.label];
+        if (!how) {
+          col.kind = Kind.EXCLUDE;
+          continue;
+        }
+        col.kind = how.kind;
+        if (how.levels) col.levels = how.levels;
+        if (how.positive) col.positive = how.positive;
+      }
+      state.fileName = sample.file.split("/").pop();
+      state.sample = key;
+      startDoWhy();
+      $("columns-step").hidden = true;
+      $("draw-step").hidden = false;
+      usePreset(0);
+      $("draw-step").scrollIntoView({ behavior: "smooth", block: "start" });
+    },
+  });
+}
+
+/** Lay out one of the sample's preset graphs and show its numbers. */
+function usePreset(i) {
+  const sample = SAMPLES[state.sample];
+  const p = sample.presets[i];
+  const id = (name) => state.table.columns.find((c) => c.label === name).id;
+  board.load(Object.fromEntries(Object.entries(p.pos).map(([n, xy]) => [id(n), xy])), p.edges.map(([a, b]) => [id(a), id(b)]));
+  state.treatment = id(sample.cause);
+  state.outcome = id(sample.effect);
+  state.seen.clear();
+  state.lastGraph = null;
+  state.preset = i;
+  renderPresets();
+  update();
+}
+
+function renderPresets() {
+  const sample = SAMPLES[state.sample];
+  const bar = $("presets-bar");
+  bar.hidden = !sample;
+  if (!sample) return;
+  const chip = (p, i) => `<button type="button" class="chip${p.mistake ? " mistake" : ""}" data-preset="${i}" aria-pressed="${state.preset === i}">${escapeHtml(p.name)}</button>`;
+  const good = sample.presets.map((p, i) => [p, i]).filter(([p]) => !p.mistake);
+  const bad = sample.presets.map((p, i) => [p, i]).filter(([p]) => p.mistake);
+  $("presets").innerHTML = `<span class="label">Start from</span>${good.map(([p, i]) => chip(p, i)).join("")}
+    ${bad.length ? `<span class="label mistakes-label">Common mistakes</span>${bad.map(([p, i]) => chip(p, i)).join("")}` : ""}`;
+  $("preset-note").textContent = state.preset === null ? "" : sample.presets[state.preset].note;
+  for (const b of $("presets").querySelectorAll("[data-preset]")) b.onclick = () => usePreset(Number(b.dataset.preset));
+}
+
+for (const b of document.querySelectorAll("[data-sample]")) b.addEventListener("click", () => loadSample(b.dataset.sample));
+// A link like free-build.html?sample=towns opens that sample straight away.
+const asked = new URLSearchParams(location.search).get("sample");
+if (asked && SAMPLES[asked]) loadSample(asked);
 
 // ---------------------------------------------------------------------------
 // 2. Check columns
@@ -174,6 +241,12 @@ $("columns-table").addEventListener("click", (e) => {
 const board = createBoard($("canvas"), {
   label,
   locked: (id) => id === state.treatment || id === state.outcome,
+  onEdit: () => {
+    if (state.preset !== null && state.preset !== undefined) {
+      state.preset = null;
+      renderPresets();
+    }
+  },
   onChange: () => update(),
   toast,
   roleText: CHARACTER,
@@ -245,7 +318,11 @@ const quote = (s) => `“${escapeHtml(s)}”`;
 /** "A one-unit increase in hours", "Cases where smoker is “yes”", "One step up in income band". */
 function causePhrase(col) {
   const name = `<b>${escapeHtml(col.label)}</b>`;
-  if (col.kind === Kind.BINARY) return `${name} being ${quote(col.positive)}, rather than not,`;
+  if (col.kind === Kind.BINARY) {
+    // "Official English, rather than not," when the yes-value is just the column's own name.
+    if (col.positive.trim().toLowerCase() === col.label.trim().toLowerCase()) return `${name}, rather than not,`;
+    return `${name} being ${quote(col.positive)}, rather than not,`;
+  }
   if (col.kind === Kind.ORDERED) return `One step up in ${name}`;
   return `A one-unit increase in ${name}`;
 }

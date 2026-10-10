@@ -1,0 +1,237 @@
+type,year,nationality,region,english_status,english_any,english_karamanis,listening,reading,writing,speaking,overall,speak_minus_write
+Academic,2022-2023,Bangladesh,South Asia,de facto working language,True,False,6.3,5.8,5.8,6.1,6.1,0.3
+Academic,2022-2023,Bhutan,South Asia,not listed,False,False,6.2,5.7,6.0,6.3,6.1,0.3
+Academic,2022-2023,Brazil,Latin America & Caribbean,not listed,False,False,7.0,7.2,6.1,6.9,6.9,0.8
+Academic,2022-2023,Cambodia,East Asia & Pacific,not listed,False,False,6.1,5.8,5.7,6.0,5.9,0.3
+Academic,2022-2023,China,East Asia & Pacific,not listed,False,False,6.1,6.4,5.8,5.6,6.1,-0.2
+Academic,2022-2023,Colombia,Latin America & Caribbean,not listed,False,False,6.7,6.9,6.0,6.6,6.6,0.6
+Academic,2022-2023,Egypt,Middle East & North Africa,not listed,False,False,7.0,6.5,6.0,6.7,6.6,0.7
+Academic,2022-2023,France,Europe & Central Asia,not listed,False,False,7.0,7.1,6.2,6.6,6.8,0.4
+Academic,2022-2023,Ghana,Sub-Saharan Africa,de jure official,True,True,6.8,6.2,6.3,7.1,6.7,0.8
+Academic,2022-2023,Hong Kong,East Asia & Pacific,de jure official,True,True,7.1,6.9,6.2,6.3,6.7,0.1
+Academic,2022-2023,India,South Asia,de jure official,True,True,6.6,6.0,5.9,6.1,6.2,0.2
+Academic,2022-2023,Indonesia,East Asia & Pacific,not listed,False,False,7.0,6.9,6.1,6.4,6.7,0.3
+Academic,2022-2023,Iran,Middle East & North Africa,not listed,False,False,6.7,6.4,6.0,6.7,6.5,0.7
+Academic,2022-2023,Italy,Europe & Central Asia,not listed,False,False,7.2,7.5,6.2,6.7,6.9,0.5
+Academic,2022-2023,Japan,East Asia & Pacific,not listed,False,False,6.0,6.1,5.7,5.5,5.9,-0.2
+Academic,2022-2023,Jordan,Middle East & North Africa,not listed,False,False,6.7,6.2,5.9,6.6,6.4,0.7
+Academic,2022-2023,Kazakhstan,Europe & Central Asia,not listed,False,False,6.5,6.4,5.8,6.1,6.3,0.3
+Academic,2022-2023,Kenya,Sub-Saharan Africa,de jure official,True,True,6.8,6.3,6.3,7.0,6.6,0.7
+Academic,2022-2023,"Korea, Republic of",East Asia & Pacific,not listed,False,False,6.5,6.4,5.9,5.9,6.2,0.0
+Academic,2022-2023,Kuwait,Middle East & North Africa,not listed,False,False,5.6,5.2,5.1,5.8,5.5,0.7
+Academic,2022-2023,Malaysia,East Asia & Pacific,de facto working language,True,True,7.5,7.2,6.4,6.8,7.0,0.4
+Academic,2022-2023,Mexico,Latin America & Caribbean,not listed,False,False,6.8,6.8,5.9,6.5,6.6,0.6
+Academic,2022-2023,Myanmar,East Asia & Pacific,not listed,False,False,6.9,6.7,6.1,6.3,6.6,0.2
+Academic,2022-2023,Nepal,South Asia,not listed,False,False,6.5,5.9,5.9,5.9,6.1,0.0
+Academic,2022-2023,Nigeria,Sub-Saharan Africa,de jure official,True,True,6.8,6.4,6.3,7.1,6.7,0.8
+Academic,2022-2023,Oman,Middle East & North Africa,not listed,False,False,5.2,5.0,5.3,5.6,5.3,0.3
+Academic,2022-2023,Pakistan,South Asia,de jure official,True,True,6.5,6.1,5.9,6.2,6.2,0.3
+Academic,2022-2023,Philippines,East Asia & Pacific,de jure official,True,True,7.2,6.6,6.2,6.8,6.8,0.6
+Academic,2022-2023,Qatar,Middle East & North Africa,not listed,False,False,5.7,5.1,5.2,5.9,5.5,0.7
+Academic,2022-2023,Russian Federation,Europe & Central Asia,not listed,False,False,7.2,7.2,6.2,6.8,6.9,0.6
+Academic,2022-2023,Saudi Arabia,Middle East & North Africa,not listed,False,False,5.9,5.5,5.3,6.1,5.8,0.8
+Academic,2022-2023,Spain,Europe & Central Asia,not listed,False,False,7.4,7.4,6.3,6.9,7.1,0.6
+Academic,2022-2023,Sri Lanka,South Asia,de facto working language,True,True,6.7,6.2,6.0,6.4,6.4,0.4
+Academic,2022-2023,Thailand,East Asia & Pacific,not listed,False,False,6.3,6.1,5.7,5.8,6.1,0.1
+Academic,2022-2023,Turkey,Europe & Central Asia,not listed,False,False,6.8,6.7,6.0,6.3,6.5,0.3
+Academic,2022-2023,United Arab Emirates,Middle East & North Africa,de facto working language,True,False,5.5,5.1,5.1,5.7,5.4,0.6
+Academic,2022-2023,Uzbekistan,Europe & Central Asia,not listed,False,False,6.0,5.7,5.6,5.7,5.8,0.1
+Academic,2022-2023,Vietnam,East Asia & Pacific,not listed,False,False,6.4,6.4,6.0,5.8,6.2,-0.2
+Academic,2022-2023,Zimbabwe,Sub-Saharan Africa,de jure official,True,False,7.0,6.5,6.4,7.3,6.8,0.9
+Academic,2023-2024,Azerbaijan,Europe & Central Asia,not listed,False,False,6.8581,6.6027,6.0544,6.4762,6.5611,0.4218
+Academic,2023-2024,Bangladesh,South Asia,de facto working language,True,False,5.9795,5.5838,5.6433,5.7683,5.8088,0.125
+Academic,2023-2024,Cambodia,East Asia & Pacific,not listed,False,False,6.1791,5.77,5.7901,6.103,6.0228,0.3129
+Academic,2023-2024,China,East Asia & Pacific,not listed,False,False,5.9342,6.2554,5.7692,5.5389,5.9392,-0.2303
+Academic,2023-2024,Colombia,Latin America & Caribbean,not listed,False,False,6.7395,6.8399,6.0266,6.5208,6.595,0.4942
+Academic,2023-2024,Egypt,Middle East & North Africa,not listed,False,False,7.0245,6.5796,6.0945,6.6682,6.6547,0.5737
+Academic,2023-2024,France,Europe & Central Asia,not listed,False,False,7.1126,7.1072,6.2067,6.7279,6.8519,0.5212
+Academic,2023-2024,Ghana,Sub-Saharan Africa,de jure official,True,True,6.7409,6.0454,6.2431,7.0408,6.5801,0.7977
+Academic,2023-2024,Hong Kong,East Asia & Pacific,de jure official,True,True,7.0479,6.8367,6.2011,6.3586,6.677,0.1575
+Academic,2023-2024,India,South Asia,de jure official,True,True,6.6467,6.136,6.1149,6.2145,6.3413,0.0996
+Academic,2023-2024,Indonesia,East Asia & Pacific,not listed,False,False,7.02,6.8919,6.1327,6.4159,6.6799,0.2831
+Academic,2023-2024,Iran,Middle East & North Africa,not listed,False,False,6.6158,6.3565,6.0208,6.5421,6.4498,0.5213
+Academic,2023-2024,Italy,Europe & Central Asia,not listed,False,False,7.315,7.4818,6.2318,6.6669,6.9878,0.4351
+Academic,2023-2024,Japan,East Asia & Pacific,not listed,False,False,5.9462,6.0566,5.6961,5.506,5.8649,-0.1901
+Academic,2023-2024,Jordan,Middle East & North Africa,not listed,False,False,6.7417,6.3228,5.9381,6.7399,6.499,0.8018
+Academic,2023-2024,Kazakhstan,Europe & Central Asia,not listed,False,False,6.56,6.3968,5.8428,6.1283,6.2968,0.2855
+Academic,2023-2024,Kenya,Sub-Saharan Africa,de jure official,True,True,6.7407,6.2742,6.2635,6.9197,6.6135,0.6561
+Academic,2023-2024,"Korea, Republic of",East Asia & Pacific,not listed,False,False,6.5203,6.4895,5.9386,5.8801,6.2705,-0.0585
+Academic,2023-2024,Kuwait,Middle East & North Africa,not listed,False,False,5.7198,5.2492,5.3041,5.9676,5.6242,0.6635
+Academic,2023-2024,Malaysia,East Asia & Pacific,de facto working language,True,True,7.5422,7.2289,6.4426,6.7886,7.0634,0.346
+Academic,2023-2024,Mexico,Latin America & Caribbean,not listed,False,False,6.7382,6.6854,5.9682,6.5345,6.5444,0.5663
+Academic,2023-2024,Mongolia,East Asia & Pacific,not listed,False,False,6.6509,6.2985,5.7846,6.2975,6.3215,0.5129
+Academic,2023-2024,Myanmar,East Asia & Pacific,not listed,False,False,6.8997,6.7661,6.1387,6.2764,6.5813,0.1377
+Academic,2023-2024,Nepal,South Asia,not listed,False,False,6.5818,6.0185,6.0062,6.0084,6.2173,0.0022
+Academic,2023-2024,Nigeria,Sub-Saharan Africa,de jure official,True,True,6.8171,6.3304,6.3306,7.0871,6.7046,0.7565
+Academic,2023-2024,Oman,Middle East & North Africa,not listed,False,False,5.2914,5.0062,5.3688,5.792,5.4292,0.4232
+Academic,2023-2024,Pakistan,South Asia,de jure official,True,True,6.5598,6.1603,5.9542,6.2939,6.3055,0.3397
+Academic,2023-2024,Philippines,East Asia & Pacific,de jure official,True,True,7.1886,6.6851,6.2742,6.821,6.806,0.5469
+Academic,2023-2024,Russian Federation,Europe & Central Asia,not listed,False,False,7.1856,7.0984,6.1837,6.6844,6.8517,0.5007
+Academic,2023-2024,Saudi Arabia,Middle East & North Africa,not listed,False,False,5.9769,5.5757,5.3693,6.1615,5.8354,0.7923
+Academic,2023-2024,Spain,Europe & Central Asia,not listed,False,False,7.4522,7.3798,6.3112,6.8865,7.0702,0.5752
+Academic,2023-2024,Sri Lanka,South Asia,de facto working language,True,True,6.6459,6.1858,5.9633,6.3486,6.3488,0.3853
+Academic,2023-2024,Thailand,East Asia & Pacific,not listed,False,False,6.4217,6.1715,5.7571,5.8851,6.1231,0.128
+Academic,2023-2024,Turkey,Europe & Central Asia,not listed,False,False,6.8056,6.6081,5.9554,6.2447,6.4685,0.2894
+Academic,2023-2024,Ukraine,Europe & Central Asia,not listed,False,False,6.9082,6.6567,5.9606,6.6079,6.597,0.6474
+Academic,2023-2024,United Arab Emirates,Middle East & North Africa,de facto working language,True,False,5.5977,5.1074,5.1492,5.8864,5.498,0.7372
+Academic,2023-2024,Uzbekistan,Europe & Central Asia,not listed,False,False,6.2745,5.8998,5.7326,5.7762,5.9851,0.0436
+Academic,2023-2024,Vietnam,East Asia & Pacific,not listed,False,False,6.3138,6.4117,6.0114,5.6576,6.1646,-0.3538
+Academic,2023-2024,Zimbabwe,Sub-Saharan Africa,de jure official,True,False,7.1689,6.5714,6.4016,7.3667,6.942,0.9651
+Academic,2024-2025,Azerbaijan,Europe & Central Asia,not listed,False,False,6.585,6.895,6.0722,6.5782,6.5951,0.506
+Academic,2024-2025,Bangladesh,South Asia,de facto working language,True,False,5.816,6.2321,5.8292,5.8811,6.004,0.0519
+Academic,2024-2025,Cambodia,East Asia & Pacific,not listed,False,False,5.7891,6.2061,5.8185,6.0562,6.0292,0.2377
+Academic,2024-2025,China,East Asia & Pacific,not listed,False,False,6.2093,5.9039,5.7551,5.5003,5.9068,-0.2549
+Academic,2024-2025,Colombia,Latin America & Caribbean,not listed,False,False,6.7741,6.666,6.0012,6.432,6.5305,0.4308
+Academic,2024-2025,Egypt,Middle East & North Africa,not listed,False,False,6.6056,7.066,6.1033,6.6521,6.6714,0.5488
+Academic,2024-2025,France,Europe & Central Asia,not listed,False,False,7.1025,7.143,6.1995,6.6754,6.8454,0.4759
+Academic,2024-2025,Germany,Europe & Central Asia,not listed,False,False,7.7991,8.1034,6.6261,7.5139,7.574,0.8878
+Academic,2024-2025,Ghana,Sub-Saharan Africa,de jure official,True,True,6.1095,6.8133,6.279,7.0625,6.6304,0.7835
+Academic,2024-2025,Hong Kong,East Asia & Pacific,de jure official,True,True,6.786,6.9814,6.1742,6.3169,6.629,0.1427
+Academic,2024-2025,India,South Asia,de jure official,True,True,6.409,6.9375,6.2433,6.4697,6.5786,0.2264
+Academic,2024-2025,Indonesia,East Asia & Pacific,not listed,False,False,6.8929,7.0688,6.1603,6.3533,6.683,0.193
+Academic,2024-2025,Iran,Middle East & North Africa,not listed,False,False,6.4675,6.7211,6.0795,6.6562,6.5448,0.5766
+Academic,2024-2025,Italy,Europe & Central Asia,not listed,False,False,7.488,7.3607,6.2453,6.6538,7.0004,0.4085
+Academic,2024-2025,Japan,East Asia & Pacific,not listed,False,False,5.9941,5.932,5.6534,5.466,5.8243,-0.1874
+Academic,2024-2025,Jordan,Middle East & North Africa,not listed,False,False,6.3444,6.8101,5.9615,6.7556,6.5304,0.7941
+Academic,2024-2025,Kazakhstan,Europe & Central Asia,not listed,False,False,6.3013,6.4961,5.8125,6.1469,6.2532,0.3344
+Academic,2024-2025,Kenya,Sub-Saharan Africa,de jure official,True,True,6.359,6.8836,6.3134,7.0114,6.7031,0.698
+Academic,2024-2025,"Korea, Republic of",East Asia & Pacific,not listed,False,False,6.5062,6.5257,5.9453,5.8721,6.2769,-0.0732
+Academic,2024-2025,Kuwait,Middle East & North Africa,not listed,False,False,5.2697,5.721,5.2815,5.9208,5.6115,0.6393
+Academic,2024-2025,Malaysia,East Asia & Pacific,de facto working language,True,True,7.2216,7.5709,6.4551,6.7308,7.061,0.2757
+Academic,2024-2025,Mexico,Latin America & Caribbean,not listed,False,False,6.6773,6.7366,5.9827,6.5065,6.5385,0.5238
+Academic,2024-2025,Mongolia,East Asia & Pacific,not listed,False,False,6.362,6.7776,5.7736,6.2275,6.3467,0.4539
+Academic,2024-2025,Myanmar,East Asia & Pacific,not listed,False,False,6.71,6.9216,6.1021,6.2201,6.5538,0.118
+Academic,2024-2025,Nepal,South Asia,not listed,False,False,6.0188,6.5704,5.9929,6.0197,6.2137,0.0268
+Academic,2024-2025,Nigeria,Sub-Saharan Africa,de jure official,True,True,6.3579,6.8705,6.298,7.0837,6.7151,0.7857
+Academic,2024-2025,Oman,Middle East & North Africa,not listed,False,False,5.0122,5.1984,5.36,5.8058,5.4078,0.4458
+Academic,2024-2025,Pakistan,South Asia,de jure official,True,True,6.2385,6.6464,6.0307,6.3489,6.3797,0.3182
+Academic,2024-2025,Philippines,East Asia & Pacific,de jure official,True,True,6.6724,7.1888,6.2957,6.8268,6.8101,0.5311
+Academic,2024-2025,Russian Federation,Europe & Central Asia,not listed,False,False,7.094,7.1914,6.1878,6.6905,6.8557,0.5027
+Academic,2024-2025,Saudi Arabia,Middle East & North Africa,not listed,False,False,5.5931,5.9878,5.3822,6.1792,5.8483,0.797
+Academic,2024-2025,Spain,Europe & Central Asia,not listed,False,False,7.3894,7.4943,6.3285,6.8948,7.091,0.5663
+Academic,2024-2025,Sri Lanka,South Asia,de facto working language,True,True,6.3587,6.7834,6.0369,6.3763,6.4515,0.3394
+Academic,2024-2025,Taiwan,East Asia & Pacific,not listed,False,False,6.5064,6.5836,5.8917,6.0015,6.3103,0.1098
+Academic,2024-2025,Thailand,East Asia & Pacific,not listed,False,False,6.2399,6.5434,5.8054,5.9498,6.1981,0.1444
+Academic,2024-2025,Turkey,Europe & Central Asia,not listed,False,False,6.5499,6.781,5.9305,6.2176,6.4339,0.2871
+Academic,2024-2025,Ukraine,Europe & Central Asia,not listed,False,False,6.6608,6.9196,5.9584,6.5764,6.5932,0.618
+Academic,2024-2025,United Arab Emirates,Middle East & North Africa,de facto working language,True,False,5.1369,5.6141,5.1111,5.9026,5.5037,0.7915
+Academic,2024-2025,Uzbekistan,Europe & Central Asia,not listed,False,False,5.9921,6.3746,5.8102,5.8588,6.0735,0.0486
+Academic,2024-2025,Vietnam,East Asia & Pacific,not listed,False,False,6.4854,6.3839,6.0649,5.6097,6.2013,-0.4552
+General Training,2022-2023,Argentina,Latin America & Caribbean,not listed,False,False,6.5,6.4,6.0,6.3,6.4,0.3
+General Training,2022-2023,Bangladesh,South Asia,de facto working language,True,False,5.8,5.1,5.6,5.9,5.7,0.3
+General Training,2022-2023,Brazil,Latin America & Caribbean,not listed,False,False,6.7,6.7,6.2,6.7,6.6,0.5
+General Training,2022-2023,Cameroon,Sub-Saharan Africa,de jure official,True,False,5.5,5.1,6.0,6.1,5.7,0.1
+General Training,2022-2023,Chile,Latin America & Caribbean,not listed,False,False,6.2,6.1,5.8,5.9,6.1,0.1
+General Training,2022-2023,China,East Asia & Pacific,not listed,False,False,6.5,6.5,6.1,6.1,6.3,0.0
+General Training,2022-2023,Colombia,Latin America & Caribbean,not listed,False,False,6.3,6.3,6.0,6.4,6.3,0.4
+General Training,2022-2023,Egypt,Middle East & North Africa,not listed,False,False,6.6,6.2,6.1,6.6,6.4,0.5
+General Training,2022-2023,France,Europe & Central Asia,not listed,False,False,7.2,7.2,6.4,6.9,7.0,0.5
+General Training,2022-2023,Ghana,Sub-Saharan Africa,de jure official,True,True,6.1,5.4,6.2,7.0,6.2,0.8
+General Training,2022-2023,Hong Kong,East Asia & Pacific,de jure official,True,True,6.8,6.6,6.2,6.3,6.5,0.1
+General Training,2022-2023,India,South Asia,de jure official,True,True,6.7,6.1,6.1,6.4,6.4,0.3
+General Training,2022-2023,Indonesia,East Asia & Pacific,not listed,False,False,5.9,5.5,5.7,5.7,5.8,0.0
+General Training,2022-2023,Iran,Middle East & North Africa,not listed,False,False,6.2,5.8,6.0,6.4,6.1,0.4
+General Training,2022-2023,Italy,Europe & Central Asia,not listed,False,False,6.6,6.4,6.0,6.4,6.4,0.4
+General Training,2022-2023,Japan,East Asia & Pacific,not listed,False,False,6.0,5.7,5.7,5.7,5.9,0.0
+General Training,2022-2023,Jordan,Middle East & North Africa,not listed,False,False,6.4,6.0,6.0,6.6,6.3,0.6
+General Training,2022-2023,Kenya,Sub-Saharan Africa,de jure official,True,True,6.3,5.8,6.3,7.0,6.4,0.7
+General Training,2022-2023,"Korea, Republic of",East Asia & Pacific,not listed,False,False,6.1,5.8,5.7,5.7,5.9,0.0
+General Training,2022-2023,Lebanon,Middle East & North Africa,not listed,False,False,7.0,6.6,6.4,6.7,6.7,0.3
+General Training,2022-2023,Malaysia,East Asia & Pacific,de facto working language,True,True,7.0,6.6,6.3,6.7,6.7,0.4
+General Training,2022-2023,Mauritius,Sub-Saharan Africa,de facto working language,True,False,6.9,6.5,6.5,6.8,6.7,0.3
+General Training,2022-2023,Mexico,Latin America & Caribbean,not listed,False,False,6.7,6.5,6.1,6.6,6.5,0.5
+General Training,2022-2023,Morocco,Middle East & North Africa,not listed,False,False,6.2,6.0,5.9,6.4,6.2,0.5
+General Training,2022-2023,Nepal,South Asia,not listed,False,False,5.9,5.1,5.7,5.7,5.6,0.0
+General Training,2022-2023,Nigeria,Sub-Saharan Africa,de jure official,True,True,6.3,5.8,6.4,7.1,6.5,0.7
+General Training,2022-2023,Pakistan,South Asia,de jure official,True,True,6.5,5.9,6.1,6.4,6.3,0.3
+General Training,2022-2023,Philippines,East Asia & Pacific,de jure official,True,True,6.0,5.3,5.8,6.0,5.9,0.2
+General Training,2022-2023,Russian Federation,Europe & Central Asia,not listed,False,False,7.1,7.1,6.3,6.7,6.9,0.4
+General Training,2022-2023,Saudi Arabia,Middle East & North Africa,not listed,False,False,5.1,4.3,4.8,5.4,4.9,0.6
+General Training,2022-2023,South Africa,Sub-Saharan Africa,de jure official,True,False,7.1,6.6,6.5,8.0,7.1,1.5
+General Training,2022-2023,Spain,Europe & Central Asia,not listed,False,False,6.7,6.7,6.2,6.4,6.6,0.2
+General Training,2022-2023,Sri Lanka,South Asia,de facto working language,True,True,6.5,6.0,6.0,6.5,6.3,0.5
+General Training,2022-2023,Thailand,East Asia & Pacific,not listed,False,False,5.3,4.9,5.3,5.3,5.3,0.0
+General Training,2022-2023,Turkey,Europe & Central Asia,not listed,False,False,6.2,6.0,5.8,6.0,6.1,0.2
+General Training,2022-2023,Uganda,Sub-Saharan Africa,de jure official,True,False,5.6,5.1,6.1,6.8,5.9,0.7
+General Training,2022-2023,United States of America,North America,"predominant, not de jure",True,False,8.3,7.9,7.3,8.6,8.1,1.3
+General Training,2022-2023,Vietnam,East Asia & Pacific,not listed,False,False,5.9,5.7,5.9,5.6,5.8,-0.3
+General Training,2022-2023,Zimbabwe,Sub-Saharan Africa,de jure official,True,False,6.0,5.5,6.2,6.8,6.2,0.6
+General Training,2023-2024,Argentina,Latin America & Caribbean,not listed,False,False,6.3654,6.3213,6.0359,6.1777,6.2896,0.1418
+General Training,2023-2024,Bangladesh,South Asia,de facto working language,True,False,5.4624,4.6267,5.4359,5.4768,5.3122,0.041
+General Training,2023-2024,Brazil,Latin America & Caribbean,not listed,False,False,6.6772,6.5906,6.1765,6.6418,6.5843,0.4653
+General Training,2023-2024,Cameroon,Sub-Saharan Africa,de jure official,True,False,5.3826,4.9059,5.9428,6.1177,5.6497,0.1749
+General Training,2023-2024,Chile,Latin America & Caribbean,not listed,False,False,6.0676,5.9587,5.8431,5.9472,6.0215,0.104
+General Training,2023-2024,China,East Asia & Pacific,not listed,False,False,6.3302,6.2949,6.014,5.9626,6.2139,-0.0514
+General Training,2023-2024,Colombia,Latin America & Caribbean,not listed,False,False,6.3456,6.2342,6.0235,6.3444,6.2983,0.3209
+General Training,2023-2024,Egypt,Middle East & North Africa,not listed,False,False,6.5956,6.2294,6.1161,6.5062,6.4242,0.3901
+General Training,2023-2024,France,Europe & Central Asia,not listed,False,False,7.1068,7.0103,6.3655,6.8302,6.8898,0.4648
+General Training,2023-2024,Ghana,Sub-Saharan Africa,de jure official,True,True,5.8224,4.9693,6.0802,6.8068,5.979,0.7266
+General Training,2023-2024,Hong Kong,East Asia & Pacific,de jure official,True,True,6.9707,6.7277,6.3086,6.4375,6.6773,0.1289
+General Training,2023-2024,India,South Asia,de jure official,True,True,6.7025,6.0764,6.1471,6.3378,6.3789,0.1906
+General Training,2023-2024,Indonesia,East Asia & Pacific,not listed,False,False,5.7374,5.3872,5.6914,5.654,5.6808,-0.0374
+General Training,2023-2024,Iran,Middle East & North Africa,not listed,False,False,6.2417,5.9066,6.0074,6.3169,6.1806,0.3095
+General Training,2023-2024,Italy,Europe & Central Asia,not listed,False,False,6.7208,6.5881,6.1148,6.5197,6.5469,0.4049
+General Training,2023-2024,Japan,East Asia & Pacific,not listed,False,False,5.8861,5.5889,5.6789,5.6508,5.7605,-0.0281
+General Training,2023-2024,Kenya,Sub-Saharan Africa,de jure official,True,True,6.3068,5.7252,6.2967,6.9971,6.3942,0.7004
+General Training,2023-2024,"Korea, Republic of",East Asia & Pacific,not listed,False,False,6.1958,5.9173,5.8512,5.8137,6.0061,-0.0375
+General Training,2023-2024,Lebanon,Middle East & North Africa,not listed,False,False,6.8716,6.3959,6.3199,6.6768,6.6295,0.3568
+General Training,2023-2024,Malaysia,East Asia & Pacific,de facto working language,True,True,7.06,6.6944,6.3992,6.7247,6.7753,0.3255
+General Training,2023-2024,Mexico,Latin America & Caribbean,not listed,False,False,6.6604,6.485,6.1461,6.6031,6.5339,0.4569
+General Training,2023-2024,Morocco,Middle East & North Africa,not listed,False,False,5.9013,5.5416,5.7604,6.3147,5.9434,0.5543
+General Training,2023-2024,Nepal,South Asia,not listed,False,False,5.7289,4.9065,5.7418,5.6321,5.563,-0.1097
+General Training,2023-2024,Nigeria,Sub-Saharan Africa,de jure official,True,True,6.3206,5.7256,6.3776,7.0359,6.4265,0.6583
+General Training,2023-2024,Pakistan,South Asia,de jure official,True,True,5.568,4.7973,5.5242,5.6533,5.4487,0.129
+General Training,2023-2024,Peru,Latin America & Caribbean,not listed,False,False,5.8005,5.7519,5.882,6.0325,5.9374,0.1505
+General Training,2023-2024,Philippines,East Asia & Pacific,de jure official,True,True,5.942,5.2221,5.7982,5.9262,5.7845,0.128
+General Training,2023-2024,Russian Federation,Europe & Central Asia,not listed,False,False,7.046,7.048,6.3364,6.6744,6.8394,0.3379
+General Training,2023-2024,Saudi Arabia,Middle East & North Africa,not listed,False,False,5.2014,4.4506,5.0375,5.6841,5.1536,0.6466
+General Training,2023-2024,South Africa,Sub-Saharan Africa,de jure official,True,False,6.9106,6.3625,6.4597,7.8091,6.947,1.3494
+General Training,2023-2024,Spain,Europe & Central Asia,not listed,False,False,6.5478,6.4799,6.1266,6.3506,6.4405,0.224
+General Training,2023-2024,Sri Lanka,South Asia,de facto working language,True,True,5.7535,5.0649,5.6015,5.8478,5.6292,0.2462
+General Training,2023-2024,Thailand,East Asia & Pacific,not listed,False,False,5.3337,4.8063,5.3251,5.2982,5.2544,-0.0269
+General Training,2023-2024,Tunisia,Middle East & North Africa,not listed,False,False,5.7277,5.4692,5.724,6.0131,5.7949,0.289
+General Training,2023-2024,Turkey,Europe & Central Asia,not listed,False,False,5.9771,5.6604,5.7317,5.8001,5.8541,0.0684
+General Training,2023-2024,Uganda,Sub-Saharan Africa,de jure official,True,False,5.6031,4.8795,6.0039,6.6632,5.8502,0.6593
+General Training,2023-2024,Ukraine,Europe & Central Asia,not listed,False,False,6.6682,6.4176,6.082,6.6374,6.5147,0.5554
+General Training,2023-2024,Vietnam,East Asia & Pacific,not listed,False,False,5.7286,5.5731,5.8111,5.4061,5.6938,-0.405
+General Training,2023-2024,Zimbabwe,Sub-Saharan Africa,de jure official,True,False,5.9943,5.3269,6.1853,6.6683,6.1056,0.483
+General Training,2024-2025,Algeria,Middle East & North Africa,not listed,False,False,5.5623,5.8751,5.7105,6.0533,5.8635,0.3429
+General Training,2024-2025,Argentina,Latin America & Caribbean,not listed,False,False,6.2054,6.3031,6.0124,6.1241,6.2254,0.1116
+General Training,2024-2025,Bangladesh,South Asia,de facto working language,True,False,5.8263,6.4502,6.0461,6.2744,6.213,0.2284
+General Training,2024-2025,Brazil,Latin America & Caribbean,not listed,False,False,6.5537,6.6652,6.1799,6.6287,6.5726,0.4487
+General Training,2024-2025,Cameroon,Sub-Saharan Africa,de jure official,True,False,4.9545,5.4198,5.8937,6.0921,5.6521,0.1984
+General Training,2024-2025,Chile,Latin America & Caribbean,not listed,False,False,5.9524,6.0555,5.8375,5.9683,6.0202,0.1308
+General Training,2024-2025,China,East Asia & Pacific,not listed,False,False,6.3967,6.4465,6.0487,5.9771,6.2804,-0.0715
+General Training,2024-2025,Colombia,Latin America & Caribbean,not listed,False,False,6.0407,6.1901,5.9768,6.2457,6.1757,0.2689
+General Training,2024-2025,Egypt,Middle East & North Africa,not listed,False,False,6.2284,6.6014,6.124,6.5178,6.431,0.3938
+General Training,2024-2025,France,Europe & Central Asia,not listed,False,False,6.9696,7.0959,6.3773,6.8082,6.8787,0.4309
+General Training,2024-2025,Germany,Europe & Central Asia,not listed,False,False,7.2072,7.5226,6.5842,7.3929,7.2341,0.8087
+General Training,2024-2025,Ghana,Sub-Saharan Africa,de jure official,True,True,5.3519,6.0835,6.1963,6.9147,6.1989,0.7184
+General Training,2024-2025,Hong Kong,East Asia & Pacific,de jure official,True,True,6.7101,6.9666,6.2954,6.391,6.6562,0.0956
+General Training,2024-2025,India,South Asia,de jure official,True,True,6.2326,6.918,6.194,6.3884,6.4969,0.1944
+General Training,2024-2025,Indonesia,East Asia & Pacific,not listed,False,False,5.5884,5.9528,5.7984,5.7358,5.8315,-0.0627
+General Training,2024-2025,Iran,Middle East & North Africa,not listed,False,False,5.9909,6.351,6.0595,6.41,6.2659,0.3505
+General Training,2024-2025,Italy,Europe & Central Asia,not listed,False,False,6.6009,6.7462,6.1268,6.498,6.5563,0.3712
+General Training,2024-2025,Japan,East Asia & Pacific,not listed,False,False,5.6371,5.9065,5.7022,5.6476,5.7877,-0.0546
+General Training,2024-2025,Kenya,Sub-Saharan Africa,de jure official,True,True,5.9483,6.5141,6.3721,7.063,6.5376,0.6909
+General Training,2024-2025,"Korea, Republic of",East Asia & Pacific,not listed,False,False,5.9869,6.2745,5.8686,5.8501,6.0607,-0.0185
+General Training,2024-2025,Malaysia,East Asia & Pacific,de facto working language,True,True,6.5815,6.9642,6.344,6.6317,6.6948,0.2877
+General Training,2024-2025,Mauritius,Sub-Saharan Africa,de facto working language,True,False,6.4929,6.9318,6.4858,6.8242,6.7449,0.3383
+General Training,2024-2025,Mexico,Latin America & Caribbean,not listed,False,False,6.5257,6.707,6.1928,6.673,6.5865,0.4802
+General Training,2024-2025,Nepal,South Asia,not listed,False,False,5.9072,6.6085,6.0543,6.1544,6.244,0.1001
+General Training,2024-2025,Nigeria,Sub-Saharan Africa,de jure official,True,True,6.0041,6.5504,6.4559,7.1121,6.5927,0.6562
+General Training,2024-2025,Pakistan,South Asia,de jure official,True,True,5.233,5.9318,5.7153,5.9547,5.7713,0.2394
+General Training,2024-2025,Peru,Latin America & Caribbean,not listed,False,False,6.0308,6.1725,5.9955,6.2134,6.1661,0.2178
+General Training,2024-2025,Philippines,East Asia & Pacific,de jure official,True,True,5.3003,5.9946,5.856,6.0013,5.8503,0.1453
+General Training,2024-2025,Russian Federation,Europe & Central Asia,not listed,False,False,7.0428,7.0861,6.3661,6.711,6.8649,0.3449
+General Training,2024-2025,Saudi Arabia,Middle East & North Africa,not listed,False,False,4.2442,5.0209,4.8261,5.4145,4.9388,0.5883
+General Training,2024-2025,South Africa,Sub-Saharan Africa,de jure official,True,False,6.4867,7.0445,6.5081,7.929,7.0554,1.4209
+General Training,2024-2025,Spain,Europe & Central Asia,not listed,False,False,6.4211,6.4862,6.0869,6.2313,6.3692,0.1444
+General Training,2024-2025,Sri Lanka,South Asia,de facto working language,True,True,5.4989,6.0862,5.751,6.0135,5.9017,0.2626
+General Training,2024-2025,Taiwan,East Asia & Pacific,not listed,False,False,6.1274,6.3504,5.9476,6.0636,6.1858,0.116
+General Training,2024-2025,Thailand,East Asia & Pacific,not listed,False,False,4.9283,5.4496,5.3973,5.4095,5.3606,0.0121
+General Training,2024-2025,Turkey,Europe & Central Asia,not listed,False,False,5.6481,6.0162,5.7212,5.8457,5.8703,0.1245
+General Training,2024-2025,Ukraine,Europe & Central Asia,not listed,False,False,6.5237,6.7838,6.1418,6.6779,6.5935,0.5361
+General Training,2024-2025,United States of America,North America,"predominant, not de jure",True,False,8.0191,8.3484,7.4248,8.7266,8.1902,1.3018
+General Training,2024-2025,Vietnam,East Asia & Pacific,not listed,False,False,5.757,5.874,5.882,5.4892,5.8153,-0.3928
+General Training,2024-2025,Zimbabwe,Sub-Saharan Africa,de jure official,True,False,5.7077,6.2886,6.2763,6.9302,6.3654,0.6539

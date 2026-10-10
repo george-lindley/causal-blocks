@@ -40,13 +40,20 @@
     <section class="card step" id="load-step" aria-labelledby="load-title">
       <h2 id="load-title"><span class="step-no">1</span> Pick a dataset</h2>
       <div class="samples">
-        <button type="button" class="sample" id="use-towns">
-          <span class="sample-tag">Real research</span>
+        <button type="button" class="sample" data-sample="towns">
+          <span class="sample-tag">Real research · UK schools</span>
           <strong>Small towns and exam results</strong>
-          <span>1,104 English towns and cities (ONS). Do children in smaller towns really do better?</span>
+          <span>1,082 English towns (ONS). Do children in smaller towns really do better at school?</span>
+        </button>
+        <button type="button" class="sample" data-sample="ielts">
+          <span class="sample-tag">Real research · English tests</span>
+          <strong>Does official English help you speak?</strong>
+          <span>IELTS scores from 236 country groups. Does official English make people speak better than they write?</span>
         </button>
       </div>
-      <p class="meta case-link">This one has a full write-up: <a href="towns.html">the small towns case study →</a></p>
+      <p class="meta case-link">Read the stories behind them:
+        <a href="https://georgelindley.com/do-small-towns-really-provide-better-education-a-uk-detective-story/" target="_blank" rel="noopener">small towns ↗</a> ·
+        <a href="https://georgelindley.com/does-official-english-make-people-speak-better-than-they-write/" target="_blank" rel="noopener">official English ↗</a></p>
       <p class="or-line">Or bring your own:</p>
       <label class="dropzone" id="dropzone" for="file">
         <input type="file" id="file" accept=".csv,text/csv">
@@ -77,6 +84,10 @@
       <h2 id="draw-title" class="step-title"><span class="step-no">3</span> Draw what causes what</h2>
       <div class="workspace">
         <section class="board" aria-label="Causal graph editor">
+          <div class="board-bar" id="presets-bar" hidden>
+            <div class="presets" id="presets"></div>
+          </div>
+          <p class="preset-note" id="preset-note"></p>
           <p class="toast" id="toast" role="status" hidden></p>
           <div class="canvas-scroll">
             <svg id="canvas" viewBox="0 0 800 470" role="img" aria-label="Causal graph. Drag from one block onto another to draw an arrow."></svg>

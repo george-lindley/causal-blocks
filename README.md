@@ -8,12 +8,13 @@ collider — so the graph explains itself.
 
 ### → [causalblocks.com](https://causalblocks.com)
 
-- **[Case study](https://causalblocks.com/towns.html)** — do small towns in England really
-  educate children better? The published correlation, the result of
-  "controlling for everything", and the causal story, on one dataset.
-- **[Try your own data](https://causalblocks.com/try.html)** — upload a CSV and
-  draw your own graph. Estimates appear instantly and are then confirmed by
-  DoWhy running in your browser. Your data never leaves your computer.
+- **[Play](https://play.causalblocks.com)** — the game: read the headline, draw what
+  you think causes what, and catch the characters who make fake links.
+- **[Free Build](https://causalblocks.com/free-build.html)** — real data, your theory.
+  Two samples open straight onto the map with preset graphs and their results:
+  small towns and exam results (ONS), and official English and IELTS scores.
+  Or upload a CSV: estimates appear instantly and are then confirmed by DoWhy
+  running in your browser. Your data never leaves your computer.
 - **[Why causation](https://causalblocks.com/about.html)** — what causal
   inference is, why "just control for it" is not the fix, and what to read next.
 
@@ -182,9 +183,9 @@ site/           causalblocks.com: static pages, no server
   js/causal.js      DoWhy's adjustment-set choice and variable roles, in JavaScript
   js/estimate.js    DoWhy's linear-regression estimate and refuters, in JavaScript
   js/dowhy-worker.js  real DoWhy in the browser (Pyodide), confirming each answer
-  data/demo.json    every DoWhy result the demo can show, precomputed
+  data/samples/     Free Build's sample datasets (scripts/build_free_build_samples.py)
 scripts/
-  build_demo_data.py      runs DoWhy for every demo combination
+  build_demo_data.py      the towns variables (shared by the Free Build sample)
   build_essay_figures.py  the essay's charts, from the data
 essay/          the write-up, and its figures
 docs/dowhy-reference.md
