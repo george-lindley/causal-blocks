@@ -1,7 +1,7 @@
 name: pages
 
-# Publishes site/ to GitHub Pages. The site is static: DoWhy runs in the browser
-# and Free Build's samples are plain CSVs, so there is nothing to build.
+# Publishes site/ to GitHub Pages. The site is static: estimates run in the
+# browser and the case studies' data are plain CSVs, so there is nothing to build.
 on:
   push:
     branches: [main]

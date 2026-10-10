@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Free Build · Causal Blocks</title>
+<title>Case studies · Causal Blocks</title>
 <meta name="description" content="Real research data and the maps people draw of it: the best map, the classic mistakes, and how each one changes the answer.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,15 +25,14 @@
     </a>
     <nav>
       <a class="nav-play" href="https://play.causalblocks.com">▶ Play</a>
-      <a href="free-build.html" aria-current="page">Free Build</a>
+      <a href="case-studies.html" aria-current="page">Case studies</a>
       <a href="about.html">Why causation</a>
     </nav>
   </header>
 
-  <section class="intro">
-    <h1>Free Build</h1>
-    <p>Real research data, and the maps people draw of it. Pick a dataset, then flip between the
-      maps: the best one, and the classic mistakes. Watch the answer move, and find out why.</p>
+  <section class="intro intro-short">
+    <h1>Case studies</h1>
+    <p>Real data, and the maps people draw of it. Flip between the best map and the classic mistakes, and watch the answer move.</p>
   </section>
 
   <nav class="samples" id="datasets" aria-label="Datasets"></nav>
@@ -46,29 +45,22 @@
 
     <div class="versions" id="versions" aria-label="Maps"></div>
 
-    <section class="board board-locked" aria-label="Causal map">
-      <div class="verdict" id="verdict" aria-live="polite"></div>
-      <div class="canvas-scroll">
-        <svg id="canvas" viewBox="0 0 800 470" role="img" aria-label="The causal map for this version"></svg>
-      </div>
-      <p class="swipe-hint meta">Swipe sideways to see the whole map.</p>
-      <div class="legend board-legend" id="legend"></div>
-    </section>
-
-    <div class="lesson-grid">
+    <div class="case-grid">
+      <section class="board board-locked" aria-label="Causal map">
+        <div class="canvas-scroll">
+          <svg id="canvas" viewBox="0 0 800 470" role="img" aria-label="The causal map for this version"></svg>
+        </div>
+        <p class="swipe-hint meta">Swipe sideways to see the whole map.</p>
+        <div class="legend board-legend" id="legend"></div>
+      </section>
       <article class="card lesson" id="lesson" aria-live="polite"></article>
-      <aside class="card compare">
-        <span class="label">Every map, side by side</span>
-        <p class="meta">Each dot is a map's answer; the line is its 95% range. The green line marks the best map.</p>
-        <div id="compare-plot"></div>
-      </aside>
     </div>
   </main>
 
   <footer>
     <p class="foot-links">
       <a href="https://play.causalblocks.com">Play</a>
-      <a href="free-build.html">Free Build</a>
+      <a href="case-studies.html">Case studies</a>
       <a href="about.html">Why causation</a>
       <a href="https://georgelindley.com/do-small-towns-really-provide-better-education-a-uk-detective-story/" target="_blank" rel="noopener">The essay ↗</a>
       <a href="https://github.com/george-lindley/causal-blocks" target="_blank" rel="noopener">Code ↗</a>
@@ -78,7 +70,7 @@
       <a href="https://www.goatcounter.com/">GoatCounter</a>: no cookies, nothing personal.</p>
   </footer>
 </div>
-<script type="module" src="js/free-build.js"></script>
+<script type="module" src="js/case-studies.js"></script>
 <script data-goatcounter="https://causalblocks.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>

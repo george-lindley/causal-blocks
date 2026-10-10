@@ -1,11 +1,11 @@
-"""Write the sample datasets for Free Build (site/data/samples/).
+"""Write the case-study datasets (site/data/samples/).
 
-Each sample is a small CSV with friendly column names and only the columns
-its story needs, so Free Build can skip the column check. The towns sample
-uses exactly the variables the case study builds (scripts/build_demo_data.py);
+Each one is a small CSV with friendly column names and only the columns its
+story needs. The towns data uses exactly the variables of the original
+analysis (scripts/build_demo_data.py);
 the IELTS sample is DAG 3 from the official-English blog post.
 
-    python scripts/build_free_build_samples.py
+    python scripts/build_case_study_data.py
 """
 
 from pathlib import Path
@@ -17,7 +17,7 @@ from build_demo_data import VARIABLES, load
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "site" / "data" / "samples"
 
-# Ordered levels become words Free Build sorts low → high on its own.
+# Ordered levels become words, listed low → high in each dataset module.
 WORDS = {
     "town_size": ["Small", "Medium", "Large"],
     "deprivation": ["Lower", "Mid", "Higher"],

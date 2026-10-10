@@ -10,7 +10,7 @@ collider — so the graph explains itself.
 
 - **[Play](https://play.causalblocks.com)** — the game: read the headline, draw what
   you think causes what, and catch the characters who make fake links.
-- **[Free Build](https://causalblocks.com/free-build.html)** — real research data
+- **[Case studies](https://causalblocks.com/case-studies.html)** — real research data
   and a few fixed maps of each: the best one and the classic mistakes (just the
   correlation, freezing the wrong thing, controlling for everything). Each map
   shows its estimate and explains what changed and why. Datasets so far: small
@@ -182,10 +182,10 @@ notebooks/
 site/           causalblocks.com: static pages, no server
   js/causal.js      DoWhy's adjustment-set choice and variable roles, in JavaScript
   js/estimate.js    DoWhy's linear-regression estimate and refuters, in JavaScript
-  js/datasets/       Free Build's datasets: maps and teaching text, one module each
-  data/samples/     their CSVs (scripts/build_free_build_samples.py)
+  js/datasets/       the case studies' datasets: maps and teaching text, one module each
+  data/samples/     their CSVs (scripts/build_case_study_data.py)
 scripts/
-  build_demo_data.py      the towns variables (shared by the Free Build sample)
+  build_demo_data.py      the towns variables (shared by the towns case study)
   build_essay_figures.py  the essay's charts, from the data
 essay/          the write-up, and its figures
 docs/dowhy-reference.md

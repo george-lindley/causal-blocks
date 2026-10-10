@@ -1,4 +1,4 @@
-// Checks every Free Build dataset the way the page uses it, and prints each
+// Checks every case-study dataset the way the page uses it, and prints each
 // map's estimate as JSON. Driven by tests/test_datasets.py.
 import { readFileSync } from "node:fs";
 import { dowhyBackdoor } from "../../site/js/causal.js";

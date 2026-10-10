@@ -1,6 +1,6 @@
-"""Every Free Build dataset loads, and every one of its maps gives an estimate.
+"""Every case-study dataset loads, and every one of its maps gives an estimate.
 
-The page (site/js/free-build.js) estimates each map in the browser; this runs
+The page (site/js/case-studies.js) estimates each map in the browser; this runs
 the same steps in Node over site/js/datasets/, so a new dataset with a typo in
 a column name or an arrow fails here rather than on the live site.
 """
