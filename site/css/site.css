@@ -263,6 +263,10 @@ footer .foot-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 
 .sample:hover { border-color: var(--accent); box-shadow: 0 6px 0 var(--accent); transform: translateY(-2px); }
 .sample strong { font: 800 17px/1.15 var(--font-display); }
 .sample-tag { font: 700 12px var(--font-ui); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.level { padding: 1px 8px; border-radius: 999px; font: 700 12px/1.5 var(--font-ui); white-space: nowrap; }
+.level-easy { color: var(--good); background: var(--good-bg); }
+.level-medium { color: var(--warn); background: var(--warn-bg); }
+.level-hard { color: var(--mistake); background: var(--mistake-bg); }
 .sample[aria-pressed="true"] { border-color: var(--ink); box-shadow: 0 4px 0 var(--ink); background: var(--surface-2); }
 
 /* Case studies: one dataset's maps */
@@ -271,6 +275,10 @@ footer .foot-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 
 .case { padding-bottom: 48px; }
 .case-head h2 { margin: 0 0 4px; font: 800 clamp(22px, 2.6vw, 28px)/1.15 var(--font-display); text-wrap: balance; }
 .case-head .meta { font-size: 15px; max-width: 90ch; }
+.case-story { margin: 12px 0 0; padding: 10px 16px; border-radius: 14px; background: var(--surface-2); max-width: 90ch; }
+.case-story summary { cursor: pointer; font: 700 17px var(--font-display); }
+.case-story p { margin: 10px 0 0; }
+.case-story p:last-child { margin-bottom: 6px; }
 .versions { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 12px; }
 .version { display: grid; grid-template-columns: auto auto; gap: 0 12px; align-items: end; padding: 8px 14px; border-radius: 12px; border: 2px solid var(--line); background: #fff; color: var(--ink); font: 700 16px/1.2 var(--font-ui); cursor: pointer; text-align: left; }
 .version:hover { border-color: var(--edge); }

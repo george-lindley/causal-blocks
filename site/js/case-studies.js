@@ -196,11 +196,20 @@ function renderLegend() {
     + `<span><i class="frozen-key"></i>❄ Frozen (held fixed)</span>`;
 }
 
+// How hard a case study is to untangle: a word and dots, so it never rests on colour alone.
+const LEVELS = { easy: ["Easy", "●○○"], medium: ["Medium", "●●○"], hard: ["Hard", "●●●"] };
+const levelBadge = (level) => {
+  if (!LEVELS[level]) return "";
+  const [word, dots] = LEVELS[level];
+  return `<span class="level level-${level}"><span aria-hidden="true">${dots}</span> ${word}</span>`;
+};
+
 function renderPicker() {
   $("datasets").innerHTML = DATASETS.map((d) => `
     <button type="button" class="sample" data-key="${d.key}">
       <span class="sample-tag">${d.tag}</span>
       <strong>${d.name}</strong>
+      ${levelBadge(d.level)}
     </button>`).join("");
 }
 
@@ -212,6 +221,9 @@ function renderCase() {
   $("case-about").innerHTML = `${set.about}
     <a href="${set.story.url}" target="_blank" rel="noopener">${set.story.label} ↗</a> ·
     <a href="${set.file}" download>Download the data</a>`;
+  // The story in plain words, before the maps translate it into arrows. Optional per dataset.
+  $("case-story").hidden = !set.intro;
+  $("case-story-body").innerHTML = (set.intro ?? []).map((p) => `<p>${p}</p>`).join("");
   $("versions").innerHTML = set.versions.map((v, i) => `
     <button type="button" class="version${v.mistake ? " mistake" : ""}" data-v="${i}">
       <span class="version-tag">${v.mistake ? "✗ Mistake" : "✓ Best map"}</span>
