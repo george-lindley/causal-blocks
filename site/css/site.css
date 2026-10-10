@@ -301,6 +301,49 @@ footer .foot-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 
 .lesson-best { color: var(--muted); }
 .lesson-point { padding: 10px 14px; border-radius: 12px; background: var(--surface-2); }
 
+/* Case studies: the tutor */
+.side { display: grid; gap: 8px; }
+.side-tabs { display: flex; gap: 6px; }
+.side-tabs [role=tab] { flex: 1; padding: 9px 12px; border-radius: 12px; border: 2px solid var(--line); background: #fff; color: var(--ink); font: 700 15px var(--font-ui); cursor: pointer; }
+.side-tabs [role=tab]:hover { border-color: var(--edge); }
+.side-tabs [role=tab][aria-selected="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+.version.whatif { border-style: dashed; border-color: var(--accent); }
+.version.whatif .version-tag { color: var(--accent); }
+.version.whatif[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); border-style: solid; }
+.lesson.whatif { border-top-color: var(--accent); }
+.lesson.whatif .label { color: var(--accent); }
+.tutor { display: grid; grid-template-rows: minmax(0, 1fr) auto auto auto; gap: 10px; height: min(560px, 75vh); padding: 14px; }
+.tutor-log { overflow-y: auto; display: flex; flex-direction: column; gap: 8px; padding-right: 4px; }
+.tutor-msg { max-width: 88%; padding: 9px 13px; border-radius: 14px; font-size: 16px; line-height: 1.45; }
+.tutor-msg.from-tutor { align-self: flex-start; background: var(--surface-2); border-bottom-left-radius: 4px; }
+.tutor-msg.from-you { align-self: flex-end; background: var(--ink); color: #fff; border-bottom-right-radius: 4px; }
+.tutor-msg.error { background: var(--warn-bg); color: var(--warn); }
+.tutor-msg.map-card { align-self: stretch; max-width: none; display: grid; gap: 2px; border: 2px dashed var(--accent); background: #fff; }
+.map-card .label { color: var(--accent); }
+.map-card-value { font: 800 28px/1.1 var(--font-display); font-variant-numeric: tabular-nums; }
+.map-card-error { color: var(--warn); }
+.see-map { display: none; font-weight: 600; font-size: 15px; }
+@media (max-width: 900px) { .see-map { display: inline; } }
+.thinking { display: flex; gap: 4px; }
+.thinking span { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); opacity: 0.4; }
+@media (prefers-reduced-motion: no-preference) {
+  .thinking span { animation: blink 1.2s infinite; }
+  .thinking span:nth-child(2) { animation-delay: 0.2s; }
+  .thinking span:nth-child(3) { animation-delay: 0.4s; }
+}
+@keyframes blink { 50% { opacity: 1; } }
+.tutor-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.tutor-chips button { padding: 6px 11px; border-radius: 999px; border: 1.5px solid var(--line); background: #fff; color: var(--ink); font: 600 14px var(--font-ui); cursor: pointer; text-align: left; }
+.tutor-chips button:hover { border-color: var(--accent); }
+.tutor-form { display: flex; gap: 6px; }
+.tutor-form input { flex: 1; min-width: 0; padding: 10px 12px; border-radius: 12px; border: 2px solid var(--line); font: 16px var(--font-body); color: var(--ink); }
+.tutor-form input:focus { outline: none; border-color: var(--accent); }
+.tutor-form button { padding: 10px 16px; border-radius: 12px; border: 0; background: var(--ink); color: #fff; font: 700 15px var(--font-ui); cursor: pointer; }
+.tutor-form.busy button, .tutor-form.busy ~ * { opacity: 0.6; }
+.tutor-form.busy button { cursor: wait; }
+.tutor-note { margin: 0; font-size: 12.5px; color: var(--muted); }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
 /* Why causation: the suspects */
 .why-suspects { display: grid; gap: 12px; margin: 14px 0 6px; }
 .why-suspect { display: grid; grid-template-columns: 80px minmax(0, 1fr); gap: 14px; align-items: center; padding: 14px 16px; border-radius: 16px; background: #fff; border: 3px solid var(--c); }

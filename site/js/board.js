@@ -227,7 +227,9 @@ export function createBoard(svg, {
       el("text", { class: "role", x: 14, y: 45, fill: text, opacity: 0.85 }, g).textContent =
         frozen.has(id) ? "❄ Frozen"
           : !(id in roleMap) ? unknownCaption
-          : all.length > 1 ? all.map((x) => roleText[x]).join(" + ") : roleText[role];
+          // Several roles: name them all if they fit on the block, else the main one.
+          : all.length > 1 && all.map((x) => roleText[x]).join(" + ").length <= 22 ? all.map((x) => roleText[x]).join(" + ")
+          : roleText[role];
       if (faces && id in roleMap) {
         // Two eyes peeking over the top edge: it's a character now.
         for (const ex of [BW - 46, BW - 28]) {

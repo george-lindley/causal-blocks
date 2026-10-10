@@ -53,7 +53,14 @@
         <p class="swipe-hint meta">Swipe sideways to see the whole map.</p>
         <div class="legend board-legend" id="legend"></div>
       </section>
-      <article class="card lesson" id="lesson" aria-live="polite"></article>
+      <div class="side">
+        <div class="side-tabs" role="tablist" aria-label="Lesson or tutor">
+          <button type="button" role="tab" data-tab="lesson" aria-selected="true">Lesson</button>
+          <button type="button" role="tab" data-tab="tutor" aria-selected="false">💬 Ask the tutor</button>
+        </div>
+        <article class="card lesson" id="lesson" aria-live="polite"></article>
+        <section class="card tutor" id="tutor" aria-label="Tutor" hidden></section>
+      </div>
     </div>
   </main>
 
@@ -68,6 +75,7 @@
     </p>
     <p>Causal Blocks is open source under the MIT licence. Visits are counted anonymously with
       <a href="https://www.goatcounter.com/">GoatCounter</a>: no cookies, nothing personal.</p>
+    <p>The tutor sends what you type to an AI model, through OpenRouter, to answer it. We don't store chats or ask who you are.</p>
   </footer>
 </div>
 <script type="module" src="js/case-studies.js"></script>
