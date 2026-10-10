@@ -43,8 +43,8 @@ export default {
     {
       name: "Freeze deprivation",
       mistake: true,
-      explain: "This map draws deprivation as a cause of town size, so it gets frozen. That switches off the main way size affects results, and the answer flips: bigger towns now look <i>better</i>.",
-      lesson: "Never freeze a mediator: you only measure what's left of the effect.",
+      explain: "This map draws deprivation as a cause of town size, so it gets frozen. That switches off the main way size affects results, and the answer flips: bigger towns now look <i>better</i>. It isn't the whole effect of size, but it does answer a different question: among <i>equally deprived</i> towns, do bigger ones do better? That's called the direct effect.",
+      lesson: "Freezing a mediator leaves only the direct effect. Fine if that's your question; a mistake if you wanted the whole effect.",
       pos: { Deprivation: [318, 40], "Town size": [80, 300], "Education score": [556, 300] },
       edges: [["Deprivation", "Town size"], ["Deprivation", "Education score"], ["Town size", "Education score"]],
     },
