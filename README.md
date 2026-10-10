@@ -10,11 +10,11 @@ collider — so the graph explains itself.
 
 - **[Play](https://play.causalblocks.com)** — the game: read the headline, draw what
   you think causes what, and catch the characters who make fake links.
-- **[Free Build](https://causalblocks.com/free-build.html)** — real data, your theory.
-  Two samples open straight onto the map with preset graphs and their results:
-  small towns and exam results (ONS), and official English and IELTS scores.
-  Or upload a CSV: estimates appear instantly and are then confirmed by DoWhy
-  running in your browser. Your data never leaves your computer.
+- **[Free Build](https://causalblocks.com/free-build.html)** — real research data
+  and a few fixed maps of each: the best one and the classic mistakes (just the
+  correlation, freezing the wrong thing, controlling for everything). Each map
+  shows its estimate and explains what changed and why. Datasets so far: small
+  towns and exam results (ONS), and official English and IELTS scores.
 - **[Why causation](https://causalblocks.com/about.html)** — what causal
   inference is, why "just control for it" is not the fix, and what to read next.
 
@@ -182,14 +182,14 @@ notebooks/
 site/           causalblocks.com: static pages, no server
   js/causal.js      DoWhy's adjustment-set choice and variable roles, in JavaScript
   js/estimate.js    DoWhy's linear-regression estimate and refuters, in JavaScript
-  js/dowhy-worker.js  real DoWhy in the browser (Pyodide), confirming each answer
-  data/samples/     Free Build's sample datasets (scripts/build_free_build_samples.py)
+  js/datasets/       Free Build's datasets: maps and teaching text, one module each
+  data/samples/     their CSVs (scripts/build_free_build_samples.py)
 scripts/
   build_demo_data.py      the towns variables (shared by the Free Build sample)
   build_essay_figures.py  the essay's charts, from the data
 essay/          the write-up, and its figures
 docs/dowhy-reference.md
-tests/          50 tests, including the site against DoWhy
+tests/          54 tests, including the site against DoWhy
 ```
 
 ## On the design

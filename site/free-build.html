@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Free Build · Causal Blocks</title>
-<meta name="description" content="Upload a CSV, draw what you think causes what, and see what DoWhy estimates. Your data never leaves your browser.">
+<meta name="description" content="Real research data and the maps people draw of it: the best map, the classic mistakes, and how each one changes the answer.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,97 +32,37 @@
 
   <section class="intro">
     <h1>Free Build</h1>
-    <p>Real data, your theory. Pick a dataset, draw what you think causes what, and see the effect
-      <b>DoWhy</b> (a real research tool) finds. Your own files never leave your browser.</p>
+    <p>Real research data, and the maps people draw of it. Pick a dataset, then flip between the
+      maps: the best one, and the classic mistakes. Watch the answer move, and find out why.</p>
   </section>
 
-  <main class="try">
-    <section class="card step" id="load-step" aria-labelledby="load-title">
-      <h2 id="load-title"><span class="step-no">1</span> Pick a dataset</h2>
-      <div class="samples">
-        <button type="button" class="sample" data-sample="towns">
-          <span class="sample-tag">Real research · UK schools</span>
-          <strong>Small towns and exam results</strong>
-          <span>1,082 English towns (ONS). Do children in smaller towns really do better at school?</span>
-        </button>
-        <button type="button" class="sample" data-sample="ielts">
-          <span class="sample-tag">Real research · English tests</span>
-          <strong>Does official English help you speak?</strong>
-          <span>IELTS scores from 236 country groups. Does official English make people speak better than they write?</span>
-        </button>
+  <nav class="samples" id="datasets" aria-label="Datasets"></nav>
+
+  <main class="case" id="case" hidden>
+    <header class="case-head">
+      <h2 id="case-question"></h2>
+      <p class="meta" id="case-about"></p>
+    </header>
+
+    <div class="versions" id="versions" aria-label="Maps"></div>
+
+    <section class="board board-locked" aria-label="Causal map">
+      <div class="verdict" id="verdict" aria-live="polite"></div>
+      <div class="canvas-scroll">
+        <svg id="canvas" viewBox="0 0 800 470" role="img" aria-label="The causal map for this version"></svg>
       </div>
-      <p class="meta case-link">Read the stories behind them:
-        <a href="https://georgelindley.com/do-small-towns-really-provide-better-education-a-uk-detective-story/" target="_blank" rel="noopener">small towns ↗</a> ·
-        <a href="https://georgelindley.com/does-official-english-make-people-speak-better-than-they-write/" target="_blank" rel="noopener">official English ↗</a></p>
-      <p class="or-line">Or bring your own:</p>
-      <label class="dropzone" id="dropzone" for="file">
-        <input type="file" id="file" accept=".csv,text/csv">
-        <span class="dz-main">Drop a CSV file here, or <u>choose a file</u></span>
-        <span class="dz-sub">One row per case, one column per variable, with headers in the first row. Up to 50,000 rows.</span>
-      </label>
-      <p class="toast" id="load-error" role="alert" hidden></p>
+      <p class="swipe-hint meta">Swipe sideways to see the whole map.</p>
+      <div class="legend board-legend" id="legend"></div>
     </section>
 
-    <section class="card step" id="columns-step" aria-labelledby="columns-title" hidden>
-      <h2 id="columns-title"><span class="step-no">2</span> Check your columns</h2>
-      <p class="meta" id="table-summary"></p>
-      <p class="hint">We've guessed how to use each column. Change anything that looks wrong.
-        <b>Numbers</b> and <b>yes / no</b> columns can be causes or effects.
-        <b>Categories</b> without an order, like region, can only be adjusted for.</p>
-      <div class="table-scroll">
-        <table class="columns" id="columns-table">
-          <thead><tr><th>Column</th><th>Use as</th><th>Values</th><th>Missing</th></tr></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-      <div class="step-actions">
-        <button type="button" class="primary" id="to-draw">Draw with these columns</button>
-        <span class="meta" id="usable-count"></span>
-      </div>
-    </section>
-    <section class="step" id="draw-step" aria-labelledby="draw-title" hidden>
-      <h2 id="draw-title" class="step-title"><span class="step-no">3</span> Draw what causes what</h2>
-      <div class="workspace">
-        <section class="board" aria-label="Causal graph editor">
-          <div class="board-bar" id="presets-bar" hidden>
-            <div class="presets" id="presets"></div>
-          </div>
-          <p class="preset-note" id="preset-note"></p>
-          <p class="toast" id="toast" role="status" hidden></p>
-          <div class="canvas-scroll">
-            <svg id="canvas" viewBox="0 0 800 470" role="img" aria-label="Causal graph. Drag from one block onto another to draw an arrow."></svg>
-          </div>
-          <div class="board-foot">
-            <div>
-              <span class="label">Add a block</span>
-              <div class="tray" id="tray"></div>
-            </div>
-            <div>
-              <span class="label">How to draw</span>
-              <p class="hint">Drag from one block onto the block it causes. <b>⇄</b> flips an arrow, <b>✕</b> removes it.
-                Leave a column off if you think it causes neither your cause nor your effect.</p>
-            </div>
-          </div>
-        </section>
-
-        <aside class="panel" aria-live="polite">
-          <div class="card">
-            <div class="question">
-              <span>Effect of</span>
-              <select id="treatment" aria-label="Cause"></select>
-              <span>on</span>
-              <select id="outcome" aria-label="Effect"></select>
-            </div>
-            <div class="legend" id="legend"></div>
-          </div>
-          <div class="card" id="draw-hint"><p class="lede">Choose a cause and an effect above. They appear on the canvas, and you can add the other columns you think matter.</p></div>
-          <div class="card" id="result" hidden></div>
-          <div class="card" id="reading" hidden></div>
-          <div class="card" id="checks" hidden></div>
-          <div class="card" id="history" hidden></div>
-        </aside>
-      </div>
-    </section>
+    <div class="lesson-grid">
+      <article class="card lesson" id="lesson" aria-live="polite"></article>
+      <aside class="card compare">
+        <span class="label">Every map, side by side</span>
+        <p class="meta">Each dot is a map's answer; the line is its 95% range. The green line marks the best map.</p>
+        <div id="compare-plot"></div>
+      </aside>
+    </div>
   </main>
 
   <footer>
@@ -138,8 +78,7 @@
       <a href="https://www.goatcounter.com/">GoatCounter</a>: no cookies, nothing personal.</p>
   </footer>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
-<script type="module" src="js/try.js"></script>
+<script type="module" src="js/free-build.js"></script>
 <script data-goatcounter="https://causalblocks.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
