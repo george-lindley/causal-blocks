@@ -2,14 +2,105 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Causal Blocks</title>
-<!-- Temporary: the game will live here. Until then, send visitors to the case study. -->
-<meta http-equiv="refresh" content="0; url=towns.html">
-<link rel="canonical" href="https://causalblocks.com/towns.html">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Causal Blocks: what really causes what?</title>
+<meta name="description" content="A game and free build about cause and effect. Ice cream sales and shark attacks rise together. Is ice cream to blame? Round up the usual suspects.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/home.css">
 </head>
 <body>
-<p><a href="towns.html">Continue to Causal Blocks</a></p>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="./" aria-label="Causal Blocks home">
+      <span class="brand-mark" aria-hidden="true">
+        <span style="background: var(--role-treatment)"></span>
+        <span style="background: var(--role-confounder)"></span>
+        <span style="background: var(--role-mediator)"></span>
+        <span style="background: var(--role-outcome)"></span>
+      </span>
+      Causal Blocks
+    </a>
+    <nav>
+      <a class="nav-play" href="https://play.causalblocks.com">▶ Play</a>
+      <a href="free-build.html">Free Build</a>
+      <a href="about.html">Why causation</a>
+    </nav>
+  </header>
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-lineup">
+      <img src="https://play.causalblocks.com/img/cast/lineup.svg" alt="The usual suspects: the Cause, Mr Mediator, Mr Confounder, Mr Bouncer and the Effect, in a police lineup" width="708" height="192">
+    </div>
+    <div class="hero-text">
+      <h1 id="hero-title"><span>Correlation?</span> Round up the usual suspects.</h1>
+      <a class="big-button" href="https://play.causalblocks.com">Play the game <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <section class="taste" aria-labelledby="taste-title">
+    <div class="taste-text">
+      <h2 id="taste-title">Try it in ten seconds</h2>
+      <p>Ice cream sales and shark attacks go up together. <b>Is ice cream to blame?</b></p>
+      <p id="taste-task">Draw two arrows from <b>Hot weather</b>: one to each of the others. Drag from one box onto another.</p>
+      <p class="taste-result" id="taste-result" aria-live="polite"></p>
+      <button type="button" class="link-button" id="taste-reset">Start again</button>
+    </div>
+    <div class="taste-board">
+      <svg id="taste" viewBox="0 0 400 300" role="img" aria-label="Ice cream sales, Shark attacks and Hot weather. Drag from one box onto another to draw an arrow."></svg>
+      <p class="toast" id="taste-toast" role="status" hidden></p>
+    </div>
+  </section>
+
+  <section class="suspects" aria-labelledby="suspects-title">
+    <h2 id="suspects-title">Meet the suspects</h2>
+    <ul>
+      <li class="suspect cause"><img src="https://play.causalblocks.com/img/cast/cause.svg" alt="" width="120" height="126" loading="lazy"><strong>The Cause</strong><span>Where the arrow starts. Change it, and something else changes too.</span></li>
+      <li class="suspect effect"><img src="https://play.causalblocks.com/img/cast/effect.svg" alt="" width="120" height="126" loading="lazy"><strong>The Effect</strong><span>The thing everyone is trying to explain.</span></li>
+      <li class="suspect confounder"><img src="https://play.causalblocks.com/img/cast/confounder.svg" alt="" width="120" height="126" loading="lazy"><strong>Mr Confounder</strong><span>Pulls two strings at once, so two things rise together without touching.</span></li>
+      <li class="suspect mediator"><img src="https://play.causalblocks.com/img/cast/mediator.svg" alt="" width="120" height="126" loading="lazy"><strong>Mr Mediator</strong><span>Carries the message from cause to effect. Stop him and the effect stops.</span></li>
+      <li class="suspect bouncer"><img src="https://play.causalblocks.com/img/cast/bouncer.svg" alt="" width="120" height="126" loading="lazy"><strong>Mr Bouncer</strong><span>Decides who gets in. Look only inside, and strangers seem linked.</span></li>
+    </ul>
+    <p class="more"><a href="about.html">Why does this matter? →</a></p>
+  </section>
+
+  <section class="doors" aria-label="Where to go next">
+    <a class="door play" href="https://play.causalblocks.com"><span class="door-icon" aria-hidden="true">▶</span><strong>Play</strong><span>Read the headline, draw what you think causes what, and catch the culprit.</span></a>
+    <a class="door build" href="free-build.html"><span class="door-icon" aria-hidden="true">🧪</span><strong>Free Build</strong><span>Test your own theory on real data, like exam results in English towns. Or bring your own.</span></a>
+    <a class="door why" href="about.html"><span class="door-icon" aria-hidden="true">💡</span><strong>Why causation</strong><span>Everyone says correlation isn't causation. Here's what to do instead.</span></a>
+  </section>
+
+  <section class="teachers" aria-labelledby="teachers-title">
+    <div>
+      <h2 id="teachers-title">For teachers</h2>
+      <p>Causal Blocks teaches the difference between correlation and causation by having students <b>draw</b> it:
+        causal diagrams, confounders, mediators, colliders, and why a fair comparison means controlling for the right things.
+        Made for ages <b>11 to 14</b>, and grown-ups who never got taught it.</p>
+    </div>
+    <ul>
+      <li><a href="https://georgelindley.com/do-small-towns-really-provide-better-education-a-uk-detective-story/" target="_blank" rel="noopener">Read the essay ↗</a> <span>A real case: do small towns really educate children better?</span></li>
+      <li><a href="https://github.com/george-lindley/causal-blocks" target="_blank" rel="noopener">See the code ↗</a> <span>Open source. Free Build runs DoWhy, a real research library.</span></li>
+      <li><a href="about.html#contact">Get in touch</a> <span>Using it in class? I'd love to hear how.</span></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p class="foot-links">
+      <a href="https://play.causalblocks.com">Play</a>
+      <a href="free-build.html">Free Build</a>
+      <a href="about.html">Why causation</a>
+      <a href="https://georgelindley.com/do-small-towns-really-provide-better-education-a-uk-detective-story/" target="_blank" rel="noopener">The essay ↗</a>
+      <a href="https://github.com/george-lindley/causal-blocks" target="_blank" rel="noopener">Code ↗</a>
+      <a href="about.html#contact">Get in touch</a>
+    </p>
+    <p>Causal Blocks is open source under the MIT licence. Visits are counted anonymously with
+      <a href="https://www.goatcounter.com/">GoatCounter</a>: no cookies, nothing personal.</p>
+  </footer>
+</div>
+<script type="module" src="js/taste.js"></script>
+<script data-goatcounter="https://causalblocks.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>

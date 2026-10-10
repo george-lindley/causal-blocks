@@ -1,0 +1,80 @@
+/* The homepage: hero lineup, a ten-second taste, the suspects, three doors, teachers. */
+.wrap > section { margin-block: 28px; }
+.wrap h2 { margin: 0 0 10px; font: 800 clamp(26px, 3.2vw, 34px)/1.1 var(--font-display); }
+
+/* Hero: the lineup wall at full size, the line and one button. */
+.hero { display: grid; border-radius: 22px; overflow: hidden; border: 2px solid #e4d3c2; background: #fff7ef; }
+.hero-lineup {
+  display: flex; justify-content: center; align-items: flex-end;
+  padding: 18px clamp(12px, 4vw, 48px) 0;
+  background:
+    linear-gradient(to top, #d9dee3 0 16px, transparent 16px),
+    repeating-linear-gradient(to bottom, transparent 0 30px, rgba(31, 41, 51, 0.09) 30px 33px),
+    linear-gradient(#f1f3f5, #e6eaee);
+}
+.hero-lineup img { display: block; width: 100%; max-width: 860px; height: auto; margin-bottom: 4px; }
+.hero-text { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 28px; padding: 22px clamp(18px, 4vw, 48px) 26px; border-top: 2px solid #e4d3c2; }
+.hero h1 { margin: 0; font: 800 clamp(30px, 4.4vw, 52px)/1.05 var(--font-display); }
+.hero h1 span { display: block; color: var(--accent); }
+.big-button {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 30px; border-radius: 16px;
+  background: var(--ink); color: #fff; text-decoration: none;
+  font: 800 22px/1 var(--font-display);
+  box-shadow: 0 4px 0 #000; transition: background 0.15s, transform 0.15s;
+}
+.big-button:hover { background: var(--accent); }
+.big-button:active { transform: translateY(2px); box-shadow: 0 2px 0 #000; }
+
+/* The ten-second taste */
+.taste { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 20px; align-items: center; padding: 22px; border-radius: 22px; background: var(--surface-2); }
+@media (max-width: 860px) {
+  .taste { grid-template-columns: minmax(0, 1fr); padding: 16px; }
+  .taste-result { min-height: 0; }
+}
+.taste p { margin: 0 0 10px; font-size: 18px; }
+.taste-result { min-height: 3.2em; font: 800 21px/1.25 var(--font-display) !important; }
+.taste-result.won { color: var(--good); }
+.taste-result.nope { color: var(--mistake); }
+.taste-result img { width: 64px; height: auto; vertical-align: middle; margin-right: 8px; float: left; }
+.taste-board { max-width: 520px; width: 100%; justify-self: center; background: #fff; border: 2px solid var(--line); border-radius: 16px; overflow: hidden; }
+#taste { display: block; width: 100%; height: auto; touch-action: none; user-select: none; -webkit-user-select: none;
+  background-color: var(--surface); background-image: radial-gradient(var(--grid) 1.1px, transparent 1.2px); background-size: 22px 22px; }
+#taste .together { fill: none; stroke: #f1b40f; stroke-width: 6; stroke-dasharray: 2 10; stroke-linecap: round; transition: opacity 0.8s; }
+#taste .together-label { font: 800 15px var(--font-display); fill: #b8860b; transition: opacity 0.8s; }
+#taste.solved .together, #taste.solved .together-label { opacity: 0; }
+.link-button { font: 600 15px var(--font-ui); background: none; border: 0; padding: 0; color: var(--muted); text-decoration: underline; cursor: pointer; }
+
+/* Meet the suspects */
+.suspects ul { list-style: none; margin: 14px 0 6px; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 900px) { .suspects ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.suspect { display: grid; justify-items: center; text-align: center; gap: 4px; padding: 14px 12px 16px; border-radius: 18px; background: #fff; border: 3px solid var(--c); }
+.suspect img { width: 96px; height: auto; }
+.suspect strong { font: 800 20px/1.1 var(--font-display); }
+.suspect span { font-size: 15px; color: var(--muted); }
+.suspect.cause { --c: var(--role-treatment); }
+.suspect.effect { --c: var(--role-outcome); }
+.suspect.confounder { --c: var(--role-confounder); }
+.suspect.mediator { --c: var(--role-mediator); }
+.suspect.bouncer { --c: var(--role-collider); }
+.more { margin: 8px 0 0; font: 700 17px var(--font-ui); }
+
+/* Three doors */
+.doors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 760px) { .doors { grid-template-columns: minmax(0, 1fr); } }
+.door { display: grid; gap: 6px; align-content: start; padding: 20px 22px; border-radius: 20px; text-decoration: none; color: var(--ink); background: #fff; border: 2px solid var(--line); box-shadow: 0 5px 0 var(--line); transition: transform 0.15s, box-shadow 0.15s; }
+.door:hover { transform: translateY(-2px); box-shadow: 0 7px 0 var(--accent); border-color: var(--accent); }
+.door-icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 14px; background: var(--surface-2); font-size: 26px; }
+.door.play .door-icon { background: var(--ink); color: #fff; }
+.door strong { font: 800 26px/1.1 var(--font-display); }
+.door span:last-child { color: var(--muted); }
+
+/* For teachers */
+.teachers { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 20px 32px; padding: 22px 26px; border-radius: 20px; background: #f4f1fb; }
+@media (max-width: 860px) { .teachers { grid-template-columns: minmax(0, 1fr); } }
+.teachers h2 { font-size: 26px; }
+.teachers p { margin: 0; }
+.teachers ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; align-content: center; }
+.teachers li a { font-weight: 700; }
+.teachers li span { display: block; font-size: 15px; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { .big-button, .door { transition: none; } }

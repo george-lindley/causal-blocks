@@ -3,6 +3,7 @@
 // number comes from data/demo.json (see scripts/build_demo_data.py).
 
 import { ROLE_TEXT, createBoard } from "./board.js";
+import { CHARACTER } from "./names.js";
 import { fmt, intervalSvg } from "./ui.js";
 import { Role, dowhyBackdoor, primaryRole, roles } from "./causal.js";
 
@@ -170,6 +171,8 @@ const board = createBoard($("canvas"), {
   onEdit: edited,
   onChange: () => update(),
   toast,
+  roleText: CHARACTER,
+  faces: true,
 });
 
 // ---------------------------------------------------------------------------
@@ -229,7 +232,7 @@ function drawControls() {
 
   const shown = [Role.CONFOUNDER, Role.MEDIATOR, Role.COLLIDER, Role.INSTRUMENT, Role.PRECISION, Role.UNRELATED];
   $("legend").innerHTML = shown
-    .map((r) => `<span><i style="background: var(--role-${r})"></i>${ROLE_TEXT[r]}</span>`)
+    .map((r) => `<span><i style="background: var(--role-${r})"></i>${CHARACTER[r]}</span>`)
     .join("");
 }
 

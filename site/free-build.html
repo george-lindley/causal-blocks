@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Free Build · Causal Blocks</title>
+<meta name="description" content="Upload a CSV, draw what you think causes what, and see what DoWhy estimates. Your data never leaves your browser.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="./" aria-label="Causal Blocks home">
+      <span class="brand-mark" aria-hidden="true">
+        <span style="background: var(--role-treatment)"></span>
+        <span style="background: var(--role-confounder)"></span>
+        <span style="background: var(--role-mediator)"></span>
+        <span style="background: var(--role-outcome)"></span>
+      </span>
+      Causal Blocks
+    </a>
+    <nav>
+      <a class="nav-play" href="https://play.causalblocks.com">▶ Play</a>
+      <a href="free-build.html" aria-current="page">Free Build</a>
+      <a href="about.html">Why causation</a>
+    </nav>
+  </header>
+
+  <section class="intro">
+    <h1>Free Build</h1>
+    <p>Real data, your theory. Pick a dataset, draw what you think causes what, and see the effect
+      <b>DoWhy</b> (a real research tool) finds. Your own files never leave your browser.</p>
+  </section>
+
+  <main class="try">
+    <section class="card step" id="load-step" aria-labelledby="load-title">
+      <h2 id="load-title"><span class="step-no">1</span> Pick a dataset</h2>
+      <div class="samples">
+        <button type="button" class="sample" id="use-towns">
+          <span class="sample-tag">Real research</span>
+          <strong>Small towns and exam results</strong>
+          <span>1,104 English towns and cities (ONS). Do children in smaller towns really do better?</span>
+        </button>
+      </div>
+      <p class="meta case-link">This one has a full write-up: <a href="towns.html">the small towns case study →</a></p>
+      <p class="or-line">Or bring your own:</p>
+      <label class="dropzone" id="dropzone" for="file">
+        <input type="file" id="file" accept=".csv,text/csv">
+        <span class="dz-main">Drop a CSV file here, or <u>choose a file</u></span>
+        <span class="dz-sub">One row per case, one column per variable, with headers in the first row. Up to 50,000 rows.</span>
+      </label>
+      <p class="toast" id="load-error" role="alert" hidden></p>
+    </section>
+
+    <section class="card step" id="columns-step" aria-labelledby="columns-title" hidden>
+      <h2 id="columns-title"><span class="step-no">2</span> Check your columns</h2>
+      <p class="meta" id="table-summary"></p>
+      <p class="hint">We've guessed how to use each column. Change anything that looks wrong.
+        <b>Numbers</b> and <b>yes / no</b> columns can be causes or effects.
+        <b>Categories</b> without an order, like region, can only be adjusted for.</p>
+      <div class="table-scroll">
+        <table class="columns" id="columns-table">
+          <thead><tr><th>Column</th><th>Use as</th><th>Values</th><th>Missing</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="step-actions">
+        <button type="button" class="primary" id="to-draw">Draw with these columns</button>
+        <span class="meta" id="usable-count"></span>
+      </div>
+    </section>
+    <section class="step" id="draw-step" aria-labelledby="draw-title" hidden>
+      <h2 id="draw-title" class="step-title"><span class="step-no">3</span> Draw what causes what</h2>
+      <div class="workspace">
+        <section class="board" aria-label="Causal graph editor">
+          <p class="toast" id="toast" role="status" hidden></p>
+          <div class="canvas-scroll">
+            <svg id="canvas" viewBox="0 0 800 470" role="img" aria-label="Causal graph. Drag from one block onto another to draw an arrow."></svg>
+          </div>
+          <div class="board-foot">
+            <div>
+              <span class="label">Add a block</span>
+              <div class="tray" id="tray"></div>
+            </div>
+            <div>
+              <span class="label">How to draw</span>
+              <p class="hint">Drag from one block onto the block it causes. <b>⇄</b> flips an arrow, <b>✕</b> removes it.
+                Leave a column off if you think it causes neither your cause nor your effect.</p>
+            </div>
+          </div>
+        </section>
+
+        <aside class="panel" aria-live="polite">
+          <div class="card">
+            <div class="question">
+              <span>Effect of</span>
+              <select id="treatment" aria-label="Cause"></select>
+              <span>on</span>
+              <select id="outcome" aria-label="Effect"></select>
+            </div>
+            <div class="legend" id="legend"></div>
+          </div>
+          <div class="card" id="draw-hint"><p class="lede">Choose a cause and an effect above. They appear on the canvas, and you can add the other columns you think matter.</p></div>
+          <div class="card" id="result" hidden></div>
+          <div class="card" id="reading" hidden></div>
+          <div class="card" id="checks" hidden></div>
+          <div class="card" id="history" hidden></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="foot-links">
+      <a href="https://play.causalblocks.com">Play</a>
+      <a href="free-build.html">Free Build</a>
+      <a href="about.html">Why causation</a>
+      <a href="https://georgelindley.com/do-small-towns-really-provide-better-education-a-uk-detective-story/" target="_blank" rel="noopener">The essay ↗</a>
+      <a href="https://github.com/george-lindley/causal-blocks" target="_blank" rel="noopener">Code ↗</a>
+      <a href="about.html#contact">Get in touch</a>
+    </p>
+    <p>Causal Blocks is open source under the MIT licence. Visits are counted anonymously with
+      <a href="https://www.goatcounter.com/">GoatCounter</a>: no cookies, nothing personal.</p>
+  </footer>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script type="module" src="js/try.js"></script>
+<script data-goatcounter="https://causalblocks.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>

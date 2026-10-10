@@ -1,4 +1,4 @@
-// The drawing canvas: blocks you can drag, arrows you can draw, reverse and
+// The drawing canvas: blocks, and arrows you draw, reverse and
 // remove. Shared by the demo and "Try your own data". It knows nothing about
 // data or estimates; the page tells it each block's roles and is told when the
 // graph changes.
@@ -65,6 +65,10 @@ export function createBoard(svg, {
   roleText = ROLE_TEXT, // captions per role; the game uses character names
   faces = false, // give blocks with a known role a pair of eyes
   view = VIEW, // the drawing area in viewBox units; must match the svg's viewBox
+  // Simpler controls for players: press anywhere on a block to start an arrow
+  // (blocks don't move), every arrow always shows its reverse and remove
+  // buttons, and drawing over an existing arrow the other way reverses it.
+  easyArrows = true,
 }) {
   const s = {
     pos: new Map(), // id -> {x, y}
@@ -115,21 +119,19 @@ export function createBoard(svg, {
     edited();
   }
 
-  function loopMessage(cycle) {
-    return [...cycle, cycle[0]].map(label).join(" → ");
-  }
-
   function addEdge(from, to) {
     if (from === to) return;
     if (s.edges.some(([p, c]) => p === from && c === to)) return;
-    if (s.edges.some(([p, c]) => p === to && c === from)) {
-      toast(`There is already an arrow from ${label(to)} to ${label(from)}. Click it and choose Reverse to flip it.`);
+    const opposite = s.edges.findIndex(([p, c]) => p === to && c === from);
+    if (opposite >= 0) {
+      if (easyArrows) reverseEdge(opposite);
+      else toast(`There is already an arrow from ${label(to)} to ${label(from)}. Click it and choose Reverse to flip it.`);
       return;
     }
     const next = [...s.edges, [from, to]];
     const cycle = findCycle({ nodes: [...s.pos.keys()], edges: next });
     if (cycle) {
-      toast(`That arrow would make a loop (${loopMessage(cycle)}). A causal graph can't loop back on itself.`);
+      toast("That arrow would make a loop. Causes can't go round in a circle.");
       return;
     }
     s.edges = next;
@@ -146,7 +148,7 @@ export function createBoard(svg, {
     const next = s.edges.map((e, j) => (j === i ? [c, p] : e));
     const cycle = findCycle({ nodes: [...s.pos.keys()], edges: next });
     if (cycle) {
-      toast(`Reversing that arrow would make a loop (${loopMessage(cycle)}).`);
+      toast("Reversing that would make a loop. Causes can't go round in a circle.");
       return;
     }
     s.edges = next;
@@ -198,7 +200,8 @@ export function createBoard(svg, {
 
     if (s.connect) {
       const a = s.pos.get(s.connect.from);
-      el("path", { class: "pending", d: `M${a.x + BW},${a.y + BH / 2} L${s.connect.x},${s.connect.y}` }, svg);
+      const [sx, sy] = easyArrows ? [a.x + BW / 2, a.y + BH / 2] : [a.x + BW, a.y + BH / 2];
+      el("path", { class: "pending", d: `M${sx},${sy} L${s.connect.x},${s.connect.y}` }, svg);
     }
 
     for (const [id, p] of s.pos) {
@@ -233,22 +236,36 @@ export function createBoard(svg, {
         }
       }
 
-      const port = el("g", {
-        class: `port${s.connect?.from === id ? " active" : ""}`,
-        "data-port": id,
-        transform: `translate(${BW},${BH / 2})`,
-      }, g);
-      el("circle", { r: 18, fill: "transparent" }, port);
-      el("circle", { class: "dot", r: 9 }, port);
-      el("path", { d: "M-4,0 H4 M0,-4 V4" }, port);
+      if (easyArrows) {
+        if (s.connect?.from === id) g.classList.add("connecting");
+      } else {
+        const port = el("g", {
+          class: `port${s.connect?.from === id ? " active" : ""}`,
+          "data-port": id,
+          transform: `translate(${BW},${BH / 2})`,
+        }, g);
+        el("circle", { r: 18, fill: "transparent" }, port);
+        el("circle", { class: "dot", r: 9 }, port);
+        el("path", { d: "M-4,0 H4 M0,-4 V4" }, port);
+      }
 
       if (selected && !locked(id)) {
         tool(g, BW - 2, 2, "remove-node", id, "M-4,-4 L4,4 M4,-4 L-4,4", `Remove ${label(id)}`);
       }
     }
 
-    // Edge toolbar last, so it sits on top.
-    if (s.selectedEdge !== null && s.edges[s.selectedEdge]) {
+    // Edge toolbar last, so it sits on top: on every arrow with easyArrows,
+    // otherwise on the selected one.
+    if (easyArrows) {
+      s.edges.forEach(([p, c], i) => {
+        const a = s.pos.get(p);
+        const b = s.pos.get(c);
+        const mx = (a.x + b.x) / 2 + BW / 2;
+        const my = (a.y + b.y) / 2 + BH / 2;
+        tool(svg, mx - 15, my, "reverse-edge", i, "M-5,-3 H5 L2,-6 M5,3 H-5 L-2,6", "Reverse arrow");
+        tool(svg, mx + 15, my, "remove-edge", i, "M-4,-4 L4,4 M4,-4 L-4,4", "Remove arrow");
+      });
+    } else if (s.selectedEdge !== null && s.edges[s.selectedEdge]) {
       const [p, c] = s.edges[s.selectedEdge];
       const a = s.pos.get(p);
       const b = s.pos.get(c);
@@ -299,6 +316,13 @@ export function createBoard(svg, {
       if (s.connect && !s.connect.dragging) {
         addEdge(s.connect.from, id);
         s.connect = null;
+        onChange();
+        return;
+      }
+      if (easyArrows) {
+        s.connect = { from: id, x: p.x, y: p.y, dragging: true, sx: p.x, sy: p.y };
+        s.selectedEdge = null;
+        evt.preventDefault();
         onChange();
         return;
       }

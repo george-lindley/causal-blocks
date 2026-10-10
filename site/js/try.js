@@ -2,6 +2,7 @@
 // draw a causal graph over the chosen columns on the shared board.
 
 import { ROLE_TEXT, createBoard } from "./board.js";
+import { CHARACTER } from "./names.js";
 import { Role, dowhyBackdoor, primaryRole, roles } from "./causal.js";
 import { KIND_LABELS, Kind, allowedKinds, completeRows, estimable, readTable } from "./data.js";
 import { CollinearError, estimateEffect, refute, simulationBudget } from "./estimate.js";
@@ -175,6 +176,8 @@ const board = createBoard($("canvas"), {
   locked: (id) => id === state.treatment || id === state.outcome,
   onChange: () => update(),
   toast,
+  roleText: CHARACTER,
+  faces: true,
 });
 
 function startDrawing() {
@@ -224,7 +227,7 @@ function drawControls() {
   }
 
   const shown = [Role.CONFOUNDER, Role.MEDIATOR, Role.COLLIDER, Role.INSTRUMENT, Role.PRECISION, Role.UNRELATED];
-  $("legend").innerHTML = shown.map((r) => `<span><i style="background: var(--role-${r})"></i>${ROLE_TEXT[r]}</span>`).join("");
+  $("legend").innerHTML = shown.map((r) => `<span><i style="background: var(--role-${r})"></i>${CHARACTER[r]}</span>`).join("");
 }
 
 // ---------------------------------------------------------------------------
