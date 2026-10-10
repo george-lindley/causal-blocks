@@ -131,10 +131,10 @@ function tryMap({ name, edges }) {
       ok: true,
       map: title,
       frozen: r.adjust,
-      estimate: Number(r.effect.toFixed(3)),
-      range_95: r.ci.map((x) => Number(x.toFixed(3))),
+      estimate: Number(r.effect.toFixed(2)),
+      range_95: r.ci.map((x) => Number(x.toFixed(2))),
       rows_used: r.n,
-      best_map_estimate: Number(best.effect.toFixed(3)),
+      best_map_estimate: Number(best.effect.toFixed(2)),
       shown_to_learner: true,
     },
     card: `<span class="label">🧪 Drawn on the map</span><b>${escapeHtml(title)}</b>
@@ -153,14 +153,14 @@ function tutorContext() {
     kind: v.mistake ? "mistake" : "best map",
     arrows: v.edges,
     frozen: state.results[i].adjust,
-    estimate: Number(state.results[i].effect.toFixed(3)),
-    range_95: state.results[i].ci.map((x) => Number(x.toFixed(3))),
+    estimate: Number(state.results[i].effect.toFixed(2)),
+    range_95: state.results[i].ci.map((x) => Number(x.toFixed(2))),
     explanation: plain(v.explain),
     lesson: v.lesson,
   }));
   if (state.whatIf) {
     const w = state.whatIf;
-    maps.push({ name: w.name, kind: "the tutor's what-if", arrows: w.edges, frozen: w.r.adjust, estimate: Number(w.r.effect.toFixed(3)) });
+    maps.push({ name: w.name, kind: "the tutor's what-if", arrows: w.edges, frozen: w.r.adjust, estimate: Number(w.r.effect.toFixed(2)) });
   }
   return `CASE STUDY: ${set.name}
 Question: ${set.question}

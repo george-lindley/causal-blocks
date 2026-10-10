@@ -13,8 +13,11 @@ const MAX_TOOL_ROUNDS = 3;
 const MAX_TURNS = 30; // messages kept; older ones drop off
 
 const escapeHtml = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
-// Plain text with **bold** and line breaks, nothing else.
-const format = (s) => escapeHtml(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/\n/g, "<br>");
+// Plain text with **bold**, *italics* and line breaks, nothing else.
+const format = (s) => escapeHtml(s)
+  .replace(/\*\*(.+?)\*\*/g, "<b>$1</b>")
+  .replace(/\*([^*\n]+)\*/g, "<i>$1</i>")
+  .replace(/\n/g, "<br>");
 
 /**
  * @param root        the element to build the tutor in
