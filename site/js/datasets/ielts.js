@@ -8,7 +8,6 @@ export default {
   file: "data/samples/ielts.csv",
   tag: "English tests",
   name: "Official English and IELTS scores",
-  blurb: "IELTS results for 236 groups of test-takers. Does official English make people speak better than they write?",
   question: "Does official English make people speak better than they write?",
   about: "The speak-write gap is the speaking score minus the writing score, in IELTS bands (the test is scored 0 to 9).",
   story: { url: "https://georgelindley.com/does-official-english-make-people-speak-better-than-they-write/", label: "Read the blog post" },
