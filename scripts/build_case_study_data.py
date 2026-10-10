@@ -2,8 +2,7 @@
 
 Each one is a small CSV with friendly column names and only the columns its
 story needs. The towns data uses exactly the variables of the original
-analysis (scripts/build_demo_data.py);
-the IELTS sample is DAG 3 from the official-English blog post.
+analysis (scripts/build_demo_data.py).
 
     python scripts/build_case_study_data.py
 """
@@ -40,22 +39,9 @@ def towns() -> pd.DataFrame:
     return out
 
 
-def ielts() -> pd.DataFrame:
-    d = pd.read_csv(ROOT / "data" / "ielts" / "dag3_nationality.csv")
-    return pd.DataFrame({
-        "Official English": d["english_any"].map({True: "Official English", False: "Not official"}),
-        "Speak-write gap": d["speak_minus_write"].round(2),
-        "Region": d["region"],
-        "Test type": d["type"],
-        "Year": d["year"],
-        "Overall band": d["overall"],
-        "Listening": d["listening"],
-        "Reading": d["reading"],
-    })
-
 
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
-    for name, df in [("towns", towns()), ("ielts", ielts())]:
+    for name, df in [("towns", towns())]:
         df.to_csv(OUT / f"{name}.csv", index=False)
         print(f"{name}.csv: {len(df)} rows, columns {list(df.columns)}")

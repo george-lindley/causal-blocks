@@ -14,7 +14,7 @@ collider — so the graph explains itself.
   and a few fixed maps of each: the best one and the classic mistakes (just the
   correlation, freezing the wrong thing, controlling for everything). Each map
   shows its estimate and explains what changed and why. Datasets so far: small
-  towns and exam results (ONS), and official English and IELTS scores.
+  towns and exam results (ONS).
 - **[Why causation](https://causalblocks.com/about.html)** — what causal
   inference is, why "just control for it" is not the fix, and what to read next.
 
