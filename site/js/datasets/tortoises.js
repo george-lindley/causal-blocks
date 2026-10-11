@@ -13,7 +13,7 @@ export default {
   tag: "Island tortoises",
   icon: "🐢",
   level: "easy",
-  order: [1, 3, 2, 0],
+  order: [1, 0, 2, 3],
   name: "Island life and tortoise weight",
   question: "Does living on the island make tortoises lighter?",
   about: "2,130 Hermann's tortoises from Golem Grad, a small island in Lake Prespa, and the nearby mainland, each weighed the first time it was caught (2008–2023). Body mass is in kilograms; most weigh between 0.8 and 2 kg.",
@@ -36,7 +36,7 @@ export default {
   versions: [
     {
       name: "Our map",
-      explain: "The fair comparison freezes only sex: females against females, males against males. Sex decides body size, and the island has hardly any females left, so it pushes on both. Shell length stays free, because getting smaller is part of how the island works. Under this map the island costs a tortoise {est} kg, and it hits females much harder than males.",
+      explain: "Freeze sex: females against females, males against males. Sex decides body size, and the island has hardly any females left, so it pushes on both. Shell length stays free, because getting smaller is part of how the island works. The island costs a tortoise {est} kg, and it hits females much harder than males.",
       lesson: "Freeze what pushes on both the cause and the effect. Leave alone what the cause pushes on.",
       pos: { Sex: SEX, Island: ISLAND, "Body mass (kg)": MASS, "Shell length (cm)": BELOW },
       edges: [["Sex", "Island"], ["Sex", "Body mass (kg)"], ["Island", "Shell length (cm)"],
@@ -45,7 +45,7 @@ export default {
     {
       name: "Just the correlation",
       mistake: true,
-      explain: "At first glance, island life looks brutal: island tortoises weigh {est} kg compared with mainland ones. But the island is full of small males and the mainland is full of big females. Can we make the comparison fairer?",
+      explain: "At first glance, island life looks brutal: island tortoises weigh {est} kg compared with mainland ones. But the island is full of small males and the mainland is full of big females.",
       lesson: "A correlation mixes the effect up with differences in who's in each group.",
       pos: { Island: [190, 205], "Body mass (kg)": [480, 205] },
       edges: [["Island", "Body mass (kg)"]],
@@ -53,7 +53,7 @@ export default {
     {
       name: "Freeze shell length",
       mistake: true,
-      explain: "Another tempting fix: freeze shell length, as if size decided where a tortoise lives. The answer shrinks to {est} kg. But it's the island that makes tortoises smaller, so this switches off most of the effect.",
+      explain: "What if you froze shell length too, as if size decided where a tortoise lives? The answer shrinks to {est} kg. But it's the island that makes tortoises smaller, so this switches off most of the effect.",
       lesson: "Never freeze Ms Mediator: you only measure what's left of the effect.",
       pos: { Sex: SEX, Island: ISLAND, "Body mass (kg)": MASS, "Shell length (cm)": BELOW },
       edges: [["Sex", "Island"], ["Sex", "Body mass (kg)"], ["Shell length (cm)", "Island"],
@@ -62,7 +62,7 @@ export default {
     {
       name: "Freeze condition index",
       mistake: true,
-      explain: "One tempting fix is to compare tortoises that are equally heavy for their size, by freezing the condition index. Look what happens: the answer flips to {est}! The index is body mass divided by shell length, so it's built from the effect itself. Freezing it wipes out the very thing we're measuring.",
+      explain: "And if you froze the condition index? The answer flips to {est}! The index is body mass divided by shell length, so it's built from the effect itself. Freezing it wipes out the very thing we're measuring.",
       lesson: "Never freeze something calculated from the effect.",
       pos: { Sex: SEX, Island: ISLAND, "Body mass (kg)": MASS, "Condition index": BELOW },
       edges: [["Sex", "Island"], ["Sex", "Body mass (kg)"], ["Condition index", "Island"],

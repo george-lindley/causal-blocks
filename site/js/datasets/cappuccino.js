@@ -11,7 +11,7 @@ export default {
   name: "Wages and coffee prices",
   question: "Do places with higher wages charge more for a cappuccino?",
   about: "2,451 cafés in 36 countries: the price of a small cappuccino and the local hourly wage, both in pounds.",
-  order: [1, 2, 0, 3],
+  order: [1, 0, 2, 3],
   intro: [
     "Coffee YouTuber James Hoffmann collected the price of a cappuccino and local wages from cafés around the world.",
   ],
@@ -29,7 +29,7 @@ export default {
   versions: [
     {
       name: "Our map",
-      explain: "Freeze country as well, and £1 more in wages comes with only {est} pounds more: about a third of the first look. Most of the link was rich countries versus poorer ones.",
+      explain: "Freeze country, and city versus countryside. Now £1 more in wages comes with only {est} pounds more, about a third of the first look: most of the link was rich countries versus poorer ones.",
       lesson: "Freeze every Mr Confounder on the map, big and small.",
       pos: { "Hourly wage (£)": [80, 215], "Cappuccino (£)": [556, 215], City: [178, 40], Country: [458, 40] },
       edges: [["Country", "Hourly wage (£)"], ["Country", "Cappuccino (£)"], ["City", "Hourly wage (£)"], ["City", "Cappuccino (£)"], ["Hourly wage (£)", "Cappuccino (£)"]],
@@ -45,7 +45,7 @@ export default {
     {
       name: "Freeze city only",
       mistake: true,
-      explain: "Freezing city versus countryside barely helps ({est}): that's a small Mr Confounder, and the big one is still mixed in.",
+      explain: "What if you froze only city versus countryside? It barely helps ({est}): that's the small Mr Confounder, and the big one is still mixed in.",
       lesson: "Freezing the wrong Mr Confounder doesn't fix the right one.",
       pos: { "Hourly wage (£)": [80, 215], "Cappuccino (£)": [556, 215], City: [318, 40] },
       edges: [["City", "Hourly wage (£)"], ["City", "Cappuccino (£)"], ["Hourly wage (£)", "Cappuccino (£)"]],
@@ -53,7 +53,7 @@ export default {
     {
       name: "Freeze country only",
       fine: true,
-      explain: "Freezing country alone gives almost the same answer ({est}). Country does nearly all the work.",
+      explain: "Freezing country alone gives almost the same answer as the best map ({est}). Country does nearly all the work.",
       lesson: "Find the Mr Confounder that matters most first.",
       pos: { "Hourly wage (£)": [80, 215], "Cappuccino (£)": [556, 215], Country: [318, 40] },
       edges: [["Country", "Hourly wage (£)"], ["Country", "Cappuccino (£)"], ["Hourly wage (£)", "Cappuccino (£)"]],

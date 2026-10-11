@@ -14,7 +14,7 @@ import { DATASETS } from "./datasets/index.js";
 import { dataChart } from "./datachart.js";
 
 const $ = (id) => document.getElementById(id);
-const state = { set: null, table: null, results: [], version: 0, whatIf: null, revealed: 0, guess: null };
+const state = { set: null, table: null, results: [], version: 0, whatIf: null, revealed: 0, guess: null, pick: null };
 const cache = new Map(); // dataset key -> {table, results}
 const MAX_BLOCKS = 8;
 
@@ -81,6 +81,7 @@ async function open(key) {
   state.whatIf = null;
   state.revealed = 0;
   state.guess = null;
+  state.pick = { chosen: new Set(), r: null, map: null };
   const url = new URL(location.href);
   url.searchParams.set("data", set.key);
   history.replaceState(null, "", url);
@@ -151,7 +152,9 @@ function tryMap({ name, edges }) {
 /** The case study, for the tutor: everything on the page, as plain data. */
 function tutorContext() {
   const set = state.set;
-  const looking = state.version === "whatIf" ? `the tutor's map “${state.whatIf.name}”` : `“${set.versions[state.version].name}”`;
+  const looking = state.version === "whatIf" ? `the tutor's map “${state.whatIf.name}”`
+    : state.version === "pick" ? `their own choice of what to freeze (${[...state.pick.chosen].join(", ") || "nothing"}${state.pick.r ? `, which gives ${fmt(state.pick.r.effect)}` : ", not checked yet"})`
+    : `“${set.versions[state.version].name}”`;
   const maps = set.versions.map((v, i) => ({
     name: v.name,
     kind: v.mistake ? "mistake" : "best map",
@@ -159,7 +162,7 @@ function tutorContext() {
     frozen: state.results[i].adjust,
     estimate: Number(state.results[i].effect.toFixed(2)),
     range_95: state.results[i].ci.map((x) => Number(x.toFixed(2))),
-    explanation: plain(stepText(state.version)),
+    explanation: plain(stepText(i)),
     lesson: v.lesson,
   }));
   if (state.whatIf) {
@@ -181,6 +184,7 @@ const tutor = createTutor($("tutor"), { context: tutorContext, tryMap });
 function suggestions() {
   const set = state.set;
   if (state.version === "whatIf") return ["Why did the answer change?", "Which map should I trust most?", "What does frozen actually mean?"];
+  if (state.version === "pick") return ["How do I know what to freeze?", "What does frozen actually mean?", "What's the difference between a confounder and a mediator?"];
   const v = set.versions[state.version];
   const onMap = new Set(v.edges.flat());
   const offMap = Object.keys(set.columns).find((c) => !onMap.has(c));
@@ -263,9 +267,81 @@ function renderCase() {
       <p>${stepText(i)}</p>
       <div class="step-extra"></div>
     </li>`).join("");
+  $("steps").firstElementChild.insertAdjacentHTML("afterend", pickStep());
   renderPredict();
   renderReveal();
   renderWhatIf();
+}
+
+// ---- Your turn: pick what to freeze, then see your map's answer and what's needed ---------------
+
+/** Every column except the cause and the effect: the reader's options. */
+const options = () => Object.keys(state.set.columns).filter((c) => c !== state.set.cause && c !== state.set.effect);
+
+function pickStep() {
+  return `
+    <li class="step pick" data-step="pick">
+      <button type="button" class="step-map" data-v="pick">
+        <span class="step-tag">🤔 Your turn</span>
+        <span class="step-name">What should we freeze?</span>
+      </button>
+      <p>Here's everything else in the data. Freeze what you think pushes on both ${escapeHtml(state.set.cause)} and ${escapeHtml(state.set.effect)}, then check.</p>
+      <div class="pick-options">${options().map((c) => `<button type="button" class="chip" data-col="${escapeHtml(c)}" aria-pressed="false">❄ ${escapeHtml(c)}</button>`).join("")}</div>
+      <button type="button" id="pick-check">Check my choice</button>
+      <div class="pick-result"></div>
+    </li>`;
+}
+
+/** Estimate the reader's map (each chosen column pushes on both), then mark each choice. */
+function checkPick() {
+  const set = state.set, chosen = [...state.pick.chosen];
+  const edges = [...chosen.flatMap((c) => [[c, set.cause], [c, set.effect]]), [set.cause, set.effect]];
+  const r = estimateMap(set, state.table, edges);
+  const nodes = [...new Set([set.cause, set.effect, ...chosen])];
+  state.pick.r = r;
+  state.pick.map = { edges, pos: layout(set, nodes, r.roles) };
+  const needed = new Set(state.results[0].adjust);
+  const marks = options().map((c) => {
+    const has = state.pick.chosen.has(c), need = needed.has(c);
+    const [ok, text] = has && need ? [true, "yes, freeze it"] : !has && need ? [false, "this one needs freezing"]
+      : has ? [false, "leave this one free"] : [true, "right to leave it free"];
+    return `<li class="${ok ? "right" : "wrong"}">${ok ? "✓" : "✗"} <b>${escapeHtml(c)}</b>: ${text}</li>`;
+  });
+  const allRight = options().every((c) => state.pick.chosen.has(c) === needed.has(c));
+  const freeze = needed.size ? [...needed].map(escapeHtml).join(" and ") : "nothing";
+  document.querySelectorAll(".pick-options .chip").forEach((b) => { b.disabled = true; });
+  $("pick-check").hidden = true;
+  document.querySelector(".pick-result").innerHTML = `
+    <p class="pick-verdict ${allRight ? "right" : "wrong"}">${allRight ? "Spot on!" : "Not quite."} The fair comparison freezes <b>${freeze}</b>.</p>
+    <ul class="pick-marks">${marks.join("")}</ul>
+    <p class="pick-yours">Your map gives <b>${fmt(r.effect)}</b>. The next step shows the best map, and why.</p>`;
+  renderReveal();
+  showPick();
+}
+
+function showPick() {
+  state.version = "pick";
+  tutor.suggest(suggestions());
+  for (const b of document.querySelectorAll(".story .step-map")) b.setAttribute("aria-pressed", b.dataset.v === "pick");
+  for (const el of document.querySelectorAll(".story .data-chart")) el.remove();
+  const p = state.pick, set = state.set;
+  if (!p.r) {                                        // not checked yet: keep the first look's map up
+    const first = storyOrder(set)[0];
+    board.load(set.versions[first].pos, set.versions[first].edges);
+    board.draw(state.results[first].roles, { frozen: new Set() });
+    renderAnswer(state.results[first].effect, "first");
+    $("lesson").className = "card lesson waiting";
+    $("lesson").innerHTML = `<p class="lesson-reads">Pick the columns to freeze, then press “Check my choice”.</p>`;
+    return;
+  }
+  board.load(p.map.pos, p.map.edges);
+  board.draw(p.r.roles, { frozen: new Set(p.r.adjust) });
+  renderAnswer(p.r.effect, "you");
+  document.querySelector('.step.pick .pick-result')?.insertAdjacentHTML("beforeend", dataChart({ set, table: state.table, frozen: p.r.adjust }));
+  $("lesson").className = "card lesson you";
+  $("lesson").innerHTML = `
+    <span class="label">🤔 Your map: freeze ${p.chosen.size ? [...p.chosen].map(escapeHtml).join(", ") : "nothing"}</span>
+    <p class="lesson-reads">${set.reads.replace("{est}", fmt(p.r.effect))}</p>`;
 }
 
 // ---- Predict, then reveal one step at a time ---------------------------------
@@ -287,14 +363,20 @@ function renderPredict() {
     : state.guess === "skip" ? "" : `<p class="predict-made">Your guess: <b>${GUESS[state.guess]}</b></p>`;
 }
 
+/** The story's steps in reading order: map indexes, with "pick" (the reader's turn) after the first look. */
+const sequence = () => { const o = storyOrder(state.set); return [o[0], "pick", ...o.slice(1)]; };
+
 function renderReveal() {
-  const order = storyOrder(state.set);
+  const seq = sequence();
   document.querySelectorAll("#steps .step").forEach((li, k) => { li.hidden = k >= state.revealed; });
-  const done = state.revealed >= order.length;
+  const done = state.revealed >= seq.length;
+  const waiting = seq[state.revealed - 1] === "pick" && !state.pick.r;   // check your choice before moving on
   $("story-nav").hidden = state.revealed === 0 || done;
+  $("next-step").hidden = waiting;
+  const order = storyOrder(state.set);
   // The verdict on the guess sits under the best map's step, once it's been read.
   const bestLi = document.querySelector('#steps .step[data-step="0"] .step-extra');
-  const seenBest = order.indexOf(0) < state.revealed;
+  const seenBest = seq.indexOf(0) < state.revealed;
   if (bestLi) {
     bestLi.querySelector(".verdict")?.remove();
     if (seenBest && state.guess && state.guess !== "skip") {
@@ -309,10 +391,11 @@ function renderReveal() {
 }
 
 function reveal(n) {
-  const order = storyOrder(state.set);
-  state.revealed = Math.min(order.length, Math.max(state.revealed, n));
+  const seq = sequence();
+  state.revealed = Math.min(seq.length, Math.max(state.revealed, n));
   renderReveal();
-  show(order[state.revealed - 1]);
+  const step = seq[state.revealed - 1];
+  step === "pick" ? showPick() : show(step);
 }
 
 function renderWhatIf() {
@@ -332,7 +415,7 @@ function show(i) {
   for (const b of document.querySelectorAll(".story .step-map")) b.setAttribute("aria-pressed", b.dataset.v === String(i));
   tutor.suggest(suggestions());
 
-  for (const el of document.querySelectorAll(".story .step-extra .data-chart, #whatif-slot .data-chart")) el.remove();
+  for (const el of document.querySelectorAll(".story .data-chart")) el.remove();
 
   if (i === "whatIf") {
     const w = state.whatIf;
@@ -376,14 +459,14 @@ function show(i) {
 // ---- The answer: a big number and a number line where the dot moves with each map ----------------
 
 function renderAnswer(effect, kind) {
-  const all = [...state.results.map((r) => r.effect), ...(state.whatIf ? [state.whatIf.r.effect] : []), 0];
+  const all = [...state.results.map((r) => r.effect), ...(state.whatIf ? [state.whatIf.r.effect] : []), ...(state.pick?.r ? [state.pick.r.effect] : []), 0];
   let lo = Math.min(...all), hi = Math.max(...all);
   const pad = (hi - lo) * 0.08 || 1;
   lo -= pad; hi += pad;
   const X = (x) => 16 + ((x - lo) / (hi - lo)) * 568;
-  const order = storyOrder(state.set);
-  const seen = order.slice(0, state.revealed);
-  const ghosts = seen.map((i) => `<circle class="nl-seen ${kindOf(state.set.versions[i], i)}" cx="${X(state.results[i].effect).toFixed(1)}" cy="22" r="5"><title>${escapeHtml(state.set.versions[i].name)}: ${fmt(state.results[i].effect)}</title></circle>`).join("");
+  const seen = sequence().slice(0, state.revealed).filter((i) => i !== "pick");
+  const you = state.pick?.r ? `<circle class="nl-seen you" cx="${X(state.pick.r.effect).toFixed(1)}" cy="22" r="5"><title>Your map: ${fmt(state.pick.r.effect)}</title></circle>` : "";
+  const ghosts = you + seen.map((i) => `<circle class="nl-seen ${kindOf(state.set.versions[i], i)}" cx="${X(state.results[i].effect).toFixed(1)}" cy="22" r="5"><title>${escapeHtml(state.set.versions[i].name)}: ${fmt(state.results[i].effect)}</title></circle>`).join("");
   $("answer-value").textContent = effect === null ? "?" : fmt(effect);
   $("answer-value").className = `answer-value ${kind ?? ""}`;
   $("answer-line").innerHTML = `
@@ -415,10 +498,19 @@ document.querySelector(".story").addEventListener("click", (e) => {
     return;
   }
   if (e.target.closest("#next-step")) return reveal(state.revealed + 1);
-  if (e.target.closest("#show-all")) return reveal(storyOrder(state.set).length);
+  const chip = e.target.closest(".pick-options .chip");
+  if (chip) {
+    const c = chip.dataset.col, on = !state.pick.chosen.has(c);
+    on ? state.pick.chosen.add(c) : state.pick.chosen.delete(c);
+    chip.setAttribute("aria-pressed", on);
+    return;
+  }
+  if (e.target.closest("#pick-check")) return checkPick();
+  if (e.target.closest("#show-all")) return reveal(sequence().length);
   const b = e.target.closest(".step-map");
   if (!b) return;
-  show(b.dataset.v === "whatIf" ? "whatIf" : Number(b.dataset.v));
+  if (b.dataset.v === "pick") showPick();
+  else show(b.dataset.v === "whatIf" ? "whatIf" : Number(b.dataset.v));
   // On one column the map is below the story: bring it into view.
   if (matchMedia("(max-width: 900px)").matches) $("board").scrollIntoView({ behavior: "smooth", block: "start" });
 });

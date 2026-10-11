@@ -29,7 +29,7 @@ export default {
   versions: [
     {
       name: "Our map",
-      explain: "The year is a real, if small, Mr Confounder: ratings crept up over time while fewer very dark bars were reviewed. Freeze it, and the answer is {est}. Barely different: here the first look was already almost fair.",
+      explain: "Freeze the year. It's a small Mr Confounder: ratings crept up over time while fewer very dark bars were reviewed. With the year frozen the answer is {est}, barely different: here the first look was already almost fair.",
       lesson: "Freeze what pushes on both the cause and the effect.",
       pos: { "Very dark": [80, 215], Rating: [556, 215], "Year reviewed": [318, 40] },
       edges: [["Year reviewed", "Very dark"], ["Year reviewed", "Rating"], ["Very dark", "Rating"]],
@@ -37,7 +37,7 @@ export default {
     {
       name: "Just the correlation",
       fine: true,
-      explain: "At first glance, very dark bars score {est} on the 1–4 scale compared with the rest. Before believing it, ask: is anything pushing on both how dark a bar is and how it's rated?",
+      explain: "At first glance, very dark bars score {est} on the 1–4 scale compared with the rest. But is anything else pushing on both how dark a bar is and how it's rated?",
       lesson: "Sometimes correlation and causation nearly agree. The map is how you know when.",
       pos: { "Very dark": [190, 205], Rating: [480, 205] },
       edges: [["Very dark", "Rating"]],

@@ -362,6 +362,27 @@ footer .foot-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 
 .verdict.right { background: var(--good-bg); color: var(--good); }
 .verdict.wrong { background: var(--warn-bg); color: var(--warn); }
 
+/* Your turn: pick what to freeze */
+.step.pick .step-tag { color: var(--accent); }
+.pick-options { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 12px; }
+.chip { padding: 7px 12px; border-radius: 999px; border: 1px solid var(--line); background: #fff; color: var(--ink); font: 600 15px var(--font-ui); cursor: pointer; }
+.chip:hover:not(:disabled) { border-color: var(--edge); }
+.chip[aria-pressed="true"] { background: var(--role-confounder); border-color: var(--role-confounder); color: #fff; }
+.chip:disabled { cursor: default; opacity: 0.85; }
+#pick-check { padding: 9px 16px; border-radius: 12px; border: 1px solid var(--ink); background: var(--ink); color: #fff; font: 700 15px var(--font-ui); cursor: pointer; }
+.pick-verdict { margin: 4px 2px 6px; font-weight: 700; }
+.pick-verdict.right { color: var(--good); }
+.pick-verdict.wrong { color: var(--warn); }
+.pick-marks { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 3px; }
+.pick-marks .right { color: var(--good); }
+.pick-marks .wrong { color: var(--mistake); }
+.pick-marks b { color: var(--ink); }
+.pick-yours { margin: 0 2px; }
+.answer-value.you, .nl-now.you { color: var(--accent); fill: var(--accent); }
+.nl-seen.you { stroke: var(--accent); }
+.lesson.you { border-top-color: var(--accent); }
+.lesson.you > .label { color: var(--accent); }
+
 /* The data under the step you're reading */
 .data-chart { margin: 12px 0 0; padding: 10px 12px 8px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
 .data-chart svg { display: block; width: 100%; height: auto; }

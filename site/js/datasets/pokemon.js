@@ -11,7 +11,7 @@ export default {
   name: "Heavy Pokémon and attack",
   question: "Do heavier Pokémon hit harder?",
   about: "949 Pokémon with their weight (in hundreds of kilograms), height (metres) and Attack, one of six battle stats.",
-  order: [1, 2, 0, 3],
+  order: [1, 0, 2, 3],
   intro: [
     "There are hundreds of Pokémon, from tiny to enormous, and each has battle stats, including Attack.",
   ],
@@ -30,7 +30,7 @@ export default {
   versions: [
     {
       name: "Our map",
-      explain: "The fair comparison freezes height: Pokémon of the same size. Weight on its own is worth {est} Attack per 100 kg, about half the first look.",
+      explain: "Freeze height: compare Pokémon of the same size. Weight on its own is worth {est} Attack per 100 kg, about half the first look.",
       lesson: "Freeze what pushes on both the cause and the effect.",
       pos: { "Weight (100 kg)": [80, 215], Attack: [556, 215], "Height (m)": [318, 40] },
       edges: [["Height (m)", "Weight (100 kg)"], ["Height (m)", "Attack"], ["Weight (100 kg)", "Attack"]],
@@ -46,7 +46,7 @@ export default {
     {
       name: "Freeze base stat total",
       mistake: true,
-      explain: "You might compare Pokémon with the same base stat total. The effect nearly vanishes ({est}). But the total is all six battle stats added up, Attack included, so any extra Attack has to come out of another stat.",
+      explain: "What if you froze the base stat total? The effect nearly vanishes ({est}). But the total is all six battle stats added up, Attack included, so any extra Attack has to come out of another stat.",
       lesson: "Never freeze something calculated from the effect.",
       pos: { "Weight (100 kg)": [80, 215], Attack: [556, 215], "Base stat total": [178, 40], "Height (m)": [458, 40] },
       edges: [["Height (m)", "Weight (100 kg)"], ["Height (m)", "Attack"], ["Base stat total", "Weight (100 kg)"], ["Base stat total", "Attack"], ["Weight (100 kg)", "Attack"]],
@@ -54,7 +54,7 @@ export default {
     {
       name: "Freeze type too",
       fine: true,
-      explain: "Rock and Steel types tend to be heavy and strong, so type could push on both too. Freezing it as well nudges the answer to {est}. Both maps are reasonable.",
+      explain: "Rock and Steel types tend to be heavy and strong, so freezing type as well is reasonable too. It nudges the answer to {est}.",
       lesson: "A second, weaker Mr Confounder only nudges the answer.",
       pos: { "Weight (100 kg)": [80, 215], Attack: [556, 215], "Height (m)": [178, 40], Type: [458, 40] },
       edges: [["Height (m)", "Weight (100 kg)"], ["Height (m)", "Attack"], ["Type", "Weight (100 kg)"], ["Type", "Attack"], ["Weight (100 kg)", "Attack"]],

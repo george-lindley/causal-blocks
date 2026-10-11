@@ -11,7 +11,7 @@ export default {
   name: "Stronger players and winning",
   question: "Do stronger chess players win more often?",
   about: "4,000 games from Lichess, a free online chess site. Ratings measure strength and are shown in hundreds of points (15 means 1,500). We follow the player with the white pieces.",
-  order: [1, 3, 0, 2],
+  order: [1, 0, 3, 2],
   intro: [
     "On Lichess, a free online chess site, every player has a rating that measures their strength. We follow the player with the white pieces.",
   ],
@@ -30,7 +30,7 @@ export default {
   versions: [
     {
       name: "Our map",
-      explain: "The catch is the matchmaking: the site pairs you with players of a similar rating, so a strong white player usually faces a strong opponent. Black's rating pushes on both, so the fair comparison freezes it. Now each 100 points is worth {est}: about three times the first look.",
+      explain: "Freeze black's rating. The site pairs you with players of a similar rating, so a strong white player usually faces a strong opponent: black's rating pushes on both. Against equally strong opponents, each 100 points is worth {est}, about three times the first look.",
       lesson: "Mr Confounder can hide an effect, not just fake one.",
       pos: { "White rating": [80, 215], "White wins": [556, 215], "Black rating": [318, 40] },
       edges: [["Black rating", "White rating"], ["Black rating", "White wins"], ["White rating", "White wins"]],
@@ -54,7 +54,7 @@ export default {
     {
       name: "Freeze the rating gap",
       mistake: true,
-      explain: "What if we compare games with the same rating gap? Skill seems to vanish completely ({est}). But the gap is white's rating minus black's, so it's built from the cause: a stronger white player with the same gap must be facing an equally stronger opponent.",
+      explain: "What if you froze the rating gap instead? Skill seems to vanish ({est}). But the gap is white's rating minus black's, so it's built from the cause: a stronger white player with the same gap must face an equally stronger opponent.",
       lesson: "Never freeze something calculated from the cause.",
       pos: { "White rating": [80, 215], "White wins": [556, 215], "Rating gap": [318, 40] },
       edges: [["Rating gap", "White rating"], ["Rating gap", "White wins"], ["White rating", "White wins"]],

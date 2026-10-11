@@ -29,7 +29,7 @@ export default {
   versions: [
     {
       name: "Our map",
-      explain: "Summers have warmed a lot since the 1950s, and burn times have drifted too, so the year pushes on both. Freeze it, and what's left is {est} °C per minute: closer still to nothing.",
+      explain: "Freeze the year: summers have warmed a lot since the 1950s, and burn times have drifted too. What's left is {est} °C per minute, closer still to nothing.",
       lesson: "An answer close to zero is still an answer: the folklore doesn't hold up.",
       pos: { "Burn time (min)": [80, 215], "Summer temp (C)": [556, 215], Year: [318, 40] },
       edges: [["Year", "Burn time (min)"], ["Year", "Summer temp (C)"], ["Burn time (min)", "Summer temp (C)"]],
@@ -37,7 +37,7 @@ export default {
     {
       name: "Just the correlation",
       fine: true,
-      explain: "At first glance, each extra minute of burning goes with a summer {est} °C warmer. That's tiny: even half an hour would barely change a summer, and it could easily be zero.",
+      explain: "At first glance, each extra minute of burning goes with a summer {est} °C warmer. That's tiny: even half an hour would barely change a summer.",
       lesson: "Before trusting a pattern, ask how big it is, not just whether it's there.",
       pos: { "Burn time (min)": [190, 205], "Summer temp (C)": [480, 205] },
       edges: [["Burn time (min)", "Summer temp (C)"]],

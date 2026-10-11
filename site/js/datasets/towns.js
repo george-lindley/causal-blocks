@@ -9,7 +9,7 @@ export default {
   tag: "UK schools",
   icon: "🏫",
   level: "hard",
-  order: [1, 3, 2, 0],
+  order: [1, 0, 2, 3],
   name: "Small towns and exam results",
   question: "Do children in smaller towns do better at school?",
   about: "1,082 English towns. The education score is the ONS’s measure of how well young people do at school (most towns score between −4 and +5). Town size goes small → medium → large.",
@@ -34,7 +34,7 @@ export default {
   versions: [
     {
       name: "Our map",
-      explain: "For the whole effect of town size, freeze region only: some regions have lots of big towns and do well at school for other reasons, so each town is compared with towns in the same region. Deprivation stays free: bigger towns tend to be poorer, and that's Ms Mediator, the route the effect travels along. The whole effect is {est} per step.",
+      explain: "Freeze region only: some regions have lots of big towns and do well at school for other reasons, so each town is compared with towns in the same region. Deprivation stays free: bigger towns tend to be poorer, and that's Ms Mediator, the route the effect travels along. The whole effect is {est} per step.",
       lesson: "Freeze what pushes on both the cause and the effect. Leave alone what the cause pushes on.",
       pos: { Region: [24, 40], Coastal: [24, 380], "Town size": [240, 130], Deprivation: [350, 330], "Education score": [620, 215] },
       edges: [["Region", "Town size"], ["Region", "Deprivation"], ["Coastal", "Deprivation"],
@@ -59,7 +59,7 @@ export default {
     {
       name: "Control for everything",
       mistake: true,
-      explain: "It might feel careful to freeze every column at once. Look what happens: the answer flips to {est}, and bigger towns seem to do better! Freezing everything includes deprivation, and the next step shows why that matters.",
+      explain: "And if you freeze every column at once? It feels careful, but it freezes deprivation too, repeating the twist, and the answer flips again ({est}).",
       lesson: "More controls isn't safer. Only freeze what your map says is a confounder.",
       pos: { Region: [30, 30], Deprivation: [318, 30], University: [606, 30], "Town size": [150, 205],
         "Education score": [486, 205], Coastal: [150, 384], "Adult degrees": [486, 384] },

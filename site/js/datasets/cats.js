@@ -11,7 +11,7 @@ export default {
   name: "Indoor cats and hunting",
   question: "Do cats that stay indoors longer bring home less prey?",
   about: "91 pet cats in the UK. Owners reported how many hours a day each cat stays indoors and how many prey animals it brings home in a month.",
-  order: [1, 2, 0, 3],
+  order: [1, 0, 2, 3],
   intro: [
     "Scientists fitted GPS trackers to pet cats across the UK, and owners reported how long their cats stay indoors each day and how much prey they bring home.",
   ],
@@ -30,7 +30,7 @@ export default {
   versions: [
     {
       name: "Our map",
-      explain: "Age is the one that matters: older cats stay in more and bring home less. Freeze age, comparing cats of the same age, and the answer is {est}. Close to the first look: age is a real Mr Confounder, but a weak one.",
+      explain: "Freeze age: older cats stay in more and bring home less. Comparing cats of the same age, the answer is {est}. Close to the first look: age is a real Mr Confounder, but a weak one.",
       lesson: "Freeze what pushes on both the cause and the effect.",
       pos: { "Hours indoors": [80, 215], "Prey per month": [556, 215], "Age (years)": [318, 40], Hunts: [318, 384] },
       edges: [["Age (years)", "Hours indoors"], ["Age (years)", "Prey per month"], ["Hours indoors", "Prey per month"], ["Prey per month", "Hunts"]],
@@ -38,7 +38,7 @@ export default {
     {
       name: "Just the correlation",
       fine: true,
-      explain: "At first glance, each extra hour indoors means {est} prey animals a month. What else could be going on?",
+      explain: "At first glance, each extra hour indoors means {est} prey animals a month. But is something else pushing on both?",
       lesson: "A weak Mr Confounder only nudges the answer. Drawing the map tells you how much to worry.",
       pos: { "Hours indoors": [190, 205], "Prey per month": [480, 205] },
       edges: [["Hours indoors", "Prey per month"]],
@@ -46,7 +46,7 @@ export default {
     {
       name: "Freeze \"hunts\"",
       mistake: true,
-      explain: "You might freeze whether a cat hunts at all. The answer shrinks to {est}. But cats that don't hunt bring home nothing, so that column is really another measure of the effect: freezing it hides part of the answer.",
+      explain: "What if you froze whether a cat hunts? The answer shrinks to {est}. But cats that don't hunt bring home nothing, so that column is really another measure of the effect: freezing it hides part of the answer.",
       lesson: "Don't freeze something that's really another measure of the effect.",
       pos: { "Hours indoors": [80, 215], "Prey per month": [556, 215], "Age (years)": [178, 40], Hunts: [458, 40] },
       edges: [["Age (years)", "Hours indoors"], ["Age (years)", "Prey per month"], ["Hunts", "Hours indoors"], ["Hunts", "Prey per month"], ["Hours indoors", "Prey per month"]],

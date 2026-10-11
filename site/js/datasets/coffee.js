@@ -11,7 +11,7 @@ export default {
   name: "Mountain coffee",
   question: "Does coffee grown higher up taste better?",
   about: "1,007 coffees from 19 countries, graded by the Coffee Quality Institute and scored out of 100 by trained tasters. Altitude is the farm's height in kilometres.",
-  order: [1, 2, 0, 3],
+  order: [1, 0, 2, 3],
   intro: [
     "Coffee experts grade beans from farms all over the world, scoring each coffee out of 100. Many people say coffee grown high in the mountains tastes best.",
   ],
@@ -30,7 +30,7 @@ export default {
   versions: [
     {
       name: "Our map",
-      explain: "The fair comparison freezes country only, comparing farms with farms in the same country. Each kilometre is worth {est} points, about half the first look.",
+      explain: "Freeze country: compare farms only with farms in the same country. Each kilometre is then worth {est} points, about half the first look.",
       lesson: "Mr Confounder can be a group, like a country. Freezing it means comparing within each group.",
       pos: { "Altitude (km)": [80, 215], "Cup score": [556, 215], Country: [318, 40] },
       edges: [["Country", "Altitude (km)"], ["Country", "Cup score"], ["Altitude (km)", "Cup score"]],
@@ -46,7 +46,7 @@ export default {
     {
       name: "Freeze flavour score",
       mistake: true,
-      explain: "Freeze the flavour score along with country, and altitude seems to do very little ({est}). But the cup score is ten tasting scores added up, and flavour is one of them: that's freezing part of the effect.",
+      explain: "What if you froze the flavour score too? Altitude seems to do very little ({est}). But the cup score is ten tasting scores added up, and flavour is one of them: that's freezing part of the effect.",
       lesson: "Never freeze part of the effect.",
       pos: { "Altitude (km)": [80, 215], "Cup score": [556, 215], Country: [178, 40], "Flavour score": [458, 40] },
       edges: [["Country", "Altitude (km)"], ["Country", "Cup score"], ["Flavour score", "Altitude (km)"], ["Flavour score", "Cup score"], ["Altitude (km)", "Cup score"]],

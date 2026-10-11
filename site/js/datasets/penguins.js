@@ -11,7 +11,7 @@ export default {
   name: "Penguin bills",
   question: "Do penguins with longer bills have deeper bills?",
   about: "333 penguins of three species (Adélie, Chinstrap and Gentoo) measured near Antarctica (2007–2009). Bill length and depth are in millimetres.",
-  order: [1, 3, 2, 0],
+  order: [1, 0, 2, 3],
   intro: [
     "Scientists in Antarctica measured hundreds of penguins of three species.",
   ],
@@ -30,7 +30,7 @@ export default {
   versions: [
     {
       name: "Our map",
-      explain: "One more Mr Confounder: males have longer and deeper bills all round. Freeze species and sex, and each extra millimetre of length comes with {est} mm of depth. Smaller, but the right way round.",
+      explain: "Freeze species and sex. Look: the relationship turns around! Within the same species and sex, each extra millimetre of length comes with {est} mm of depth. Mixing the groups had flipped the pattern. That's Simpson's paradox.",
       lesson: "Freeze every Mr Confounder you can see.",
       pos: { "Bill length (mm)": [80, 215], "Bill depth (mm)": [556, 215], Sex: [178, 40], Species: [458, 40] },
       edges: [["Species", "Bill length (mm)"], ["Species", "Bill depth (mm)"], ["Sex", "Bill length (mm)"], ["Sex", "Bill depth (mm)"], ["Bill length (mm)", "Bill depth (mm)"]],
@@ -46,7 +46,7 @@ export default {
     {
       name: "Freeze species only",
       mistake: true,
-      explain: "Now freeze species itself. Look: the relationship turns around ({est})! Within each species, longer bills are deeper. Mixing the groups had flipped the pattern. That's Simpson's paradox.",
+      explain: "What if you froze species but forgot sex? The answer comes out too big ({est}): males have longer and deeper bills all round, so part of the link is just males versus females.",
       lesson: "Missing a Mr Confounder can make an effect look bigger than it is.",
       pos: { "Bill length (mm)": [80, 215], "Bill depth (mm)": [556, 215], Species: [318, 40] },
       edges: [["Species", "Bill length (mm)"], ["Species", "Bill depth (mm)"], ["Bill length (mm)", "Bill depth (mm)"]],
@@ -54,7 +54,7 @@ export default {
     {
       name: "Freeze island instead",
       mistake: true,
-      explain: "Species live on different islands, so try freezing the island. Still the wrong way round ({est}): two islands are home to two species each, so island is only a rough stand-in for species.",
+      explain: "What if you froze the island instead of species? Still the wrong way round ({est}): two islands are home to two species each, so island is only a rough stand-in.",
       lesson: "Freeze the real Mr Confounder, not a stand-in for it.",
       pos: { "Bill length (mm)": [80, 215], "Bill depth (mm)": [556, 215], Island: [318, 40] },
       edges: [["Island", "Bill length (mm)"], ["Island", "Bill depth (mm)"], ["Bill length (mm)", "Bill depth (mm)"]],
