@@ -36,7 +36,6 @@ def test_each_dataset_has_three_to_five_maps_best_first(datasets):
         vs = d["versions"]
         assert 3 <= len(vs) <= 5, d["key"]
         assert not vs[0]["mistake"], d["key"]
-        assert all(v["mistake"] for v in vs[1:]), d["key"]
 
 
 def test_every_map_gives_an_estimate_on_every_row(datasets):
@@ -47,8 +46,9 @@ def test_every_map_gives_an_estimate_on_every_row(datasets):
 
 
 def test_mistakes_change_the_answer(datasets):
-    # A "mistake" that gives the same number teaches nothing.
+    # A "mistake" that gives the same number teaches nothing. ("Also fine" maps may match.)
     for d in datasets:
         best = d["versions"][0]["effect"]
         for v in d["versions"][1:]:
-            assert abs(v["effect"] - best) >= 0.02, (d["key"], v["name"])
+            if v["mistake"]:
+                assert abs(v["effect"] - best) >= 0.02, (d["key"], v["name"])

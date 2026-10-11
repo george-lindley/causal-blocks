@@ -204,6 +204,12 @@ const levelBadge = (level) => {
   return `<span class="level level-${level}"><span aria-hidden="true">${dots}</span> ${word}</span>`;
 };
 
+// Every map is the best map, a mistake, or "also fine": a different map that gets the same answer,
+// which teaches that not everything you could freeze matters.
+const KIND = { best: "✓ Best map", mistake: "✗ Mistake", fine: "✓ Also fine" };
+const kindOf = (v, i) => (i === 0 ? "best" : v.mistake ? "mistake" : "fine");
+const TIDYTUESDAY = "https://github.com/rfordatascience/tidytuesday/tree/main/data/";
+
 function renderPicker() {
   $("datasets").innerHTML = DATASETS.map((d) => `
     <button type="button" class="sample" data-key="${d.key}">
@@ -218,15 +224,18 @@ function renderCase() {
   for (const b of document.querySelectorAll("#datasets .sample")) b.setAttribute("aria-pressed", b.dataset.key === set.key);
   $("case").hidden = false;
   $("case-question").textContent = set.question;
+  const story = set.story ? `<a href="${set.story.url}" target="_blank" rel="noopener">${set.story.label} ↗</a> · ` : "";
+  const week = set.tidytuesday
+    ? ` via <a href="${TIDYTUESDAY}${set.tidytuesday.slice(0, 4)}/${set.tidytuesday}" target="_blank" rel="noopener">TidyTuesday ${set.tidytuesday} ↗</a>` : "";
   $("case-about").innerHTML = `${set.about}
-    <a href="${set.story.url}" target="_blank" rel="noopener">${set.story.label} ↗</a> ·
-    <a href="${set.file}" download>Download the data</a>`;
+    ${story}<a href="${set.file}" download>Download the data</a>
+    <span class="case-source">Data: ${set.source}${week}</span>`;
   // The story in plain words, before the maps translate it into arrows. Optional per dataset.
   $("case-story").hidden = !set.intro;
   $("case-story-body").innerHTML = (set.intro ?? []).map((p) => `<p>${p}</p>`).join("");
   $("versions").innerHTML = set.versions.map((v, i) => `
-    <button type="button" class="version${v.mistake ? " mistake" : ""}" data-v="${i}">
-      <span class="version-tag">${v.mistake ? "✗ Mistake" : "✓ Best map"}</span>
+    <button type="button" class="version ${kindOf(v, i)}" data-v="${i}">
+      <span class="version-tag">${KIND[kindOf(v, i)]}</span>
       <span class="version-name">${v.name}</span>
       <span class="version-value">${fmt(state.results[i].effect)}</span>
     </button>`).join("") + `<span id="whatif-slot"></span>`;
@@ -267,10 +276,11 @@ function show(i) {
   board.load(v.pos, v.edges);
   board.draw(r.roles, { frozen: new Set(r.adjust) });
 
-  const best = v.mistake ? `<p class="lesson-best">The best map says <b>${fmt(state.results[0].effect)}</b>.</p>` : "";
-  $("lesson").className = `card lesson${v.mistake ? " mistake" : ""}`;
+  const kind = kindOf(v, i);
+  const best = kind !== "best" ? `<p class="lesson-best">The best map says <b>${fmt(state.results[0].effect)}</b>.</p>` : "";
+  $("lesson").className = `card lesson ${kind}`;
   $("lesson").innerHTML = `
-    <span class="label">${v.mistake ? "✗ Mistake" : "✓ Best map"}: ${v.name}</span>
+    <span class="label">${KIND[kind]}: ${v.name}</span>
     <div class="lesson-value">${fmt(r.effect)}</div>
     <p class="lesson-reads">${set.reads.replace("{est}", fmt(r.effect))}</p>
     ${best}

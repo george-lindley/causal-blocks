@@ -10,6 +10,8 @@ const out = DATASETS.map((set) => {
   const text = readFileSync(new URL(`../../site/${set.file}`, import.meta.url), "utf8");
   const [head, ...rows] = text.trim().split(/\r?\n/).map((l) => l.split(","));
   const problems = [];
+  if (!set.source) problems.push("no source: every case study credits its data");
+  if (set.versions.slice(1).some((v) => !v.lesson)) problems.push("every map needs a lesson");
   if (!["easy", "medium", "hard"].includes(set.level)) problems.push(`level must be easy, medium or hard, not ${set.level}`);
   if (text.includes('"')) problems.push("CSV has quotes; the page's reader doesn't handle them");
   if (rows.some((r) => r.length !== head.length)) problems.push("CSV rows have the wrong number of fields");

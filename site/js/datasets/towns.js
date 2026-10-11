@@ -18,6 +18,8 @@ export default {
     "Why? Mostly through <b>deprivation</b>: bigger towns tend to be poorer, and poorer towns tend to do worse. That's Ms Mediator, the route the effect travels along.",
     "<b>And here's the twist.</b> Freeze deprivation, so you only compare towns that are <i>equally</i> deprived, and the answer flips the other way: bigger towns now do <i>better</i>, by about 0.4 a step. So under this map, being a big town isn't what holds results back (unlike reported in the correlation study). Being poorer is. That's a different question from the whole effect of town size, but it's the most surprising thing in the data.",
   ],
+  source: "ONS, Why do children and young people in smaller towns do better academically? (2023)",
+  tidytuesday: "2024-01-23",
   cause: "Town size",
   effect: "Education score",
   reads: "Each step up in town size changes the education score by {est}.",

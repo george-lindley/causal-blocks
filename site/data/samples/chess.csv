@@ -1,0 +1,4001 @@
+White rating,White wins,Black rating,Rated game,Rating gap
+16.96,No win,16.59,Rated,0.37
+13.09,Win,14.19,Rated,-1.1
+19.47,Win,19.58,Rated,-0.11
+15.42,No win,12.13,Rated,3.29
+12.92,No win,13.3,Rated,-0.38
+15.32,Win,15.7,Rated,-0.38
+14.93,No win,13.15,Rated,1.78
+17.37,Win,11.54,Rated,5.83
+17.48,No win,18.52,Rated,-1.04
+17.21,Win,15.73,Rated,1.48
+13.81,No win,16.46,Rated,-2.65
+17.5,No win,17.08,Rated,0.42
+21.44,No win,20.79,Rated,0.65
+12.73,No win,13.01,Rated,-0.28
+18.47,Win,18.02,Rated,0.45
+12.18,No win,13.93,Rated,-1.75
+11.07,Win,12.01,Rated,-0.94
+16.93,Win,11.44,Rated,5.49
+15.0,Win,13.77,Casual,1.23
+24.85,Win,18.02,Casual,6.83
+16.72,No win,16.8,Rated,-0.08
+18.1,No win,14.95,Rated,3.15
+15.91,No win,16.71,Rated,-0.8
+12.12,Win,12.12,Rated,0.0
+17.93,Win,12.16,Rated,5.77
+17.82,Win,18.64,Rated,-0.82
+19.8,No win,21.73,Rated,-1.93
+16.05,Win,15.58,Rated,0.47
+17.71,No win,17.39,Rated,0.32
+13.55,No win,14.28,Rated,-0.73
+10.47,Win,12.02,Casual,-1.55
+13.9,Win,14.7,Rated,-0.8
+13.91,No win,13.66,Rated,0.25
+16.05,Win,9.54,Casual,6.51
+12.88,Win,13.29,Rated,-0.41
+16.14,No win,15.64,Rated,0.5
+12.97,Win,15.0,Casual,-2.03
+12.22,No win,14.0,Casual,-1.78
+15.94,Win,15.76,Rated,0.18
+19.7,Win,18.23,Rated,1.47
+12.89,No win,17.01,Rated,-4.12
+15.28,No win,14.58,Rated,0.7
+17.57,No win,19.32,Casual,-1.75
+11.28,No win,16.7,Rated,-5.42
+19.21,No win,14.51,Casual,4.7
+18.45,Win,16.38,Rated,2.07
+16.17,Win,11.63,Casual,4.54
+12.25,Win,14.8,Casual,-2.55
+19.36,No win,21.01,Rated,-1.65
+22.64,Win,15.29,Rated,7.35
+17.5,No win,17.93,Casual,-0.43
+13.7,Win,15.0,Casual,-1.3
+13.93,No win,13.98,Rated,-0.05
+17.83,Win,17.81,Rated,0.02
+13.02,No win,16.96,Rated,-3.94
+18.3,No win,18.61,Rated,-0.31
+18.5,No win,18.04,Casual,0.46
+16.23,Win,14.28,Rated,1.95
+18.24,Win,18.17,Rated,0.07
+13.46,Win,15.52,Rated,-2.06
+21.49,Win,20.31,Rated,1.18
+13.07,Win,16.49,Casual,-3.42
+15.54,No win,15.29,Rated,0.25
+16.9,No win,21.78,Rated,-4.88
+18.5,Win,19.04,Rated,-0.54
+17.08,Win,17.29,Rated,-0.21
+15.11,No win,16.14,Rated,-1.03
+14.84,No win,14.05,Rated,0.79
+11.43,No win,16.12,Rated,-4.69
+13.06,Win,9.53,Rated,3.53
+15.45,Win,13.93,Rated,1.52
+12.83,No win,13.54,Rated,-0.71
+17.74,Win,19.54,Rated,-1.8
+20.6,No win,18.65,Rated,1.95
+15.71,Win,14.59,Rated,1.12
+11.59,No win,10.19,Rated,1.4
+14.74,No win,15.0,Rated,-0.26
+15.17,Win,15.67,Rated,-0.5
+12.64,No win,10.65,Casual,1.99
+12.68,No win,12.04,Rated,0.64
+17.68,Win,17.17,Rated,0.51
+11.76,No win,17.04,Casual,-5.28
+16.62,Win,12.65,Rated,3.97
+18.64,Win,18.42,Rated,0.22
+11.59,No win,12.07,Rated,-0.48
+12.7,No win,11.79,Rated,0.91
+16.85,Win,16.66,Rated,0.19
+15.0,No win,10.72,Casual,4.28
+16.49,No win,17.03,Casual,-0.54
+10.37,No win,11.67,Rated,-1.3
+12.98,No win,13.82,Rated,-0.84
+14.05,Win,14.17,Rated,-0.12
+15.39,Win,14.17,Rated,1.22
+17.41,No win,18.04,Rated,-0.63
+18.14,No win,18.78,Rated,-0.64
+19.51,Win,19.75,Rated,-0.24
+12.68,Win,12.55,Rated,0.13
+12.71,Win,13.28,Rated,-0.57
+16.62,Win,16.63,Rated,-0.01
+16.98,No win,19.77,Rated,-2.79
+15.0,Win,15.71,Rated,-0.71
+17.99,Win,17.82,Rated,0.17
+15.24,Win,17.41,Rated,-2.17
+14.8,Win,12.09,Casual,2.71
+16.1,Win,16.17,Rated,-0.07
+16.11,No win,17.21,Rated,-1.1
+18.81,Win,18.0,Rated,0.81
+19.92,Win,18.16,Rated,1.76
+15.25,No win,15.93,Rated,-0.68
+15.77,Win,14.84,Rated,0.93
+19.98,No win,18.8,Rated,1.18
+13.68,Win,13.82,Rated,-0.14
+15.85,Win,15.01,Casual,0.84
+17.24,No win,17.71,Rated,-0.47
+15.18,No win,15.93,Casual,-0.75
+16.45,Win,14.36,Rated,2.09
+15.63,No win,16.09,Rated,-0.46
+12.07,No win,15.88,Rated,-3.81
+18.41,No win,17.01,Casual,1.4
+14.81,Win,12.93,Rated,1.88
+15.12,No win,15.96,Rated,-0.84
+15.86,No win,16.37,Rated,-0.51
+24.73,Win,15.0,Casual,9.73
+20.61,Win,14.32,Rated,6.29
+19.5,No win,22.04,Casual,-2.54
+17.37,Win,16.37,Rated,1.0
+13.63,Win,14.18,Rated,-0.55
+15.1,No win,14.8,Rated,0.3
+13.5,No win,14.29,Rated,-0.79
+15.0,Win,16.94,Rated,-1.94
+15.08,Win,15.0,Casual,0.08
+16.51,No win,16.08,Rated,0.43
+21.6,No win,19.25,Casual,2.35
+19.54,Win,19.12,Rated,0.42
+10.9,Win,8.37,Casual,2.53
+17.5,No win,14.37,Casual,3.13
+20.6,Win,17.92,Rated,2.68
+14.71,No win,17.02,Rated,-2.31
+13.15,Win,13.05,Rated,0.1
+19.3,Win,15.0,Rated,4.3
+14.02,Win,13.41,Casual,0.61
+16.36,Win,15.8,Casual,0.56
+15.0,Win,22.63,Casual,-7.63
+15.0,Win,11.32,Casual,3.68
+13.63,No win,14.5,Rated,-0.87
+15.88,No win,15.85,Rated,0.03
+11.77,Win,12.17,Rated,-0.4
+10.8,Win,11.77,Rated,-0.97
+17.32,No win,17.33,Casual,-0.01
+18.53,No win,17.78,Rated,0.75
+15.33,Win,15.44,Rated,-0.11
+17.28,Win,15.76,Rated,1.52
+16.26,Win,16.31,Rated,-0.05
+12.52,Win,12.33,Rated,0.19
+21.04,Win,19.39,Casual,1.65
+15.93,Win,15.09,Rated,0.84
+15.19,Win,10.26,Casual,4.93
+14.62,Win,16.05,Rated,-1.43
+20.86,Win,13.5,Rated,7.36
+14.79,Win,13.34,Rated,1.45
+18.79,Win,17.47,Rated,1.32
+14.39,No win,14.53,Rated,-0.14
+12.36,No win,13.73,Rated,-1.37
+15.23,Win,14.69,Rated,0.54
+16.78,No win,10.17,Rated,6.61
+19.05,No win,19.24,Rated,-0.19
+18.9,No win,18.53,Rated,0.37
+13.75,Win,13.46,Rated,0.29
+9.76,No win,18.32,Rated,-8.56
+15.0,Win,15.0,Casual,0.0
+11.21,No win,18.31,Rated,-7.1
+15.3,No win,18.43,Rated,-3.13
+11.28,No win,15.14,Rated,-3.86
+20.3,Win,18.41,Casual,1.89
+19.7,Win,15.0,Casual,4.7
+18.72,Win,19.4,Rated,-0.68
+18.95,No win,18.31,Casual,0.64
+15.0,Win,18.01,Rated,-3.01
+16.81,Win,17.38,Rated,-0.57
+18.39,No win,16.73,Casual,1.66
+17.87,Win,18.09,Rated,-0.22
+20.07,Win,19.96,Rated,0.11
+17.94,Win,17.65,Rated,0.29
+12.17,No win,16.11,Rated,-3.94
+14.55,No win,14.93,Rated,-0.38
+13.59,Win,13.42,Rated,0.17
+19.5,Win,12.26,Casual,7.24
+18.69,Win,17.24,Rated,1.45
+17.17,Win,14.43,Rated,2.74
+15.0,No win,18.21,Casual,-3.21
+17.95,No win,15.81,Rated,2.14
+12.9,Win,11.86,Rated,1.04
+14.46,Win,14.24,Rated,0.22
+19.92,No win,18.11,Casual,1.81
+17.13,No win,17.09,Rated,0.04
+18.6,No win,14.96,Rated,3.64
+15.59,Win,16.0,Casual,-0.41
+24.54,Win,12.54,Casual,12.0
+14.79,No win,15.73,Rated,-0.94
+16.96,No win,16.95,Rated,0.01
+17.74,No win,16.83,Casual,0.91
+14.58,No win,14.07,Casual,0.51
+10.02,Win,15.34,Rated,-5.32
+18.73,No win,20.08,Casual,-1.35
+12.56,No win,13.01,Rated,-0.45
+18.62,No win,15.0,Casual,3.62
+12.6,No win,12.22,Casual,0.38
+15.67,Win,12.38,Rated,3.29
+18.42,Win,15.0,Rated,3.42
+15.45,Win,17.14,Rated,-1.69
+21.11,No win,22.99,Rated,-1.88
+23.4,Win,18.57,Rated,4.83
+15.0,No win,15.86,Casual,-0.86
+18.92,No win,18.46,Rated,0.46
+14.91,Win,15.25,Rated,-0.34
+16.06,Win,16.2,Rated,-0.14
+12.78,No win,13.08,Rated,-0.3
+16.02,Win,13.43,Rated,2.59
+20.77,Win,16.29,Casual,4.48
+18.05,Win,17.49,Rated,0.56
+18.07,No win,22.05,Rated,-3.98
+16.68,No win,12.37,Rated,4.31
+14.53,No win,14.12,Rated,0.41
+15.22,No win,14.04,Rated,1.18
+15.56,No win,15.39,Rated,0.17
+15.81,Win,16.9,Rated,-1.09
+14.15,Win,13.79,Rated,0.36
+16.03,No win,22.41,Rated,-6.38
+11.28,No win,13.47,Rated,-2.19
+13.97,Win,12.28,Rated,1.69
+15.46,No win,16.21,Rated,-0.75
+21.76,No win,19.17,Rated,2.59
+13.24,Win,13.11,Rated,0.13
+18.87,No win,20.45,Rated,-1.58
+13.03,No win,18.89,Rated,-5.86
+16.65,No win,14.21,Casual,2.44
+17.71,Win,12.65,Rated,5.06
+15.03,No win,14.98,Rated,0.05
+15.39,No win,15.14,Rated,0.25
+16.08,No win,15.91,Rated,0.17
+15.0,No win,15.0,Casual,0.0
+19.47,Win,17.71,Rated,1.76
+17.99,No win,15.0,Rated,2.99
+22.11,No win,23.0,Rated,-0.89
+17.58,Win,18.04,Rated,-0.46
+16.82,Win,15.0,Casual,1.82
+12.18,Win,18.41,Rated,-6.23
+16.35,No win,16.66,Rated,-0.31
+24.03,Win,17.46,Casual,6.57
+17.28,Win,15.88,Rated,1.4
+15.74,Win,15.62,Rated,0.12
+14.23,Win,14.0,Casual,0.23
+16.95,Win,16.43,Rated,0.52
+17.27,Win,14.66,Rated,2.61
+16.62,No win,15.84,Rated,0.78
+15.0,Win,14.23,Casual,0.77
+14.24,Win,14.25,Rated,-0.01
+11.44,Win,12.26,Rated,-0.82
+13.03,No win,17.05,Rated,-4.02
+13.48,No win,20.75,Rated,-7.27
+14.63,No win,19.74,Rated,-5.11
+13.12,Win,13.66,Rated,-0.54
+19.72,No win,19.19,Rated,0.53
+15.36,No win,15.0,Casual,0.36
+16.48,No win,15.52,Rated,0.96
+14.69,Win,14.85,Rated,-0.16
+19.07,No win,19.81,Rated,-0.74
+15.99,Win,14.84,Rated,1.15
+15.3,No win,14.92,Rated,0.38
+15.0,Win,15.0,Casual,0.0
+16.62,Win,14.24,Casual,2.38
+9.72,No win,12.29,Rated,-2.57
+12.36,Win,12.85,Rated,-0.49
+15.84,No win,15.43,Rated,0.41
+16.25,No win,18.22,Rated,-1.97
+18.73,No win,18.03,Rated,0.7
+14.61,Win,12.46,Rated,2.15
+11.41,Win,11.27,Rated,0.14
+12.57,Win,13.14,Rated,-0.57
+11.76,No win,16.15,Casual,-4.39
+17.72,Win,14.85,Rated,2.87
+14.0,No win,14.51,Rated,-0.51
+11.51,No win,14.24,Rated,-2.73
+18.73,Win,15.25,Casual,3.48
+15.65,Win,18.98,Casual,-3.33
+15.0,Win,12.99,Rated,2.01
+11.99,No win,15.01,Casual,-3.02
+15.58,No win,13.72,Rated,1.86
+13.54,No win,15.46,Rated,-1.92
+17.83,Win,15.65,Rated,2.18
+20.64,Win,18.97,Rated,1.67
+22.85,Win,21.73,Rated,1.12
+13.79,Win,14.21,Rated,-0.42
+18.37,Win,18.52,Rated,-0.15
+22.94,Win,22.8,Casual,0.14
+15.0,No win,15.81,Rated,-0.81
+14.74,Win,13.76,Rated,0.98
+17.31,Win,15.6,Rated,1.71
+16.69,No win,15.02,Rated,1.67
+14.62,No win,15.5,Rated,-0.88
+23.05,No win,20.85,Casual,2.2
+21.56,No win,24.76,Casual,-3.2
+15.0,No win,15.0,Casual,0.0
+13.43,Win,12.76,Rated,0.67
+12.73,No win,14.09,Rated,-1.36
+15.85,Win,21.31,Rated,-5.46
+22.35,Win,20.1,Rated,2.25
+17.18,Win,13.45,Rated,3.73
+17.94,Win,17.5,Rated,0.44
+17.32,No win,18.55,Rated,-1.23
+14.87,No win,20.08,Rated,-5.21
+18.28,No win,14.71,Casual,3.57
+15.0,No win,12.38,Casual,2.62
+13.54,No win,14.23,Rated,-0.69
+13.41,Win,14.21,Rated,-0.8
+13.23,No win,13.65,Rated,-0.42
+8.89,No win,8.5,Rated,0.39
+13.48,Win,11.83,Rated,1.65
+17.46,Win,19.79,Rated,-2.33
+12.42,Win,11.62,Rated,0.8
+21.11,No win,19.81,Rated,1.3
+13.02,Win,9.82,Rated,3.2
+13.51,Win,11.16,Rated,2.35
+15.62,No win,15.54,Rated,0.08
+22.83,No win,23.58,Rated,-0.75
+22.96,Win,13.19,Casual,9.77
+18.28,No win,16.97,Rated,1.31
+13.63,No win,17.4,Rated,-3.77
+11.04,Win,15.0,Casual,-3.96
+15.67,No win,15.36,Rated,0.31
+9.58,No win,12.89,Rated,-3.31
+18.73,No win,15.74,Rated,2.99
+13.9,No win,14.73,Rated,-0.83
+13.06,No win,14.0,Rated,-0.94
+15.0,No win,15.0,Casual,0.0
+19.75,No win,17.5,Rated,2.25
+13.99,Win,14.91,Rated,-0.92
+13.42,No win,15.56,Rated,-2.14
+12.64,Win,13.15,Rated,-0.51
+15.63,No win,13.96,Rated,1.67
+13.32,No win,11.9,Casual,1.42
+18.2,Win,17.92,Rated,0.28
+16.74,No win,15.54,Rated,1.2
+14.35,No win,17.96,Rated,-3.61
+13.78,Win,11.94,Rated,1.84
+14.09,Win,13.08,Rated,1.01
+21.88,No win,22.34,Rated,-0.46
+19.26,Win,18.52,Rated,0.74
+15.56,No win,14.2,Rated,1.36
+15.83,Win,15.13,Rated,0.7
+14.7,No win,14.28,Rated,0.42
+19.86,Win,16.66,Rated,3.2
+20.97,No win,21.52,Rated,-0.55
+16.23,Win,15.38,Rated,0.85
+14.68,Win,13.86,Rated,0.82
+12.24,No win,11.48,Rated,0.76
+12.0,Win,12.57,Rated,-0.57
+14.94,Win,13.48,Rated,1.46
+12.81,Win,9.3,Rated,3.51
+17.7,No win,18.68,Casual,-0.98
+13.66,No win,15.0,Casual,-1.34
+14.76,No win,16.01,Rated,-1.25
+22.03,Win,19.97,Rated,2.06
+15.02,Win,13.61,Rated,1.41
+15.57,Win,14.43,Rated,1.14
+16.31,Win,16.52,Rated,-0.21
+17.2,No win,17.48,Rated,-0.28
+21.06,No win,22.41,Rated,-1.35
+13.65,Win,13.13,Rated,0.52
+14.36,No win,14.23,Rated,0.13
+13.37,No win,13.91,Rated,-0.54
+17.35,Win,17.25,Rated,0.1
+19.54,No win,18.59,Rated,0.95
+21.84,Win,22.0,Rated,-0.16
+13.55,Win,20.52,Rated,-6.97
+18.08,Win,16.19,Rated,1.89
+15.46,Win,16.47,Rated,-1.01
+16.99,Win,18.09,Rated,-1.1
+10.18,No win,11.42,Rated,-1.24
+14.38,No win,14.97,Rated,-0.59
+16.9,Win,15.33,Rated,1.57
+16.96,Win,15.0,Casual,1.96
+19.08,Win,18.62,Rated,0.46
+11.29,No win,11.35,Rated,-0.06
+17.07,No win,16.96,Rated,0.11
+15.23,Win,11.91,Rated,3.32
+14.4,No win,16.47,Rated,-2.07
+17.37,Win,14.08,Rated,3.29
+11.44,No win,13.72,Rated,-2.28
+13.23,No win,13.34,Rated,-0.11
+20.81,No win,20.95,Rated,-0.14
+15.0,Win,15.75,Rated,-0.75
+17.6,Win,15.42,Casual,2.18
+15.0,No win,14.04,Rated,0.96
+16.88,No win,19.95,Rated,-3.07
+18.04,No win,17.36,Rated,0.68
+14.77,No win,14.14,Casual,0.63
+21.93,Win,18.92,Rated,3.01
+16.65,Win,13.6,Casual,3.05
+11.11,Win,9.21,Casual,1.9
+20.03,Win,17.74,Rated,2.29
+15.64,No win,13.86,Rated,1.78
+17.67,Win,13.3,Rated,4.37
+18.42,No win,17.43,Rated,0.99
+13.89,No win,14.05,Rated,-0.16
+20.82,Win,15.09,Rated,5.73
+14.53,No win,14.27,Rated,0.26
+19.46,Win,18.28,Rated,1.18
+12.85,Win,19.36,Rated,-6.51
+14.24,No win,15.0,Casual,-0.76
+15.82,No win,17.73,Rated,-1.91
+18.03,Win,15.0,Rated,3.03
+14.13,No win,21.08,Casual,-6.95
+20.4,Win,19.83,Rated,0.57
+15.68,Win,15.63,Rated,0.05
+17.02,Win,13.8,Casual,3.22
+13.29,No win,16.6,Rated,-3.31
+14.65,No win,14.32,Rated,0.33
+16.1,No win,16.27,Rated,-0.17
+17.39,Win,18.3,Rated,-0.91
+19.41,No win,13.62,Rated,5.79
+14.23,Win,11.82,Rated,2.41
+11.86,No win,17.45,Rated,-5.59
+12.69,No win,18.28,Rated,-5.59
+15.22,No win,14.61,Rated,0.61
+16.95,No win,18.34,Rated,-1.39
+13.5,No win,16.08,Rated,-2.58
+16.88,Win,14.21,Rated,2.67
+14.08,No win,14.48,Rated,-0.4
+11.59,No win,11.65,Rated,-0.06
+11.75,Win,11.11,Rated,0.64
+12.79,No win,13.86,Rated,-1.07
+12.8,No win,13.66,Rated,-0.86
+17.65,No win,15.77,Rated,1.88
+16.61,Win,16.94,Rated,-0.33
+18.3,Win,13.11,Casual,5.19
+12.99,No win,13.01,Rated,-0.02
+15.21,Win,15.14,Casual,0.07
+23.23,Win,18.81,Rated,4.42
+18.62,No win,18.23,Rated,0.39
+17.67,No win,20.5,Rated,-2.83
+13.18,Win,11.81,Casual,1.37
+19.0,No win,18.8,Rated,0.2
+13.98,No win,14.36,Rated,-0.38
+16.73,Win,14.64,Rated,2.09
+18.78,No win,19.27,Rated,-0.49
+15.38,Win,9.91,Rated,5.47
+16.6,Win,16.14,Rated,0.46
+14.62,Win,14.37,Rated,0.25
+13.66,Win,14.83,Casual,-1.17
+14.77,No win,16.22,Rated,-1.45
+15.22,Win,14.25,Rated,0.97
+12.7,Win,15.23,Casual,-2.53
+16.92,Win,16.09,Rated,0.83
+12.9,Win,13.67,Rated,-0.77
+12.89,Win,13.11,Casual,-0.22
+19.02,Win,13.65,Casual,5.37
+18.63,No win,18.31,Rated,0.32
+15.0,No win,15.03,Rated,-0.03
+16.82,Win,17.03,Casual,-0.21
+16.88,Win,16.03,Rated,0.85
+14.96,No win,15.25,Rated,-0.29
+20.5,No win,16.27,Casual,4.23
+17.13,Win,15.25,Rated,1.88
+17.22,No win,17.55,Rated,-0.33
+16.6,Win,16.65,Rated,-0.05
+12.53,No win,19.56,Rated,-7.03
+13.11,No win,14.02,Rated,-0.91
+13.54,No win,13.37,Rated,0.17
+17.07,Win,16.93,Rated,0.14
+21.82,No win,22.01,Rated,-0.19
+15.07,Win,15.05,Rated,0.02
+21.94,Win,20.07,Rated,1.87
+21.17,No win,20.87,Rated,0.3
+13.93,Win,12.85,Rated,1.08
+17.43,Win,18.19,Rated,-0.76
+16.98,Win,16.21,Rated,0.77
+9.72,No win,12.47,Rated,-2.75
+9.54,No win,11.66,Rated,-2.12
+15.64,Win,14.76,Rated,0.88
+15.42,Win,16.59,Rated,-1.17
+18.09,Win,17.01,Rated,1.08
+8.8,No win,16.51,Rated,-7.71
+15.0,No win,15.63,Casual,-0.63
+16.32,No win,19.24,Rated,-2.92
+13.33,Win,13.02,Rated,0.31
+13.29,Win,12.15,Rated,1.14
+14.07,No win,14.3,Rated,-0.23
+14.87,No win,16.63,Casual,-1.76
+17.04,Win,15.0,Rated,2.04
+13.84,No win,16.58,Rated,-2.74
+8.3,No win,14.6,Rated,-6.3
+14.54,No win,16.13,Rated,-1.59
+18.87,Win,17.85,Rated,1.02
+12.88,Win,15.2,Casual,-2.32
+15.21,No win,14.38,Rated,0.83
+21.91,Win,11.74,Rated,10.17
+12.07,Win,8.04,Rated,4.03
+15.7,Win,12.51,Rated,3.19
+13.19,No win,16.33,Rated,-3.14
+8.78,No win,13.61,Rated,-4.83
+15.5,Win,15.64,Rated,-0.14
+15.58,No win,13.58,Rated,2.0
+15.36,Win,16.51,Casual,-1.15
+13.48,Win,12.91,Rated,0.57
+14.91,No win,14.91,Rated,0.0
+13.03,No win,18.76,Rated,-5.73
+15.15,Win,16.52,Casual,-1.37
+13.9,Win,9.67,Rated,4.23
+15.0,Win,17.95,Casual,-2.95
+17.43,No win,18.0,Rated,-0.57
+17.7,No win,19.51,Rated,-1.81
+15.91,Win,15.65,Rated,0.26
+16.86,Win,17.82,Rated,-0.96
+14.61,Win,14.93,Rated,-0.32
+15.36,No win,14.8,Casual,0.56
+17.02,No win,13.8,Casual,3.22
+11.04,Win,13.43,Casual,-2.39
+18.31,Win,17.64,Casual,0.67
+13.64,No win,13.51,Rated,0.13
+9.98,Win,8.35,Rated,1.63
+12.45,Win,10.69,Rated,1.76
+22.87,No win,20.7,Rated,2.17
+16.61,Win,11.32,Rated,5.29
+17.29,Win,15.64,Rated,1.65
+16.26,No win,15.36,Rated,0.9
+18.43,No win,19.15,Rated,-0.72
+15.73,Win,15.66,Rated,0.07
+14.12,Win,13.05,Rated,1.07
+11.61,No win,13.89,Rated,-2.28
+18.28,Win,18.02,Rated,0.26
+12.89,No win,21.08,Rated,-8.19
+13.85,Win,13.62,Rated,0.23
+14.54,Win,13.84,Rated,0.7
+12.84,Win,14.36,Rated,-1.52
+20.6,No win,17.79,Rated,2.81
+19.17,No win,17.95,Rated,1.22
+16.87,Win,17.17,Rated,-0.3
+19.82,No win,20.85,Rated,-1.03
+11.94,No win,12.55,Rated,-0.61
+17.48,No win,18.18,Casual,-0.7
+18.91,No win,18.54,Casual,0.37
+13.43,Win,13.03,Rated,0.4
+15.0,No win,14.66,Rated,0.34
+15.63,Win,15.82,Rated,-0.19
+19.43,Win,18.15,Rated,1.28
+20.73,Win,18.37,Rated,2.36
+15.56,Win,14.96,Rated,0.6
+19.37,Win,12.21,Rated,7.16
+16.8,Win,15.77,Rated,1.03
+9.43,No win,10.13,Rated,-0.7
+16.67,Win,11.92,Rated,4.75
+17.62,Win,17.42,Rated,0.2
+20.0,Win,17.48,Rated,2.52
+13.72,Win,20.93,Casual,-7.21
+14.63,No win,15.0,Rated,-0.37
+22.35,Win,21.18,Rated,1.17
+9.94,Win,10.91,Rated,-0.97
+14.28,Win,17.3,Casual,-3.02
+14.79,No win,13.99,Rated,0.8
+16.11,Win,14.78,Rated,1.33
+15.76,Win,16.35,Rated,-0.59
+21.81,No win,21.53,Rated,0.28
+13.82,No win,13.04,Rated,0.78
+16.59,No win,15.5,Rated,1.09
+19.9,Win,15.78,Rated,4.12
+16.81,No win,18.62,Rated,-1.81
+9.72,No win,16.62,Rated,-6.9
+15.32,No win,15.17,Rated,0.15
+15.0,Win,12.29,Casual,2.71
+14.61,Win,15.08,Rated,-0.47
+19.12,No win,20.03,Rated,-0.91
+18.0,No win,17.38,Rated,0.62
+13.67,No win,14.5,Rated,-0.83
+11.02,Win,8.78,Rated,2.24
+15.0,Win,14.14,Rated,0.86
+16.64,Win,17.11,Rated,-0.47
+16.71,No win,15.6,Rated,1.11
+18.56,Win,16.51,Rated,2.05
+21.1,Win,23.95,Rated,-2.85
+15.1,No win,17.25,Rated,-2.15
+16.5,Win,14.88,Rated,1.62
+13.96,No win,18.27,Rated,-4.31
+17.47,No win,16.92,Casual,0.55
+20.5,Win,18.07,Rated,2.43
+13.55,Win,13.02,Rated,0.53
+20.2,No win,19.38,Casual,0.82
+21.3,No win,22.96,Rated,-1.66
+18.87,Win,16.99,Rated,1.88
+12.78,Win,11.73,Rated,1.05
+17.37,No win,16.31,Casual,1.06
+21.04,Win,18.18,Rated,2.86
+12.65,No win,15.0,Casual,-2.35
+17.48,Win,18.18,Casual,-0.7
+18.56,Win,18.58,Rated,-0.02
+17.71,No win,18.31,Rated,-0.6
+14.56,No win,14.78,Casual,-0.22
+17.0,Win,16.2,Rated,0.8
+20.44,Win,17.16,Casual,3.28
+15.14,No win,15.22,Rated,-0.08
+16.21,No win,17.03,Rated,-0.82
+18.48,No win,20.68,Rated,-2.2
+15.64,No win,16.89,Casual,-1.25
+16.06,No win,15.35,Rated,0.71
+16.65,No win,16.97,Rated,-0.32
+17.5,No win,14.38,Casual,3.12
+16.9,No win,21.72,Rated,-4.82
+12.79,No win,17.2,Rated,-4.41
+12.14,Win,12.22,Casual,-0.08
+15.66,Win,15.8,Rated,-0.14
+12.75,No win,16.92,Casual,-4.17
+13.5,Win,12.85,Rated,0.65
+18.35,Win,13.96,Casual,4.39
+19.06,No win,18.9,Rated,0.16
+14.41,Win,14.64,Rated,-0.23
+18.67,No win,19.14,Rated,-0.47
+12.91,No win,13.01,Rated,-0.1
+11.11,Win,12.19,Rated,-1.08
+13.21,No win,12.59,Rated,0.62
+15.29,Win,18.26,Rated,-2.97
+15.49,Win,13.44,Rated,2.05
+17.7,Win,16.25,Casual,1.45
+10.79,No win,13.25,Rated,-2.46
+16.04,Win,17.65,Rated,-1.61
+17.28,No win,16.62,Rated,0.66
+14.72,No win,16.91,Rated,-2.19
+21.92,No win,21.03,Rated,0.89
+15.44,Win,15.28,Rated,0.16
+14.93,Win,14.27,Casual,0.66
+14.16,Win,12.01,Rated,2.15
+20.73,No win,22.57,Rated,-1.84
+14.15,No win,14.18,Rated,-0.03
+16.07,No win,14.55,Rated,1.52
+22.7,Win,19.68,Rated,3.02
+16.91,No win,16.26,Rated,0.65
+16.49,No win,21.83,Rated,-5.34
+11.1,Win,15.0,Rated,-3.9
+14.55,No win,14.48,Rated,0.07
+17.91,Win,17.16,Rated,0.75
+13.02,No win,14.62,Rated,-1.6
+15.49,Win,11.09,Rated,4.4
+17.88,Win,14.73,Rated,3.15
+16.35,Win,13.58,Rated,2.77
+20.36,No win,17.76,Casual,2.6
+16.33,Win,11.87,Rated,4.46
+18.14,No win,16.62,Rated,1.52
+17.3,Win,14.28,Casual,3.02
+12.91,Win,12.95,Rated,-0.04
+15.61,Win,12.75,Rated,2.86
+17.74,Win,20.03,Rated,-2.29
+17.3,No win,17.35,Rated,-0.05
+15.32,Win,15.0,Rated,0.32
+22.68,Win,22.54,Rated,0.14
+15.16,No win,14.67,Rated,0.49
+15.0,Win,13.65,Casual,1.35
+16.31,No win,15.47,Rated,0.84
+16.92,No win,17.56,Rated,-0.64
+13.7,No win,16.39,Rated,-2.69
+16.03,Win,13.39,Rated,2.64
+22.55,No win,22.74,Rated,-0.19
+17.21,Win,16.21,Rated,1.0
+17.93,Win,18.57,Rated,-0.64
+17.26,Win,17.11,Rated,0.15
+16.57,Win,10.33,Rated,6.24
+13.41,No win,13.98,Rated,-0.57
+18.78,No win,18.01,Rated,0.77
+19.08,Win,18.98,Rated,0.1
+15.14,Win,15.11,Rated,0.03
+15.66,Win,15.29,Rated,0.37
+16.72,No win,18.9,Rated,-2.18
+15.22,Win,15.67,Rated,-0.45
+18.67,No win,19.32,Rated,-0.65
+15.54,No win,15.1,Casual,0.44
+17.81,Win,17.91,Rated,-0.1
+13.69,Win,16.11,Rated,-2.42
+9.11,Win,13.56,Rated,-4.45
+10.34,No win,15.0,Casual,-4.66
+12.86,Win,11.98,Casual,0.88
+15.61,Win,12.99,Rated,2.62
+16.12,Win,16.14,Rated,-0.02
+14.99,Win,15.19,Rated,-0.2
+18.22,No win,18.72,Rated,-0.5
+14.65,Win,14.16,Rated,0.49
+19.09,Win,18.87,Rated,0.22
+12.71,No win,15.0,Rated,-2.29
+18.33,Win,15.0,Casual,3.33
+13.77,No win,13.4,Rated,0.37
+16.16,No win,16.0,Rated,0.16
+20.26,Win,18.83,Rated,1.43
+15.85,No win,15.91,Rated,-0.06
+17.24,Win,16.88,Rated,0.36
+18.79,No win,22.3,Rated,-3.51
+20.74,Win,19.08,Rated,1.66
+15.11,Win,16.02,Rated,-0.91
+11.13,Win,12.09,Rated,-0.96
+18.0,Win,21.28,Casual,-3.28
+17.81,Win,12.74,Rated,5.07
+16.21,Win,16.73,Rated,-0.52
+13.08,No win,13.37,Rated,-0.29
+15.19,Win,13.24,Rated,1.95
+12.71,Win,13.28,Rated,-0.57
+15.83,No win,18.2,Rated,-2.37
+16.8,Win,17.25,Rated,-0.45
+17.39,No win,17.01,Rated,0.38
+19.47,No win,21.14,Rated,-1.67
+12.41,Win,14.6,Rated,-2.19
+14.98,No win,14.82,Rated,0.16
+14.6,Win,13.89,Rated,0.71
+18.25,No win,15.02,Rated,3.23
+12.77,No win,14.64,Rated,-1.87
+19.19,No win,19.53,Rated,-0.34
+16.6,Win,15.36,Rated,1.24
+12.21,Win,11.73,Casual,0.48
+18.38,Win,19.86,Rated,-1.48
+11.4,No win,10.11,Rated,1.29
+14.2,No win,14.02,Rated,0.18
+20.42,Win,19.82,Rated,0.6
+14.34,Win,11.95,Rated,2.39
+14.92,No win,14.76,Casual,0.16
+10.53,Win,8.4,Rated,2.13
+14.46,No win,14.3,Rated,0.16
+22.62,No win,21.11,Rated,1.51
+11.61,No win,14.65,Casual,-3.04
+16.1,Win,14.27,Rated,1.83
+22.3,No win,22.01,Rated,0.29
+10.58,No win,12.49,Rated,-1.91
+17.28,Win,15.49,Rated,1.79
+15.0,Win,12.78,Casual,2.22
+15.0,No win,14.04,Rated,0.96
+12.56,Win,11.2,Rated,1.36
+12.17,No win,12.59,Rated,-0.42
+10.73,No win,11.35,Rated,-0.62
+15.0,No win,18.08,Casual,-3.08
+14.81,Win,17.34,Rated,-2.53
+15.31,Win,15.43,Rated,-0.12
+19.78,No win,18.14,Rated,1.64
+14.86,No win,15.39,Rated,-0.53
+14.12,No win,13.98,Rated,0.14
+15.58,No win,13.6,Rated,1.98
+22.47,Win,23.23,Rated,-0.76
+11.52,No win,15.5,Rated,-3.98
+15.53,Win,15.47,Rated,0.06
+14.51,Win,18.65,Rated,-4.14
+15.39,Win,16.21,Rated,-0.82
+17.81,Win,14.93,Casual,2.88
+10.03,No win,18.13,Casual,-8.1
+17.43,Win,15.04,Rated,2.39
+14.52,Win,15.79,Rated,-1.27
+9.85,No win,10.74,Rated,-0.89
+14.52,Win,12.51,Rated,2.01
+14.12,Win,14.1,Rated,0.02
+15.49,No win,15.04,Rated,0.45
+14.45,Win,16.49,Rated,-2.04
+14.31,Win,12.89,Casual,1.42
+23.52,Win,23.66,Rated,-0.14
+26.21,Win,13.84,Casual,12.37
+16.66,Win,12.72,Casual,3.94
+15.6,Win,15.31,Rated,0.29
+14.36,Win,15.46,Rated,-1.1
+12.05,No win,12.57,Rated,-0.52
+14.92,Win,14.87,Rated,0.05
+19.04,Win,16.48,Rated,2.56
+18.1,Win,17.49,Rated,0.61
+10.34,Win,11.44,Rated,-1.1
+15.52,Win,13.34,Rated,2.18
+15.36,Win,15.42,Casual,-0.06
+18.28,No win,17.96,Casual,0.32
+16.88,No win,14.85,Rated,2.03
+10.16,No win,10.16,Casual,0.0
+11.51,Win,12.02,Rated,-0.51
+14.77,Win,13.14,Rated,1.63
+17.43,Win,15.94,Rated,1.49
+11.61,No win,13.67,Rated,-2.06
+15.0,No win,15.51,Rated,-0.51
+15.0,No win,13.11,Rated,1.89
+18.33,No win,15.94,Rated,2.39
+17.02,Win,10.16,Casual,6.86
+21.92,Win,16.09,Casual,5.83
+21.29,Win,20.88,Rated,0.41
+11.55,No win,11.47,Rated,0.08
+20.43,No win,20.23,Rated,0.2
+20.37,No win,17.34,Rated,3.03
+16.28,Win,14.08,Rated,2.2
+18.05,Win,16.86,Rated,1.19
+17.73,No win,16.53,Rated,1.2
+13.75,No win,14.1,Casual,-0.35
+16.05,No win,15.0,Casual,1.05
+17.0,No win,19.91,Rated,-2.91
+26.21,Win,17.15,Casual,9.06
+13.74,No win,11.79,Rated,1.95
+11.14,No win,10.27,Rated,0.87
+11.74,Win,15.0,Casual,-3.26
+13.51,No win,13.6,Casual,-0.09
+17.6,No win,13.58,Rated,4.02
+15.01,No win,16.09,Casual,-1.08
+17.1,No win,17.41,Rated,-0.31
+15.9,Win,16.41,Rated,-0.51
+17.08,Win,15.28,Rated,1.8
+12.9,No win,14.0,Casual,-1.1
+16.08,No win,18.75,Rated,-2.67
+15.45,No win,18.9,Rated,-3.45
+16.87,Win,16.24,Rated,0.63
+13.33,No win,14.23,Rated,-0.9
+16.75,Win,17.22,Rated,-0.47
+13.47,No win,16.04,Rated,-2.57
+13.24,No win,12.15,Rated,1.09
+15.94,Win,16.31,Casual,-0.37
+14.68,No win,14.68,Rated,0.0
+13.52,Win,13.04,Rated,0.48
+13.75,Win,12.69,Rated,1.06
+14.8,No win,13.76,Casual,1.04
+14.96,Win,15.07,Rated,-0.11
+13.28,No win,16.07,Rated,-2.79
+19.73,No win,17.82,Rated,1.91
+14.86,No win,19.09,Rated,-4.23
+18.34,Win,17.09,Rated,1.25
+15.2,No win,15.65,Rated,-0.45
+23.93,No win,24.38,Rated,-0.45
+15.24,Win,13.58,Rated,1.66
+16.46,No win,16.96,Rated,-0.5
+15.01,No win,15.13,Casual,-0.12
+18.55,Win,17.91,Rated,0.64
+12.15,No win,15.46,Rated,-3.31
+15.0,No win,15.27,Casual,-0.27
+14.68,No win,15.53,Rated,-0.85
+9.96,No win,11.08,Rated,-1.12
+17.33,Win,17.32,Casual,0.01
+12.95,Win,14.27,Rated,-1.32
+16.1,No win,16.03,Rated,0.07
+15.83,No win,14.61,Rated,1.22
+20.43,Win,18.98,Rated,1.45
+21.13,Win,19.54,Rated,1.59
+17.03,Win,15.87,Rated,1.16
+21.81,Win,23.27,Rated,-1.46
+17.17,No win,16.4,Rated,0.77
+14.59,Win,15.0,Rated,-0.41
+11.53,No win,14.28,Rated,-2.75
+12.09,No win,16.39,Rated,-4.3
+15.91,Win,13.26,Rated,2.65
+11.97,No win,13.12,Rated,-1.15
+15.67,No win,17.82,Rated,-2.15
+14.67,Win,12.09,Rated,2.58
+15.31,Win,15.79,Rated,-0.48
+14.56,No win,13.69,Rated,0.87
+15.0,No win,14.55,Rated,0.45
+18.35,No win,19.8,Rated,-1.45
+10.84,No win,10.99,Rated,-0.15
+10.36,No win,10.35,Rated,0.01
+14.5,No win,15.32,Rated,-0.82
+10.33,No win,12.63,Casual,-2.3
+16.82,Win,16.7,Rated,0.12
+11.47,No win,9.08,Rated,2.39
+13.57,Win,13.0,Rated,0.57
+15.0,Win,12.62,Rated,2.38
+13.37,Win,12.97,Rated,0.4
+11.03,No win,12.4,Rated,-1.37
+15.36,No win,13.53,Rated,1.83
+20.09,Win,14.41,Rated,5.68
+10.15,No win,9.56,Rated,0.59
+14.36,Win,14.72,Rated,-0.36
+12.45,No win,13.46,Rated,-1.01
+14.21,Win,14.3,Rated,-0.09
+17.47,Win,14.24,Rated,3.23
+22.07,Win,22.06,Rated,0.01
+13.76,No win,14.62,Rated,-0.86
+13.49,No win,13.08,Rated,0.41
+17.98,Win,16.54,Rated,1.44
+13.78,No win,13.18,Rated,0.6
+17.81,Win,14.93,Casual,2.88
+14.9,Win,9.69,Rated,5.21
+15.12,Win,14.9,Rated,0.22
+14.08,Win,11.04,Casual,3.04
+18.04,Win,13.72,Rated,4.32
+12.53,No win,12.62,Rated,-0.09
+22.29,Win,20.02,Rated,2.27
+19.05,No win,18.98,Rated,0.07
+17.3,No win,14.73,Rated,2.57
+18.36,No win,19.05,Rated,-0.69
+11.62,Win,11.32,Rated,0.3
+12.89,No win,18.1,Casual,-5.21
+13.53,No win,13.82,Rated,-0.29
+12.82,Win,10.18,Rated,2.64
+17.15,Win,17.21,Casual,-0.06
+15.0,No win,16.83,Casual,-1.83
+15.0,No win,15.0,Casual,0.0
+14.3,Win,12.74,Rated,1.56
+16.05,Win,14.03,Rated,2.02
+15.86,Win,17.42,Rated,-1.56
+11.93,No win,14.21,Rated,-2.28
+15.0,No win,14.22,Rated,0.78
+13.71,No win,15.75,Rated,-2.04
+16.93,No win,17.02,Rated,-0.09
+21.16,Win,22.52,Rated,-1.36
+18.74,Win,18.51,Rated,0.23
+17.98,Win,18.36,Rated,-0.38
+17.17,No win,17.09,Rated,0.08
+14.26,Win,14.56,Casual,-0.3
+12.97,No win,18.3,Rated,-5.33
+24.22,Win,18.02,Casual,6.2
+17.72,Win,17.13,Rated,0.59
+13.52,Win,12.72,Rated,0.8
+15.36,Win,15.35,Rated,0.01
+19.31,No win,19.77,Rated,-0.46
+18.08,Win,18.9,Rated,-0.82
+12.52,Win,13.48,Rated,-0.96
+11.04,No win,15.0,Casual,-3.96
+12.09,No win,16.85,Rated,-4.76
+15.0,Win,15.54,Casual,-0.54
+15.0,Win,17.84,Casual,-2.84
+12.9,Win,11.44,Rated,1.46
+13.83,No win,14.12,Rated,-0.29
+16.17,Win,16.74,Rated,-0.57
+17.91,Win,13.8,Rated,4.11
+14.46,Win,13.17,Rated,1.29
+18.56,No win,21.92,Rated,-3.36
+18.76,Win,18.1,Rated,0.66
+15.49,No win,14.56,Rated,0.93
+13.7,No win,14.25,Rated,-0.55
+9.26,No win,13.4,Rated,-4.14
+18.99,Win,15.12,Rated,3.87
+14.38,Win,12.0,Rated,2.38
+15.1,Win,13.46,Rated,1.64
+10.42,No win,11.33,Rated,-0.91
+17.46,No win,17.29,Rated,0.17
+15.95,Win,16.89,Rated,-0.94
+15.49,No win,14.26,Casual,1.23
+15.0,No win,15.0,Casual,0.0
+14.05,No win,17.85,Casual,-3.8
+16.71,No win,19.94,Casual,-3.23
+18.39,Win,12.29,Rated,6.1
+17.22,Win,17.67,Casual,-0.45
+15.27,Win,13.44,Casual,1.83
+19.78,No win,20.61,Rated,-0.83
+15.39,No win,15.62,Casual,-0.23
+15.62,No win,17.99,Casual,-2.37
+17.3,Win,17.53,Rated,-0.23
+14.01,No win,16.03,Casual,-2.02
+16.18,Win,11.36,Rated,4.82
+14.36,No win,15.68,Rated,-1.32
+11.04,No win,12.8,Rated,-1.76
+17.14,Win,17.09,Rated,0.05
+15.0,No win,18.1,Rated,-3.1
+15.5,No win,15.56,Rated,-0.06
+15.89,No win,15.63,Rated,0.26
+16.64,Win,17.89,Rated,-1.25
+11.73,No win,12.47,Rated,-0.74
+17.47,Win,13.92,Rated,3.55
+21.06,No win,19.93,Rated,1.13
+14.78,No win,15.6,Rated,-0.82
+9.95,Win,11.67,Rated,-1.72
+16.47,No win,17.45,Rated,-0.98
+19.28,No win,17.23,Rated,2.05
+17.45,Win,15.56,Rated,1.89
+15.27,Win,12.12,Rated,3.15
+23.21,No win,23.0,Rated,0.21
+16.2,No win,19.86,Rated,-3.66
+20.16,No win,22.64,Rated,-2.48
+14.28,No win,13.94,Rated,0.34
+16.14,No win,21.67,Rated,-5.53
+14.66,Win,13.95,Rated,0.71
+20.12,No win,22.84,Rated,-2.72
+15.0,Win,24.45,Casual,-9.45
+14.04,No win,14.18,Rated,-0.14
+16.82,Win,17.21,Rated,-0.39
+18.75,No win,18.21,Rated,0.54
+11.45,No win,17.6,Rated,-6.15
+16.3,Win,13.05,Rated,3.25
+19.04,Win,17.52,Rated,1.52
+19.64,No win,18.92,Rated,0.72
+17.51,Win,17.53,Rated,-0.02
+16.21,No win,14.87,Rated,1.34
+17.33,Win,20.16,Rated,-2.83
+12.77,Win,12.41,Rated,0.36
+15.0,Win,12.61,Rated,2.39
+14.68,No win,15.09,Rated,-0.41
+15.87,Win,15.0,Rated,0.87
+23.22,Win,20.12,Casual,3.1
+15.64,No win,15.78,Rated,-0.14
+11.32,No win,11.93,Rated,-0.61
+13.7,No win,13.27,Rated,0.43
+19.5,Win,16.2,Rated,3.3
+12.07,No win,14.06,Rated,-1.99
+20.53,Win,19.14,Rated,1.39
+14.94,Win,13.64,Rated,1.3
+16.66,Win,14.24,Casual,2.42
+15.79,No win,13.31,Rated,2.48
+16.36,Win,12.6,Rated,3.76
+16.48,Win,16.65,Rated,-0.17
+20.06,No win,18.89,Casual,1.17
+19.3,Win,20.16,Rated,-0.86
+16.84,Win,13.94,Rated,2.9
+18.33,Win,14.52,Casual,3.81
+18.56,No win,18.72,Rated,-0.16
+15.77,Win,18.25,Rated,-2.48
+12.53,No win,13.0,Rated,-0.47
+14.23,No win,15.0,Rated,-0.77
+18.97,Win,17.3,Rated,1.67
+13.89,No win,13.07,Rated,0.82
+11.3,No win,12.1,Rated,-0.8
+20.45,No win,17.5,Rated,2.95
+12.95,Win,18.21,Rated,-5.26
+17.03,Win,15.62,Casual,1.41
+14.06,Win,12.78,Casual,1.28
+18.2,Win,14.74,Casual,3.46
+18.9,Win,18.84,Rated,0.06
+18.73,No win,18.84,Rated,-0.11
+17.09,Win,16.95,Rated,0.14
+18.56,Win,21.9,Rated,-3.34
+19.5,Win,22.12,Casual,-2.62
+13.93,Win,11.0,Casual,2.93
+19.34,Win,18.44,Rated,0.9
+14.04,Win,13.41,Casual,0.63
+15.68,No win,19.87,Casual,-4.19
+12.57,Win,11.92,Rated,0.65
+16.27,No win,15.76,Rated,0.51
+16.69,Win,16.29,Rated,0.4
+19.48,No win,19.78,Rated,-0.3
+17.42,Win,17.85,Rated,-0.43
+20.6,No win,18.82,Casual,1.78
+12.93,Win,13.17,Rated,-0.24
+14.71,No win,15.09,Rated,-0.38
+13.36,No win,17.05,Rated,-3.69
+15.12,Win,15.76,Rated,-0.64
+19.3,No win,20.68,Casual,-1.38
+13.15,Win,11.22,Rated,1.93
+13.13,No win,13.83,Rated,-0.7
+15.47,Win,12.27,Rated,3.2
+18.98,Win,10.17,Rated,8.81
+13.5,No win,19.38,Rated,-5.88
+15.38,No win,15.53,Rated,-0.15
+14.85,No win,14.71,Rated,0.14
+12.77,No win,15.5,Rated,-2.73
+12.63,No win,15.87,Rated,-3.24
+17.66,Win,16.55,Rated,1.11
+9.91,Win,12.57,Casual,-2.66
+14.53,No win,14.66,Rated,-0.13
+18.51,No win,18.87,Rated,-0.36
+14.12,Win,13.13,Casual,0.99
+15.0,No win,13.98,Rated,1.02
+17.43,Win,17.38,Rated,0.05
+14.56,No win,14.44,Rated,0.12
+21.67,Win,15.62,Rated,6.05
+14.58,No win,10.44,Rated,4.14
+19.45,Win,15.34,Rated,4.11
+15.07,Win,17.35,Rated,-2.28
+19.54,Win,15.0,Casual,4.54
+10.71,Win,8.91,Rated,1.8
+19.73,No win,18.81,Casual,0.92
+14.7,Win,14.38,Rated,0.32
+20.48,Win,18.31,Casual,2.17
+13.49,Win,13.59,Rated,-0.1
+12.56,Win,13.63,Rated,-1.07
+17.55,No win,17.89,Rated,-0.34
+18.48,Win,18.73,Rated,-0.25
+14.28,Win,14.03,Rated,0.25
+22.7,Win,23.12,Rated,-0.42
+16.91,No win,18.58,Rated,-1.67
+14.14,No win,17.87,Casual,-3.73
+17.29,No win,18.74,Rated,-1.45
+14.28,Win,14.37,Rated,-0.09
+12.07,No win,14.22,Rated,-2.15
+15.27,No win,20.6,Casual,-5.33
+12.17,No win,12.19,Rated,-0.02
+14.79,No win,14.27,Rated,0.52
+15.62,No win,16.82,Casual,-1.2
+11.02,Win,10.69,Casual,0.33
+18.41,Win,18.32,Rated,0.09
+14.35,No win,19.51,Casual,-5.16
+17.71,Win,16.23,Rated,1.48
+20.16,Win,19.8,Rated,0.36
+13.03,No win,12.48,Rated,0.55
+15.0,No win,12.79,Rated,2.21
+17.76,Win,18.29,Rated,-0.53
+14.61,Win,13.88,Rated,0.73
+16.36,Win,16.01,Rated,0.35
+13.07,No win,13.89,Rated,-0.82
+13.68,Win,15.12,Rated,-1.44
+12.89,Win,15.0,Casual,-2.11
+19.49,Win,18.63,Rated,0.86
+15.2,Win,14.23,Rated,0.97
+20.65,No win,21.49,Rated,-0.84
+11.54,No win,14.9,Rated,-3.36
+12.3,No win,14.02,Rated,-1.72
+15.39,Win,11.36,Rated,4.03
+17.72,No win,16.12,Rated,1.6
+17.77,Win,15.65,Rated,2.12
+15.07,Win,13.18,Rated,1.89
+12.06,No win,15.17,Casual,-3.11
+14.29,Win,15.0,Rated,-0.71
+15.26,No win,18.3,Rated,-3.04
+20.33,No win,19.49,Rated,0.84
+15.37,No win,16.62,Rated,-1.25
+15.58,Win,16.7,Rated,-1.12
+16.06,No win,18.28,Rated,-2.22
+21.96,No win,24.2,Rated,-2.24
+19.51,Win,14.35,Casual,5.16
+19.49,Win,18.79,Rated,0.7
+18.22,No win,21.92,Rated,-3.7
+15.98,No win,17.03,Rated,-1.05
+15.62,Win,17.14,Rated,-1.52
+15.0,No win,12.79,Rated,2.21
+16.75,No win,15.0,Rated,1.75
+13.65,No win,17.51,Rated,-3.86
+17.65,Win,18.41,Rated,-0.76
+21.99,Win,21.12,Rated,0.87
+23.1,No win,18.61,Casual,4.49
+22.34,No win,23.52,Rated,-1.18
+18.74,Win,18.76,Rated,-0.02
+14.25,Win,13.51,Rated,0.74
+13.27,No win,14.2,Rated,-0.93
+14.89,No win,13.69,Rated,1.2
+14.46,No win,14.89,Rated,-0.43
+17.72,Win,18.17,Rated,-0.45
+17.01,Win,19.56,Casual,-2.55
+18.87,No win,21.87,Rated,-3.0
+13.4,Win,11.78,Rated,1.62
+16.02,No win,16.36,Rated,-0.34
+13.45,Win,13.73,Rated,-0.28
+16.01,No win,19.43,Rated,-3.42
+17.56,Win,17.65,Rated,-0.09
+15.44,Win,16.36,Rated,-0.92
+20.37,Win,16.77,Rated,3.6
+17.96,Win,18.92,Rated,-0.96
+16.62,No win,18.44,Rated,-1.82
+13.79,Win,17.46,Rated,-3.67
+14.45,Win,13.38,Rated,1.07
+17.31,No win,18.54,Rated,-1.23
+12.99,No win,15.0,Rated,-2.01
+16.03,No win,15.84,Rated,0.19
+21.84,Win,18.91,Rated,2.93
+15.68,No win,16.17,Rated,-0.49
+15.0,No win,14.77,Casual,0.23
+17.21,No win,17.54,Rated,-0.33
+23.86,Win,13.3,Rated,10.56
+15.8,No win,17.99,Rated,-2.19
+13.32,Win,10.01,Rated,3.31
+16.75,Win,14.86,Rated,1.89
+16.45,Win,13.34,Rated,3.11
+15.0,No win,15.37,Rated,-0.37
+16.97,Win,17.18,Rated,-0.21
+15.21,Win,15.43,Rated,-0.22
+14.43,Win,12.91,Rated,1.52
+13.09,No win,17.3,Casual,-4.21
+8.44,No win,15.0,Casual,-6.56
+15.09,Win,14.96,Rated,0.13
+15.07,Win,12.07,Rated,3.0
+20.18,No win,20.53,Rated,-0.35
+17.55,Win,15.74,Rated,1.81
+15.58,No win,16.74,Rated,-1.16
+14.5,No win,14.68,Rated,-0.18
+11.96,No win,11.3,Rated,0.66
+20.79,Win,19.41,Rated,1.38
+19.06,No win,20.58,Rated,-1.52
+16.51,No win,20.68,Rated,-4.17
+13.2,No win,13.09,Rated,0.11
+11.84,Win,9.24,Rated,2.6
+17.86,No win,17.36,Casual,0.5
+18.39,No win,19.52,Rated,-1.13
+13.31,No win,22.09,Rated,-8.78
+19.15,No win,22.58,Rated,-3.43
+14.36,Win,15.18,Casual,-0.82
+14.28,No win,12.79,Casual,1.49
+16.5,No win,17.21,Rated,-0.71
+10.88,Win,12.17,Rated,-1.29
+11.94,Win,15.19,Rated,-3.25
+12.27,No win,11.9,Rated,0.37
+21.95,No win,20.28,Casual,1.67
+20.45,No win,15.0,Casual,5.45
+13.46,Win,10.99,Casual,2.47
+15.0,Win,14.42,Casual,0.58
+13.55,Win,13.52,Rated,0.03
+14.22,No win,19.67,Casual,-5.45
+17.31,No win,17.11,Rated,0.2
+18.34,Win,19.3,Rated,-0.96
+14.87,Win,15.21,Rated,-0.34
+14.13,Win,13.33,Rated,0.8
+19.28,Win,17.82,Rated,1.46
+21.59,Win,17.49,Rated,4.1
+8.57,No win,10.57,Rated,-2.0
+18.13,Win,19.99,Rated,-1.86
+15.0,No win,15.0,Casual,0.0
+15.0,Win,18.02,Casual,-3.02
+14.66,No win,18.15,Rated,-3.49
+16.31,Win,15.0,Casual,1.31
+12.99,No win,16.47,Rated,-3.48
+17.06,No win,12.87,Casual,4.19
+15.2,Win,15.21,Rated,-0.01
+13.01,Win,16.97,Rated,-3.96
+15.42,Win,15.83,Rated,-0.41
+18.33,No win,21.93,Rated,-3.6
+20.16,Win,18.8,Rated,1.36
+20.69,No win,22.44,Rated,-1.75
+11.48,No win,12.4,Rated,-0.92
+18.93,No win,19.02,Rated,-0.09
+16.85,Win,16.09,Rated,0.76
+13.0,No win,17.49,Rated,-4.49
+14.21,No win,12.78,Rated,1.43
+11.24,No win,15.73,Rated,-4.49
+15.0,No win,15.0,Casual,0.0
+16.49,Win,13.3,Rated,3.19
+19.99,Win,14.87,Rated,5.12
+15.52,No win,18.87,Rated,-3.35
+16.12,Win,16.18,Rated,-0.06
+10.16,No win,13.57,Casual,-3.41
+11.84,Win,11.87,Rated,-0.03
+17.56,Win,13.87,Rated,3.69
+14.19,Win,10.74,Rated,3.45
+13.03,No win,16.54,Casual,-3.51
+11.97,No win,10.78,Rated,1.19
+19.22,No win,17.31,Casual,1.91
+12.95,Win,18.21,Rated,-5.26
+17.84,No win,17.83,Rated,0.01
+19.06,Win,19.28,Rated,-0.22
+17.69,No win,19.8,Rated,-2.11
+15.34,Win,13.97,Rated,1.37
+17.63,Win,16.98,Rated,0.65
+16.11,No win,19.45,Rated,-3.34
+15.0,No win,15.95,Casual,-0.95
+13.09,No win,16.01,Rated,-2.92
+16.48,No win,16.98,Rated,-0.5
+19.48,Win,15.08,Rated,4.4
+20.57,No win,20.93,Rated,-0.36
+14.25,Win,15.89,Rated,-1.64
+16.49,Win,16.81,Rated,-0.32
+15.0,No win,16.83,Casual,-1.83
+15.06,No win,19.7,Casual,-4.64
+14.88,No win,14.9,Rated,-0.02
+17.1,No win,16.92,Rated,0.18
+17.94,No win,17.24,Rated,0.7
+11.53,No win,13.7,Rated,-2.17
+16.39,Win,19.11,Rated,-2.72
+17.31,Win,15.66,Rated,1.65
+16.02,No win,18.28,Rated,-2.26
+11.98,Win,16.13,Rated,-4.15
+13.68,No win,13.81,Rated,-0.13
+14.86,No win,14.84,Rated,0.02
+17.3,No win,16.6,Rated,0.7
+15.81,No win,13.82,Rated,1.99
+14.82,No win,14.72,Rated,0.1
+14.52,No win,13.51,Rated,1.01
+13.65,No win,18.5,Rated,-4.85
+14.31,No win,14.26,Rated,0.05
+18.14,Win,15.57,Rated,2.57
+22.15,Win,19.61,Rated,2.54
+15.49,Win,16.09,Rated,-0.6
+18.49,Win,17.52,Rated,0.97
+16.83,No win,17.34,Rated,-0.51
+19.14,Win,18.97,Rated,0.17
+18.38,No win,20.26,Rated,-1.88
+15.83,Win,16.63,Rated,-0.8
+12.65,No win,12.67,Rated,-0.02
+17.32,No win,16.52,Rated,0.8
+14.34,Win,13.77,Rated,0.57
+13.54,Win,12.89,Casual,0.65
+18.75,Win,19.75,Rated,-1.0
+15.0,Win,10.94,Casual,4.06
+16.92,No win,16.99,Rated,-0.07
+12.89,No win,16.86,Rated,-3.97
+17.48,Win,12.83,Rated,4.65
+15.0,No win,13.55,Casual,1.45
+16.73,Win,14.24,Casual,2.49
+14.77,Win,16.02,Casual,-1.25
+15.4,No win,12.67,Rated,2.73
+17.75,Win,14.26,Rated,3.49
+15.14,Win,11.08,Rated,4.06
+19.64,No win,21.69,Rated,-2.05
+18.57,No win,18.97,Rated,-0.4
+15.22,Win,14.86,Rated,0.36
+18.74,Win,19.39,Rated,-0.65
+15.25,No win,16.33,Rated,-1.08
+13.09,No win,13.93,Casual,-0.84
+21.65,Win,16.51,Rated,5.14
+13.71,Win,14.0,Casual,-0.29
+24.18,Win,20.67,Rated,3.51
+19.0,No win,22.0,Rated,-3.0
+14.55,No win,22.64,Rated,-8.09
+21.26,Win,17.94,Rated,3.32
+14.28,Win,16.66,Rated,-2.38
+14.79,No win,14.75,Rated,0.04
+15.0,Win,9.78,Casual,5.22
+18.69,Win,16.16,Rated,2.53
+18.03,Win,15.42,Rated,2.61
+11.58,Win,12.43,Rated,-0.85
+12.62,No win,13.97,Casual,-1.35
+15.25,No win,15.33,Casual,-0.08
+14.48,Win,14.58,Rated,-0.1
+18.17,Win,20.85,Rated,-2.68
+16.93,Win,15.85,Rated,1.08
+17.82,Win,16.51,Rated,1.31
+17.61,Win,15.08,Rated,2.53
+13.96,Win,12.31,Rated,1.65
+13.92,No win,16.08,Rated,-2.16
+16.94,No win,15.01,Casual,1.93
+14.88,No win,14.38,Rated,0.5
+13.54,Win,13.89,Rated,-0.35
+15.25,No win,16.74,Rated,-1.49
+17.81,Win,13.36,Rated,4.45
+15.0,Win,11.49,Rated,3.51
+16.41,Win,18.16,Rated,-1.75
+8.46,No win,21.19,Rated,-12.73
+19.58,Win,19.52,Rated,0.06
+13.6,Win,13.32,Rated,0.28
+18.69,No win,19.87,Rated,-1.18
+15.82,Win,16.56,Rated,-0.74
+13.17,No win,13.92,Rated,-0.75
+18.04,No win,19.31,Rated,-1.27
+16.51,No win,16.9,Rated,-0.39
+12.17,No win,12.82,Rated,-0.65
+13.97,No win,15.09,Rated,-1.12
+18.03,Win,18.74,Rated,-0.71
+11.57,Win,11.56,Rated,0.01
+15.82,Win,17.04,Rated,-1.22
+25.13,No win,23.83,Rated,1.3
+18.74,No win,18.37,Rated,0.37
+15.13,No win,16.34,Rated,-1.21
+17.62,Win,18.05,Rated,-0.43
+14.24,No win,14.21,Rated,0.03
+17.08,Win,16.96,Rated,0.12
+15.65,Win,15.48,Rated,0.17
+19.64,No win,20.05,Rated,-0.41
+18.06,Win,12.89,Casual,5.17
+20.36,No win,19.91,Rated,0.45
+13.69,No win,13.64,Rated,0.05
+16.7,Win,14.6,Rated,2.1
+14.47,Win,14.79,Rated,-0.32
+12.17,Win,11.76,Rated,0.41
+17.37,Win,15.62,Rated,1.75
+15.12,No win,15.0,Casual,0.12
+13.66,Win,15.0,Rated,-1.34
+16.17,No win,14.53,Rated,1.64
+13.03,No win,13.19,Rated,-0.16
+14.51,No win,14.97,Rated,-0.46
+13.7,No win,15.0,Casual,-1.3
+20.47,No win,21.26,Casual,-0.79
+16.91,Win,13.35,Rated,3.56
+15.47,Win,15.83,Rated,-0.36
+15.07,Win,14.97,Rated,0.1
+13.75,No win,13.96,Rated,-0.21
+19.11,No win,21.26,Casual,-2.15
+21.8,No win,22.98,Rated,-1.18
+10.15,No win,10.07,Rated,0.08
+17.73,Win,17.86,Rated,-0.13
+19.91,No win,19.84,Rated,0.07
+19.5,No win,19.97,Casual,-0.47
+18.72,Win,18.49,Rated,0.23
+17.83,Win,18.47,Rated,-0.64
+17.22,Win,16.05,Rated,1.17
+16.15,Win,17.31,Rated,-1.16
+14.03,No win,16.58,Casual,-2.55
+10.23,Win,11.97,Rated,-1.74
+12.73,No win,14.8,Rated,-2.07
+16.9,Win,11.49,Rated,5.41
+12.22,Win,13.56,Rated,-1.34
+14.22,No win,20.26,Rated,-6.04
+16.19,No win,14.52,Rated,1.67
+13.34,No win,12.77,Rated,0.57
+15.04,No win,16.06,Rated,-1.02
+11.9,No win,12.13,Rated,-0.23
+16.38,Win,14.08,Rated,2.3
+18.32,Win,17.73,Rated,0.59
+17.46,Win,17.72,Rated,-0.26
+11.27,Win,11.66,Rated,-0.39
+14.49,No win,14.85,Rated,-0.36
+19.61,No win,22.15,Casual,-2.54
+19.42,No win,21.19,Rated,-1.77
+19.28,No win,21.64,Rated,-2.36
+12.13,No win,15.19,Rated,-3.06
+12.86,No win,17.3,Rated,-4.44
+17.24,Win,17.21,Rated,0.03
+15.04,No win,16.12,Casual,-1.08
+15.5,Win,15.0,Rated,0.5
+16.96,Win,16.52,Rated,0.44
+15.67,Win,15.0,Rated,0.67
+15.47,Win,15.63,Rated,-0.16
+18.81,Win,16.07,Rated,2.74
+15.97,No win,15.43,Rated,0.54
+19.45,Win,17.84,Rated,1.61
+13.23,Win,13.95,Rated,-0.72
+16.38,Win,16.14,Rated,0.24
+11.98,Win,15.0,Casual,-3.02
+11.49,No win,20.13,Casual,-8.64
+14.64,No win,14.15,Rated,0.49
+13.17,Win,13.83,Rated,-0.66
+13.64,No win,20.81,Rated,-7.17
+16.22,Win,14.3,Rated,1.92
+15.73,No win,16.8,Rated,-1.07
+17.59,No win,18.06,Rated,-0.47
+16.6,No win,17.55,Casual,-0.95
+17.31,Win,16.75,Rated,0.56
+16.89,Win,11.35,Rated,5.54
+15.95,Win,15.83,Rated,0.12
+10.22,No win,11.65,Casual,-1.43
+8.68,No win,13.64,Rated,-4.96
+17.07,No win,20.21,Rated,-3.14
+11.04,Win,11.39,Casual,-0.35
+12.35,No win,11.57,Rated,0.78
+18.37,No win,19.56,Rated,-1.19
+15.19,No win,17.52,Casual,-2.33
+14.57,No win,14.91,Rated,-0.34
+14.16,Win,13.3,Rated,0.86
+17.91,Win,18.12,Casual,-0.21
+15.27,Win,16.08,Casual,-0.81
+18.28,No win,20.35,Rated,-2.07
+14.8,Win,12.69,Casual,2.11
+13.78,No win,14.92,Rated,-1.14
+15.51,Win,15.62,Rated,-0.11
+15.29,No win,21.3,Rated,-6.01
+19.04,No win,20.2,Casual,-1.16
+10.61,No win,10.3,Rated,0.31
+16.03,Win,15.59,Rated,0.44
+12.74,No win,12.85,Rated,-0.11
+15.66,Win,14.93,Rated,0.73
+16.31,No win,16.65,Rated,-0.34
+16.67,Win,13.94,Rated,2.73
+20.94,No win,22.28,Rated,-1.34
+15.48,No win,15.53,Casual,-0.05
+19.61,No win,20.44,Rated,-0.83
+13.51,No win,18.31,Casual,-4.8
+20.69,Win,20.3,Rated,0.39
+14.61,Win,8.28,Rated,6.33
+16.34,Win,15.0,Rated,1.34
+16.53,Win,17.11,Rated,-0.58
+12.78,Win,9.46,Rated,3.32
+13.09,No win,13.17,Rated,-0.08
+15.5,Win,16.39,Rated,-0.89
+16.39,Win,15.96,Rated,0.43
+20.16,No win,19.43,Rated,0.73
+19.26,Win,19.82,Rated,-0.56
+12.88,Win,16.74,Casual,-3.86
+15.9,Win,15.39,Rated,0.51
+11.86,Win,12.83,Rated,-0.97
+15.06,Win,16.05,Rated,-0.99
+13.41,Win,14.34,Rated,-0.93
+18.47,No win,18.35,Rated,0.12
+12.78,No win,13.29,Rated,-0.51
+13.7,No win,18.38,Rated,-4.68
+15.1,Win,15.0,Casual,0.1
+18.46,Win,15.61,Rated,2.85
+14.45,No win,13.45,Rated,1.0
+15.01,No win,16.26,Casual,-1.25
+11.74,Win,15.0,Rated,-3.26
+22.3,Win,19.29,Rated,3.01
+15.76,Win,17.67,Rated,-1.91
+16.78,Win,12.99,Casual,3.79
+13.37,No win,13.84,Rated,-0.47
+17.65,Win,16.69,Rated,0.96
+16.81,Win,12.16,Rated,4.65
+15.0,No win,22.09,Casual,-7.09
+16.15,No win,16.78,Rated,-0.63
+15.81,Win,16.57,Rated,-0.76
+12.26,Win,10.84,Casual,1.42
+12.54,No win,12.56,Rated,-0.02
+22.74,Win,20.04,Rated,2.7
+10.99,Win,9.96,Rated,1.03
+15.7,No win,15.66,Rated,0.04
+19.86,Win,20.28,Rated,-0.42
+17.29,No win,18.01,Casual,-0.72
+19.93,Win,18.3,Rated,1.63
+12.08,Win,9.36,Rated,2.72
+17.28,Win,17.06,Rated,0.22
+13.72,Win,13.95,Rated,-0.23
+14.0,Win,14.76,Casual,-0.76
+17.18,Win,12.15,Rated,5.03
+13.57,No win,15.65,Rated,-2.08
+18.51,No win,17.03,Casual,1.48
+19.73,Win,18.1,Casual,1.63
+18.64,No win,18.23,Rated,0.41
+16.24,No win,16.02,Rated,0.22
+16.98,Win,14.7,Casual,2.28
+14.88,Win,16.98,Rated,-2.1
+18.56,No win,15.09,Rated,3.47
+20.65,Win,20.68,Rated,-0.03
+19.9,Win,18.25,Rated,1.65
+12.85,No win,16.23,Rated,-3.38
+11.48,Win,11.14,Rated,0.34
+19.12,No win,23.16,Rated,-4.04
+17.37,Win,18.33,Rated,-0.96
+15.52,No win,16.48,Rated,-0.96
+14.8,Win,15.92,Rated,-1.12
+18.43,Win,19.24,Rated,-0.81
+15.69,Win,16.19,Rated,-0.5
+11.26,No win,15.13,Casual,-3.87
+16.77,No win,16.27,Rated,0.5
+10.39,No win,11.61,Rated,-1.22
+11.81,No win,14.66,Casual,-2.85
+14.53,No win,13.8,Rated,0.73
+23.11,Win,19.17,Rated,3.94
+15.25,No win,14.94,Rated,0.31
+16.62,No win,14.66,Casual,1.96
+17.11,Win,17.38,Rated,-0.27
+19.01,Win,10.97,Rated,8.04
+15.07,Win,9.27,Casual,5.8
+15.0,Win,14.43,Casual,0.57
+15.0,No win,15.6,Rated,-0.6
+16.09,Win,15.9,Rated,0.19
+15.0,No win,17.74,Casual,-2.74
+16.21,Win,16.16,Rated,0.05
+16.51,No win,16.5,Rated,0.01
+15.91,Win,13.48,Rated,2.43
+12.12,Win,11.69,Rated,0.43
+11.7,No win,8.0,Casual,3.7
+15.22,Win,15.12,Rated,0.1
+17.69,No win,16.59,Rated,1.1
+10.5,No win,14.39,Rated,-3.89
+9.69,No win,13.44,Casual,-3.75
+15.62,No win,17.15,Rated,-1.53
+17.52,No win,17.44,Rated,0.08
+12.89,Win,13.11,Casual,-0.22
+17.61,Win,18.08,Rated,-0.47
+11.43,No win,11.28,Rated,0.15
+13.25,No win,13.79,Rated,-0.54
+18.61,Win,18.33,Rated,0.28
+15.32,No win,15.03,Casual,0.29
+13.29,Win,11.66,Rated,1.63
+17.37,No win,15.82,Rated,1.55
+15.22,Win,15.03,Rated,0.19
+12.86,No win,13.17,Rated,-0.31
+12.27,Win,12.16,Rated,0.11
+12.25,No win,13.85,Rated,-1.6
+20.41,Win,19.87,Rated,0.54
+17.52,No win,17.52,Rated,0.0
+19.89,No win,20.16,Rated,-0.27
+11.21,No win,13.55,Rated,-2.34
+14.03,Win,8.74,Rated,5.29
+13.63,Win,12.01,Rated,1.62
+16.4,Win,16.5,Rated,-0.1
+15.29,No win,17.63,Rated,-2.34
+17.28,Win,16.88,Rated,0.4
+16.79,No win,16.22,Rated,0.57
+12.5,No win,12.08,Rated,0.42
+15.99,Win,15.99,Rated,0.0
+15.96,Win,17.46,Rated,-1.5
+16.77,Win,16.2,Casual,0.57
+15.0,Win,13.49,Casual,1.51
+18.25,Win,14.63,Rated,3.62
+18.74,Win,17.42,Rated,1.32
+12.19,Win,12.5,Rated,-0.31
+18.68,Win,18.08,Rated,0.6
+15.0,No win,14.82,Rated,0.18
+15.62,No win,22.91,Casual,-7.29
+14.93,No win,15.49,Rated,-0.56
+19.38,No win,20.2,Casual,-0.82
+11.63,No win,16.41,Rated,-4.78
+18.57,Win,16.32,Rated,2.25
+14.21,Win,14.68,Rated,-0.47
+15.19,Win,15.56,Rated,-0.37
+13.84,No win,19.5,Casual,-5.66
+14.53,No win,17.96,Rated,-3.43
+15.36,Win,15.0,Casual,0.36
+15.85,Win,12.95,Rated,2.9
+15.14,Win,20.32,Casual,-5.18
+17.83,Win,18.74,Casual,-0.91
+12.55,No win,18.15,Rated,-5.6
+15.87,No win,15.73,Rated,0.14
+19.02,Win,19.04,Rated,-0.02
+13.31,No win,13.24,Rated,0.07
+14.19,No win,11.51,Rated,2.68
+11.11,Win,12.36,Rated,-1.25
+16.21,No win,18.55,Rated,-2.34
+12.11,No win,12.26,Rated,-0.15
+17.13,No win,16.02,Rated,1.11
+16.95,No win,16.79,Rated,0.16
+26.21,No win,17.15,Casual,9.06
+14.92,Win,14.97,Rated,-0.05
+16.06,Win,17.31,Rated,-1.25
+12.59,Win,14.25,Casual,-1.66
+13.5,No win,14.8,Casual,-1.3
+13.71,Win,13.15,Rated,0.56
+12.81,No win,14.27,Rated,-1.46
+14.21,Win,13.47,Rated,0.74
+17.34,Win,17.13,Rated,0.21
+16.16,No win,15.04,Rated,1.12
+16.13,No win,22.37,Rated,-6.24
+15.82,Win,15.0,Casual,0.82
+17.08,No win,17.72,Rated,-0.64
+15.0,No win,16.21,Casual,-1.21
+13.18,Win,14.0,Casual,-0.82
+16.69,Win,16.36,Rated,0.33
+14.31,Win,12.89,Casual,1.42
+10.82,Win,10.7,Rated,0.12
+13.02,No win,9.63,Rated,3.39
+15.0,Win,15.0,Casual,0.0
+14.38,No win,14.15,Rated,0.23
+13.09,Win,13.36,Rated,-0.27
+16.78,Win,12.99,Casual,3.79
+21.13,Win,21.2,Rated,-0.07
+20.52,Win,19.71,Rated,0.81
+15.98,No win,16.36,Rated,-0.38
+21.01,Win,20.43,Rated,0.58
+15.1,No win,15.45,Rated,-0.35
+16.0,Win,16.31,Casual,-0.31
+12.56,No win,14.21,Rated,-1.65
+15.54,No win,14.94,Rated,0.6
+17.95,No win,17.84,Rated,0.11
+19.18,Win,19.04,Rated,0.14
+14.77,No win,14.84,Rated,-0.07
+15.0,No win,15.53,Casual,-0.53
+17.67,Win,15.66,Rated,2.01
+14.46,No win,15.05,Rated,-0.59
+20.16,Win,21.13,Rated,-0.97
+19.53,Win,18.94,Rated,0.59
+17.03,Win,16.78,Rated,0.25
+18.14,Win,15.67,Rated,2.47
+18.23,Win,17.7,Rated,0.53
+17.17,Win,16.99,Rated,0.18
+15.26,Win,12.9,Rated,2.36
+13.89,Win,15.25,Rated,-1.36
+17.24,Win,19.58,Rated,-2.34
+14.3,Win,12.82,Rated,1.48
+12.63,No win,17.7,Rated,-5.07
+12.67,Win,12.33,Rated,0.34
+15.23,No win,14.4,Rated,0.83
+14.54,Win,12.89,Rated,1.65
+13.71,No win,15.73,Rated,-2.02
+15.59,Win,12.3,Rated,3.29
+15.19,No win,15.47,Rated,-0.28
+13.92,No win,14.88,Rated,-0.96
+21.57,No win,22.13,Rated,-0.56
+14.04,No win,16.31,Rated,-2.27
+13.19,No win,13.95,Rated,-0.76
+16.07,Win,15.42,Rated,0.65
+14.79,No win,14.62,Rated,0.17
+16.72,No win,19.88,Rated,-3.16
+18.16,Win,18.41,Rated,-0.25
+20.77,No win,20.11,Rated,0.66
+14.24,No win,11.58,Casual,2.66
+13.47,Win,11.1,Rated,2.37
+19.76,Win,19.54,Rated,0.22
+13.97,No win,15.0,Casual,-1.03
+15.34,No win,17.4,Rated,-2.06
+13.49,No win,12.51,Rated,0.98
+17.22,No win,15.92,Rated,1.3
+13.17,Win,9.2,Rated,3.97
+15.54,Win,15.3,Rated,0.24
+19.97,Win,17.47,Rated,2.5
+15.82,No win,16.63,Rated,-0.81
+12.95,No win,13.74,Rated,-0.79
+14.88,Win,9.57,Rated,5.31
+16.83,No win,16.51,Rated,0.32
+16.02,No win,16.29,Rated,-0.27
+20.21,Win,18.71,Rated,1.5
+16.71,Win,16.71,Rated,0.0
+15.57,No win,15.26,Rated,0.31
+13.64,No win,15.01,Casual,-1.37
+15.0,No win,15.0,Rated,0.0
+18.46,No win,17.88,Rated,0.58
+14.42,No win,15.07,Rated,-0.65
+17.83,No win,14.32,Rated,3.51
+20.98,Win,22.79,Rated,-1.81
+15.8,No win,14.02,Rated,1.78
+14.31,No win,13.12,Casual,1.19
+13.17,No win,14.01,Rated,-0.84
+11.96,No win,15.47,Rated,-3.51
+14.76,Win,14.81,Rated,-0.05
+15.02,No win,17.36,Rated,-2.34
+10.91,Win,17.01,Casual,-6.1
+22.77,No win,18.93,Rated,3.84
+14.18,Win,13.3,Rated,0.88
+14.41,Win,13.92,Rated,0.49
+14.8,No win,15.51,Rated,-0.71
+13.52,No win,20.41,Rated,-6.89
+15.0,Win,15.0,Casual,0.0
+10.02,No win,10.92,Rated,-0.9
+21.35,No win,21.18,Rated,0.17
+18.81,No win,15.18,Rated,3.63
+13.53,Win,11.48,Rated,2.05
+22.07,Win,15.62,Casual,6.45
+18.5,Win,12.85,Rated,5.65
+12.91,No win,13.96,Rated,-1.05
+21.63,No win,21.98,Rated,-0.35
+16.87,Win,14.87,Rated,2.0
+16.84,Win,22.39,Rated,-5.55
+20.34,No win,16.45,Rated,3.89
+13.84,Win,18.21,Rated,-4.37
+13.99,Win,13.86,Rated,0.13
+12.11,Win,12.3,Rated,-0.19
+18.03,No win,17.78,Rated,0.25
+18.73,No win,22.14,Rated,-3.41
+17.63,No win,16.28,Rated,1.35
+12.89,No win,14.84,Casual,-1.95
+17.24,No win,15.45,Rated,1.79
+19.92,Win,18.01,Rated,1.91
+21.7,No win,17.01,Casual,4.69
+15.0,No win,13.95,Casual,1.05
+13.81,No win,16.07,Casual,-2.26
+17.49,No win,16.31,Rated,1.18
+14.64,Win,13.62,Rated,1.02
+18.29,No win,17.57,Rated,0.72
+14.6,No win,14.27,Rated,0.33
+22.12,Win,22.31,Rated,-0.19
+14.37,Win,10.6,Rated,3.77
+17.39,No win,19.06,Rated,-1.67
+13.62,Win,13.92,Rated,-0.3
+18.13,No win,18.5,Rated,-0.37
+18.0,No win,17.14,Casual,0.86
+13.44,No win,15.27,Casual,-1.83
+15.28,No win,16.03,Rated,-0.75
+19.84,Win,18.46,Rated,1.38
+17.71,No win,17.22,Rated,0.49
+17.34,No win,17.47,Rated,-0.13
+21.47,No win,21.13,Rated,0.34
+18.58,No win,17.01,Casual,1.57
+21.44,No win,20.01,Rated,1.43
+10.26,No win,18.64,Rated,-8.38
+14.31,No win,15.85,Rated,-1.54
+14.09,Win,15.07,Rated,-0.98
+16.98,Win,9.94,Casual,7.04
+19.73,No win,20.03,Rated,-0.3
+16.71,Win,15.53,Rated,1.18
+15.55,No win,16.73,Rated,-1.18
+17.07,Win,15.85,Rated,1.22
+17.11,Win,16.45,Rated,0.66
+19.46,No win,19.76,Rated,-0.3
+13.54,No win,14.06,Rated,-0.52
+13.4,No win,14.06,Rated,-0.66
+15.42,Win,12.84,Rated,2.58
+14.84,No win,16.63,Rated,-1.79
+13.79,Win,12.06,Rated,1.73
+12.86,Win,12.76,Rated,0.1
+16.13,Win,13.09,Rated,3.04
+19.79,Win,17.86,Rated,1.93
+12.8,Win,14.85,Rated,-2.05
+13.17,No win,15.38,Rated,-2.21
+16.92,Win,17.41,Rated,-0.49
+11.85,No win,11.71,Rated,0.14
+21.78,No win,20.94,Rated,0.84
+16.97,Win,19.55,Rated,-2.58
+22.63,No win,20.96,Rated,1.67
+15.59,Win,12.11,Rated,3.48
+18.91,No win,15.0,Rated,3.91
+12.16,No win,15.84,Rated,-3.68
+15.62,No win,23.14,Casual,-7.52
+12.11,No win,15.0,Casual,-2.89
+13.3,Win,14.09,Rated,-0.79
+20.23,No win,20.33,Rated,-0.1
+13.15,Win,12.64,Rated,0.51
+15.48,Win,16.05,Rated,-0.57
+18.7,Win,14.12,Rated,4.58
+15.36,No win,14.25,Casual,1.11
+13.13,Win,13.49,Rated,-0.36
+15.68,No win,16.88,Rated,-1.2
+12.78,No win,15.0,Casual,-2.22
+15.71,No win,15.54,Rated,0.17
+17.99,Win,15.98,Rated,2.01
+13.34,Win,12.46,Rated,0.88
+18.45,Win,18.46,Rated,-0.01
+14.75,No win,13.96,Rated,0.79
+17.88,Win,18.68,Rated,-0.8
+14.84,No win,17.11,Casual,-2.27
+15.31,No win,15.69,Rated,-0.38
+18.4,No win,19.14,Rated,-0.74
+15.23,No win,15.47,Rated,-0.24
+17.29,No win,20.08,Rated,-2.79
+11.88,Win,11.18,Rated,0.7
+20.83,No win,17.62,Rated,3.21
+14.6,No win,16.75,Rated,-2.15
+10.62,Win,12.16,Rated,-1.54
+15.37,Win,13.3,Rated,2.07
+12.47,Win,15.0,Casual,-2.53
+13.75,Win,13.32,Rated,0.43
+17.22,Win,17.45,Casual,-0.23
+16.14,No win,16.94,Rated,-0.8
+17.68,No win,20.6,Casual,-2.92
+13.69,No win,14.08,Rated,-0.39
+16.43,Win,16.96,Rated,-0.53
+16.02,Win,16.28,Casual,-0.26
+13.52,Win,16.42,Rated,-2.9
+15.22,No win,17.76,Rated,-2.54
+15.31,No win,14.3,Rated,1.01
+13.92,No win,18.16,Rated,-4.24
+19.15,Win,17.94,Rated,1.21
+14.95,No win,14.95,Rated,0.0
+9.67,No win,9.99,Rated,-0.32
+15.27,No win,15.58,Rated,-0.31
+10.7,No win,18.02,Casual,-7.32
+16.61,No win,16.64,Rated,-0.03
+14.5,No win,16.52,Casual,-2.02
+16.38,Win,15.0,Rated,1.38
+11.74,Win,9.55,Rated,2.19
+12.03,Win,10.19,Rated,1.84
+16.67,Win,16.34,Rated,0.33
+12.18,No win,13.71,Rated,-1.53
+15.0,No win,17.82,Rated,-2.82
+14.55,No win,15.69,Rated,-1.14
+12.74,No win,9.82,Rated,2.92
+14.5,Win,15.85,Rated,-1.35
+20.23,Win,16.4,Casual,3.83
+17.54,Win,15.0,Casual,2.54
+13.69,No win,20.7,Rated,-7.01
+17.22,Win,17.27,Rated,-0.05
+12.59,No win,11.84,Rated,0.75
+14.33,Win,14.36,Casual,-0.03
+17.95,Win,18.31,Rated,-0.36
+12.72,No win,17.85,Rated,-5.13
+18.99,Win,19.5,Rated,-0.51
+16.54,Win,16.93,Rated,-0.39
+18.49,Win,18.1,Rated,0.39
+17.83,No win,19.6,Rated,-1.77
+16.8,Win,15.3,Rated,1.5
+18.68,No win,17.16,Rated,1.52
+16.16,Win,15.86,Rated,0.3
+11.76,No win,12.64,Casual,-0.88
+15.54,Win,15.32,Rated,0.22
+15.3,No win,15.43,Rated,-0.13
+13.54,No win,11.81,Casual,1.73
+14.7,No win,12.57,Casual,2.13
+13.06,No win,15.0,Casual,-1.94
+10.15,No win,15.63,Rated,-5.48
+16.28,No win,12.76,Rated,3.52
+12.4,No win,16.02,Rated,-3.62
+19.73,Win,18.1,Casual,1.63
+11.43,No win,15.91,Casual,-4.48
+11.84,Win,15.06,Rated,-3.22
+22.36,No win,21.48,Rated,0.88
+15.91,No win,16.73,Rated,-0.82
+14.72,Win,15.0,Casual,-0.28
+19.77,Win,19.48,Rated,0.29
+20.35,Win,18.18,Rated,2.17
+18.18,Win,20.68,Casual,-2.5
+15.63,No win,15.83,Rated,-0.2
+15.73,Win,15.53,Rated,0.2
+15.36,Win,12.32,Rated,3.04
+13.39,No win,12.43,Casual,0.96
+16.49,Win,14.45,Rated,2.04
+16.57,Win,11.85,Rated,4.72
+15.39,Win,15.1,Rated,0.29
+19.73,Win,18.1,Casual,1.63
+13.81,No win,12.56,Rated,1.25
+12.93,No win,13.14,Rated,-0.21
+17.31,Win,16.91,Rated,0.4
+19.0,No win,20.34,Rated,-1.34
+13.14,Win,10.99,Rated,2.15
+22.01,No win,22.66,Rated,-0.65
+14.28,Win,14.41,Rated,-0.13
+17.92,No win,16.4,Rated,1.52
+13.52,Win,15.41,Rated,-1.89
+16.75,No win,15.1,Rated,1.65
+10.06,No win,13.75,Rated,-3.69
+21.89,No win,21.67,Rated,0.22
+16.41,Win,16.45,Rated,-0.04
+14.26,Win,12.07,Casual,2.19
+12.68,Win,12.55,Rated,0.13
+16.3,No win,15.22,Rated,1.08
+17.1,Win,18.15,Rated,-1.05
+15.88,Win,12.03,Casual,3.85
+13.86,No win,14.42,Rated,-0.56
+19.18,Win,18.58,Rated,0.6
+9.73,No win,10.5,Rated,-0.77
+12.16,No win,10.93,Rated,1.23
+14.65,No win,13.96,Rated,0.69
+13.77,No win,15.0,Casual,-1.23
+15.71,Win,13.01,Casual,2.7
+18.12,No win,16.93,Rated,1.19
+13.03,Win,14.06,Rated,-1.03
+20.16,No win,21.8,Rated,-1.64
+14.82,Win,14.83,Rated,-0.01
+13.13,Win,13.99,Casual,-0.86
+15.0,Win,14.79,Rated,0.21
+13.26,Win,13.55,Rated,-0.29
+18.7,Win,14.79,Rated,3.91
+15.0,Win,18.28,Casual,-3.28
+14.74,Win,12.01,Rated,2.73
+14.89,No win,14.53,Rated,0.36
+17.46,Win,14.87,Rated,2.59
+15.89,Win,12.99,Rated,2.9
+17.56,Win,17.71,Rated,-0.15
+11.27,Win,11.08,Rated,0.19
+15.0,No win,14.09,Rated,0.91
+17.07,No win,11.93,Casual,5.14
+17.94,Win,17.84,Rated,0.1
+16.1,No win,9.89,Rated,6.21
+12.21,Win,14.17,Rated,-1.96
+18.14,No win,15.68,Rated,2.46
+14.59,Win,13.07,Rated,1.52
+18.85,No win,15.0,Casual,3.85
+18.03,Win,13.87,Rated,4.16
+14.71,Win,14.54,Rated,0.17
+15.03,No win,18.73,Rated,-3.7
+18.02,No win,25.24,Casual,-7.22
+16.93,No win,20.55,Rated,-3.62
+18.76,No win,19.13,Rated,-0.37
+13.89,No win,16.75,Rated,-2.86
+13.71,No win,12.7,Rated,1.01
+15.09,Win,14.54,Rated,0.55
+10.56,No win,11.56,Rated,-1.0
+23.34,Win,13.46,Casual,9.88
+11.76,Win,12.01,Rated,-0.25
+22.11,Win,18.71,Rated,3.4
+14.25,No win,13.87,Rated,0.38
+17.84,Win,15.05,Rated,2.79
+18.65,No win,20.49,Rated,-1.84
+16.36,No win,17.25,Rated,-0.89
+23.3,Win,22.34,Rated,0.96
+15.18,Win,13.68,Casual,1.5
+15.0,No win,16.29,Casual,-1.29
+17.29,No win,16.39,Rated,0.9
+13.79,Win,15.63,Rated,-1.84
+18.17,Win,17.98,Rated,0.19
+20.13,Win,17.73,Rated,2.4
+14.75,No win,15.6,Rated,-0.85
+16.77,No win,12.45,Casual,4.32
+15.67,Win,15.0,Casual,0.67
+15.49,Win,15.36,Rated,0.13
+19.08,No win,19.56,Rated,-0.48
+14.43,Win,14.1,Rated,0.33
+19.41,No win,16.05,Rated,3.36
+17.15,Win,12.63,Casual,4.52
+15.52,No win,15.12,Rated,0.4
+23.12,Win,18.88,Rated,4.24
+19.67,Win,12.95,Casual,6.72
+15.42,No win,16.79,Rated,-1.37
+19.44,Win,17.31,Casual,2.13
+14.6,Win,14.83,Rated,-0.23
+21.68,Win,19.75,Rated,1.93
+17.27,No win,20.12,Rated,-2.85
+16.93,Win,18.34,Rated,-1.41
+17.74,Win,13.13,Rated,4.61
+16.96,Win,16.07,Rated,0.89
+11.97,No win,11.97,Rated,0.0
+16.72,Win,16.63,Rated,0.09
+11.83,No win,15.54,Rated,-3.71
+18.27,No win,19.24,Rated,-0.97
+20.36,No win,17.06,Rated,3.3
+17.23,No win,16.44,Rated,0.79
+18.23,Win,18.94,Rated,-0.71
+14.86,No win,21.25,Rated,-6.39
+15.01,Win,14.84,Rated,0.17
+14.57,No win,14.66,Rated,-0.09
+16.31,Win,16.98,Rated,-0.67
+12.79,No win,13.63,Rated,-0.84
+19.69,No win,19.69,Rated,0.0
+13.7,No win,12.28,Rated,1.42
+13.88,Win,13.26,Rated,0.62
+18.27,Win,19.41,Rated,-1.14
+16.28,No win,15.81,Rated,0.47
+16.68,Win,13.6,Rated,3.08
+19.7,Win,17.85,Rated,1.85
+15.41,Win,15.86,Rated,-0.45
+23.61,Win,16.95,Casual,6.66
+14.96,No win,15.43,Rated,-0.47
+16.63,No win,16.31,Rated,0.32
+15.36,No win,15.41,Rated,-0.05
+15.88,Win,16.82,Rated,-0.94
+14.98,Win,11.47,Rated,3.51
+19.44,Win,19.38,Rated,0.06
+16.99,Win,17.13,Rated,-0.14
+17.8,No win,16.56,Rated,1.24
+12.82,Win,13.58,Rated,-0.76
+15.39,No win,15.0,Casual,0.39
+17.94,No win,17.14,Rated,0.8
+18.43,No win,22.2,Rated,-3.77
+23.76,Win,21.66,Rated,2.1
+18.06,Win,14.13,Casual,3.93
+15.07,No win,14.82,Rated,0.25
+19.73,No win,18.1,Casual,1.63
+15.04,No win,17.37,Casual,-2.33
+14.93,Win,21.08,Casual,-6.15
+18.41,No win,18.01,Rated,0.4
+17.59,No win,14.38,Rated,3.21
+16.69,No win,18.5,Rated,-1.81
+18.58,No win,17.48,Rated,1.1
+17.08,Win,18.62,Casual,-1.54
+18.84,No win,25.0,Casual,-6.16
+13.45,No win,14.52,Rated,-1.07
+18.12,No win,18.97,Casual,-0.85
+13.98,No win,16.61,Rated,-2.63
+20.74,No win,22.53,Rated,-1.79
+16.12,Win,14.5,Rated,1.62
+23.2,Win,20.13,Rated,3.07
+20.4,Win,19.81,Rated,0.59
+16.48,Win,16.95,Rated,-0.47
+15.07,No win,15.29,Rated,-0.22
+18.55,No win,18.23,Rated,0.32
+15.94,Win,15.45,Rated,0.49
+15.73,No win,20.76,Rated,-5.03
+24.65,Win,20.41,Rated,4.24
+17.5,No win,17.33,Rated,0.17
+19.03,Win,17.87,Rated,1.16
+20.48,Win,21.5,Rated,-1.02
+17.13,Win,15.53,Casual,1.6
+14.85,Win,16.88,Rated,-2.03
+18.0,Win,17.33,Rated,0.67
+17.03,No win,17.65,Rated,-0.62
+17.26,Win,13.54,Rated,3.72
+18.57,Win,15.9,Rated,2.67
+17.55,No win,18.71,Rated,-1.16
+17.57,Win,17.46,Rated,0.11
+15.0,Win,12.43,Casual,2.57
+13.02,No win,15.0,Casual,-1.98
+17.23,No win,21.59,Casual,-4.36
+22.38,Win,19.72,Rated,2.66
+11.77,Win,11.37,Rated,0.4
+17.28,Win,16.32,Rated,0.96
+9.71,No win,16.29,Casual,-6.58
+19.65,No win,22.17,Rated,-2.52
+15.51,Win,15.0,Rated,0.51
+12.23,No win,15.63,Casual,-3.4
+16.13,Win,16.94,Rated,-0.81
+10.63,No win,17.79,Casual,-7.16
+15.52,Win,15.03,Rated,0.49
+17.69,No win,16.39,Rated,1.3
+18.98,No win,21.34,Rated,-2.36
+20.46,Win,19.84,Rated,0.62
+16.73,No win,21.26,Rated,-4.53
+15.5,No win,16.2,Rated,-0.7
+18.59,Win,17.34,Rated,1.25
+15.98,Win,16.19,Rated,-0.21
+14.66,Win,15.32,Rated,-0.66
+18.94,Win,18.2,Rated,0.74
+12.81,No win,17.65,Rated,-4.84
+18.21,No win,19.79,Rated,-1.58
+11.66,No win,11.23,Rated,0.43
+17.53,Win,14.41,Rated,3.12
+12.83,No win,12.67,Casual,0.16
+13.83,Win,11.47,Rated,2.36
+17.97,No win,21.99,Rated,-4.02
+12.05,Win,14.21,Rated,-2.16
+14.42,No win,13.1,Rated,1.32
+16.27,Win,15.15,Rated,1.12
+15.68,No win,14.39,Rated,1.29
+13.36,Win,13.37,Rated,-0.01
+17.77,No win,17.69,Rated,0.08
+19.25,No win,19.09,Rated,0.16
+20.23,Win,16.71,Rated,3.52
+10.51,No win,12.57,Casual,-2.06
+18.69,No win,16.28,Casual,2.41
+13.44,Win,15.27,Casual,-1.83
+14.15,No win,12.45,Rated,1.7
+22.35,Win,15.0,Rated,7.35
+13.49,No win,13.68,Rated,-0.19
+16.34,No win,18.21,Casual,-1.87
+11.34,No win,13.97,Casual,-2.63
+21.89,Win,15.95,Rated,5.94
+19.3,No win,18.97,Rated,0.33
+13.38,Win,12.77,Rated,0.61
+15.75,No win,18.44,Rated,-2.69
+14.24,No win,14.41,Rated,-0.17
+13.18,Win,14.0,Casual,-0.82
+14.11,Win,15.0,Rated,-0.89
+20.01,Win,17.4,Rated,2.61
+17.04,No win,19.03,Rated,-1.99
+11.71,No win,15.0,Casual,-3.29
+16.02,No win,15.02,Rated,1.0
+15.45,No win,14.91,Rated,0.54
+18.22,No win,15.88,Rated,2.34
+15.88,No win,14.89,Casual,0.99
+13.07,Win,11.06,Rated,2.01
+22.64,Win,17.53,Casual,5.11
+19.75,No win,19.62,Rated,0.13
+16.12,Win,16.62,Rated,-0.5
+15.08,No win,17.69,Rated,-2.61
+14.71,Win,14.87,Rated,-0.16
+18.29,Win,19.05,Rated,-0.76
+13.78,Win,11.7,Rated,2.08
+17.44,No win,17.7,Rated,-0.26
+21.77,Win,16.86,Casual,4.91
+18.16,Win,18.01,Rated,0.15
+15.0,No win,15.04,Casual,-0.04
+20.87,Win,15.72,Rated,5.15
+16.14,Win,16.13,Rated,0.01
+17.52,No win,18.3,Rated,-0.78
+13.3,No win,12.57,Rated,0.73
+15.25,Win,13.43,Rated,1.82
+17.43,No win,15.86,Rated,1.57
+14.13,No win,14.25,Casual,-0.12
+20.22,Win,11.62,Rated,8.6
+16.06,No win,14.65,Rated,1.41
+15.43,No win,15.5,Rated,-0.07
+17.66,No win,14.66,Casual,3.0
+15.08,No win,17.27,Casual,-2.19
+12.94,No win,16.69,Rated,-3.75
+18.2,No win,16.16,Rated,2.04
+13.14,No win,13.82,Rated,-0.68
+14.64,No win,13.01,Casual,1.63
+20.0,No win,19.08,Rated,0.92
+14.63,No win,14.13,Rated,0.5
+15.0,No win,16.44,Rated,-1.44
+13.51,Win,14.65,Rated,-1.14
+17.18,No win,19.41,Rated,-2.23
+16.24,No win,15.04,Rated,1.2
+12.53,Win,14.71,Rated,-2.18
+23.06,No win,24.05,Rated,-0.99
+16.49,No win,14.45,Rated,2.04
+12.97,Win,12.17,Rated,0.8
+14.23,No win,15.0,Rated,-0.77
+20.17,No win,20.08,Rated,0.09
+13.97,No win,14.05,Rated,-0.08
+17.28,No win,17.98,Rated,-0.7
+11.66,Win,10.34,Casual,1.32
+13.59,Win,12.14,Rated,1.45
+19.61,Win,18.38,Casual,1.23
+13.11,Win,12.05,Casual,1.06
+13.49,No win,14.86,Rated,-1.37
+18.12,No win,19.21,Casual,-1.09
+18.12,No win,17.09,Rated,1.03
+16.49,No win,16.08,Rated,0.41
+16.61,Win,13.22,Rated,3.39
+13.34,Win,12.93,Casual,0.41
+13.36,Win,11.04,Casual,2.32
+15.0,Win,15.45,Rated,-0.45
+12.4,Win,12.19,Rated,0.21
+12.24,Win,12.89,Rated,-0.65
+11.62,Win,16.1,Rated,-4.48
+12.36,Win,9.64,Casual,2.72
+18.76,Win,18.56,Rated,0.2
+19.02,No win,21.76,Rated,-2.74
+19.13,Win,15.04,Rated,4.09
+15.74,No win,12.6,Rated,3.14
+15.0,No win,16.96,Casual,-1.96
+13.12,Win,12.98,Rated,0.14
+15.68,Win,15.09,Rated,0.59
+14.5,No win,15.16,Rated,-0.66
+12.17,Win,11.49,Rated,0.68
+14.59,No win,13.92,Rated,0.67
+12.99,No win,13.69,Rated,-0.7
+21.8,No win,21.86,Rated,-0.06
+16.22,Win,16.52,Rated,-0.3
+18.05,Win,18.7,Rated,-0.65
+17.48,No win,18.55,Rated,-1.07
+18.26,Win,13.21,Casual,5.05
+18.42,No win,19.15,Rated,-0.73
+11.5,No win,12.02,Rated,-0.52
+14.58,Win,9.39,Casual,5.19
+15.89,No win,17.28,Rated,-1.39
+15.62,Win,17.84,Casual,-2.22
+17.48,Win,16.71,Rated,0.77
+14.1,No win,18.82,Rated,-4.72
+17.19,Win,16.77,Rated,0.42
+16.91,No win,16.43,Rated,0.48
+16.31,No win,15.0,Rated,1.31
+15.81,No win,15.14,Rated,0.67
+16.69,No win,18.69,Casual,-2.0
+20.03,Win,13.16,Rated,6.87
+16.48,No win,17.1,Rated,-0.62
+14.58,Win,14.78,Rated,-0.2
+14.46,Win,15.17,Rated,-0.71
+15.42,No win,15.37,Rated,0.05
+16.31,No win,16.06,Casual,0.25
+21.41,Win,15.78,Rated,5.63
+14.12,Win,11.74,Rated,2.38
+19.81,Win,18.65,Rated,1.16
+22.15,Win,19.98,Rated,2.17
+15.76,No win,19.15,Rated,-3.39
+14.63,No win,14.93,Casual,-0.3
+18.62,Win,18.71,Rated,-0.09
+16.31,Win,15.46,Casual,0.85
+19.46,Win,18.84,Rated,0.62
+18.62,No win,15.79,Casual,2.83
+17.78,Win,19.32,Casual,-1.54
+18.77,Win,16.75,Rated,2.02
+16.85,No win,16.8,Rated,0.05
+15.0,Win,13.72,Casual,1.28
+15.13,No win,13.84,Rated,1.29
+18.45,No win,19.49,Rated,-1.04
+19.81,Win,19.77,Rated,0.04
+15.11,No win,15.28,Rated,-0.17
+14.35,No win,15.98,Rated,-1.63
+11.35,No win,11.51,Rated,-0.16
+20.55,Win,24.41,Casual,-3.86
+15.71,No win,17.25,Rated,-1.54
+12.44,No win,12.97,Rated,-0.53
+13.38,No win,13.56,Rated,-0.18
+15.59,Win,14.62,Rated,0.97
+13.92,Win,15.0,Rated,-1.08
+17.31,No win,18.79,Rated,-1.48
+19.16,No win,16.98,Casual,2.18
+12.2,Win,12.05,Rated,0.15
+11.11,No win,15.21,Rated,-4.1
+15.57,No win,15.0,Casual,0.57
+18.74,Win,13.81,Rated,4.93
+13.77,No win,15.2,Rated,-1.43
+10.02,No win,12.53,Rated,-2.51
+12.89,Win,15.0,Casual,-2.11
+15.54,No win,14.56,Rated,0.98
+12.05,No win,13.65,Casual,-1.6
+11.54,Win,9.2,Rated,2.34
+15.77,Win,15.0,Rated,0.77
+17.5,Win,17.75,Rated,-0.25
+15.45,No win,17.06,Rated,-1.61
+21.08,No win,22.7,Rated,-1.62
+18.32,Win,18.77,Rated,-0.45
+14.31,No win,14.26,Rated,0.05
+14.28,Win,15.44,Rated,-1.16
+24.65,No win,23.84,Rated,0.81
+17.96,Win,17.09,Rated,0.87
+16.82,No win,18.04,Rated,-1.22
+8.46,No win,21.19,Rated,-12.73
+14.5,Win,15.51,Rated,-1.01
+13.89,No win,13.39,Rated,0.5
+16.19,No win,15.95,Rated,0.24
+18.17,No win,16.83,Rated,1.34
+16.99,Win,13.15,Rated,3.84
+14.02,No win,14.65,Rated,-0.63
+14.03,No win,13.71,Rated,0.32
+16.59,Win,21.26,Rated,-4.67
+20.82,No win,19.88,Casual,0.94
+15.0,Win,14.51,Rated,0.49
+14.87,No win,20.97,Rated,-6.1
+17.71,No win,15.88,Rated,1.83
+18.67,Win,20.64,Rated,-1.97
+17.59,Win,16.08,Rated,1.51
+19.41,No win,17.75,Rated,1.66
+17.48,Win,16.89,Rated,0.59
+15.98,Win,15.01,Casual,0.97
+13.75,No win,13.72,Rated,0.03
+14.39,Win,13.41,Rated,0.98
+18.32,Win,18.05,Rated,0.27
+16.04,No win,17.05,Rated,-1.01
+18.57,Win,15.19,Rated,3.38
+15.37,Win,14.08,Rated,1.29
+15.09,Win,15.54,Rated,-0.45
+20.48,No win,18.85,Rated,1.63
+17.08,Win,16.8,Rated,0.28
+22.25,No win,22.64,Rated,-0.39
+17.17,No win,14.6,Rated,2.57
+15.01,No win,16.4,Casual,-1.39
+18.03,No win,18.09,Rated,-0.06
+18.55,Win,15.02,Rated,3.53
+15.0,No win,18.6,Rated,-3.6
+16.83,Win,14.91,Rated,1.92
+11.95,No win,12.98,Rated,-1.03
+12.89,No win,21.08,Rated,-8.19
+17.13,No win,16.02,Rated,1.11
+14.22,No win,15.0,Casual,-0.78
+12.15,No win,17.03,Rated,-4.88
+16.45,Win,14.37,Rated,2.08
+13.64,No win,17.38,Casual,-3.74
+15.8,Win,15.01,Rated,0.79
+13.92,No win,12.6,Casual,1.32
+17.0,Win,9.82,Rated,7.18
+15.64,Win,15.0,Casual,0.64
+11.5,No win,15.96,Rated,-4.46
+16.22,No win,22.12,Rated,-5.9
+17.47,No win,15.88,Rated,1.59
+14.98,Win,15.31,Rated,-0.33
+22.47,Win,17.18,Rated,5.29
+18.29,Win,15.44,Casual,2.85
+11.96,No win,12.64,Rated,-0.68
+13.07,Win,12.46,Rated,0.61
+17.01,No win,16.18,Rated,0.83
+13.88,Win,13.56,Rated,0.32
+26.21,Win,15.55,Casual,10.66
+13.6,No win,14.32,Rated,-0.72
+13.1,Win,12.67,Rated,0.43
+15.0,No win,17.62,Rated,-2.62
+18.75,Win,14.33,Rated,4.42
+15.0,Win,27.23,Casual,-12.23
+16.37,No win,14.08,Rated,2.29
+10.39,Win,15.0,Casual,-4.61
+17.14,Win,14.89,Rated,2.25
+15.56,Win,15.33,Rated,0.23
+19.19,Win,19.94,Rated,-0.75
+18.28,No win,17.15,Rated,1.13
+15.0,Win,20.6,Casual,-5.6
+12.64,No win,15.06,Rated,-2.42
+15.62,No win,22.07,Casual,-6.45
+15.44,Win,13.54,Rated,1.9
+18.24,No win,18.3,Casual,-0.06
+13.29,Win,14.24,Casual,-0.95
+17.87,No win,21.88,Casual,-4.01
+14.53,No win,16.11,Rated,-1.58
+15.0,No win,15.24,Rated,-0.24
+19.49,No win,20.57,Rated,-1.08
+18.2,No win,18.42,Rated,-0.22
+8.38,No win,16.42,Casual,-8.04
+20.6,Win,17.92,Rated,2.68
+20.46,No win,20.11,Rated,0.35
+13.55,No win,14.18,Rated,-0.63
+14.91,Win,15.37,Rated,-0.46
+19.16,Win,12.13,Casual,7.03
+17.2,No win,19.43,Rated,-2.23
+13.68,Win,15.0,Rated,-1.32
+11.18,Win,10.49,Casual,0.69
+15.03,Win,14.94,Rated,0.09
+14.71,Win,14.12,Rated,0.59
+15.85,No win,15.57,Rated,0.28
+18.63,Win,18.18,Rated,0.45
+10.07,No win,12.68,Rated,-2.61
+15.0,No win,14.78,Casual,0.22
+16.53,Win,15.66,Rated,0.87
+15.0,No win,16.25,Casual,-1.25
+15.41,Win,14.22,Rated,1.19
+15.72,Win,11.72,Casual,4.0
+16.77,No win,15.87,Rated,0.9
+10.33,Win,15.0,Casual,-4.67
+21.65,No win,21.58,Rated,0.07
+21.73,Win,21.89,Rated,-0.16
+18.57,No win,17.63,Rated,0.94
+10.27,No win,14.8,Casual,-4.53
+19.08,No win,20.59,Rated,-1.51
+13.3,Win,14.9,Rated,-1.6
+10.45,No win,13.83,Casual,-3.38
+16.89,No win,17.46,Rated,-0.57
+13.53,Win,11.92,Rated,1.61
+12.55,No win,14.37,Rated,-1.82
+15.0,No win,14.87,Rated,0.13
+16.45,Win,16.03,Rated,0.42
+15.72,Win,13.76,Rated,1.96
+13.7,No win,16.06,Rated,-2.36
+20.49,No win,18.95,Rated,1.54
+17.33,No win,18.75,Rated,-1.42
+14.46,Win,15.92,Rated,-1.46
+16.3,No win,17.23,Rated,-0.93
+12.66,No win,16.69,Rated,-4.03
+15.06,No win,13.21,Rated,1.85
+17.86,Win,17.48,Rated,0.38
+12.47,Win,11.22,Rated,1.25
+18.77,No win,18.27,Rated,0.5
+18.87,Win,16.65,Rated,2.22
+15.0,No win,17.92,Casual,-2.92
+15.0,Win,9.78,Casual,5.22
+13.12,No win,14.22,Rated,-1.1
+15.47,Win,15.63,Rated,-0.16
+21.59,Win,21.36,Rated,0.23
+12.26,No win,14.31,Rated,-2.05
+24.15,Win,23.31,Rated,0.84
+20.08,No win,21.35,Rated,-1.27
+14.36,No win,14.49,Rated,-0.13
+19.72,No win,19.59,Rated,0.13
+17.76,No win,19.49,Rated,-1.73
+10.28,Win,15.0,Rated,-4.72
+14.54,No win,14.27,Rated,0.27
+13.91,Win,14.37,Rated,-0.46
+16.09,No win,14.01,Rated,2.08
+16.78,Win,16.18,Rated,0.6
+11.5,Win,10.04,Rated,1.46
+18.0,No win,18.81,Rated,-0.81
+14.44,No win,13.0,Rated,1.44
+13.08,Win,13.17,Rated,-0.09
+12.36,No win,15.0,Casual,-2.64
+9.81,No win,11.81,Rated,-2.0
+12.61,No win,14.61,Rated,-2.0
+17.03,No win,14.88,Rated,2.15
+15.73,Win,14.96,Rated,0.77
+9.18,Win,9.96,Rated,-0.78
+19.73,No win,18.1,Casual,1.63
+20.65,Win,20.43,Rated,0.22
+18.75,No win,19.21,Rated,-0.46
+16.11,Win,16.4,Rated,-0.29
+20.97,Win,18.98,Rated,1.99
+11.64,No win,16.16,Rated,-4.52
+12.99,No win,14.7,Casual,-1.71
+15.27,No win,18.82,Rated,-3.55
+10.18,No win,13.87,Casual,-3.69
+22.0,Win,18.1,Rated,3.9
+10.85,Win,10.82,Rated,0.03
+10.39,No win,11.61,Rated,-1.22
+18.05,No win,21.95,Rated,-3.9
+11.59,Win,14.14,Rated,-2.55
+11.04,Win,10.69,Casual,0.35
+16.19,Win,11.91,Rated,4.28
+15.89,No win,17.21,Rated,-1.32
+20.76,No win,21.19,Casual,-0.43
+14.93,Win,14.63,Casual,0.3
+15.16,Win,15.0,Rated,0.16
+13.62,Win,8.73,Rated,4.89
+15.19,Win,11.35,Casual,3.84
+10.99,No win,12.79,Rated,-1.8
+11.92,Win,12.79,Rated,-0.87
+14.3,Win,13.85,Rated,0.45
+11.57,Win,12.34,Rated,-0.77
+15.89,Win,15.0,Casual,0.89
+18.1,No win,14.73,Rated,3.37
+19.86,No win,20.59,Rated,-0.73
+14.26,No win,13.71,Rated,0.55
+17.68,No win,18.96,Rated,-1.28
+15.24,Win,14.48,Rated,0.76
+14.82,Win,16.48,Rated,-1.66
+15.51,Win,11.59,Rated,3.92
+18.02,Win,12.96,Rated,5.06
+18.26,No win,17.69,Rated,0.57
+12.78,No win,15.68,Rated,-2.9
+17.71,No win,15.0,Rated,2.71
+15.0,No win,15.92,Casual,-0.92
+19.54,No win,18.31,Rated,1.23
+20.15,No win,20.43,Rated,-0.28
+15.07,No win,17.7,Rated,-2.63
+15.23,Win,10.38,Casual,4.85
+15.26,No win,18.5,Rated,-3.24
+22.08,Win,20.18,Rated,1.9
+15.49,No win,15.56,Rated,-0.07
+20.19,No win,19.43,Rated,0.76
+15.25,Win,15.01,Rated,0.24
+14.0,Win,15.0,Rated,-1.0
+11.7,Win,9.81,Rated,1.89
+11.3,No win,13.83,Rated,-2.53
+13.77,No win,16.67,Rated,-2.9
+21.5,Win,18.29,Rated,3.21
+15.09,No win,18.68,Rated,-3.59
+14.02,No win,15.07,Rated,-1.05
+16.87,No win,16.68,Rated,0.19
+11.4,No win,15.71,Rated,-4.31
+11.96,Win,16.09,Casual,-4.13
+10.95,Win,15.0,Casual,-4.05
+11.23,Win,12.56,Rated,-1.33
+15.74,No win,15.0,Casual,0.74
+17.86,No win,19.0,Rated,-1.14
+17.42,No win,17.5,Rated,-0.08
+15.87,No win,15.62,Casual,0.25
+13.95,No win,13.78,Rated,0.17
+15.19,No win,13.06,Rated,2.13
+19.14,Win,18.29,Rated,0.85
+16.52,No win,16.23,Rated,0.29
+9.68,No win,13.05,Casual,-3.37
+13.82,No win,15.52,Casual,-1.7
+17.18,No win,15.19,Casual,1.99
+18.09,No win,20.58,Rated,-2.49
+15.0,No win,17.41,Rated,-2.41
+12.4,Win,10.12,Rated,2.28
+16.11,Win,12.13,Rated,3.98
+21.99,Win,22.33,Rated,-0.34
+18.86,Win,18.85,Rated,0.01
+15.0,No win,20.48,Casual,-5.48
+9.83,Win,10.51,Rated,-0.68
+17.02,No win,16.81,Rated,0.21
+13.98,No win,14.47,Rated,-0.49
+14.73,Win,12.21,Rated,2.52
+17.29,No win,18.86,Rated,-1.57
+12.71,No win,16.24,Casual,-3.53
+22.43,Win,20.6,Casual,1.83
+16.96,Win,17.33,Rated,-0.37
+20.3,No win,12.25,Casual,8.05
+15.15,Win,13.01,Rated,2.14
+18.34,No win,18.96,Rated,-0.62
+17.25,Win,14.02,Rated,3.23
+13.49,No win,15.0,Casual,-1.51
+16.12,Win,15.82,Rated,0.3
+17.68,No win,18.95,Casual,-1.27
+16.71,No win,18.06,Rated,-1.35
+12.4,Win,9.82,Rated,2.58
+17.76,Win,15.93,Rated,1.83
+15.08,No win,15.62,Rated,-0.54
+17.09,Win,14.04,Rated,3.05
+14.3,Win,13.88,Rated,0.42
+11.17,No win,15.93,Rated,-4.76
+17.78,Win,19.38,Casual,-1.6
+17.77,No win,16.48,Rated,1.29
+19.96,No win,18.86,Rated,1.1
+18.7,Win,12.02,Rated,6.68
+13.05,No win,12.93,Rated,0.12
+16.54,No win,16.38,Rated,0.16
+17.61,Win,17.9,Rated,-0.29
+18.4,Win,15.8,Rated,2.6
+14.64,No win,15.55,Rated,-0.91
+18.93,No win,17.0,Rated,1.93
+18.99,Win,20.61,Casual,-1.62
+15.81,No win,16.67,Rated,-0.86
+13.09,No win,14.74,Rated,-1.65
+20.65,Win,18.61,Casual,2.04
+18.9,Win,18.46,Rated,0.44
+19.51,Win,16.79,Casual,2.72
+20.07,No win,20.23,Rated,-0.16
+20.22,Win,18.77,Rated,1.45
+18.32,Win,16.96,Rated,1.36
+14.89,Win,15.66,Casual,-0.77
+20.4,No win,25.71,Rated,-5.31
+22.68,Win,22.54,Rated,0.14
+16.06,No win,16.84,Rated,-0.78
+15.39,Win,15.14,Rated,0.25
+18.66,Win,14.38,Casual,4.28
+14.62,No win,12.49,Rated,2.13
+15.0,Win,14.03,Rated,0.97
+16.05,Win,14.75,Casual,1.3
+13.53,No win,15.81,Rated,-2.28
+13.06,No win,15.0,Casual,-1.94
+18.06,Win,14.93,Rated,3.13
+13.97,Win,11.83,Rated,2.14
+15.78,Win,15.69,Rated,0.09
+18.36,Win,19.53,Casual,-1.17
+13.62,No win,14.58,Rated,-0.96
+11.15,Win,10.13,Rated,1.02
+15.73,Win,11.7,Rated,4.03
+12.74,No win,15.34,Rated,-2.6
+17.03,Win,15.0,Casual,2.03
+16.91,Win,17.04,Casual,-0.13
+18.2,Win,20.95,Rated,-2.75
+15.34,Win,14.67,Rated,0.67
+15.54,Win,13.29,Rated,2.25
+18.9,No win,18.66,Rated,0.24
+12.65,No win,16.25,Rated,-3.6
+17.99,Win,16.57,Rated,1.42
+16.49,Win,14.4,Casual,2.09
+15.94,Win,15.54,Rated,0.4
+9.64,No win,12.67,Rated,-3.03
+13.17,No win,15.0,Casual,-1.83
+18.08,No win,18.94,Rated,-0.86
+21.0,Win,19.6,Rated,1.4
+19.45,No win,20.06,Rated,-0.61
+16.2,Win,16.39,Rated,-0.19
+15.51,Win,13.56,Rated,1.95
+13.05,No win,12.5,Rated,0.55
+18.34,No win,17.23,Rated,1.11
+13.8,No win,14.29,Rated,-0.49
+15.55,No win,17.28,Rated,-1.73
+15.23,Win,14.69,Rated,0.54
+19.09,Win,15.98,Casual,3.11
+10.37,No win,15.41,Rated,-5.04
+19.9,No win,19.01,Rated,0.89
+17.08,Win,14.1,Casual,2.98
+14.17,No win,14.17,Rated,0.0
+17.31,No win,19.58,Rated,-2.27
+17.04,No win,18.24,Rated,-1.2
+17.53,Win,17.23,Rated,0.3
+15.14,No win,14.79,Rated,0.35
+19.43,Win,20.91,Rated,-1.48
+18.16,Win,14.09,Rated,4.07
+18.4,No win,18.37,Rated,0.03
+14.92,No win,11.91,Rated,3.01
+16.67,Win,14.8,Rated,1.87
+11.04,Win,12.28,Casual,-1.24
+22.4,No win,20.74,Rated,1.66
+7.93,No win,9.61,Rated,-1.68
+16.68,No win,18.08,Rated,-1.4
+15.0,No win,15.0,Casual,0.0
+10.69,No win,11.82,Rated,-1.13
+17.76,Win,17.24,Rated,0.52
+15.0,Win,14.65,Rated,0.35
+14.36,No win,15.85,Rated,-1.49
+15.68,No win,15.34,Rated,0.34
+14.66,No win,16.86,Rated,-2.2
+18.95,Win,18.99,Rated,-0.04
+17.83,No win,17.97,Rated,-0.14
+23.01,No win,24.49,Rated,-1.48
+13.29,Win,14.27,Rated,-0.98
+14.98,No win,14.8,Casual,0.18
+14.4,Win,17.7,Casual,-3.3
+19.94,No win,19.24,Rated,0.7
+15.0,Win,17.13,Rated,-2.13
+11.73,No win,12.21,Rated,-0.48
+12.37,No win,12.31,Rated,0.06
+17.08,Win,15.77,Casual,1.31
+15.33,Win,15.93,Rated,-0.6
+14.44,No win,16.42,Rated,-1.98
+15.55,Win,13.93,Rated,1.62
+10.55,Win,10.34,Rated,0.21
+12.89,No win,14.84,Casual,-1.95
+16.57,No win,16.4,Rated,0.17
+12.42,Win,11.81,Rated,0.61
+15.79,Win,17.31,Rated,-1.52
+17.63,Win,16.49,Rated,1.14
+22.64,Win,17.53,Casual,5.11
+14.42,No win,14.0,Casual,0.42
+16.21,Win,10.93,Casual,5.28
+14.32,No win,14.93,Rated,-0.61
+15.85,No win,15.69,Rated,0.16
+11.28,Win,7.95,Casual,3.33
+15.17,No win,15.35,Rated,-0.18
+16.47,No win,17.85,Rated,-1.38
+15.19,Win,19.87,Casual,-4.68
+18.82,No win,19.09,Rated,-0.27
+16.37,Win,16.27,Rated,0.1
+19.6,Win,19.5,Rated,0.1
+9.15,No win,9.1,Rated,0.05
+16.34,No win,16.03,Rated,0.31
+15.89,Win,15.53,Casual,0.36
+17.13,No win,16.37,Rated,0.76
+18.16,No win,21.05,Casual,-2.89
+14.34,No win,15.34,Rated,-1.0
+21.02,Win,22.55,Rated,-1.53
+15.06,Win,11.09,Rated,3.97
+20.74,Win,20.13,Rated,0.61
+15.56,Win,16.76,Rated,-1.2
+12.35,No win,12.46,Rated,-0.11
+14.22,No win,17.06,Rated,-2.84
+19.72,No win,19.52,Rated,0.2
+22.16,No win,21.5,Casual,0.66
+12.19,Win,12.29,Casual,-0.1
+13.23,Win,13.18,Casual,0.05
+15.79,No win,15.57,Rated,0.22
+15.0,Win,15.0,Casual,0.0
+18.0,Win,12.82,Rated,5.18
+17.69,Win,16.25,Rated,1.44
+14.83,No win,15.33,Rated,-0.5
+21.8,No win,21.34,Rated,0.46
+17.7,Win,18.72,Rated,-1.02
+15.06,No win,16.1,Rated,-1.04
+17.22,Win,19.76,Rated,-2.54
+22.5,Win,21.19,Rated,1.31
+13.82,No win,16.44,Rated,-2.62
+19.16,No win,19.07,Rated,0.09
+17.24,Win,17.35,Rated,-0.11
+20.54,Win,18.76,Rated,1.78
+9.92,No win,13.18,Rated,-3.26
+17.64,No win,18.14,Rated,-0.5
+20.27,No win,19.93,Rated,0.34
+16.7,Win,17.44,Rated,-0.74
+17.55,Win,19.03,Rated,-1.48
+18.26,No win,18.02,Rated,0.24
+15.11,Win,15.0,Rated,0.11
+16.51,Win,15.24,Rated,1.27
+15.89,No win,13.86,Rated,2.03
+15.73,Win,14.03,Rated,1.7
+11.7,No win,16.62,Rated,-4.92
+15.0,No win,19.37,Casual,-4.37
+14.59,Win,8.32,Rated,6.27
+19.33,Win,17.79,Casual,1.54
+18.68,Win,16.45,Casual,2.23
+13.52,Win,12.22,Rated,1.3
+17.29,No win,18.74,Rated,-1.45
+9.69,No win,13.44,Casual,-3.75
+19.5,Win,19.01,Rated,0.49
+21.65,Win,19.73,Rated,1.92
+13.84,No win,17.09,Casual,-3.25
+16.81,Win,13.88,Rated,2.93
+15.01,Win,15.0,Casual,0.01
+16.52,No win,17.16,Rated,-0.64
+17.66,Win,13.97,Casual,3.69
+13.22,No win,15.57,Rated,-2.35
+13.65,Win,15.51,Casual,-1.86
+16.4,No win,14.56,Rated,1.84
+16.26,Win,14.33,Rated,1.93
+11.46,Win,9.95,Casual,1.51
+17.73,Win,13.66,Rated,4.07
+16.11,No win,15.6,Rated,0.51
+17.8,Win,16.77,Rated,1.03
+16.71,No win,16.68,Rated,0.03
+13.92,No win,13.33,Rated,0.59
+14.51,No win,14.09,Rated,0.42
+12.7,Win,12.77,Rated,-0.07
+9.99,No win,9.67,Rated,0.32
+15.07,No win,15.7,Rated,-0.63
+15.08,No win,17.96,Rated,-2.88
+15.12,No win,15.48,Rated,-0.36
+14.07,Win,16.2,Rated,-2.13
+18.19,No win,20.52,Rated,-2.33
+14.14,No win,16.24,Rated,-2.1
+18.66,Win,15.14,Casual,3.52
+14.6,No win,15.14,Rated,-0.54
+16.13,No win,18.91,Rated,-2.78
+22.75,Win,20.16,Rated,2.59
+16.04,No win,18.69,Rated,-2.65
+19.78,No win,20.62,Rated,-0.84
+13.47,Win,13.74,Rated,-0.27
+13.41,Win,10.56,Rated,2.85
+19.96,No win,19.16,Rated,0.8
+9.66,Win,8.69,Rated,0.97
+19.99,Win,18.9,Rated,1.09
+16.1,Win,15.71,Casual,0.39
+13.94,Win,12.28,Rated,1.66
+12.36,No win,18.15,Casual,-5.79
+17.41,Win,20.62,Rated,-3.21
+14.44,No win,16.96,Rated,-2.52
+18.6,Win,19.38,Rated,-0.78
+12.83,No win,12.67,Casual,0.16
+11.34,Win,10.23,Rated,1.11
+15.65,Win,13.97,Rated,1.68
+18.58,No win,17.79,Rated,0.79
+16.36,No win,18.58,Rated,-2.22
+15.0,No win,16.93,Casual,-1.93
+20.75,Win,21.4,Casual,-0.65
+12.98,Win,10.92,Rated,2.06
+14.05,No win,15.5,Casual,-1.45
+15.0,No win,21.26,Casual,-6.26
+22.67,No win,15.0,Rated,7.67
+13.0,No win,14.95,Rated,-1.95
+17.88,No win,20.59,Rated,-2.71
+17.85,Win,11.32,Rated,6.53
+18.68,Win,18.68,Rated,0.0
+16.87,No win,17.09,Rated,-0.22
+13.24,Win,17.95,Rated,-4.71
+11.27,Win,12.34,Rated,-1.07
+17.75,Win,18.01,Rated,-0.26
+18.57,Win,19.16,Rated,-0.59
+18.47,Win,18.12,Rated,0.35
+15.28,No win,15.0,Casual,0.28
+14.88,Win,15.27,Rated,-0.39
+19.28,No win,20.51,Rated,-1.23
+15.26,Win,14.45,Rated,0.81
+15.04,Win,15.0,Casual,0.04
+17.46,No win,18.15,Rated,-0.69
+15.0,No win,13.37,Rated,1.63
+20.74,Win,21.21,Rated,-0.47
+18.12,Win,17.26,Casual,0.86
+17.47,Win,16.92,Casual,0.55
+14.14,No win,15.94,Rated,-1.8
+18.82,Win,18.48,Rated,0.34
+13.6,No win,18.73,Rated,-5.13
+16.62,No win,16.42,Rated,0.2
+17.18,Win,12.05,Rated,5.13
+12.33,No win,12.15,Rated,0.18
+12.33,Win,12.57,Rated,-0.24
+12.88,No win,14.54,Rated,-1.66
+15.24,No win,16.86,Rated,-1.62
+16.4,Win,12.07,Rated,4.33
+15.0,No win,15.95,Casual,-0.95
+17.57,No win,18.12,Casual,-0.55
+14.51,Win,14.51,Rated,0.0
+19.43,Win,15.0,Rated,4.43
+18.42,Win,17.03,Rated,1.39
+15.0,No win,11.04,Casual,3.96
+17.57,No win,16.67,Rated,0.9
+19.04,No win,21.43,Rated,-2.39
+20.55,No win,21.55,Rated,-1.0
+16.48,No win,17.85,Rated,-1.37
+20.43,Win,20.17,Rated,0.26
+10.16,No win,26.21,Casual,-16.05
+10.47,No win,12.77,Casual,-2.3
+17.38,Win,16.33,Rated,1.05
+16.01,No win,16.88,Rated,-0.87
+17.67,Win,18.31,Casual,-0.64
+21.74,Win,16.92,Rated,4.82
+22.22,Win,18.42,Rated,3.8
+13.62,No win,11.57,Rated,2.05
+16.77,Win,16.72,Rated,0.05
+12.71,No win,13.49,Rated,-0.78
+13.72,No win,13.75,Rated,-0.03
+17.98,Win,15.17,Rated,2.81
+15.85,No win,16.97,Rated,-1.12
+13.74,Win,17.4,Rated,-3.66
+13.68,No win,10.59,Casual,3.09
+19.7,Win,17.85,Rated,1.85
+18.64,Win,14.49,Rated,4.15
+15.0,Win,11.9,Casual,3.1
+15.0,No win,17.23,Casual,-2.23
+18.01,No win,17.17,Rated,0.84
+20.0,Win,19.86,Rated,0.14
+18.96,No win,16.44,Rated,2.52
+15.92,Win,14.01,Rated,1.91
+15.82,No win,16.87,Rated,-1.05
+14.71,Win,14.61,Rated,0.1
+16.75,No win,20.08,Rated,-3.33
+18.09,No win,17.29,Rated,0.8
+16.54,Win,16.93,Rated,-0.39
+16.13,No win,17.6,Rated,-1.47
+22.07,Win,15.62,Casual,6.45
+12.96,Win,12.98,Rated,-0.02
+18.16,No win,19.95,Rated,-1.79
+13.27,No win,13.27,Rated,0.0
+16.84,Win,17.2,Rated,-0.36
+17.07,No win,16.99,Rated,0.08
+15.0,Win,14.18,Casual,0.82
+14.23,No win,14.53,Rated,-0.3
+13.37,No win,13.52,Rated,-0.15
+15.82,No win,15.9,Rated,-0.08
+15.0,No win,16.05,Rated,-1.05
+13.56,No win,13.55,Rated,0.01
+21.24,Win,18.91,Rated,2.33
+13.14,No win,8.6,Casual,4.54
+14.55,Win,11.77,Rated,2.78
+9.85,No win,11.72,Casual,-1.87
+15.54,Win,15.46,Rated,0.08
+16.81,Win,18.74,Rated,-1.93
+11.41,No win,11.68,Rated,-0.27
+12.71,Win,10.96,Rated,1.75
+14.33,No win,13.15,Rated,1.18
+17.89,No win,17.76,Rated,0.13
+17.51,Win,17.15,Rated,0.36
+22.25,No win,22.07,Rated,0.18
+9.22,No win,11.2,Rated,-1.98
+12.84,No win,12.61,Rated,0.23
+13.16,No win,16.65,Rated,-3.49
+16.46,Win,15.54,Casual,0.92
+14.3,Win,11.87,Rated,2.43
+17.42,No win,15.33,Rated,2.09
+19.75,No win,19.08,Rated,0.67
+15.66,Win,14.0,Casual,1.66
+17.51,No win,15.39,Rated,2.12
+11.09,No win,12.27,Casual,-1.18
+14.21,Win,13.61,Rated,0.6
+22.3,Win,16.66,Rated,5.64
+14.4,Win,14.8,Rated,-0.4
+12.4,Win,13.12,Casual,-0.72
+16.29,No win,16.29,Rated,0.0
+23.29,Win,20.17,Rated,3.12
+14.77,Win,14.13,Casual,0.64
+11.56,No win,11.57,Rated,-0.01
+16.99,Win,15.08,Rated,1.91
+23.67,Win,22.34,Rated,1.33
+12.85,No win,13.09,Rated,-0.24
+17.22,No win,17.35,Casual,-0.13
+22.47,No win,24.05,Rated,-1.58
+15.78,No win,15.47,Rated,0.31
+17.32,Win,16.54,Casual,0.78
+23.13,No win,21.68,Rated,1.45
+15.0,No win,15.0,Casual,0.0
+21.36,Win,19.31,Casual,2.05
+19.13,Win,15.04,Rated,4.09
+17.99,Win,14.08,Rated,3.91
+18.63,No win,17.94,Rated,0.69
+14.59,No win,14.66,Rated,-0.07
+14.62,Win,15.04,Rated,-0.42
+12.45,Win,10.11,Casual,2.34
+13.33,No win,13.64,Rated,-0.31
+22.22,Win,18.1,Rated,4.12
+15.03,No win,20.41,Rated,-5.38
+15.0,No win,15.66,Rated,-0.66
+18.1,Win,12.78,Rated,5.32
+16.83,No win,17.74,Casual,-0.91
+10.84,No win,11.46,Rated,-0.62
+13.63,Win,12.01,Rated,1.62
+20.51,Win,13.21,Casual,7.3
+15.42,Win,13.99,Rated,1.43
+14.54,No win,14.89,Rated,-0.35
+12.51,Win,13.02,Rated,-0.51
+21.28,No win,18.96,Rated,2.32
+19.3,No win,18.67,Rated,0.63
+16.3,Win,15.25,Casual,1.05
+16.46,No win,17.95,Rated,-1.49
+15.36,No win,15.07,Rated,0.29
+21.16,No win,21.24,Rated,-0.08
+11.1,Win,15.0,Casual,-3.9
+18.8,No win,13.2,Rated,5.6
+11.76,No win,16.21,Casual,-4.45
+14.7,Win,16.25,Rated,-1.55
+14.46,No win,13.59,Rated,0.87
+14.89,Win,15.92,Rated,-1.03
+15.14,Win,18.36,Casual,-3.22
+16.57,No win,16.44,Rated,0.13
+17.17,No win,15.47,Rated,1.7
+17.26,Win,15.89,Rated,1.37
+13.3,No win,13.45,Rated,-0.15
+13.3,Win,12.78,Rated,0.52
+15.53,Win,14.59,Rated,0.94
+14.8,No win,15.54,Rated,-0.74
+12.26,No win,18.48,Rated,-6.22
+13.45,No win,13.92,Rated,-0.47
+13.74,No win,16.13,Rated,-2.39
+14.2,Win,14.03,Rated,0.17
+15.24,Win,14.36,Rated,0.88
+11.52,Win,12.71,Rated,-1.19
+13.74,Win,13.47,Rated,0.27
+13.27,Win,14.25,Rated,-0.98
+12.04,No win,13.79,Rated,-1.75
+13.47,No win,15.0,Casual,-1.53
+15.0,Win,14.86,Casual,0.14
+14.07,Win,13.77,Rated,0.3
+16.98,No win,16.8,Rated,0.18
+12.67,No win,12.53,Casual,0.14
+8.56,No win,11.21,Rated,-2.65
+18.31,No win,16.14,Casual,2.17
+17.99,No win,18.11,Rated,-0.12
+15.63,Win,13.52,Rated,2.11
+10.16,No win,12.62,Casual,-2.46
+20.06,Win,17.57,Rated,2.49
+18.34,No win,19.94,Rated,-1.6
+17.13,Win,16.96,Rated,0.17
+20.5,Win,18.8,Casual,1.7
+18.84,Win,16.7,Casual,2.14
+17.96,Win,18.05,Rated,-0.09
+13.8,Win,14.18,Rated,-0.38
+17.08,Win,15.48,Rated,1.6
+17.16,No win,16.37,Rated,0.79
+16.06,Win,13.92,Rated,2.14
+16.21,Win,12.68,Rated,3.53
+18.18,Win,10.15,Rated,8.03
+11.7,No win,15.0,Casual,-3.3
+17.44,No win,17.35,Rated,0.09
+18.33,No win,21.31,Rated,-2.98
+17.24,Win,15.34,Rated,1.9
+14.06,Win,14.37,Rated,-0.31
+15.36,No win,15.5,Casual,-0.14
+11.74,Win,12.1,Rated,-0.36
+16.61,Win,16.32,Rated,0.29
+16.61,Win,16.06,Rated,0.55
+13.35,Win,12.34,Rated,1.01
+15.43,No win,14.26,Rated,1.17
+16.23,Win,15.78,Rated,0.45
+17.04,Win,17.31,Rated,-0.27
+15.79,Win,15.77,Rated,0.02
+12.21,Win,11.05,Rated,1.16
+11.06,No win,12.18,Rated,-1.12
+17.25,Win,16.44,Rated,0.81
+13.34,Win,12.65,Rated,0.69
+16.32,No win,16.18,Rated,0.14
+16.03,Win,15.5,Rated,0.53
+20.76,Win,17.12,Rated,3.64
+15.0,Win,10.16,Casual,4.84
+18.87,No win,17.15,Casual,1.72
+9.44,No win,11.51,Rated,-2.07
+20.16,Win,20.32,Rated,-0.16
+13.57,Win,13.37,Rated,0.2
+14.37,No win,16.35,Rated,-1.98
+13.92,Win,13.32,Rated,0.6
+13.93,Win,13.09,Casual,0.84
+18.27,Win,19.94,Rated,-1.67
+15.65,No win,19.47,Rated,-3.82
+20.58,No win,17.98,Rated,2.6
+16.35,Win,14.32,Rated,2.03
+13.25,Win,14.57,Rated,-1.32
+15.69,Win,16.15,Rated,-0.46
+12.48,No win,13.42,Rated,-0.94
+16.36,Win,16.01,Rated,0.35
+16.99,No win,18.62,Casual,-1.63
+17.18,Win,14.36,Rated,2.82
+16.26,No win,17.08,Rated,-0.82
+11.47,No win,12.25,Rated,-0.78
+16.27,No win,14.95,Rated,1.32
+19.12,No win,19.58,Rated,-0.46
+16.43,Win,13.55,Rated,2.88
+15.84,Win,15.62,Rated,0.22
+15.89,No win,15.0,Casual,0.89
+11.71,No win,14.0,Casual,-2.29
+12.22,Win,13.14,Rated,-0.92
+18.49,No win,19.19,Rated,-0.7
+17.08,Win,19.18,Rated,-2.1
+16.99,Win,17.98,Rated,-0.99
+17.31,Win,18.29,Casual,-0.98
+16.69,Win,11.49,Casual,5.2
+14.26,No win,14.3,Rated,-0.04
+12.72,No win,18.07,Rated,-5.35
+14.56,No win,17.89,Rated,-3.33
+14.87,No win,17.81,Rated,-2.94
+17.53,Win,18.71,Rated,-1.18
+20.42,Win,20.58,Rated,-0.16
+19.55,Win,18.5,Rated,1.05
+15.54,Win,15.23,Casual,0.31
+17.02,Win,13.8,Casual,3.22
+17.16,No win,16.59,Rated,0.57
+19.73,No win,18.81,Casual,0.92
+12.79,No win,17.2,Rated,-4.41
+13.32,Win,12.77,Rated,0.55
+12.8,Win,14.85,Rated,-2.05
+12.74,No win,15.69,Rated,-2.95
+14.05,Win,10.4,Rated,3.65
+11.38,Win,12.66,Rated,-1.28
+13.48,No win,14.07,Casual,-0.59
+15.72,Win,17.82,Rated,-2.1
+13.93,No win,15.27,Casual,-1.34
+14.74,Win,16.23,Casual,-1.49
+14.1,Win,15.0,Rated,-0.9
+12.78,No win,15.0,Casual,-2.22
+13.98,Win,14.12,Rated,-0.14
+16.81,Win,15.28,Rated,1.53
+17.96,Win,13.88,Rated,4.08
+15.24,No win,15.18,Rated,0.06
+15.25,No win,13.85,Rated,1.4
+18.53,No win,18.53,Rated,0.0
+16.21,No win,14.96,Rated,1.25
+15.29,Win,15.51,Rated,-0.22
+20.3,No win,17.67,Casual,2.63
+15.1,Win,12.08,Rated,3.02
+12.24,No win,12.98,Rated,-0.74
+13.66,Win,11.71,Rated,1.95
+19.01,No win,17.18,Rated,1.83
+15.67,No win,15.2,Rated,0.47
+15.0,Win,18.21,Casual,-3.21
+17.38,Win,13.7,Rated,3.68
+17.95,Win,17.12,Rated,0.83
+15.96,Win,16.43,Rated,-0.47
+20.86,Win,16.89,Rated,3.97
+11.43,No win,11.92,Rated,-0.49
+14.97,Win,14.62,Rated,0.35
+14.55,No win,10.81,Rated,3.74
+12.73,Win,11.99,Rated,0.74
+22.03,Win,17.18,Rated,4.85
+18.79,Win,16.71,Rated,2.08
+15.6,No win,15.96,Rated,-0.36
+17.09,Win,17.16,Rated,-0.07
+16.16,Win,15.54,Rated,0.62
+15.0,No win,17.25,Rated,-2.25
+13.77,Win,13.55,Rated,0.22
+15.05,No win,15.0,Casual,0.05
+17.19,Win,17.58,Rated,-0.39
+17.93,Win,17.68,Rated,0.25
+17.27,No win,20.84,Rated,-3.57
+20.13,Win,18.23,Rated,1.9
+14.87,No win,16.73,Rated,-1.86
+21.61,Win,19.84,Rated,1.77
+20.64,No win,22.15,Casual,-1.51
+15.66,Win,15.58,Rated,0.08
+12.99,No win,15.8,Rated,-2.81
+18.08,No win,17.52,Rated,0.56
+12.63,Win,12.51,Rated,0.12
+13.38,Win,15.39,Rated,-2.01
+17.99,No win,21.93,Rated,-3.94
+14.4,No win,14.74,Rated,-0.34
+18.06,Win,17.28,Rated,0.78
+14.96,No win,15.32,Rated,-0.36
+10.73,Win,12.31,Casual,-1.58
+15.84,No win,16.11,Rated,-0.27
+14.04,Win,10.13,Rated,3.91
+17.58,Win,17.02,Rated,0.56
+15.78,No win,16.07,Rated,-0.29
+15.24,Win,15.65,Casual,-0.41
+16.34,No win,15.0,Rated,1.34
+15.67,No win,15.18,Rated,0.49
+24.77,Win,17.85,Casual,6.92
+20.2,Win,17.88,Rated,2.32
+15.18,No win,16.89,Rated,-1.71
+20.69,No win,22.23,Rated,-1.54
+12.88,Win,12.32,Rated,0.56
+14.72,Win,15.64,Rated,-0.92
+16.62,Win,14.08,Rated,2.54
+13.63,Win,15.59,Rated,-1.96
+15.8,No win,19.58,Casual,-3.78
+15.31,No win,18.22,Rated,-2.91
+12.57,Win,10.91,Rated,1.66
+14.87,Win,13.4,Rated,1.47
+10.93,Win,11.95,Rated,-1.02
+17.35,Win,16.22,Rated,1.13
+13.56,No win,17.52,Rated,-3.96
+19.28,Win,15.29,Rated,3.99
+18.82,Win,18.73,Rated,0.09
+13.44,Win,15.0,Rated,-1.56
+15.9,Win,16.56,Rated,-0.66
+22.0,Win,17.25,Rated,4.75
+13.99,No win,16.3,Rated,-2.31
+22.39,No win,21.51,Rated,0.88
+14.14,Win,15.5,Rated,-1.36
+13.3,No win,14.64,Rated,-1.34
+16.84,Win,15.11,Rated,1.73
+9.84,No win,13.78,Rated,-3.94
+19.35,Win,19.68,Rated,-0.33
+14.46,Win,13.17,Rated,1.29
+15.33,No win,15.53,Rated,-0.2
+19.8,Win,18.6,Rated,1.2
+11.3,Win,10.48,Rated,0.82
+14.18,No win,14.82,Rated,-0.64
+12.83,No win,13.92,Rated,-1.09
+19.53,No win,19.57,Rated,-0.04
+14.72,No win,14.98,Rated,-0.26
+15.06,Win,15.0,Rated,0.06
+14.1,No win,17.36,Rated,-3.26
+18.12,Win,17.33,Rated,0.79
+15.09,Win,15.5,Rated,-0.41
+17.78,Win,14.84,Rated,2.94
+14.87,No win,17.29,Rated,-2.42
+15.51,No win,17.03,Casual,-1.52
+11.04,No win,13.0,Casual,-1.96
+17.63,No win,18.11,Rated,-0.48
+17.11,Win,16.31,Casual,0.8
+12.59,No win,16.63,Rated,-4.04
+10.63,No win,11.86,Rated,-1.23
+15.5,No win,16.0,Rated,-0.5
+11.56,No win,14.4,Rated,-2.84
+17.07,Win,15.01,Casual,2.06
+15.0,Win,14.93,Casual,0.07
+14.62,Win,13.2,Rated,1.42
+16.33,No win,15.26,Rated,1.07
+15.59,Win,15.94,Rated,-0.35
+19.3,No win,21.07,Rated,-1.77
+14.12,No win,14.85,Casual,-0.73
+14.95,No win,15.65,Rated,-0.7
+17.33,No win,18.02,Rated,-0.69
+18.14,Win,18.05,Rated,0.09
+17.92,No win,18.58,Casual,-0.66
+17.24,No win,15.44,Rated,1.8
+18.75,No win,19.22,Rated,-0.47
+13.72,No win,13.26,Rated,0.46
+11.34,No win,13.46,Rated,-2.12
+18.25,Win,18.85,Rated,-0.6
+18.34,No win,13.32,Rated,5.02
+14.36,No win,13.89,Rated,0.47
+14.21,No win,13.54,Rated,0.67
+18.93,Win,16.24,Rated,2.69
+15.46,Win,16.1,Rated,-0.64
+17.85,No win,15.27,Rated,2.58
+15.0,No win,17.39,Casual,-2.39
+15.0,Win,8.44,Casual,6.56
+13.55,No win,14.09,Rated,-0.54
+11.72,Win,13.29,Rated,-1.57
+19.16,Win,17.91,Rated,1.25
+15.08,Win,15.09,Rated,-0.01
+16.99,Win,18.03,Rated,-1.04
+14.84,Win,15.0,Casual,-0.16
+16.55,Win,15.4,Rated,1.15
+20.3,No win,22.64,Casual,-2.34
+17.7,Win,14.47,Casual,3.23
+12.87,No win,17.02,Rated,-4.15
+17.85,No win,18.4,Rated,-0.55
+11.99,Win,15.01,Casual,-3.02
+22.15,Win,21.91,Rated,0.24
+20.07,No win,15.0,Rated,5.07
+18.02,Win,16.62,Casual,1.4
+14.68,No win,13.54,Rated,1.14
+18.34,Win,18.77,Rated,-0.43
+12.21,No win,13.5,Rated,-1.29
+15.41,No win,24.6,Casual,-9.19
+14.68,Win,15.92,Rated,-1.24
+20.97,No win,22.43,Casual,-1.46
+11.86,Win,10.98,Rated,0.88
+17.78,No win,17.95,Rated,-0.17
+18.07,Win,18.27,Rated,-0.2
+12.56,No win,12.98,Rated,-0.42
+16.01,No win,14.23,Rated,1.78
+12.31,Win,15.45,Rated,-3.14
+14.88,Win,10.67,Rated,4.21
+15.27,No win,16.11,Rated,-0.84
+17.05,Win,16.35,Rated,0.7
+18.48,Win,18.38,Casual,0.1
+13.21,No win,14.51,Rated,-1.3
+17.37,Win,16.74,Rated,0.63
+20.63,No win,20.1,Rated,0.53
+15.34,Win,14.24,Casual,1.1
+19.16,Win,18.71,Rated,0.45
+16.08,Win,15.0,Rated,1.08
+12.05,No win,15.0,Rated,-2.95
+15.57,Win,16.14,Rated,-0.57
+9.04,No win,13.53,Rated,-4.49
+13.25,No win,16.44,Rated,-3.19
+22.91,No win,22.9,Rated,0.01
+16.65,No win,18.26,Rated,-1.61
+18.8,Win,15.46,Rated,3.34
+13.83,Win,10.45,Rated,3.38
+14.33,No win,15.99,Casual,-1.66
+17.19,Win,16.1,Rated,1.09
+18.31,No win,18.72,Rated,-0.41
+15.01,No win,16.4,Rated,-1.39
+18.45,Win,16.38,Rated,2.07
+16.18,No win,16.09,Rated,0.09
+18.6,No win,17.12,Casual,1.48
+15.69,No win,21.01,Rated,-5.32
+16.33,Win,16.04,Rated,0.29
+15.75,No win,17.72,Rated,-1.97
+16.35,Win,15.0,Casual,1.35
+21.19,Win,15.71,Rated,5.48
+14.18,Win,13.65,Casual,0.53
+14.58,No win,19.8,Rated,-5.22
+19.87,No win,15.68,Casual,4.19
+20.29,No win,19.24,Rated,1.05
+14.03,No win,13.63,Rated,0.4
+10.33,Win,13.62,Casual,-3.29
+14.04,Win,13.54,Casual,0.5
+15.0,Win,13.26,Casual,1.74
+17.88,Win,18.92,Rated,-1.04
+9.51,No win,17.93,Rated,-8.42
+22.33,Win,17.72,Rated,4.61
+14.2,Win,8.59,Rated,5.61
+10.66,No win,12.56,Rated,-1.9
+16.27,No win,20.5,Casual,-4.23
+15.0,Win,15.67,Casual,-0.67
+11.8,No win,16.74,Rated,-4.94
+14.09,Win,12.97,Rated,1.12
+14.67,Win,15.94,Rated,-1.27
+15.54,Win,13.87,Rated,1.67
+14.67,No win,21.94,Rated,-7.27
+18.76,No win,19.06,Rated,-0.3
+12.22,No win,15.19,Rated,-2.97
+24.47,Win,21.5,Casual,2.97
+15.79,Win,18.68,Casual,-2.89
+14.41,Win,15.0,Casual,-0.59
+16.9,No win,15.4,Rated,1.5
+16.3,Win,16.97,Rated,-0.67
+14.86,Win,15.26,Rated,-0.4
+13.59,Win,10.44,Rated,3.15
+16.97,Win,16.6,Rated,0.37
+15.79,No win,15.34,Rated,0.45
+18.74,Win,19.51,Rated,-0.77
+16.95,Win,17.02,Rated,-0.07
+13.97,Win,12.18,Rated,1.79
+15.0,No win,14.02,Casual,0.98
+13.34,No win,17.68,Rated,-4.34
+22.1,Win,18.05,Rated,4.05
+15.86,No win,13.33,Rated,2.53
+19.01,No win,17.46,Rated,1.55
+15.94,Win,13.95,Rated,1.99
+19.22,Win,17.99,Rated,1.23
+14.38,Win,14.84,Rated,-0.46
+12.77,No win,16.19,Rated,-3.42
+12.45,No win,13.46,Rated,-1.01
+15.0,No win,14.04,Casual,0.96
+19.55,Win,18.9,Rated,0.65
+17.09,Win,16.85,Rated,0.24
+23.05,Win,18.83,Casual,4.22
+14.86,No win,14.51,Rated,0.35
+14.7,Win,15.45,Rated,-0.75
+13.72,No win,14.61,Rated,-0.89
+16.52,Win,16.48,Rated,0.04
+15.57,Win,15.0,Rated,0.57
+18.45,Win,19.75,Rated,-1.3
+14.25,Win,15.03,Rated,-0.78
+16.31,No win,15.93,Rated,0.38
+19.52,Win,15.63,Casual,3.89
+13.62,No win,15.29,Rated,-1.67
+15.52,Win,15.18,Rated,0.34
+11.93,No win,12.98,Rated,-1.05
+21.93,Win,19.65,Rated,2.28
+22.64,Win,18.41,Casual,4.23
+16.05,Win,15.75,Rated,0.3
+18.34,Win,18.75,Rated,-0.41
+13.66,No win,14.0,Casual,-0.34
+13.53,Win,13.64,Rated,-0.11
+14.87,Win,14.24,Rated,0.63
+12.85,Win,12.79,Rated,0.06
+11.89,No win,13.66,Casual,-1.77
+14.69,No win,16.36,Rated,-1.67
+13.29,Win,14.43,Rated,-1.14
+18.55,Win,15.0,Casual,3.55
+14.88,Win,14.22,Rated,0.66
+11.41,No win,11.38,Rated,0.03
+18.21,Win,18.32,Casual,-0.11
+19.49,No win,21.56,Rated,-2.07
+19.9,No win,14.65,Casual,5.25
+11.1,Win,15.0,Casual,-3.9
+18.68,No win,17.06,Casual,1.62
+17.19,Win,16.79,Rated,0.4
+16.94,Win,16.95,Rated,-0.01
+9.7,No win,10.9,Rated,-1.2
+18.95,Win,20.28,Rated,-1.33
+22.04,No win,21.57,Rated,0.47
+13.79,Win,11.87,Rated,1.92
+16.67,Win,15.0,Rated,1.67
+18.2,No win,19.51,Rated,-1.31
+16.12,Win,16.01,Rated,0.11
+18.78,No win,19.71,Rated,-0.93
+9.76,No win,12.26,Rated,-2.5
+17.51,No win,17.93,Rated,-0.42
+22.95,No win,21.27,Casual,1.68
+15.84,Win,15.0,Rated,0.84
+17.72,Win,17.68,Rated,0.04
+14.61,No win,14.86,Rated,-0.25
+12.91,Win,12.42,Casual,0.49
+11.41,Win,17.62,Rated,-6.21
+9.71,Win,11.53,Rated,-1.82
+19.39,Win,17.81,Rated,1.58
+12.54,No win,13.22,Rated,-0.68
+15.55,No win,21.97,Rated,-6.42
+16.67,Win,15.98,Rated,0.69
+19.9,Win,16.78,Rated,3.12
+16.63,Win,16.67,Rated,-0.04
+12.64,No win,15.06,Rated,-2.42
+17.18,No win,16.49,Rated,0.69
+13.48,Win,9.19,Rated,4.29
+12.99,No win,13.76,Rated,-0.77
+17.7,Win,13.72,Rated,3.98
+15.28,No win,15.64,Rated,-0.36
+15.11,Win,14.18,Rated,0.93
+15.08,Win,22.03,Rated,-6.95
+12.74,No win,15.03,Rated,-2.29
+14.05,Win,15.57,Rated,-1.52
+17.41,Win,14.0,Casual,3.41
+11.34,No win,13.72,Rated,-2.38
+10.23,No win,18.21,Rated,-7.98
+15.52,No win,16.07,Rated,-0.55
+15.0,Win,15.0,Casual,0.0
+15.02,No win,14.48,Rated,0.54
+14.6,Win,13.86,Rated,0.74
+14.15,Win,14.93,Rated,-0.78
+20.49,No win,20.88,Rated,-0.39
+14.1,Win,13.37,Casual,0.73
+13.36,No win,12.75,Rated,0.61
+18.95,No win,19.77,Rated,-0.82
+12.06,No win,13.11,Rated,-1.05
+14.22,No win,12.67,Rated,1.55
+16.95,Win,15.73,Rated,1.22
+16.11,No win,18.39,Rated,-2.28
+15.14,Win,11.08,Rated,4.06
+15.0,No win,14.22,Casual,0.78
+10.41,No win,16.0,Rated,-5.59
+17.69,No win,16.4,Rated,1.29
+22.15,Win,21.47,Rated,0.68
+16.83,Win,17.76,Rated,-0.93
+20.69,Win,18.37,Rated,2.32
+18.92,Win,19.45,Rated,-0.53
+16.88,Win,16.12,Rated,0.76
+16.12,No win,15.61,Rated,0.51
+16.71,No win,15.63,Rated,1.08
+12.64,No win,12.42,Rated,0.22
+19.07,Win,10.95,Rated,8.12
+20.08,Win,10.17,Casual,9.91
+16.27,Win,11.48,Rated,4.79
+14.15,No win,15.64,Rated,-1.49
+12.25,Win,11.04,Rated,1.21
+10.91,No win,15.0,Casual,-4.09
+16.04,Win,13.44,Rated,2.6
+13.92,Win,10.67,Rated,3.25
+12.78,No win,15.0,Rated,-2.22
+17.75,No win,20.79,Rated,-3.04
+21.93,Win,19.63,Rated,2.3
+22.4,Win,16.77,Rated,5.63
+15.21,Win,14.03,Rated,1.18
+10.27,No win,10.84,Rated,-0.57
+12.77,No win,14.64,Casual,-1.87
+10.53,Win,14.74,Rated,-4.21
+17.14,No win,15.53,Rated,1.61
+16.05,Win,13.67,Rated,2.38
+18.37,Win,19.0,Rated,-0.63
+12.99,No win,15.83,Rated,-2.84
+10.85,No win,21.71,Rated,-10.86
+16.66,No win,17.01,Rated,-0.35
+15.47,Win,15.64,Rated,-0.17
+14.54,No win,15.32,Rated,-0.78
+15.39,No win,16.56,Rated,-1.17
+22.32,No win,22.72,Rated,-0.4
+15.89,Win,15.36,Casual,0.53
+16.89,Win,16.16,Rated,0.73
+18.79,No win,15.91,Casual,2.88
+10.59,No win,12.24,Rated,-1.65
+18.61,No win,18.82,Rated,-0.21
+12.61,No win,16.97,Rated,-4.36
+13.11,No win,12.45,Rated,0.66
+11.88,Win,12.45,Rated,-0.57
+16.21,No win,19.51,Casual,-3.3
+18.16,Win,18.72,Rated,-0.56
+13.55,No win,14.7,Rated,-1.15
+18.46,Win,18.45,Rated,0.01
+15.19,Win,13.48,Rated,1.71
+15.0,No win,15.95,Casual,-0.95
+13.87,No win,12.96,Rated,0.91
+16.19,No win,15.92,Rated,0.27
+20.66,Win,11.45,Rated,9.21
+16.16,No win,15.88,Rated,0.28
+17.77,No win,19.98,Rated,-2.21
+17.93,No win,22.27,Casual,-4.34
+15.0,No win,15.0,Casual,0.0
+15.89,No win,15.53,Rated,0.36
+17.16,Win,17.47,Rated,-0.31
+18.04,No win,19.31,Rated,-1.27
+20.62,Win,18.88,Rated,1.74
+15.48,No win,14.65,Rated,0.83
+16.13,No win,14.72,Rated,1.41
+16.96,No win,16.68,Rated,0.28
+22.64,Win,17.53,Casual,5.11
+18.07,Win,16.12,Rated,1.95
+15.48,No win,12.87,Rated,2.61
+14.7,Win,14.79,Rated,-0.09
+13.02,Win,12.78,Rated,0.24
+20.1,Win,14.19,Rated,5.91
+10.15,No win,17.79,Casual,-7.64
+17.89,Win,16.61,Rated,1.28
+13.36,Win,12.92,Rated,0.44
+10.24,No win,11.52,Rated,-1.28
+10.86,No win,17.74,Rated,-6.88
+14.21,No win,14.68,Rated,-0.47
+16.35,Win,16.47,Rated,-0.12
+17.59,Win,17.9,Rated,-0.31
+18.4,Win,17.32,Rated,1.08
+24.36,Win,9.78,Casual,14.58
+14.37,No win,13.82,Rated,0.55
+13.64,No win,13.49,Rated,0.15
+16.67,Win,14.04,Rated,2.63
+16.49,Win,15.0,Casual,1.49
+12.24,Win,13.32,Rated,-1.08
+18.36,No win,18.14,Rated,0.22
+13.8,No win,14.36,Rated,-0.56
+26.21,Win,14.49,Casual,11.72
+18.52,No win,18.55,Rated,-0.03
+15.18,No win,14.31,Rated,0.87
+11.71,No win,15.54,Rated,-3.83
+18.69,Win,16.52,Casual,2.17
+18.94,No win,21.33,Rated,-2.39
+17.2,No win,15.66,Rated,1.54
+22.14,No win,22.86,Rated,-0.72
+16.23,Win,14.42,Rated,1.81
+17.8,No win,20.15,Casual,-2.35
+18.12,Win,15.75,Rated,2.37
+15.24,Win,15.36,Rated,-0.12
+15.0,Win,13.13,Casual,1.87
+20.95,No win,19.47,Rated,1.48
+10.05,No win,11.4,Rated,-1.35
+16.6,No win,18.73,Rated,-2.13
+20.08,No win,19.54,Casual,0.54
+15.63,Win,11.83,Rated,3.8
+15.67,Win,15.73,Rated,-0.06
+11.03,Win,9.72,Rated,1.31
+13.34,No win,13.45,Rated,-0.11
+15.69,Win,11.89,Rated,3.8
+18.85,No win,22.61,Rated,-3.76
+15.3,No win,14.03,Rated,1.27
+22.46,Win,14.94,Casual,7.52
+20.84,Win,20.66,Rated,0.18
+16.18,Win,15.16,Rated,1.02
+18.26,Win,18.53,Casual,-0.27
+11.74,Win,12.66,Rated,-0.92
+20.22,No win,20.8,Rated,-0.58
+15.62,Win,15.82,Rated,-0.2
+21.31,Win,19.24,Rated,2.07
+10.12,Win,11.64,Rated,-1.52
+15.59,No win,14.72,Rated,0.87
+15.03,No win,16.37,Casual,-1.34
+23.04,Win,21.94,Rated,1.1
+11.98,No win,13.36,Casual,-1.38
+16.23,Win,14.56,Rated,1.67
+12.77,Win,12.8,Rated,-0.03
+15.62,No win,15.58,Rated,0.04
+15.0,Win,14.42,Rated,0.58
+15.05,No win,18.32,Rated,-3.27
+12.71,No win,14.33,Rated,-1.62
+13.65,Win,13.76,Rated,-0.11
+15.54,Win,8.49,Rated,7.05
+16.01,No win,15.97,Rated,0.04
+11.53,Win,9.63,Rated,1.9
+13.75,No win,14.73,Casual,-0.98
+17.54,No win,17.46,Rated,0.08
+17.24,Win,18.24,Rated,-1.0
+14.12,Win,12.11,Casual,2.01
+15.6,No win,15.8,Rated,-0.2
+15.23,Win,15.45,Rated,-0.22
+16.43,Win,14.04,Rated,2.39
+15.84,No win,16.69,Rated,-0.85
+12.96,No win,18.86,Rated,-5.9
+15.17,Win,17.72,Rated,-2.55
+16.12,No win,17.15,Rated,-1.03
+20.77,Win,16.94,Rated,3.83
+13.31,No win,14.01,Rated,-0.7
+10.81,No win,14.16,Rated,-3.35
+13.71,No win,14.53,Rated,-0.82
+13.14,Win,15.71,Rated,-2.57
+14.81,No win,13.86,Rated,0.95
+16.74,No win,15.0,Rated,1.74
+17.19,No win,18.17,Rated,-0.98
+8.1,No win,12.18,Rated,-4.08
+11.11,Win,11.98,Rated,-0.87
+18.07,Win,19.34,Rated,-1.27
+22.33,No win,25.4,Rated,-3.07
+16.0,No win,15.95,Rated,0.05
+16.79,Win,17.85,Rated,-1.06
+20.03,Win,20.78,Rated,-0.75
+19.7,No win,19.59,Rated,0.11
+15.62,No win,22.91,Casual,-7.29
+17.29,Win,17.06,Rated,0.23
+20.07,No win,22.83,Rated,-2.76
+18.96,Win,19.1,Rated,-0.14
+13.68,Win,13.34,Rated,0.34
+12.9,Win,13.37,Rated,-0.47
+14.32,No win,15.13,Rated,-0.81
+12.86,Win,14.26,Casual,-1.4
+14.48,No win,17.05,Rated,-2.57
+12.32,No win,15.81,Casual,-3.49
+14.33,No win,18.69,Rated,-4.36
+10.76,Win,13.19,Rated,-2.43
+16.79,No win,16.92,Rated,-0.13
+17.93,Win,8.5,Casual,9.43
+13.56,No win,14.98,Rated,-1.42
+15.45,Win,14.05,Rated,1.4
+15.84,Win,15.91,Rated,-0.07
+12.49,Win,15.0,Casual,-2.51
+17.16,Win,18.56,Rated,-1.4
+15.66,No win,16.12,Rated,-0.46
+15.63,No win,14.69,Rated,0.94
+19.66,Win,20.56,Rated,-0.9
+16.2,Win,15.65,Rated,0.55
+18.86,Win,17.06,Rated,1.8
+13.82,Win,13.89,Casual,-0.07
+15.3,No win,14.84,Rated,0.46
+19.15,No win,20.09,Rated,-0.94
+11.55,No win,14.59,Rated,-3.04
+14.57,No win,19.25,Casual,-4.68
+15.63,No win,15.67,Rated,-0.04
+18.46,Win,15.24,Rated,3.22
+17.06,Win,16.95,Rated,0.11
+13.78,No win,13.77,Casual,0.01
+24.13,Win,22.19,Rated,1.94
+16.05,No win,14.16,Rated,1.89
+9.62,No win,11.33,Rated,-1.71
+16.43,Win,16.93,Rated,-0.5
+20.08,Win,17.95,Rated,2.13
+16.41,Win,16.28,Rated,0.13
+15.0,No win,12.38,Casual,2.62
+10.32,No win,10.11,Rated,0.21
+15.77,Win,15.67,Rated,0.1
+18.31,Win,18.1,Rated,0.21
+17.12,No win,19.73,Rated,-2.61
+14.57,Win,14.49,Rated,0.08
+15.13,Win,12.73,Rated,2.4
+14.37,Win,14.31,Rated,0.06
+14.42,No win,14.49,Rated,-0.07
+20.93,Win,18.06,Casual,2.87
+12.65,No win,15.0,Casual,-2.35
+16.12,Win,10.39,Rated,5.73
+15.26,Win,13.85,Casual,1.41
+14.77,Win,14.41,Rated,0.36
+17.75,Win,13.37,Rated,4.38
+14.98,No win,12.74,Rated,2.24
+22.02,Win,20.08,Rated,1.94
+16.7,No win,18.85,Casual,-2.15
+14.86,Win,15.38,Rated,-0.52
+11.71,Win,14.08,Rated,-2.37
+20.48,Win,18.52,Rated,1.96
+15.28,No win,15.17,Rated,0.11
+19.78,Win,17.46,Rated,2.32
+14.34,No win,19.12,Rated,-4.78
+17.84,No win,18.97,Rated,-1.13
+15.95,Win,16.96,Rated,-1.01
+17.3,No win,18.77,Rated,-1.47
+19.81,No win,19.41,Rated,0.4
+17.17,Win,17.4,Rated,-0.23
+15.94,Win,17.5,Rated,-1.56
+14.71,No win,16.1,Rated,-1.39
+13.37,Win,13.31,Casual,0.06
+20.14,No win,21.71,Rated,-1.57
+15.89,Win,14.89,Casual,1.0
+14.18,No win,20.03,Casual,-5.85
+18.24,No win,19.92,Rated,-1.68
+15.25,Win,12.49,Rated,2.76
+22.32,Win,16.52,Rated,5.8
+21.26,Win,11.25,Casual,10.01
+17.44,No win,17.01,Rated,0.43
+13.82,No win,14.41,Rated,-0.59
+19.54,No win,17.87,Rated,1.67
+16.54,No win,19.18,Rated,-2.64
+15.0,Win,15.0,Casual,0.0
+14.47,Win,17.36,Rated,-2.89
+12.62,No win,16.61,Rated,-3.99
+15.6,Win,15.78,Rated,-0.18
+14.31,Win,15.2,Rated,-0.89
+17.34,Win,13.83,Rated,3.51
+15.64,No win,16.03,Casual,-0.39
+11.76,No win,16.58,Rated,-4.82
+13.42,Win,12.21,Casual,1.21
+16.19,Win,16.0,Casual,0.19
+12.49,No win,13.55,Rated,-1.06
+15.39,Win,15.0,Rated,0.39
+15.0,Win,15.0,Casual,0.0
+15.0,Win,16.31,Casual,-1.31
+19.16,Win,19.22,Rated,-0.06
+18.35,Win,15.82,Rated,2.53
+20.65,No win,19.6,Rated,1.05
+13.64,No win,16.32,Rated,-2.68
+14.59,No win,15.32,Rated,-0.73
+11.16,Win,13.38,Rated,-2.22
+13.61,Win,13.83,Rated,-0.22
+17.57,Win,15.0,Rated,2.57
+17.37,No win,22.57,Rated,-5.2
+9.83,No win,11.67,Rated,-1.84
+15.95,Win,14.16,Rated,1.79
+16.49,No win,14.45,Rated,2.04
+16.9,No win,18.3,Rated,-1.4
+20.24,Win,21.54,Rated,-1.3
+12.42,Win,11.34,Casual,1.08
+18.59,Win,17.31,Casual,1.28
+19.38,Win,17.77,Rated,1.61
+18.42,Win,10.6,Casual,7.82
+15.47,No win,18.32,Rated,-2.85
+15.0,No win,16.76,Rated,-1.76
+15.44,Win,13.5,Rated,1.94
+14.8,No win,15.33,Rated,-0.53
+16.92,Win,16.78,Rated,0.14
+14.25,Win,13.83,Rated,0.42
+15.97,No win,15.83,Rated,0.14
+13.74,No win,15.53,Rated,-1.79
+16.76,No win,17.41,Rated,-0.65
+21.68,Win,16.5,Rated,5.18
+16.94,Win,16.47,Rated,0.47
+21.89,Win,17.73,Rated,4.16
+14.07,No win,13.33,Rated,0.74
+22.11,Win,19.0,Rated,3.11
+15.59,No win,18.39,Rated,-2.8
+11.44,No win,15.0,Casual,-3.56
+13.15,Win,14.98,Rated,-1.83
+16.85,Win,15.04,Rated,1.81
+18.0,No win,15.65,Rated,2.35
+12.69,Win,11.36,Rated,1.33
+24.11,Win,16.58,Casual,7.53
+23.26,Win,19.07,Rated,4.19
+19.55,Win,19.69,Rated,-0.14
+19.49,Win,18.45,Rated,1.04
+16.32,No win,17.15,Rated,-0.83
+13.82,Win,15.0,Rated,-1.18
+15.0,No win,14.05,Casual,0.95
+24.69,No win,23.69,Rated,1.0
+20.29,Win,20.99,Rated,-0.7
+15.59,No win,17.98,Rated,-2.39
+16.24,Win,16.2,Casual,0.04
+18.06,No win,20.09,Rated,-2.03
+17.3,Win,15.92,Rated,1.38
+17.19,Win,17.65,Casual,-0.46
+15.0,No win,17.74,Casual,-2.74
+22.7,Win,18.9,Casual,3.8
+14.44,No win,18.34,Rated,-3.9
+20.73,No win,18.9,Rated,1.83
+15.18,Win,15.82,Rated,-0.64
+12.68,Win,13.16,Rated,-0.48
+12.81,No win,17.65,Rated,-4.84
+16.22,No win,17.81,Rated,-1.59
+24.58,No win,24.24,Rated,0.34
+19.57,No win,19.23,Rated,0.34
+11.0,No win,15.9,Casual,-4.9
+13.81,No win,13.77,Rated,0.04
+18.32,No win,18.29,Rated,0.03
+17.58,No win,21.12,Rated,-3.54
+17.04,Win,13.8,Casual,3.24
+16.97,No win,11.71,Casual,5.26
+17.47,Win,19.02,Rated,-1.55
+18.76,Win,19.12,Rated,-0.36
+14.56,No win,14.87,Rated,-0.31
+19.4,Win,13.27,Rated,6.13
+11.5,No win,11.38,Rated,0.12
+16.04,Win,15.23,Rated,0.81
+14.08,No win,16.9,Rated,-2.82
+18.32,No win,17.52,Rated,0.8
+14.12,No win,15.0,Casual,-0.88
+19.33,Win,20.08,Rated,-0.75
+20.19,Win,18.05,Rated,2.14
+20.01,No win,20.3,Rated,-0.29
+13.64,No win,17.38,Casual,-3.74
+19.01,No win,18.61,Rated,0.4
+21.88,Win,19.33,Casual,2.55
+15.91,Win,15.81,Rated,0.1
+21.36,Win,20.62,Rated,0.74
+18.84,No win,18.62,Casual,0.22
+11.77,Win,11.37,Rated,0.4
+17.2,No win,17.48,Rated,-0.28
+19.35,No win,22.06,Rated,-2.71
+11.65,No win,17.65,Casual,-6.0
+14.01,No win,14.77,Rated,-0.76
+19.99,Win,17.12,Rated,2.87
+14.92,Win,14.38,Rated,0.54
+18.03,Win,13.35,Rated,4.68
+19.1,No win,17.14,Rated,1.96
+16.1,No win,17.78,Casual,-1.68
+17.99,Win,20.73,Rated,-2.74
+11.27,No win,13.33,Rated,-2.06
+21.16,Win,22.29,Rated,-1.13
+14.66,Win,14.53,Rated,0.13
+17.65,No win,16.22,Rated,1.43
+13.93,No win,12.34,Rated,1.59
+17.42,Win,12.18,Casual,5.24
+15.95,No win,20.3,Rated,-4.35
+15.1,Win,17.29,Rated,-2.19
+19.88,Win,19.31,Rated,0.57
+16.96,No win,15.64,Rated,1.32
+14.08,No win,16.28,Rated,-2.2
+15.38,No win,15.56,Rated,-0.18
+15.77,Win,17.54,Rated,-1.77
+16.96,No win,17.97,Rated,-1.01
+12.91,Win,13.13,Casual,-0.22
+15.0,No win,14.58,Rated,0.42
+18.52,Win,17.48,Rated,1.04
+18.66,Win,15.21,Rated,3.45
+15.69,No win,16.53,Rated,-0.84
+16.12,Win,16.1,Rated,0.02
+15.03,No win,15.0,Casual,0.03
+16.88,No win,17.16,Rated,-0.28
+19.52,No win,21.79,Rated,-2.27
+12.76,Win,11.79,Rated,0.97
+21.21,Win,22.34,Rated,-1.13
+11.48,Win,10.99,Rated,0.49
+14.48,Win,17.48,Rated,-3.0
+14.14,No win,14.52,Casual,-0.38
+15.67,Win,15.22,Rated,0.45
+14.88,Win,14.51,Rated,0.37
+16.19,Win,15.01,Rated,1.18
+15.65,No win,15.36,Rated,0.29
+14.5,No win,14.52,Rated,-0.02
+21.64,Win,20.14,Rated,1.5
+13.22,No win,18.36,Rated,-5.14
+21.91,No win,22.39,Rated,-0.48
+13.11,No win,13.68,Rated,-0.57
+13.06,Win,13.07,Rated,-0.01
+21.63,Win,20.2,Rated,1.43
+17.88,Win,16.26,Casual,1.62
+16.03,Win,16.88,Rated,-0.85
+17.21,No win,15.17,Rated,2.04
+18.12,No win,18.72,Rated,-0.6
+10.96,No win,11.35,Rated,-0.39
+10.45,Win,11.01,Rated,-0.56
+14.2,Win,14.2,Rated,0.0
+18.53,No win,15.95,Rated,2.58
+16.19,Win,14.0,Casual,2.19
+15.73,No win,15.41,Rated,0.32
+15.6,No win,17.13,Rated,-1.53
+20.78,Win,18.43,Rated,2.35
+19.81,Win,11.09,Casual,8.72
+15.0,Win,16.47,Casual,-1.47
+16.39,No win,18.13,Rated,-1.74
+17.08,No win,17.26,Rated,-0.18
+14.22,Win,10.4,Rated,3.82
+17.12,No win,15.63,Rated,1.49
+14.8,Win,14.32,Rated,0.48
+17.33,Win,14.87,Rated,2.46
+14.19,No win,14.49,Rated,-0.3
+22.3,No win,19.48,Rated,2.82
+22.07,No win,22.39,Rated,-0.32
+15.0,No win,14.66,Casual,0.34
+18.64,No win,17.86,Rated,0.78
+11.36,No win,8.43,Rated,2.93
+12.09,Win,12.37,Rated,-0.28
+21.97,Win,18.75,Rated,3.22
+15.0,No win,12.74,Casual,2.26
+11.39,Win,10.89,Rated,0.5
+17.54,Win,13.87,Rated,3.67
+15.0,Win,15.16,Rated,-0.16
+19.1,Win,17.73,Rated,1.37
+23.5,Win,15.0,Casual,8.5
+15.72,Win,15.9,Rated,-0.18
+19.43,No win,19.51,Rated,-0.08
+15.0,Win,15.0,Casual,0.0
+16.38,Win,14.09,Rated,2.29
+15.0,Win,15.0,Casual,0.0
+11.52,No win,11.58,Rated,-0.06
+12.39,Win,10.64,Rated,1.75
+10.91,No win,15.29,Casual,-4.38
+15.43,Win,15.72,Rated,-0.29
+17.1,Win,12.74,Rated,4.36
+15.41,No win,22.19,Rated,-6.78
+13.35,No win,13.6,Rated,-0.25
+16.51,Win,17.37,Rated,-0.86
+17.57,Win,17.28,Rated,0.29
+17.33,Win,16.24,Casual,1.09
+23.46,No win,21.79,Rated,1.67
+12.86,Win,12.8,Rated,0.06
+13.36,No win,13.24,Rated,0.12
+14.96,No win,13.05,Rated,1.91
+16.44,No win,18.02,Rated,-1.58
+12.5,Win,12.44,Rated,0.06
+15.38,No win,15.13,Rated,0.25
+16.96,Win,13.44,Rated,3.52
+13.09,No win,13.75,Rated,-0.66
+10.34,No win,11.49,Rated,-1.15
+13.51,Win,13.57,Rated,-0.06
+15.0,Win,14.1,Casual,0.9
+14.51,Win,13.27,Rated,1.24
+9.89,No win,16.58,Rated,-6.69
+15.0,Win,15.0,Casual,0.0
+17.39,No win,17.97,Rated,-0.58
+15.89,Win,16.64,Casual,-0.75
+15.55,No win,16.58,Rated,-1.03
+12.81,No win,16.84,Rated,-4.03
+13.37,No win,13.82,Casual,-0.45
+15.21,Win,15.49,Rated,-0.28
+16.2,No win,18.38,Rated,-2.18
+14.32,No win,14.93,Casual,-0.61
+14.34,No win,13.52,Casual,0.82
+14.89,Win,15.89,Rated,-1.0
+13.83,Win,11.36,Casual,2.47
+14.34,No win,12.65,Rated,1.69
+17.05,No win,18.89,Rated,-1.84
+15.22,No win,15.43,Rated,-0.21
+11.61,No win,12.97,Rated,-1.36
+15.89,Win,15.0,Casual,0.89
+18.41,Win,16.36,Rated,2.05
+13.4,Win,14.26,Rated,-0.86
+15.4,No win,15.4,Rated,0.0
+13.71,Win,13.74,Rated,-0.03
+10.04,No win,9.52,Rated,0.52
+11.39,No win,12.83,Rated,-1.44
+16.35,No win,13.77,Casual,2.58
+15.0,Win,15.14,Casual,-0.14
+17.63,Win,16.98,Rated,0.65
+13.46,No win,11.14,Rated,2.32
+16.93,No win,15.91,Rated,1.02
+15.79,Win,15.62,Casual,0.17
+12.02,Win,12.61,Rated,-0.59
+20.13,No win,22.74,Rated,-2.61
+15.94,Win,16.08,Rated,-0.14
+11.6,No win,14.8,Rated,-3.2
+18.68,No win,20.79,Rated,-2.11
+16.63,Win,17.9,Rated,-1.27
+17.71,Win,18.75,Rated,-1.04
+14.0,Win,14.66,Casual,-0.66
+16.7,Win,13.52,Rated,3.18
+15.05,No win,15.42,Rated,-0.37
+10.73,Win,13.71,Rated,-2.98
+20.8,Win,16.39,Rated,4.41
+12.5,Win,14.39,Rated,-1.89
+17.09,Win,17.16,Rated,-0.07
+12.66,No win,18.54,Rated,-5.88
+11.57,No win,13.48,Rated,-1.91
+18.74,No win,14.86,Rated,3.88
+15.71,No win,15.64,Rated,0.07
+15.85,Win,15.93,Rated,-0.08
+16.18,Win,15.0,Casual,1.18
+15.83,No win,14.96,Rated,0.87
+16.39,No win,16.63,Rated,-0.24
+14.75,Win,11.65,Rated,3.1
+17.3,No win,16.56,Rated,0.74
+11.09,No win,11.71,Rated,-0.62
+22.14,Win,20.39,Rated,1.75
+13.96,No win,18.62,Casual,-4.66
+19.24,Win,18.32,Rated,0.92
+12.8,No win,13.41,Casual,-0.61
+14.94,No win,14.47,Rated,0.47
+14.34,Win,15.05,Rated,-0.71
+15.46,No win,15.95,Rated,-0.49
+20.4,Win,19.69,Rated,0.71
+18.53,Win,15.93,Rated,2.6
+14.85,No win,14.82,Rated,0.03
+18.99,Win,17.2,Rated,1.79
+17.76,Win,18.8,Rated,-1.04
+18.49,Win,13.89,Casual,4.6
+17.09,No win,16.28,Rated,0.81
+21.04,Win,19.8,Rated,1.24
+18.44,Win,18.09,Rated,0.35
+16.11,No win,14.01,Rated,2.1
+20.89,No win,22.18,Rated,-1.29
+11.84,No win,10.7,Casual,1.14
+16.15,No win,19.65,Rated,-3.5
+10.44,Win,10.8,Rated,-0.36
+18.44,No win,18.68,Rated,-0.24
+10.0,No win,9.99,Rated,0.01
+19.33,Win,19.7,Rated,-0.37
+12.57,No win,13.25,Rated,-0.68
+13.09,Win,12.53,Rated,0.56
+17.63,No win,16.61,Rated,1.02
+15.35,No win,15.79,Rated,-0.44
+15.73,Win,11.79,Rated,3.94
+20.97,Win,21.08,Rated,-0.11
+16.8,No win,17.89,Rated,-1.09
+16.51,Win,17.09,Rated,-0.58
+14.13,Win,12.8,Rated,1.33
+13.83,Win,13.84,Rated,-0.01
+15.95,Win,12.81,Rated,3.14
+13.19,No win,13.43,Rated,-0.24
+19.9,Win,19.7,Casual,0.2
+17.52,Win,13.63,Rated,3.89
+18.32,Win,16.26,Rated,2.06
+8.07,No win,10.76,Casual,-2.69
+19.02,Win,12.33,Casual,6.69
+14.68,No win,20.52,Rated,-5.84
+20.75,No win,21.38,Rated,-0.63
+10.71,No win,10.68,Rated,0.03
+17.54,No win,16.41,Rated,1.13
+19.35,Win,20.64,Rated,-1.29
+15.86,No win,15.58,Rated,0.28
+22.31,No win,22.3,Rated,0.01
+22.64,No win,16.39,Rated,6.25
+26.21,Win,16.26,Casual,9.95
+15.52,Win,11.93,Rated,3.59
+17.91,Win,25.16,Rated,-7.25
+13.83,Win,14.89,Casual,-1.06
+10.96,No win,12.33,Rated,-1.37
+10.06,No win,12.28,Rated,-2.22
+17.06,Win,14.02,Casual,3.04
+13.34,No win,15.5,Rated,-2.16
+19.71,Win,12.44,Rated,7.27
+20.0,No win,19.17,Rated,0.83
+17.53,No win,16.72,Rated,0.81
+15.89,No win,19.28,Rated,-3.39
+18.54,No win,17.3,Rated,1.24
+17.82,Win,13.25,Rated,4.57
+15.0,No win,16.54,Rated,-1.54
+20.57,No win,19.49,Casual,1.08
+15.01,No win,17.59,Casual,-2.58
+14.78,Win,15.0,Casual,-0.22
+19.09,No win,19.14,Rated,-0.05
+20.68,No win,15.0,Casual,5.68
+20.19,No win,19.89,Rated,0.3
+15.47,No win,15.13,Rated,0.34
+17.32,No win,17.52,Rated,-0.2
+12.51,Win,10.51,Rated,2.0
+16.21,No win,18.94,Casual,-2.73
+20.0,Win,19.62,Rated,0.38
+18.74,Win,21.03,Casual,-2.29
+21.51,Win,17.17,Rated,4.34
+14.27,No win,13.89,Rated,0.38
+14.45,No win,14.28,Rated,0.17
+19.38,Win,19.85,Rated,-0.47
+18.48,No win,20.98,Rated,-2.5
+18.16,No win,19.56,Rated,-1.4
+20.3,No win,20.36,Rated,-0.06
+19.05,Win,16.9,Rated,2.15
+10.7,No win,11.12,Rated,-0.42
+11.72,Win,17.74,Casual,-6.02
+16.65,Win,16.09,Rated,0.56
+15.22,Win,15.42,Casual,-0.2
+17.54,Win,18.74,Casual,-1.2
+24.13,Win,22.19,Rated,1.94
+16.13,Win,14.74,Rated,1.39
+21.19,No win,15.0,Casual,6.19
+14.75,Win,11.77,Rated,2.98
+13.45,No win,11.87,Rated,1.58
+15.04,Win,11.84,Casual,3.2
+20.03,Win,21.62,Casual,-1.59
+16.0,Win,15.59,Casual,0.41
+18.94,Win,18.65,Rated,0.29
+20.11,No win,20.0,Rated,0.11
+20.32,Win,17.19,Casual,3.13
+21.83,Win,15.51,Rated,6.32
+16.49,Win,14.47,Rated,2.02
+13.85,Win,12.91,Rated,0.94
+20.7,No win,22.03,Rated,-1.33
+14.85,No win,17.2,Rated,-2.35
+16.51,Win,10.87,Rated,5.64
+15.0,No win,18.66,Casual,-3.66
+16.91,No win,16.82,Rated,0.09
+18.67,No win,19.68,Rated,-1.01
+13.28,No win,14.67,Rated,-1.39
+12.85,Win,13.21,Rated,-0.36
+14.64,No win,14.41,Casual,0.23
+11.07,Win,10.22,Rated,0.85
+16.88,No win,17.3,Rated,-0.42
+17.49,No win,17.99,Rated,-0.5
+17.01,Win,18.09,Rated,-1.08
+13.69,No win,15.17,Rated,-1.48
+16.53,Win,15.22,Rated,1.31
+17.98,Win,18.85,Rated,-0.87
+16.59,Win,14.89,Casual,1.7
+10.8,Win,10.47,Rated,0.33
+10.97,Win,14.14,Casual,-3.17
+16.27,No win,20.5,Casual,-4.23
+16.89,Win,16.37,Rated,0.52
+16.03,No win,14.75,Rated,1.28
+21.4,No win,22.44,Rated,-1.04
+18.32,Win,14.52,Casual,3.8
+16.48,Win,15.65,Rated,0.83
+15.45,Win,15.0,Rated,0.45
+14.0,Win,14.12,Casual,-0.12
+19.06,Win,18.69,Rated,0.37
+14.96,No win,18.61,Rated,-3.65
+15.73,No win,17.15,Rated,-1.42
+17.2,Win,13.34,Rated,3.86
+19.84,No win,19.48,Rated,0.36
+22.11,No win,16.37,Rated,5.74
+18.28,No win,19.37,Rated,-1.09
+14.35,No win,14.04,Rated,0.31
+12.95,No win,17.58,Rated,-4.63
+17.29,Win,17.26,Rated,0.03
+15.97,Win,15.04,Rated,0.93
+14.11,Win,14.65,Rated,-0.54
+12.86,No win,13.18,Rated,-0.32
+19.5,No win,14.77,Casual,4.73
+23.4,Win,18.74,Casual,4.66
+13.88,Win,14.13,Casual,-0.25
+11.98,Win,15.71,Rated,-3.73
+15.81,Win,14.93,Rated,0.88
+18.59,No win,14.79,Casual,3.8
+18.51,Win,18.53,Rated,-0.02
+16.42,No win,18.47,Rated,-2.05
+14.75,No win,16.05,Casual,-1.3
+18.5,No win,19.23,Rated,-0.73
+15.58,No win,15.19,Rated,0.39
+14.64,No win,15.0,Casual,-0.36
+13.54,Win,13.47,Rated,0.07
+12.83,No win,13.93,Rated,-1.1
+15.87,No win,15.0,Casual,0.87
+14.15,No win,15.77,Rated,-1.62
+15.97,Win,11.34,Rated,4.63
+19.62,Win,15.59,Rated,4.03
+11.54,Win,9.74,Rated,1.8
+17.08,No win,16.49,Rated,0.59
+17.13,No win,20.54,Casual,-3.41
+15.76,Win,13.73,Rated,2.03
+19.76,Win,18.75,Rated,1.01
+17.92,Win,17.6,Rated,0.32
+11.56,No win,18.12,Casual,-6.56
+16.29,No win,15.17,Rated,1.12
+15.0,No win,15.16,Rated,-0.16
+17.76,Win,14.99,Rated,2.77
+16.27,No win,18.16,Rated,-1.89
+17.19,Win,16.79,Rated,0.4
+16.1,Win,16.91,Rated,-0.81
+13.66,No win,23.01,Rated,-9.35
+22.94,Win,20.46,Casual,2.48
+14.8,No win,12.31,Rated,2.49
+19.76,Win,15.69,Rated,4.07
+15.0,Win,17.0,Casual,-2.0
+16.45,No win,15.4,Rated,1.05
+10.72,No win,12.76,Rated,-2.04
+18.5,Win,18.12,Rated,0.38
+15.53,Win,15.38,Rated,0.15
+15.99,Win,16.09,Rated,-0.1
+17.74,No win,16.48,Rated,1.26
+18.97,Win,17.13,Rated,1.84
+12.5,No win,10.02,Casual,2.48
+14.68,No win,21.65,Rated,-6.97
+16.57,Win,16.13,Rated,0.44
+23.35,Win,22.62,Rated,0.73
+20.67,Win,22.43,Rated,-1.76
+21.15,No win,19.1,Rated,2.05
+15.0,Win,10.81,Rated,4.19
+12.67,Win,13.44,Rated,-0.77
+18.6,Win,18.63,Rated,-0.03
+11.66,No win,12.95,Rated,-1.29
+16.33,Win,15.24,Rated,1.09
+19.59,No win,21.51,Rated,-1.92
+21.93,Win,18.82,Rated,3.11
+16.63,Win,15.65,Rated,0.98
+12.09,Win,13.37,Rated,-1.28
+15.76,Win,15.73,Rated,0.03
+18.05,No win,17.57,Rated,0.48
+14.36,No win,16.69,Rated,-2.33
+15.39,No win,16.32,Rated,-0.93
+18.46,No win,15.76,Rated,2.7
+14.91,No win,21.0,Rated,-6.09
+16.37,No win,16.4,Rated,-0.03
+12.5,No win,12.43,Rated,0.07
+13.58,No win,13.92,Rated,-0.34
+10.37,No win,13.77,Rated,-3.4
+18.05,No win,18.15,Rated,-0.1
+15.52,Win,12.75,Rated,2.77
+18.89,Win,14.4,Rated,4.49
+18.08,No win,19.47,Rated,-1.39
+17.41,Win,15.89,Rated,1.52
+13.02,No win,16.47,Rated,-3.45
+13.94,No win,14.75,Rated,-0.81
+14.25,Win,15.76,Rated,-1.51
+13.28,No win,13.93,Rated,-0.65
+13.45,No win,12.08,Rated,1.37
+14.14,Win,15.0,Casual,-0.86
+18.33,Win,14.31,Casual,4.02
+10.81,No win,11.33,Rated,-0.52
+17.12,Win,17.7,Rated,-0.58
+14.46,No win,15.72,Rated,-1.26
+13.39,Win,15.0,Casual,-1.61
+19.5,No win,19.97,Casual,-0.47
+17.71,No win,17.64,Rated,0.07
+19.27,No win,19.78,Rated,-0.51
+20.3,No win,21.64,Rated,-1.34
+16.44,Win,15.89,Rated,0.55
+13.62,Win,14.63,Rated,-1.01
+15.68,Win,17.75,Rated,-2.07
+19.51,No win,21.09,Rated,-1.58
+13.14,Win,12.44,Rated,0.7
+18.24,No win,17.98,Rated,0.26
+11.0,No win,13.93,Casual,-2.93
+15.9,No win,16.14,Rated,-0.24
+16.88,Win,17.04,Rated,-0.16
+19.27,No win,21.93,Rated,-2.66
+13.92,Win,14.79,Rated,-0.87
+17.08,Win,16.38,Casual,0.7
+13.47,No win,19.38,Rated,-5.91
+12.41,No win,17.44,Casual,-5.03
+16.38,No win,16.43,Rated,-0.05
+15.0,No win,15.0,Rated,0.0
+14.42,No win,14.2,Rated,0.22
+17.59,Win,17.67,Rated,-0.08
+12.96,Win,13.15,Rated,-0.19
+19.39,Win,15.81,Rated,3.58
+10.33,No win,15.0,Casual,-4.67

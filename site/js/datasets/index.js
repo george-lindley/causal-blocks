@@ -1,6 +1,22 @@
-// Every case study, in the order the picker shows them. To add one:
+// Every case study, in the order the picker shows them: easy, then medium, then hard. To add one:
 // put its CSV in data/samples/, write a module like towns.js, list it here.
-import towns from "./towns.js";
 import tortoises from "./tortoises.js";
+import chocolate from "./chocolate.js";
+import cats from "./cats.js";
+import beaches from "./beaches.js";
+import snowman from "./snowman.js";
+import towns from "./towns.js";
+import chess from "./chess.js";
+import pokemon from "./pokemon.js";
+import coffee from "./coffee.js";
+import cappuccino from "./cappuccino.js";
+import ultra from "./ultra.js";
+import mariokart from "./mariokart.js";
+import himalaya from "./himalaya.js";
+import penguins from "./penguins.js";
 
-export const DATASETS = [towns, tortoises];
+export const DATASETS = [
+  tortoises, chocolate, cats, beaches, snowman,
+  towns, chess, pokemon, coffee, cappuccino, ultra,
+  mariokart, himalaya, penguins,
+];
