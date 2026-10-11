@@ -7,6 +7,7 @@ export default {
   key: "towns",
   file: "data/samples/towns.csv",
   tag: "UK schools",
+  icon: "🏫",
   level: "hard",
   name: "Small towns and exam results",
   question: "Do children in smaller towns do better at school?",
@@ -14,9 +15,6 @@ export default {
   story: { url: "https://georgelindley.com/do-small-towns-really-provide-better-education-a-uk-detective-story/", label: "The full detective story" },
   intro: [
     "In England, children who grow up in small towns tend to do better at school than children in big towns. The Office for National Statistics spotted this in 2023 by comparing 1,082 towns. <b>Does living in a smaller town actually help?</b>",
-    "Simply comparing towns already shows the pattern, but it's muddied. Some regions have lots of big towns and also do well at school for their own reasons, which hides part of the gap. Once we <b>freeze region</b> (comparing each town only with towns in the same region), the effect gets stronger: each step up from small to medium to large takes the education score down by about 0.7.",
-    "Why? Mostly through <b>deprivation</b>: bigger towns tend to be poorer, and poorer towns tend to do worse. That's Ms Mediator, the route the effect travels along.",
-    "<b>And here's the twist.</b> Freeze deprivation, so you only compare towns that are <i>equally</i> deprived, and the answer flips the other way: bigger towns now do <i>better</i>, by about 0.4 a step. So under this map, being a big town isn't what holds results back (unlike reported in the correlation study). Being poorer is. That's a different question from the whole effect of town size, but it's the most surprising thing in the data.",
   ],
   source: "ONS, Why do children and young people in smaller towns do better academically? (2023)",
   tidytuesday: "2024-01-23",
@@ -52,7 +50,7 @@ export default {
     {
       name: "Freeze deprivation",
       mistake: true,
-      explain: "This map draws deprivation as a cause of town size, so it gets frozen. That switches off the main way size affects results, and the answer flips: bigger towns now look <i>better</i>. It isn't the whole effect of size, but it does answer a different question: among <i>equally deprived</i> towns, do bigger ones do better? That's called the direct effect.",
+      explain: "This map draws deprivation as a cause of town size, so it gets frozen. That switches off the main way size affects results, and the answer flips: bigger towns now look <i>better</i>. It isn't the whole effect of size, but it does answer a different question: among <i>equally deprived</i> towns, do bigger ones do better? That's called the direct effect. So under this map, being a big town isn't what holds results back (unlike reported in the correlation study). Being poorer is. It's the most surprising thing in the data.",
       lesson: "Freezing a mediator leaves only the direct effect. Fine if that's your question; a mistake if you wanted the whole effect.",
       pos: { Deprivation: [318, 40], "Town size": [80, 300], "Education score": [556, 300] },
       edges: [["Deprivation", "Town size"], ["Deprivation", "Education score"], ["Town size", "Education score"]],

@@ -257,43 +257,61 @@ footer .foot-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 
 .node.connecting rect.body { stroke: var(--accent); stroke-width: 4; }
 .board-locked .tool { display: none; }
 
-/* Case studies: dataset picker */
-.samples { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin: 0 0 20px; }
-.sample { display: grid; gap: 4px; justify-items: start; text-align: left; padding: 10px 14px; border-radius: 14px; border: 1px solid var(--line); background: #fff; cursor: pointer; font: inherit; color: var(--ink); transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s; }
-.sample:hover { border-color: #d3d9df; box-shadow: 0 8px 22px rgba(31, 41, 51, 0.08); transform: translateY(-1px); }
-.sample strong { font: 800 17px/1.15 var(--font-display); }
-.sample-tag { font: 700 12px var(--font-ui); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
-.level { padding: 1px 8px; border-radius: 999px; font: 700 12px/1.5 var(--font-ui); white-space: nowrap; }
-.level-easy { color: var(--good); background: var(--good-bg); }
-.level-medium { color: var(--warn); background: var(--warn-bg); }
-.level-hard { color: var(--mistake); background: var(--mistake-bg); }
-.sample[aria-pressed="true"] { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+/* Case studies: the page is wider than the reading pages, so story, map and lesson fit side by side */
+.wrap-wide { max-width: 1440px; }
 
-/* Case studies: one dataset's maps */
+/* Case studies: pick a case by level, easy to hard, left to right */
+.levels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 0 0 22px; }
+.level-pick { display: grid; gap: 6px; padding: 10px 12px; border-radius: 14px; border: 1px solid var(--line); background: #fff; }
+.level-pick.current { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.level-pick select { width: 100%; padding: 8px 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface-2); color: var(--ink); font: 600 15px var(--font-ui); cursor: pointer; }
+.level-pick select:hover { border-color: var(--edge); }
+.level { justify-self: start; padding: 1px 8px; border-radius: 999px; font: 700 12px/1.5 var(--font-ui); white-space: nowrap; }
+.level-easy .level { color: var(--good); background: var(--good-bg); }
+.level-medium .level { color: var(--warn); background: var(--warn-bg); }
+.level-hard .level { color: var(--mistake); background: var(--mistake-bg); }
+@media (max-width: 600px) { .levels { grid-template-columns: minmax(0, 1fr); gap: 8px; } }
+
+/* Case studies: the case, full width: picture, question, then the setting and the data in one paragraph */
 .intro-short { padding-block: 16px 16px; }
 .intro-short h1 { margin-bottom: 6px; }
 .case { padding-bottom: 48px; }
-.case-head h2 { margin: 0 0 4px; font: 800 clamp(22px, 2.6vw, 28px)/1.15 var(--font-display); text-wrap: balance; }
-.case-head .meta { font-size: 15px; max-width: 90ch; }
+.case-head { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 18px; align-items: start; margin-bottom: 22px; }
+.case-icon { display: grid; place-items: center; width: 76px; height: 76px; border-radius: 18px; background: var(--surface-2); font-size: 42px; line-height: 1; }
+.case-head h2 { margin: 2px 0 6px; font: 800 clamp(22px, 2.6vw, 30px)/1.15 var(--font-display); text-wrap: balance; }
+.case-lede { margin: 0 0 8px; font-size: 17px; line-height: 1.55; }
+.case-about { color: var(--muted); }
+.case-links { font-size: 14px; }
 .case-source { display: block; margin-top: 2px; font-size: 13px; }
-.case-story { margin: 12px 0 0; padding: 10px 16px; border-radius: 14px; background: var(--surface-2); max-width: 90ch; }
-.case-story summary { cursor: pointer; font: 700 17px var(--font-display); }
-.case-story p { margin: 10px 0 0; }
-.case-story p:last-child { margin-bottom: 6px; }
-.versions { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 12px; }
-.version { display: grid; grid-template-columns: auto auto; gap: 0 12px; align-items: end; padding: 8px 14px; border-radius: 12px; border: 2px solid var(--line); background: #fff; color: var(--ink); font: 700 16px/1.2 var(--font-ui); cursor: pointer; text-align: left; }
-.version:hover { border-color: var(--edge); }
-.version-tag { grid-column: 1 / -1; font: 700 11px var(--font-ui); letter-spacing: 0.08em; text-transform: uppercase; color: var(--good); }
-.version-value { font: 800 18px/1.1 var(--font-display); font-variant-numeric: tabular-nums; }
-.version.mistake .version-tag { color: var(--mistake); }
-.version.fine { border-style: dashed; }
-.version[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
-.version[aria-pressed="true"] .version-tag { color: #fff; opacity: 0.8; }
-.version.mistake[aria-pressed="true"] { background: var(--mistake); border-color: var(--mistake); }
-@media (max-width: 600px) { .versions { display: grid; grid-template-columns: 1fr 1fr; } .version { font-size: 14px; padding: 7px 10px; } .version-value { font-size: 16px; } }
+@media (max-width: 600px) { .case-head { grid-template-columns: 52px minmax(0, 1fr); gap: 12px; } .case-icon { width: 52px; height: 52px; font-size: 28px; border-radius: 14px; } }
 
-.case-grid { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 16px; align-items: start; }
-@media (max-width: 900px) { .case-grid { grid-template-columns: minmax(0, 1fr); } }
+/* Case studies: story | map | lesson. Map and lesson stay in view while the story scrolls */
+.case-grid { display: grid; grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1.75fr) minmax(250px, 0.85fr); gap: 20px; align-items: start; }
+.case-grid > .board, .case-grid > .side { position: sticky; top: 12px; }
+@media (max-width: 1180px) {
+  .case-grid { grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.6fr); }
+  .case-grid > .side { grid-column: 2; position: static; }
+}
+@media (max-width: 900px) {
+  .case-grid { grid-template-columns: minmax(0, 1fr); }
+  .case-grid > .board, .case-grid > .side { position: static; grid-column: auto; }
+}
+
+.story-hint { margin: 0 0 10px; font: 600 13px var(--font-ui); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.step p { margin: 6px 2px 0; line-height: 1.55; }
+.step-map { display: grid; gap: 1px; width: 100%; padding: 8px 12px; border-radius: 12px; border: 1px solid var(--line); background: #fff; color: var(--ink); text-align: left; cursor: pointer; font: inherit; }
+.step-map:hover { border-color: var(--edge); }
+.step-tag { font: 700 11px var(--font-ui); letter-spacing: 0.08em; text-transform: uppercase; color: var(--good); }
+.step-name { font: 800 17px/1.2 var(--font-display); }
+.step.mistake .step-tag { color: var(--mistake); }
+.step.fine .step-map { border-style: dashed; }
+.step.whatif .step-tag { color: var(--accent); }
+.step-map[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+.step-map[aria-pressed="true"] .step-tag { color: #fff; opacity: 0.85; }
+.step.mistake .step-map[aria-pressed="true"] { background: var(--mistake); border-color: var(--mistake); }
+#whatif-slot:not(:empty) { margin-top: 14px; }
+
 .board-locked #canvas { pointer-events: none; }
 .board-locked #canvas .node { cursor: default; }
 .swipe-hint { display: none; padding: 8px 16px 0; }
@@ -301,13 +319,14 @@ footer .foot-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 
 .board-legend { margin: 0; padding: 8px 16px; border-top: 1px solid var(--line); font-size: 13px; }
 .frozen-key { background: transparent; box-shadow: inset 0 0 0 3px var(--frozen, #7cc4ef); }
 
+/* The lesson card: the number, what it means, and one rule to take away */
 .lesson { border-top: 6px solid var(--good); display: grid; gap: 10px; }
 .lesson.mistake { border-top-color: var(--mistake); }
-.lesson .label { color: var(--good); }
+.lesson .label { color: var(--good); line-height: 1.3; }
 .lesson.mistake .label { color: var(--mistake); }
 .lesson p { margin: 0; }
 .lesson-value { font: 800 48px/1 var(--font-display); font-variant-numeric: tabular-nums; }
-.lesson-reads { font: 700 18px/1.3 var(--font-display); text-wrap: balance; }
+.lesson-reads { font: 700 17px/1.3 var(--font-display); text-wrap: balance; }
 .lesson-best { color: var(--muted); }
 .lesson-point { padding: 10px 14px; border-radius: 12px; background: var(--surface-2); }
 

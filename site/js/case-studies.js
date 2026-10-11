@@ -140,7 +140,7 @@ function tryMap({ name, edges }) {
     card: `<span class="label">🧪 Drawn on the map</span><b>${escapeHtml(title)}</b>
       <span class="map-card-value">${fmt(r.effect)}</span>
       <span class="meta">Frozen: ${r.adjust.length ? r.adjust.map(escapeHtml).join(", ") : "nothing"}. The best map says ${fmt(best.effect)}.</span>
-      <a class="see-map" href="#versions">See it on the map ↑</a>`,
+      <a class="see-map" href="#board">See it on the map ↑</a>`,
   };
 }
 
@@ -210,51 +210,63 @@ const KIND = { best: "✓ Best map", mistake: "✗ Mistake", fine: "✓ Also fin
 const kindOf = (v, i) => (i === 0 ? "best" : v.mistake ? "mistake" : "fine");
 const TIDYTUESDAY = "https://github.com/rfordatascience/tidytuesday/tree/main/data/";
 
+// The picker: one dropdown per level, easy to hard, left to right.
 function renderPicker() {
-  $("datasets").innerHTML = DATASETS.map((d) => `
-    <button type="button" class="sample" data-key="${d.key}">
-      <span class="sample-tag">${d.tag}</span>
-      <strong>${d.name}</strong>
-      ${levelBadge(d.level)}
-    </button>`).join("");
+  $("datasets").innerHTML = Object.keys(LEVELS).map((level) => {
+    const sets = DATASETS.filter((d) => d.level === level);
+    return `
+    <label class="level-pick level-${level}">
+      ${levelBadge(level)}
+      <select data-level="${level}" aria-label="${LEVELS[level][0]} case studies">
+        <option value="" disabled selected hidden>Choose one of ${sets.length}</option>
+        ${sets.map((d) => `<option value="${d.key}">${d.icon ?? ""} ${d.name}</option>`).join("")}
+      </select>
+    </label>`;
+  }).join("");
 }
 
 function renderCase() {
   const set = state.set;
-  for (const b of document.querySelectorAll("#datasets .sample")) b.setAttribute("aria-pressed", b.dataset.key === set.key);
+  for (const s of document.querySelectorAll("#datasets select")) {
+    s.value = s.dataset.level === set.level ? set.key : "";
+    s.closest(".level-pick").classList.toggle("current", s.dataset.level === set.level);
+  }
   $("case").hidden = false;
+  $("case-icon").textContent = set.icon ?? "";
   $("case-question").textContent = set.question;
+  $("case-lede").innerHTML = `${(set.intro ?? []).join(" ")} <span class="case-about">${set.about}</span>`;
   const story = set.story ? `<a href="${set.story.url}" target="_blank" rel="noopener">${set.story.label} ↗</a> · ` : "";
   const week = set.tidytuesday
     ? ` via <a href="${TIDYTUESDAY}${set.tidytuesday.slice(0, 4)}/${set.tidytuesday}" target="_blank" rel="noopener">TidyTuesday ${set.tidytuesday} ↗</a>` : "";
-  $("case-about").innerHTML = `${set.about}
-    ${story}<a href="${set.file}" download>Download the data</a>
+  $("case-about").innerHTML = `${story}<a href="${set.file}" download>Download the data</a>
     <span class="case-source">Data: ${set.source}${week}</span>`;
-  // The story in plain words, before the maps translate it into arrows. Optional per dataset.
-  $("case-story").hidden = !set.intro;
-  $("case-story-body").innerHTML = (set.intro ?? []).map((p) => `<p>${p}</p>`).join("");
-  $("versions").innerHTML = set.versions.map((v, i) => `
-    <button type="button" class="version ${kindOf(v, i)}" data-v="${i}">
-      <span class="version-tag">${KIND[kindOf(v, i)]}</span>
-      <span class="version-name">${v.name}</span>
-      <span class="version-value">${fmt(state.results[i].effect)}</span>
-    </button>`).join("") + `<span id="whatif-slot"></span>`;
+  // The story, one map at a time: each step's sentence sits beside the map it describes.
+  $("steps").innerHTML = set.versions.map((v, i) => `
+    <li class="step ${kindOf(v, i)}">
+      <button type="button" class="step-map" data-v="${i}">
+        <span class="step-tag">${KIND[kindOf(v, i)]}</span>
+        <span class="step-name">${v.name}</span>
+      </button>
+      <p>${v.explain}</p>
+    </li>`).join("");
+  renderWhatIf();
 }
 
 function renderWhatIf() {
   const w = state.whatIf;
   $("whatif-slot").innerHTML = w ? `
-    <button type="button" class="version whatif" data-v="whatIf">
-      <span class="version-tag">🧪 Tutor's map</span>
-      <span class="version-name">${escapeHtml(w.name)}</span>
-      <span class="version-value">${fmt(w.r.effect)}</span>
-    </button>` : "";
+    <div class="step whatif">
+      <button type="button" class="step-map" data-v="whatIf">
+        <span class="step-tag">🧪 Tutor's map</span>
+        <span class="step-name">${escapeHtml(w.name)}</span>
+      </button>
+    </div>` : "";
 }
 
 function show(i) {
   state.version = i;
   const set = state.set;
-  for (const b of document.querySelectorAll("#versions .version")) b.setAttribute("aria-pressed", b.dataset.v === String(i));
+  for (const b of document.querySelectorAll(".story .step-map")) b.setAttribute("aria-pressed", b.dataset.v === String(i));
   tutor.suggest(suggestions());
 
   if (i === "whatIf") {
@@ -284,7 +296,6 @@ function show(i) {
     <div class="lesson-value">${fmt(r.effect)}</div>
     <p class="lesson-reads">${set.reads.replace("{est}", fmt(r.effect))}</p>
     ${best}
-    <p>${v.explain}</p>
     <p class="lesson-point"><b>Lesson:</b> ${v.lesson}</p>`;
 }
 
@@ -297,13 +308,15 @@ function showTab(name) {
 
 // ---- Events ----------------------------------------------------------------
 
-$("datasets").addEventListener("click", (e) => {
-  const b = e.target.closest(".sample");
-  if (b) open(b.dataset.key);
+$("datasets").addEventListener("change", (e) => {
+  if (e.target.value) open(e.target.value);
 });
-$("versions").addEventListener("click", (e) => {
-  const b = e.target.closest(".version");
-  if (b) show(b.dataset.v === "whatIf" ? "whatIf" : Number(b.dataset.v));
+document.querySelector(".story").addEventListener("click", (e) => {
+  const b = e.target.closest(".step-map");
+  if (!b) return;
+  show(b.dataset.v === "whatIf" ? "whatIf" : Number(b.dataset.v));
+  // On one column the map is below the story: bring it into view.
+  if (matchMedia("(max-width: 900px)").matches) $("board").scrollIntoView({ behavior: "smooth", block: "start" });
 });
 document.querySelector(".side-tabs").addEventListener("click", (e) => {
   const t = e.target.closest("[role=tab]");

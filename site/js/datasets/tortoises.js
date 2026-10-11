@@ -11,6 +11,7 @@ export default {
   key: "tortoises",
   file: "data/samples/tortoises.csv",
   tag: "Island tortoises",
+  icon: "🐢",
   level: "easy",
   name: "Island life and tortoise weight",
   question: "Does living on the island make tortoises lighter?",
@@ -18,8 +19,6 @@ export default {
   story: { url: "https://onlinelibrary.wiley.com/doi/10.1111/ele.70296", label: "The original study" },
   intro: [
     "On a tiny island in a lake in North Macedonia, male tortoises outnumber females by about nine to one. The males harass the females so much that some fall off the island's cliffs. Scientists weighed over 2,000 tortoises there and on the nearby mainland. <b>Does living on the island make a tortoise lighter?</b>",
-    "Simply comparing the two places makes the island look terrible: island tortoises are much lighter. But that comparison is unfair. The island is full of males, and males are smaller than females anyway. Once we <b>freeze sex</b> (comparing females with females, males with males), island life still makes a tortoise lighter, by about a quarter of a kilo. That's still a big chunk of a 1 kg animal, and it's much worse for females.",
-    "Then two tempting mistakes. Freezing <b>shell length</b> hides most of the effect, because being smaller is <i>how</i> the island makes tortoises lighter. Freezing the <b>condition index</b> flips the answer, because that index is calculated from body mass itself.",
   ],
   source: "Arsovski et al., Ecology Letters (2026), CC BY 4.0",
   tidytuesday: "2026-03-03",
@@ -36,7 +35,7 @@ export default {
   versions: [
     {
       name: "Our map",
-      explain: "Sex pushes on both: females are much heavier than males, and the island has hardly any females left. Freezing sex compares females with females and males with males. Shell length is <i>how</i> the island has part of its effect, so it's left free.",
+      explain: "Sex pushes on both: females are much heavier than males, and the island has hardly any females left. Freezing sex compares females with females and males with males. Shell length is <i>how</i> the island has part of its effect, so it's left free. The island hits females much harder than males.",
       lesson: "Freeze what pushes on both the cause and the effect. Leave alone what the cause pushes on.",
       pos: { Sex: SEX, Island: ISLAND, "Body mass (kg)": MASS, "Shell length (cm)": BELOW },
       edges: [["Sex", "Island"], ["Sex", "Body mass (kg)"], ["Island", "Shell length (cm)"],
