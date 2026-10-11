@@ -52,7 +52,7 @@ export default {
       name: "Freeze shell length",
       mistake: true,
       explain: "This map draws shell length as something that decides where a tortoise lives, so it gets frozen. But it's the island that makes tortoises smaller. Freezing size switches off that route, and most of the effect disappears.",
-      lesson: "Never freeze Mr Mediator: you only measure what's left of the effect.",
+      lesson: "Never freeze Ms Mediator: you only measure what's left of the effect.",
       pos: { Sex: SEX, Island: ISLAND, "Body mass (kg)": MASS, "Shell length (cm)": BELOW },
       edges: [["Sex", "Island"], ["Sex", "Body mass (kg)"], ["Shell length (cm)", "Island"],
         ["Shell length (cm)", "Body mass (kg)"], ["Island", "Body mass (kg)"]],
