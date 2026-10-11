@@ -3,11 +3,11 @@
 .wrap h2 { margin: 0 0 10px; font: 800 clamp(26px, 3.2vw, 34px)/1.1 var(--font-display); }
 
 /* Hero: the lineup wall at full size, the line and one button. */
-.hero { display: grid; }
+.hero { display: grid; border: 1px solid var(--line); border-radius: 22px; overflow: hidden; }
 .hero-lineup {
   display: flex; justify-content: center; align-items: flex-end;
   padding: 18px clamp(12px, 4vw, 48px) 0;
-  border-radius: 20px;
+  border-bottom: 1px solid var(--line);
   /* The lineup wall's height marks, kept faint. */
   background:
     linear-gradient(to top, #e8ecf0 0 12px, transparent 12px),
@@ -15,7 +15,7 @@
     #f6f8fa;
 }
 .hero-lineup img { display: block; width: 100%; max-width: 860px; height: auto; margin-bottom: 4px; }
-.hero-text { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 28px; padding: 26px 4px 8px; }
+.hero-text { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 28px; padding: 24px clamp(18px, 4vw, 48px) 26px; }
 .hero h1 { margin: 0; font: 800 clamp(30px, 4.4vw, 52px)/1.05 var(--font-display); }
 .hero h1 span { display: block; color: var(--accent); }
 .big-button {
@@ -29,7 +29,7 @@
 .big-button:active { transform: translateY(1px); }
 
 /* The taste: one small puzzle to solve on the page */
-.taste { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 24px 40px; align-items: center; padding-block: 24px; }
+.taste { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 24px 40px; align-items: center; padding: clamp(18px, 3vw, 32px); border: 1px solid var(--line); border-radius: 22px; }
 @media (max-width: 860px) {
   .taste { grid-template-columns: minmax(0, 1fr); }
   .taste-result { min-height: 0; }
@@ -39,7 +39,7 @@
 .taste-result.won { color: var(--good); }
 .taste-result.nope { color: var(--mistake); }
 .taste-result img { width: 64px; height: auto; vertical-align: middle; margin-right: 8px; float: left; }
-.taste-board { max-width: 520px; width: 100%; justify-self: center; background: #fff; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; box-shadow: 0 8px 28px rgba(31, 41, 51, 0.07); }
+.taste-board { max-width: 520px; width: 100%; justify-self: center; background: #fff; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
 #taste { display: block; width: 100%; height: auto; touch-action: none; user-select: none; -webkit-user-select: none;
   background-color: var(--surface); background-image: radial-gradient(var(--grid) 1.1px, transparent 1.2px); background-size: 22px 22px; }
 #taste .together { fill: none; stroke: #f1b40f; stroke-width: 6; stroke-dasharray: 2 10; stroke-linecap: round; transition: opacity 0.8s; }
