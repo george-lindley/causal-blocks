@@ -11,6 +11,7 @@ export default {
   name: "Indoor cats and hunting",
   question: "Do cats that stay indoors longer bring home less prey?",
   about: "91 pet cats in the UK. Owners reported how many hours a day each cat stays indoors and how many prey animals it brings home in a month.",
+  order: [1, 0, 3, 2],
   intro: [
     "Scientists fitted GPS trackers to pet cats across the UK, and owners reported how long their cats stay indoors each day and how much prey they bring home. <b>Do cats that stay in longer bring home less prey?</b>",
   ],
@@ -29,7 +30,7 @@ export default {
   versions: [
     {
       name: "Our map",
-      explain: "Older cats stay in more and bring home less, so age pushes on both and is frozen. Whether a cat hunts shows up in the prey it brings home, so it's left free.",
+      explain: "So we freeze age, comparing cats of the same age. The answer barely moves, to {est}: age is a real Mr Confounder, but a weak one.",
       lesson: "Freeze what pushes on both the cause and the effect.",
       pos: { "Hours indoors": [80, 215], "Prey per month": [556, 215], "Age (years)": [318, 40], Hunts: [318, 384] },
       edges: [["Age (years)", "Hours indoors"], ["Age (years)", "Prey per month"], ["Hours indoors", "Prey per month"], ["Prey per month", "Hunts"]],
@@ -37,7 +38,7 @@ export default {
     {
       name: "Just the correlation",
       fine: true,
-      explain: "Nothing frozen. The answer barely changes: age was a real Mr Confounder, but a weak one.",
+      explain: "At first glance, each extra hour indoors means {est} prey animals a month. But older cats could be the catch: they stay in more and hunt less.",
       lesson: "A weak Mr Confounder only nudges the answer. Drawing the map tells you how much to worry.",
       pos: { "Hours indoors": [190, 205], "Prey per month": [480, 205] },
       edges: [["Hours indoors", "Prey per month"]],
@@ -45,7 +46,7 @@ export default {
     {
       name: "Freeze \"hunts\"",
       mistake: true,
-      explain: "This map treats hunting as a personality trait that decides how long a cat is let out. But cats that don't hunt bring home nothing, so the column mostly measures the effect again. Freezing it hides part of the answer.",
+      explain: "It would be a mistake to freeze whether a cat hunts. Cats that don't hunt bring home nothing, so that column is really another measure of the effect. Freeze it and the answer shrinks to {est}.",
       lesson: "Don't freeze something that's really another measure of the effect.",
       pos: { "Hours indoors": [80, 215], "Prey per month": [556, 215], "Age (years)": [178, 40], Hunts: [458, 40] },
       edges: [["Age (years)", "Hours indoors"], ["Age (years)", "Prey per month"], ["Hunts", "Hours indoors"], ["Hunts", "Prey per month"], ["Hours indoors", "Prey per month"]],
@@ -53,7 +54,7 @@ export default {
     {
       name: "Freeze sex too",
       fine: true,
-      explain: "Male and female cats are kept in for about as long, so sex doesn't push on the cause. Freezing it leaves the answer where it was.",
+      explain: "Freezing sex as well changes almost nothing ({est}). Male and female cats are kept in for about as long, so sex doesn't push on the cause.",
       lesson: "Freezing something that doesn't push on the cause changes little.",
       pos: { "Hours indoors": [80, 215], "Prey per month": [556, 215], "Age (years)": [178, 40], Sex: [458, 40] },
       edges: [["Age (years)", "Hours indoors"], ["Age (years)", "Prey per month"], ["Sex", "Hours indoors"], ["Sex", "Prey per month"], ["Hours indoors", "Prey per month"]],

@@ -11,6 +11,7 @@ export default {
   name: "Dark chocolate and ratings",
   question: "Does very dark chocolate get worse ratings?",
   about: "2,443 chocolate bars reviewed by Flavors of Cacao (2006–2021), rated from 1 to 4. A bar counts as very dark at 80% cocoa or more.",
+  order: [1, 0, 2],
   intro: [
     "Chocolate experts have rated thousands of bars from around the world, on a scale from 1 to 4. Bars with 80% cocoa or more are intensely dark and bitter. <b>Do very dark bars get worse ratings?</b>",
   ],
@@ -28,7 +29,7 @@ export default {
   versions: [
     {
       name: "Our map",
-      explain: "Over the years, ratings crept up while fewer very dark bars were reviewed, so the year pushes on both and is frozen. Nothing else here decides how dark a bar is.",
+      explain: "The year is a small one: over time, ratings crept up while fewer very dark bars were reviewed. So we freeze the year. The answer is {est}, barely different: here the simple comparison was already almost fair.",
       lesson: "Freeze what pushes on both the cause and the effect.",
       pos: { "Very dark": [80, 215], Rating: [556, 215], "Year reviewed": [318, 40] },
       edges: [["Year reviewed", "Very dark"], ["Year reviewed", "Rating"], ["Very dark", "Rating"]],
@@ -36,7 +37,7 @@ export default {
     {
       name: "Just the correlation",
       fine: true,
-      explain: "Nothing frozen, and the answer hardly moves. The year was a real Mr Confounder, but a very weak one, so the simple comparison was already almost fair.",
+      explain: "At first glance, very dark bars score {est} on the 1–4 scale compared with the rest. Before believing it, ask: is anything pushing on both how dark a bar is and how it's rated?",
       lesson: "Sometimes correlation and causation nearly agree. The map is how you know when.",
       pos: { "Very dark": [190, 205], Rating: [480, 205] },
       edges: [["Very dark", "Rating"]],
@@ -44,7 +45,7 @@ export default {
     {
       name: "Freeze cocoa butter",
       fine: true,
-      explain: "This map worries that added cocoa butter changes both darkness and taste, so it freezes it too. The answer barely moves: cocoa butter isn't linked to the rating once the year is frozen.",
+      explain: "What about added cocoa butter? Freezing it too gives {est}, the same again, because it doesn't push on how bars are rated. Not everything you could freeze matters.",
       lesson: "Freezing something that doesn't push on both leaves the answer alone.",
       pos: { "Very dark": [80, 215], Rating: [556, 215], "Cocoa butter": [178, 40], "Year reviewed": [458, 40] },
       edges: [["Year reviewed", "Very dark"], ["Year reviewed", "Rating"], ["Cocoa butter", "Very dark"], ["Cocoa butter", "Rating"], ["Very dark", "Rating"]],

@@ -11,6 +11,7 @@ export default {
   name: "The exploding snowman",
   question: "Does a quick-burning Böögg mean a hot summer?",
   about: "65 years of Zürich's spring festival, when a snowman called the Böögg is burned. Burn time is minutes until its head explodes; summer temperature is Zürich's June–August average in °C.",
+  order: [1, 0, 2],
   intro: [
     "Every April in Zürich, a giant snowman called the Böögg is set on fire. Folklore says the faster its head explodes, the hotter the summer will be. <b>Is the Böögg right?</b>",
   ],
@@ -28,7 +29,7 @@ export default {
   versions: [
     {
       name: "Our map",
-      explain: "Summers have got warmer over the decades, and burn times have drifted too, so the year pushes on both and is frozen. What's left is tiny: even a half-hour difference in burning would mean well under half a degree, and it could easily be zero.",
+      explain: "Summers have warmed a lot since the 1950s, and burn times have drifted too, so the year pushes on both. Freeze it, and what's left is {est} °C per minute: closer still to nothing.",
       lesson: "An answer close to zero is still an answer: the folklore doesn't hold up.",
       pos: { "Burn time (min)": [80, 215], "Summer temp (C)": [556, 215], Year: [318, 40] },
       edges: [["Year", "Burn time (min)"], ["Year", "Summer temp (C)"], ["Burn time (min)", "Summer temp (C)"]],
@@ -36,7 +37,7 @@ export default {
     {
       name: "Just the correlation",
       fine: true,
-      explain: "Nothing frozen. The number is a little bigger, because warming over the years helps make both things go up together, but it's still tiny and uncertain.",
+      explain: "At first glance, each extra minute of burning goes with a summer {est} °C warmer. That's tiny: even a half-hour difference would barely change a summer, and it could easily be zero.",
       lesson: "Before trusting a pattern, ask how big it is, not just whether it's there.",
       pos: { "Burn time (min)": [190, 205], "Summer temp (C)": [480, 205] },
       edges: [["Burn time (min)", "Summer temp (C)"]],
@@ -44,7 +45,7 @@ export default {
     {
       name: "Freeze sunshine too",
       fine: true,
-      explain: "Folklore-lovers might say a sunny year shows up even in April, so this map freezes summer sunshine as well. The answer drops to almost exactly zero.",
+      explain: "Folklore fans might say a sunny year shows up even in April, so freeze summer sunshine as well. Now it's {est}, as near zero as it gets. However you draw the map, the Böögg can't predict the summer.",
       lesson: "However you draw the map, the effect stays near zero.",
       pos: { "Burn time (min)": [80, 215], "Summer temp (C)": [556, 215], "Summer sun (h)": [178, 40], Year: [458, 40] },
       edges: [["Year", "Burn time (min)"], ["Year", "Summer temp (C)"], ["Summer sun (h)", "Burn time (min)"], ["Summer sun (h)", "Summer temp (C)"], ["Burn time (min)", "Summer temp (C)"]],

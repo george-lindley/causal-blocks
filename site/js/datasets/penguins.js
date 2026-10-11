@@ -11,6 +11,7 @@ export default {
   name: "Penguin bills",
   question: "Do penguins with longer bills have deeper bills?",
   about: "333 penguins of three species (Adélie, Chinstrap and Gentoo) measured near Antarctica (2007–2009). Bill length and depth are in millimetres.",
+  order: [1, 0, 2, 3],
   intro: [
     "Scientists in Antarctica measured hundreds of penguins of three species. <b>Do penguins with longer bills have deeper bills?</b>",
   ],
@@ -29,7 +30,7 @@ export default {
   versions: [
     {
       name: "Our map",
-      explain: "Species and sex both push on bill length and bill depth: Gentoos have long, thin bills, and males have bigger bills all round. Freezing both compares penguins of the same species and sex.",
+      explain: "Look what happens when we freeze species and sex: the relationship turns around! Within the same species and sex, longer bills are deeper, by {est} mm per millimetre. Mixing groups had flipped the pattern. That's Simpson's paradox.",
       lesson: "Freeze every Mr Confounder you can see.",
       pos: { "Bill length (mm)": [80, 215], "Bill depth (mm)": [556, 215], Sex: [178, 40], Species: [458, 40] },
       edges: [["Species", "Bill length (mm)"], ["Species", "Bill depth (mm)"], ["Sex", "Bill length (mm)"], ["Sex", "Bill depth (mm)"], ["Bill length (mm)", "Bill depth (mm)"]],
@@ -37,7 +38,7 @@ export default {
     {
       name: "Just the correlation",
       mistake: true,
-      explain: "Nothing frozen, and the answer points the wrong way: longer bills seem shallower. That's because the long-billed Gentoos have thin bills. Within every species it's the other way round.",
+      explain: "At first glance, longer bills come with shallower bills: {est} mm of depth for each extra millimetre of length. But three species are mixed together, and Gentoos have long, thin bills.",
       lesson: "Mixing groups can flip a pattern. This is Simpson's paradox.",
       pos: { "Bill length (mm)": [190, 205], "Bill depth (mm)": [480, 205] },
       edges: [["Bill length (mm)", "Bill depth (mm)"]],
@@ -45,7 +46,7 @@ export default {
     {
       name: "Forget sex",
       mistake: true,
-      explain: "Only species is frozen. Males have both longer and deeper bills, so part of the link is just males versus females, and the answer comes out too big.",
+      explain: "Freeze species but forget sex, and the answer comes out too big ({est}): males have longer and deeper bills, so part of the link is just males versus females.",
       lesson: "Missing a Mr Confounder can make an effect look bigger than it is.",
       pos: { "Bill length (mm)": [80, 215], "Bill depth (mm)": [556, 215], Species: [318, 40] },
       edges: [["Species", "Bill length (mm)"], ["Species", "Bill depth (mm)"], ["Bill length (mm)", "Bill depth (mm)"]],
@@ -53,7 +54,7 @@ export default {
     {
       name: "Freeze island instead",
       mistake: true,
-      explain: "Islands are home to different species, but two islands have two species each, so freezing island doesn't separate them. The answer still points the wrong way.",
+      explain: "Freezing the island instead of the species doesn't work either ({est}, still the wrong way round). Two islands are home to two species each, so island is only a rough stand-in for species.",
       lesson: "Freeze the real Mr Confounder, not a stand-in for it.",
       pos: { "Bill length (mm)": [80, 215], "Bill depth (mm)": [556, 215], Island: [318, 40] },
       edges: [["Island", "Bill length (mm)"], ["Island", "Bill depth (mm)"], ["Bill length (mm)", "Bill depth (mm)"]],

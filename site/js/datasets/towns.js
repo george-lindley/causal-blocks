@@ -9,6 +9,7 @@ export default {
   tag: "UK schools",
   icon: "🏫",
   level: "hard",
+  order: [1, 0, 2, 3],
   name: "Small towns and exam results",
   question: "Do children in smaller towns do better at school?",
   about: "1,082 English towns. The education score is the ONS’s measure of how well young people do at school (most towns score between −4 and +5). Town size goes small → medium → large.",
@@ -33,7 +34,7 @@ export default {
   versions: [
     {
       name: "Our map",
-      explain: "Region pushes on both town size and results, so it's frozen: each town is compared only with towns in the same region. Deprivation is <i>how</i> size has its effect (bigger towns tend to be poorer), so it's left free.",
+      explain: "So we freeze region, comparing each town only with towns in the same region. The gap grows to {est} per step. Deprivation stays free: bigger towns tend to be poorer, and that's Ms Mediator, the route the effect travels along.",
       lesson: "Freeze what pushes on both the cause and the effect. Leave alone what the cause pushes on.",
       pos: { Region: [24, 40], Coastal: [24, 380], "Town size": [240, 130], Deprivation: [350, 330], "Education score": [620, 215] },
       edges: [["Region", "Town size"], ["Region", "Deprivation"], ["Coastal", "Deprivation"],
@@ -42,7 +43,7 @@ export default {
     {
       name: "Just the correlation",
       mistake: true,
-      explain: "The ONS comparison: town size against results, with nothing frozen. The regions with the most big towns happen to do well for other reasons, which hides part of the effect.",
+      explain: "At first glance, the ONS comparison says yes: each step up in town size goes with an education score {est} lower. But regions matter. The regions with the most big towns happen to do well at school for other reasons, which hides part of the gap.",
       lesson: "A correlation mixes the effect up with everything else that differs between the groups.",
       pos: { "Town size": [190, 205], "Education score": [480, 205] },
       edges: [["Town size", "Education score"]],
@@ -50,7 +51,7 @@ export default {
     {
       name: "Freeze deprivation",
       mistake: true,
-      explain: "This map draws deprivation as a cause of town size, so it gets frozen. That switches off the main way size affects results, and the answer flips: bigger towns now look <i>better</i>. It isn't the whole effect of size, but it does answer a different question: among <i>equally deprived</i> towns, do bigger ones do better? That's called the direct effect. So under this map, being a big town isn't what holds results back (unlike reported in the correlation study). Being poorer is. It's the most surprising thing in the data.",
+      explain: "<b>And here's the twist.</b> Freeze deprivation, so you only compare towns that are <i>equally</i> deprived, and the answer flips the other way: bigger towns now do <i>better</i>, by {est} a step. So under this map, being a big town isn't what holds results back (unlike reported in the correlation study). Being poorer is. That's a different question from the whole effect of town size, the direct effect, but it's the most surprising thing in the data.",
       lesson: "Freezing a mediator leaves only the direct effect. Fine if that's your question; a mistake if you wanted the whole effect.",
       pos: { Deprivation: [318, 40], "Town size": [80, 300], "Education score": [556, 300] },
       edges: [["Deprivation", "Town size"], ["Deprivation", "Education score"], ["Town size", "Education score"]],
@@ -58,7 +59,7 @@ export default {
     {
       name: "Control for everything",
       mistake: true,
-      explain: "Every column is frozen, deprivation included. It feels careful, but it repeats the last mistake, and the answer flips again.",
+      explain: "It might feel careful to freeze everything at once. But that freezes deprivation too, repeating the last step, and the answer flips again ({est}).",
       lesson: "More controls isn't safer. Only freeze what your map says is a confounder.",
       pos: { Region: [30, 30], Deprivation: [318, 30], University: [606, 30], "Town size": [150, 205],
         "Education score": [486, 205], Coastal: [150, 384], "Adult degrees": [486, 384] },

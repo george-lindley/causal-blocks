@@ -11,6 +11,7 @@ export default {
   name: "Wages and coffee prices",
   question: "Do places with higher wages charge more for a cappuccino?",
   about: "2,451 cafés in 36 countries: the price of a small cappuccino and the local hourly wage, both in pounds.",
+  order: [1, 0, 3, 2],
   intro: [
     "Coffee YouTuber James Hoffmann collected the price of a cappuccino and local wages from cafés around the world. <b>Do places with higher wages charge more for coffee?</b>",
   ],
@@ -28,7 +29,7 @@ export default {
   versions: [
     {
       name: "Our map",
-      explain: "Rich countries have both higher wages and pricier coffee (rent, taxes, ingredients), and cities are pricier than the countryside. Both push on wages and prices, so both are frozen.",
+      explain: "So we freeze country, and city versus countryside too. Now £1 more in wages comes with only {est} pounds more: about a third of the first glance. Most of the link was rich countries versus poorer ones.",
       lesson: "Freeze every Mr Confounder on the map, big and small.",
       pos: { "Hourly wage (£)": [80, 215], "Cappuccino (£)": [556, 215], City: [178, 40], Country: [458, 40] },
       edges: [["Country", "Hourly wage (£)"], ["Country", "Cappuccino (£)"], ["City", "Hourly wage (£)"], ["City", "Cappuccino (£)"], ["Hourly wage (£)", "Cappuccino (£)"]],
@@ -36,7 +37,7 @@ export default {
     {
       name: "Just the correlation",
       mistake: true,
-      explain: "Nothing frozen. Most of the link is just rich countries versus poorer ones, so wages get the credit for everything that makes a country expensive.",
+      explain: "At first glance, every extra £1 an hour in wages comes with a cappuccino {est} pounds dearer. But rich countries have higher wages and higher costs of almost everything.",
       lesson: "Comparing across very different groups mixes the effect up with the groups.",
       pos: { "Hourly wage (£)": [190, 205], "Cappuccino (£)": [480, 205] },
       edges: [["Hourly wage (£)", "Cappuccino (£)"]],
@@ -44,7 +45,7 @@ export default {
     {
       name: "Freeze city only",
       mistake: true,
-      explain: "Only city versus countryside is frozen. That's a small Mr Confounder; the big one, country, is still mixed in, so the answer hardly improves.",
+      explain: "Freeze only city versus countryside, though, and you're back near the first glance ({est}). That's the small Mr Confounder; the big one is still mixed in.",
       lesson: "Freezing the wrong Mr Confounder doesn't fix the right one.",
       pos: { "Hourly wage (£)": [80, 215], "Cappuccino (£)": [556, 215], City: [318, 40] },
       edges: [["City", "Hourly wage (£)"], ["City", "Cappuccino (£)"], ["Hourly wage (£)", "Cappuccino (£)"]],
@@ -52,7 +53,7 @@ export default {
     {
       name: "Freeze country only",
       fine: true,
-      explain: "Country alone does almost all the work: adding city on top barely changes the answer. Both maps are reasonable.",
+      explain: "Freezing country alone gives almost the same answer ({est}). Country does nearly all the work.",
       lesson: "Find the Mr Confounder that matters most first.",
       pos: { "Hourly wage (£)": [80, 215], "Cappuccino (£)": [556, 215], Country: [318, 40] },
       edges: [["Country", "Hourly wage (£)"], ["Country", "Cappuccino (£)"], ["Hourly wage (£)", "Cappuccino (£)"]],

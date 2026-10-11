@@ -83,7 +83,7 @@ async function open(key) {
   history.replaceState(null, "", url);
   renderCase();
   if (changed) tutor.reset();
-  show(0);
+  show(storyOrder(set)[0]);
 }
 
 // ---- The tutor's maps ------------------------------------------------------
@@ -155,7 +155,7 @@ function tutorContext() {
     frozen: state.results[i].adjust,
     estimate: Number(state.results[i].effect.toFixed(2)),
     range_95: state.results[i].ci.map((x) => Number(x.toFixed(2))),
-    explanation: plain(v.explain),
+    explanation: plain(stepText(state.version)),
     lesson: v.lesson,
   }));
   if (state.whatIf) {
@@ -209,6 +209,11 @@ const levelBadge = (level) => {
 const KIND = { best: "✓ Best map", mistake: "✗ Mistake", fine: "✓ Also fine" };
 const kindOf = (v, i) => (i === 0 ? "best" : v.mistake ? "mistake" : "fine");
 const TIDYTUESDAY = "https://github.com/rfordatascience/tidytuesday/tree/main/data/";
+// Story order: every story starts with the basic correlation. The data keeps the best map first.
+const storyOrder = (set) => set.order ?? set.versions.map((_, i) => i);
+// A step's words, with {est} (this map's answer) and {best} (the best map's) filled in from the live estimates.
+const stepText = (i) => state.set.versions[i].explain
+  .replaceAll("{est}", fmt(state.results[i].effect)).replaceAll("{best}", fmt(state.results[0].effect));
 
 // The picker: one dropdown per level, easy to hard, left to right.
 function renderPicker() {
@@ -241,13 +246,13 @@ function renderCase() {
   $("case-about").innerHTML = `${story}<a href="${set.file}" download>Download the data</a>
     <span class="case-source">Data: ${set.source}${week}</span>`;
   // The story, one map at a time: each step's sentence sits beside the map it describes.
-  $("steps").innerHTML = set.versions.map((v, i) => `
+  $("steps").innerHTML = storyOrder(set).map((i) => [set.versions[i], i]).map(([v, i]) => `
     <li class="step ${kindOf(v, i)}">
       <button type="button" class="step-map" data-v="${i}">
         <span class="step-tag">${KIND[kindOf(v, i)]}</span>
         <span class="step-name">${v.name}</span>
       </button>
-      <p>${v.explain}</p>
+      <p>${stepText(i)}</p>
     </li>`).join("");
   renderWhatIf();
 }

@@ -11,6 +11,7 @@ export default {
   name: "Heavy Pokémon and attack",
   question: "Do heavier Pokémon hit harder?",
   about: "949 Pokémon with their weight (in hundreds of kilograms), height (metres) and Attack, one of six battle stats.",
+  order: [1, 0, 3, 2],
   intro: [
     "There are hundreds of Pokémon, from tiny to enormous, and each has battle stats, including Attack. <b>Do heavier Pokémon hit harder?</b>",
   ],
@@ -29,7 +30,7 @@ export default {
   versions: [
     {
       name: "Our map",
-      explain: "Bigger Pokémon are both heavier and stronger, so height pushes on both and is frozen: Pokémon are compared with others of the same height.",
+      explain: "So we freeze height, comparing Pokémon of the same height. Weight on its own is worth {est} Attack per 100 kg: about half the first glance.",
       lesson: "Freeze what pushes on both the cause and the effect.",
       pos: { "Weight (100 kg)": [80, 215], Attack: [556, 215], "Height (m)": [318, 40] },
       edges: [["Height (m)", "Weight (100 kg)"], ["Height (m)", "Attack"], ["Weight (100 kg)", "Attack"]],
@@ -37,7 +38,7 @@ export default {
     {
       name: "Just the correlation",
       mistake: true,
-      explain: "Nothing frozen. Heavy Pokémon are usually big ones, and big ones hit hard anyway, so weight gets the credit for size.",
+      explain: "At first glance, every extra 100 kg comes with {est} more Attack. But heavy Pokémon are usually big ones, and big ones hit hard anyway.",
       lesson: "A strong Mr Confounder can make an effect look twice as big.",
       pos: { "Weight (100 kg)": [190, 205], Attack: [480, 205] },
       edges: [["Weight (100 kg)", "Attack"]],
@@ -45,7 +46,7 @@ export default {
     {
       name: "Freeze base stat total",
       mistake: true,
-      explain: "The base stat total is all six battle stats added up, Attack included. Freezing it compares Pokémon with the same total, so any extra Attack has to come out of another stat, and the effect nearly vanishes.",
+      explain: "Don't freeze the base stat total. It's all six battle stats added up, Attack included. Compare Pokémon with the same total, and any extra Attack has to come out of another stat: the effect nearly vanishes ({est}).",
       lesson: "Never freeze something calculated from the effect.",
       pos: { "Weight (100 kg)": [80, 215], Attack: [556, 215], "Base stat total": [178, 40], "Height (m)": [458, 40] },
       edges: [["Height (m)", "Weight (100 kg)"], ["Height (m)", "Attack"], ["Base stat total", "Weight (100 kg)"], ["Base stat total", "Attack"], ["Weight (100 kg)", "Attack"]],
@@ -53,7 +54,7 @@ export default {
     {
       name: "Freeze type too",
       fine: true,
-      explain: "Rock and Steel types tend to be heavy and strong, so type could push on both. Freezing it as well moves the answer a little, not a lot. This map is reasonable too.",
+      explain: "Rock and Steel types tend to be heavy and strong, so type could push on both too. Freezing it as well nudges the answer to {est}. Both maps are reasonable.",
       lesson: "A second, weaker Mr Confounder only nudges the answer.",
       pos: { "Weight (100 kg)": [80, 215], Attack: [556, 215], "Height (m)": [178, 40], Type: [458, 40] },
       edges: [["Height (m)", "Weight (100 kg)"], ["Height (m)", "Attack"], ["Type", "Weight (100 kg)"], ["Type", "Attack"], ["Weight (100 kg)", "Attack"]],

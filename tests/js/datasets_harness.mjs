@@ -11,6 +11,11 @@ const out = DATASETS.map((set) => {
   const [head, ...rows] = text.trim().split(/\r?\n/).map((l) => l.split(","));
   const problems = [];
   if (!set.source) problems.push("no source: every case study credits its data");
+  const order = set.order ?? set.versions.map((_, i) => i);
+  if ([...order].sort().join() !== set.versions.map((_, i) => i).join()) problems.push("order must list every map once");
+  const first = set.versions[order[0]];
+  if (first.edges.length !== 1 || first.edges[0][0] !== set.cause || first.edges[0][1] !== set.effect)
+    problems.push("the story must start with the basic correlation (cause -> effect only)");
   if (set.versions.slice(1).some((v) => !v.lesson)) problems.push("every map needs a lesson");
   if (!["easy", "medium", "hard"].includes(set.level)) problems.push(`level must be easy, medium or hard, not ${set.level}`);
   if (text.includes('"')) problems.push("CSV has quotes; the page's reader doesn't handle them");
