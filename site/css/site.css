@@ -276,14 +276,14 @@ footer .foot-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 
 .intro-short { padding-block: 16px 16px; }
 .intro-short h1 { margin-bottom: 6px; }
 .case { padding-bottom: 48px; }
-.case-head { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 18px; align-items: start; margin-bottom: 22px; }
-.case-icon { display: grid; place-items: center; width: 76px; height: 76px; border-radius: 18px; background: var(--surface-2); font-size: 42px; line-height: 1; }
+.case-head { display: grid; grid-template-columns: minmax(0, 1fr) 150px; gap: 28px; align-items: start; margin-bottom: 26px; }
+.case-icon { display: grid; place-items: center; width: 150px; height: 150px; border-radius: 28px; background: var(--surface-2); font-size: 92px; line-height: 1; }
 .case-head h2 { margin: 2px 0 6px; font: 800 clamp(22px, 2.6vw, 30px)/1.15 var(--font-display); text-wrap: balance; }
 .case-lede { margin: 0 0 8px; font-size: 17px; line-height: 1.55; }
 .case-about { color: var(--muted); }
 .case-links { font-size: 14px; }
 .case-source { display: block; margin-top: 2px; font-size: 13px; }
-@media (max-width: 600px) { .case-head { grid-template-columns: 52px minmax(0, 1fr); gap: 12px; } .case-icon { width: 52px; height: 52px; font-size: 28px; border-radius: 14px; } }
+@media (max-width: 600px) { .case-head { grid-template-columns: minmax(0, 1fr) 64px; gap: 12px; } .case-icon { width: 64px; height: 64px; font-size: 38px; border-radius: 16px; } }
 
 /* Case studies: the story on the left; on the right the map, with the lesson and tutor under it.
    The right side stays in view while the story scrolls. */
