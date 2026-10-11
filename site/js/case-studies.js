@@ -4,16 +4,17 @@
 // maps ("what if…"), and they're estimated here the same way.
 
 import { createBoard } from "./board.js";
-import { dowhyBackdoor, roles, Role } from "./causal.js";
+import { dowhyBackdoor, primaryRole, roles, Role } from "./causal.js";
 import { encode, Kind } from "./data.js";
 import { estimateEffect } from "./estimate.js";
 import { CHARACTER } from "./names.js";
 import { fmt } from "./ui.js";
 import { createTutor } from "./tutor.js";
 import { DATASETS } from "./datasets/index.js";
+import { dataChart } from "./datachart.js";
 
 const $ = (id) => document.getElementById(id);
-const state = { set: null, table: null, results: [], version: 0, whatIf: null };
+const state = { set: null, table: null, results: [], version: 0, whatIf: null, revealed: 0, guess: null };
 const cache = new Map(); // dataset key -> {table, results}
 const MAX_BLOCKS = 8;
 
@@ -78,10 +79,13 @@ async function open(key) {
   state.set = set;
   ({ table: state.table, results: state.results } = cache.get(set.key));
   state.whatIf = null;
+  state.revealed = 0;
+  state.guess = null;
   const url = new URL(location.href);
   url.searchParams.set("data", set.key);
   history.replaceState(null, "", url);
   renderCase();
+  renderLegend();
   if (changed) tutor.reset();
   show(storyOrder(set)[0]);
 }
@@ -190,10 +194,13 @@ function suggestions() {
 
 // ---- Rendering -------------------------------------------------------------
 
+/** The legend lists only the characters this case's maps use. */
 function renderLegend() {
-  const shown = [Role.TREATMENT, Role.OUTCOME, Role.CONFOUNDER, Role.MEDIATOR];
-  $("legend").innerHTML = shown.map((r) => `<span><i style="background: var(--role-${r})"></i>${CHARACTER[r]}</span>`).join("")
-    + `<span><i class="frozen-key"></i>❄ Frozen (held fixed)</span>`;
+  const used = new Set(state.results.flatMap((r) => Object.values(r.roles).map(primaryRole)));
+  const order = [Role.TREATMENT, Role.OUTCOME, Role.CONFOUNDER, Role.MEDIATOR, Role.COLLIDER, Role.INSTRUMENT, Role.PRECISION, Role.UNRELATED];
+  const frozen = state.results.some((r) => r.adjust.length);
+  $("legend").innerHTML = order.filter((r) => used.has(r)).map((r) => `<span><i style="background: var(--role-${r})"></i>${CHARACTER[r]}</span>`).join("")
+    + (frozen ? `<span><i class="frozen-key"></i>❄ Frozen (held fixed)</span>` : "");
 }
 
 // How hard a case study is to untangle: a word and dots, so it never rests on colour alone.
@@ -206,8 +213,9 @@ const levelBadge = (level) => {
 
 // Every map is the best map, a mistake, or "also fine": a different map that gets the same answer,
 // which teaches that not everything you could freeze matters.
-const KIND = { best: "✓ Best map", mistake: "✗ Mistake", fine: "✓ Also fine" };
-const kindOf = (v, i) => (i === 0 ? "best" : v.mistake ? "mistake" : "fine");
+// The story's first step is a "first look": the plain correlation, before anything is frozen.
+const KIND = { first: "👀 First look", best: "✓ Best map", mistake: "✗ Mistake", fine: "✓ Also fine" };
+const kindOf = (v, i) => (i === storyOrder(state.set)[0] ? "first" : i === 0 ? "best" : v.mistake ? "mistake" : "fine");
 const TIDYTUESDAY = "https://github.com/rfordatascience/tidytuesday/tree/main/data/";
 // Story order: every story starts with the basic correlation. The data keeps the best map first.
 const storyOrder = (set) => set.order ?? set.versions.map((_, i) => i);
@@ -247,14 +255,64 @@ function renderCase() {
     <span class="case-source">Data: ${set.source}${week}</span>`;
   // The story, one map at a time: each step's sentence sits beside the map it describes.
   $("steps").innerHTML = storyOrder(set).map((i) => [set.versions[i], i]).map(([v, i]) => `
-    <li class="step ${kindOf(v, i)}">
+    <li class="step ${kindOf(v, i)}" data-step="${i}">
       <button type="button" class="step-map" data-v="${i}">
         <span class="step-tag">${KIND[kindOf(v, i)]}</span>
         <span class="step-name">${v.name}</span>
       </button>
       <p>${stepText(i)}</p>
+      <div class="step-extra"></div>
     </li>`).join("");
+  renderPredict();
+  renderReveal();
   renderWhatIf();
+}
+
+// ---- Predict, then reveal one step at a time ---------------------------------
+
+const GUESS = { up: "↑ It goes up", down: "↓ It goes down", zero: "≈ About zero" };
+/** The right guess, under the best map: about zero if its 95% range includes zero. */
+function rightGuess() {
+  const r = state.results[0];
+  return r.ci[0] <= 0 && r.ci[1] >= 0 ? "zero" : r.effect > 0 ? "up" : "down";
+}
+
+function renderPredict() {
+  const set = state.set;
+  const prompt = set.reads.replace("{est}", "<b class=\"blank\">?</b>");
+  $("predict").innerHTML = state.guess === null
+    ? `<p class="predict-q"><b>Before you start, make a guess.</b> ${prompt}</p>
+       <div class="predict-options">${Object.entries(GUESS).map(([k, t]) => `<button type="button" data-guess="${k}">${t}</button>`).join("")}</div>
+       <button type="button" class="link" data-guess="skip">Skip the guess</button>`
+    : state.guess === "skip" ? "" : `<p class="predict-made">Your guess: <b>${GUESS[state.guess]}</b></p>`;
+}
+
+function renderReveal() {
+  const order = storyOrder(state.set);
+  document.querySelectorAll("#steps .step").forEach((li, k) => { li.hidden = k >= state.revealed; });
+  const done = state.revealed >= order.length;
+  $("story-nav").hidden = state.revealed === 0 || done;
+  // The verdict on the guess sits under the best map's step, once it's been read.
+  const bestLi = document.querySelector('#steps .step[data-step="0"] .step-extra');
+  const seenBest = order.indexOf(0) < state.revealed;
+  if (bestLi) {
+    bestLi.querySelector(".verdict")?.remove();
+    if (seenBest && state.guess && state.guess !== "skip") {
+      const right = state.guess === rightGuess();
+      const says = { up: "it goes up", down: "it goes down", zero: "it's about zero" }[rightGuess()];
+      const guessed = { up: "up", down: "down", zero: "about zero" }[state.guess];
+      bestLi.insertAdjacentHTML("afterbegin", right
+        ? `<p class="verdict right">✓ You guessed right: under the best map, ${says}.</p>`
+        : `<p class="verdict wrong">You guessed ${guessed}. Under the best map, ${says}.</p>`);
+    }
+  }
+}
+
+function reveal(n) {
+  const order = storyOrder(state.set);
+  state.revealed = Math.min(order.length, Math.max(state.revealed, n));
+  renderReveal();
+  show(order[state.revealed - 1]);
 }
 
 function renderWhatIf() {
@@ -274,14 +332,17 @@ function show(i) {
   for (const b of document.querySelectorAll(".story .step-map")) b.setAttribute("aria-pressed", b.dataset.v === String(i));
   tutor.suggest(suggestions());
 
+  for (const el of document.querySelectorAll(".story .step-extra .data-chart, #whatif-slot .data-chart")) el.remove();
+
   if (i === "whatIf") {
     const w = state.whatIf;
     board.load(w.pos, w.edges);
     board.draw(w.r.roles, { frozen: new Set(w.r.adjust) });
+    renderAnswer(w.r.effect, "whatif");
+    $("whatif-slot").querySelector(".step")?.insertAdjacentHTML("beforeend", dataChart({ set, table: state.table, frozen: w.r.adjust }));
     $("lesson").className = "card lesson whatif";
     $("lesson").innerHTML = `
       <span class="label">🧪 The tutor's map: ${escapeHtml(w.name)}</span>
-      <div class="lesson-value">${fmt(w.r.effect)}</div>
       <p class="lesson-reads">${set.reads.replace("{est}", fmt(w.r.effect))}</p>
       <p class="lesson-best">The best map says <b>${fmt(state.results[0].effect)}</b>.</p>
       <p>This map isn't one of the worked examples. Ask the tutor why its answer is different.</p>`;
@@ -293,15 +354,44 @@ function show(i) {
   board.load(v.pos, v.edges);
   board.draw(r.roles, { frozen: new Set(r.adjust) });
 
+  // Before the guess, the map is shown but the answer isn't.
+  if (state.revealed === 0) {
+    renderAnswer(null);
+    $("lesson").className = "card lesson waiting";
+    $("lesson").innerHTML = `<p class="lesson-reads">Make your guess in the story to start.</p>`;
+    return;
+  }
   const kind = kindOf(v, i);
+  renderAnswer(r.effect, kind);
+  document.querySelector(`#steps .step[data-step="${i}"] .step-extra`)?.insertAdjacentHTML("beforeend", dataChart({ set, table: state.table, frozen: r.adjust }));
   const best = kind !== "best" ? `<p class="lesson-best">The best map says <b>${fmt(state.results[0].effect)}</b>.</p>` : "";
   $("lesson").className = `card lesson ${kind}`;
   $("lesson").innerHTML = `
     <span class="label">${KIND[kind]}: ${v.name}</span>
-    <div class="lesson-value">${fmt(r.effect)}</div>
     <p class="lesson-reads">${set.reads.replace("{est}", fmt(r.effect))}</p>
     ${best}
     <p class="lesson-point"><b>Lesson:</b> ${v.lesson}</p>`;
+}
+
+// ---- The answer: a big number and a number line where the dot moves with each map ----------------
+
+function renderAnswer(effect, kind) {
+  const all = [...state.results.map((r) => r.effect), ...(state.whatIf ? [state.whatIf.r.effect] : []), 0];
+  let lo = Math.min(...all), hi = Math.max(...all);
+  const pad = (hi - lo) * 0.08 || 1;
+  lo -= pad; hi += pad;
+  const X = (x) => 16 + ((x - lo) / (hi - lo)) * 568;
+  const order = storyOrder(state.set);
+  const seen = order.slice(0, state.revealed);
+  const ghosts = seen.map((i) => `<circle class="nl-seen ${kindOf(state.set.versions[i], i)}" cx="${X(state.results[i].effect).toFixed(1)}" cy="22" r="5"><title>${escapeHtml(state.set.versions[i].name)}: ${fmt(state.results[i].effect)}</title></circle>`).join("");
+  $("answer-value").textContent = effect === null ? "?" : fmt(effect);
+  $("answer-value").className = `answer-value ${kind ?? ""}`;
+  $("answer-line").innerHTML = `
+    <line x1="16" x2="584" y1="22" y2="22" class="nl-axis"/>
+    <line x1="${X(0)}" x2="${X(0)}" y1="12" y2="32" class="nl-zero"/>
+    <text x="${X(0)}" y="46" text-anchor="middle" class="nl-label">0</text>
+    ${ghosts}
+    ${effect === null ? "" : `<circle class="nl-now ${kind ?? ""}" cx="${X(effect).toFixed(1)}" cy="22" r="9"/>`}`;
 }
 
 function showTab(name) {
@@ -317,6 +407,15 @@ $("datasets").addEventListener("change", (e) => {
   if (e.target.value) open(e.target.value);
 });
 document.querySelector(".story").addEventListener("click", (e) => {
+  const g = e.target.closest("[data-guess]");
+  if (g) {
+    state.guess = g.dataset.guess;
+    renderPredict();
+    reveal(1);
+    return;
+  }
+  if (e.target.closest("#next-step")) return reveal(state.revealed + 1);
+  if (e.target.closest("#show-all")) return reveal(storyOrder(state.set).length);
   const b = e.target.closest(".step-map");
   if (!b) return;
   show(b.dataset.v === "whatIf" ? "whatIf" : Number(b.dataset.v));
@@ -328,5 +427,4 @@ document.querySelector(".side-tabs").addEventListener("click", (e) => {
   if (t) showTab(t.dataset.tab);
 });
 renderPicker();
-renderLegend();
 open(new URL(location.href).searchParams.get("data"));

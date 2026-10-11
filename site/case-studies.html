@@ -49,11 +49,19 @@
 
     <div class="case-grid">
       <section class="story" aria-label="The story, one map at a time">
-        <p class="story-hint">Read the story and click each map.</p>
+        <div class="predict" id="predict"></div>
         <ol class="steps" id="steps"></ol>
+        <div class="story-nav" id="story-nav" hidden>
+          <button type="button" id="next-step">Next step →</button>
+          <button type="button" class="link" id="show-all">Show the whole story</button>
+        </div>
         <div id="whatif-slot"></div>
       </section>
       <div class="stage">
+      <div class="answer" aria-live="polite">
+        <div class="answer-value" id="answer-value">?</div>
+        <svg class="answer-line" id="answer-line" viewBox="0 0 600 52" aria-hidden="true"></svg>
+      </div>
       <section class="board board-locked" id="board" aria-label="Causal map">
         <div class="canvas-scroll">
           <svg id="canvas" viewBox="0 0 800 470" role="img" aria-label="The causal map for this version"></svg>

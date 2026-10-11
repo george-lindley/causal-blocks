@@ -13,7 +13,7 @@ export default {
   about: "65 years of Zürich's spring festival, when a snowman called the Böögg is burned. Burn time is minutes until its head explodes; summer temperature is Zürich's June–August average in °C.",
   order: [1, 0, 2],
   intro: [
-    "Every April in Zürich, a giant snowman called the Böögg is set on fire. Folklore says the faster its head explodes, the hotter the summer will be. <b>Is the Böögg right?</b>",
+    "Every April in Zürich, a giant snowman called the Böögg is set on fire. Folklore says the faster its head explodes, the hotter the summer will be.",
   ],
   source: "Sechseläuten Böögg burn times; MeteoSwiss Zürich weather",
   tidytuesday: "2025-12-02",
@@ -37,7 +37,7 @@ export default {
     {
       name: "Just the correlation",
       fine: true,
-      explain: "At first glance, each extra minute of burning goes with a summer {est} °C warmer. That's tiny: even a half-hour difference would barely change a summer, and it could easily be zero.",
+      explain: "At first glance, each extra minute of burning goes with a summer {est} °C warmer. That's tiny: even half an hour would barely change a summer, and it could easily be zero.",
       lesson: "Before trusting a pattern, ask how big it is, not just whether it's there.",
       pos: { "Burn time (min)": [190, 205], "Summer temp (C)": [480, 205] },
       edges: [["Burn time (min)", "Summer temp (C)"]],

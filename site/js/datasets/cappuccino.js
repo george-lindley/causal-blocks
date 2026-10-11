@@ -11,9 +11,9 @@ export default {
   name: "Wages and coffee prices",
   question: "Do places with higher wages charge more for a cappuccino?",
   about: "2,451 cafés in 36 countries: the price of a small cappuccino and the local hourly wage, both in pounds.",
-  order: [1, 0, 3, 2],
+  order: [1, 2, 0, 3],
   intro: [
-    "Coffee YouTuber James Hoffmann collected the price of a cappuccino and local wages from cafés around the world. <b>Do places with higher wages charge more for coffee?</b>",
+    "Coffee YouTuber James Hoffmann collected the price of a cappuccino and local wages from cafés around the world.",
   ],
   source: "James Hoffmann's Cappuccino Index",
   tidytuesday: "2026-09-08",
@@ -29,7 +29,7 @@ export default {
   versions: [
     {
       name: "Our map",
-      explain: "So we freeze country, and city versus countryside too. Now £1 more in wages comes with only {est} pounds more: about a third of the first glance. Most of the link was rich countries versus poorer ones.",
+      explain: "Freeze country as well, and £1 more in wages comes with only {est} pounds more: about a third of the first look. Most of the link was rich countries versus poorer ones.",
       lesson: "Freeze every Mr Confounder on the map, big and small.",
       pos: { "Hourly wage (£)": [80, 215], "Cappuccino (£)": [556, 215], City: [178, 40], Country: [458, 40] },
       edges: [["Country", "Hourly wage (£)"], ["Country", "Cappuccino (£)"], ["City", "Hourly wage (£)"], ["City", "Cappuccino (£)"], ["Hourly wage (£)", "Cappuccino (£)"]],
@@ -45,7 +45,7 @@ export default {
     {
       name: "Freeze city only",
       mistake: true,
-      explain: "Freeze only city versus countryside, though, and you're back near the first glance ({est}). That's the small Mr Confounder; the big one is still mixed in.",
+      explain: "Freezing city versus countryside barely helps ({est}): that's a small Mr Confounder, and the big one is still mixed in.",
       lesson: "Freezing the wrong Mr Confounder doesn't fix the right one.",
       pos: { "Hourly wage (£)": [80, 215], "Cappuccino (£)": [556, 215], City: [318, 40] },
       edges: [["City", "Hourly wage (£)"], ["City", "Cappuccino (£)"], ["Hourly wage (£)", "Cappuccino (£)"]],

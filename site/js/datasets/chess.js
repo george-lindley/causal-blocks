@@ -11,9 +11,9 @@ export default {
   name: "Stronger players and winning",
   question: "Do stronger chess players win more often?",
   about: "4,000 games from Lichess, a free online chess site. Ratings measure strength and are shown in hundreds of points (15 means 1,500). We follow the player with the white pieces.",
-  order: [1, 0, 2, 3],
+  order: [1, 3, 0, 2],
   intro: [
-    "On Lichess, a free online chess site, every player has a rating that measures their strength. <b>Do stronger players win more often?</b> We follow the player with the white pieces.",
+    "On Lichess, a free online chess site, every player has a rating that measures their strength. We follow the player with the white pieces.",
   ],
   source: "Lichess games via Kaggle (Mitchell J)",
   tidytuesday: "2024-10-01",
@@ -30,7 +30,7 @@ export default {
   versions: [
     {
       name: "Our map",
-      explain: "So a strong white player usually faces a strong opponent. Black's rating pushes on both, so we freeze it, comparing white players against equally strong opponents. Now each 100 points is worth {est}: about three times the first glance.",
+      explain: "The catch is the matchmaking: the site pairs you with players of a similar rating, so a strong white player usually faces a strong opponent. Black's rating pushes on both, so the fair comparison freezes it. Now each 100 points is worth {est}: about three times the first look.",
       lesson: "Mr Confounder can hide an effect, not just fake one.",
       pos: { "White rating": [80, 215], "White wins": [556, 215], "Black rating": [318, 40] },
       edges: [["Black rating", "White rating"], ["Black rating", "White wins"], ["White rating", "White wins"]],
@@ -38,7 +38,7 @@ export default {
     {
       name: "Just the correlation",
       mistake: true,
-      explain: "At first glance, rating hardly matters: each extra 100 points gives white only {est} more wins per game (0.01 is 1 game in 100). Strange, for a number that measures skill. The catch: the site pairs you with players of a similar rating.",
+      explain: "At first glance, rating hardly matters: each extra 100 points gives white only {est} more wins per game (0.01 is 1 game in 100). Strange, for a number that measures skill.",
       lesson: "When the system matches like with like, the plain comparison can hide a real effect.",
       pos: { "White rating": [190, 205], "White wins": [480, 205] },
       edges: [["White rating", "White wins"]],
@@ -46,7 +46,7 @@ export default {
     {
       name: "Freeze rated or casual",
       fine: true,
-      explain: "Does it matter whether the game was rated or casual? Freezing that too leaves {est}: both kinds of game pair players the same way.",
+      explain: "Freezing whether the game was rated or casual as well leaves {est}: both kinds of game pair players the same way.",
       lesson: "Freezing something that doesn't push on the cause changes nothing.",
       pos: { "White rating": [80, 215], "White wins": [556, 215], "Black rating": [178, 40], "Rated game": [458, 40] },
       edges: [["Black rating", "White rating"], ["Black rating", "White wins"], ["Rated game", "White rating"], ["Rated game", "White wins"], ["White rating", "White wins"]],
@@ -54,7 +54,7 @@ export default {
     {
       name: "Freeze the rating gap",
       mistake: true,
-      explain: "Be careful with the rating gap. It's white's rating minus black's, so it's built from the cause. Freeze it and a stronger white player must be facing an equally stronger opponent, so skill seems to vanish ({est}).",
+      explain: "What if we compare games with the same rating gap? Skill seems to vanish completely ({est}). But the gap is white's rating minus black's, so it's built from the cause: a stronger white player with the same gap must be facing an equally stronger opponent.",
       lesson: "Never freeze something calculated from the cause.",
       pos: { "White rating": [80, 215], "White wins": [556, 215], "Rating gap": [318, 40] },
       edges: [["Rating gap", "White rating"], ["Rating gap", "White wins"], ["White rating", "White wins"]],

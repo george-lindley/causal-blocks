@@ -290,7 +290,8 @@ footer .foot-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 
 .case-grid { display: grid; grid-template-columns: minmax(320px, 1fr) minmax(0, 1.3fr); gap: 32px; align-items: start; }
 .stage { position: sticky; top: 12px; display: grid; gap: 12px; }
 /* As big as the window allows, leaving room for the lesson card under it */
-@media (min-width: 901px) { .stage #canvas { max-height: calc(100vh - 300px); min-height: 280px; } }
+@media (min-width: 901px) { .story { padding-bottom: 30vh; } }
+@media (min-width: 901px) { .stage #canvas { max-height: calc(100vh - 390px); min-height: 260px; } }
 @media (max-width: 900px) {
   .case-grid { grid-template-columns: minmax(0, 1fr); }
   .stage { position: static; }
@@ -304,6 +305,7 @@ footer .foot-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 
 .step-tag { font: 700 11px var(--font-ui); letter-spacing: 0.08em; text-transform: uppercase; color: var(--good); }
 .step-name { font: 800 17px/1.2 var(--font-display); }
 .step.mistake .step-tag { color: var(--mistake); }
+.step.first .step-tag { color: var(--muted); }
 .step.fine .step-map { border-style: dashed; }
 .step.whatif .step-tag { color: var(--accent); }
 .step-map[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
@@ -318,17 +320,58 @@ footer .foot-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 
 .board-legend { margin: 0; padding: 8px 16px; border-top: 1px solid var(--line); font-size: 13px; }
 .frozen-key { background: transparent; box-shadow: inset 0 0 0 3px var(--frozen, #7cc4ef); }
 
-/* The lesson card: the number on the left; what it means and one rule to take away on the right */
-.lesson { border-top: 5px solid var(--good); display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 20px; align-items: start; padding: 12px 16px; }
-.lesson > .label { grid-column: 1 / -1; color: var(--good); line-height: 1.3; }
+/* The answer: the big number beside a number line; the dot moves as you click through the story */
+.answer { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; align-items: center; padding: 8px 16px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+.answer-value { min-width: 3.6ch; font: 800 44px/1 var(--font-display); font-variant-numeric: tabular-nums; color: var(--ink); }
+.answer-value.mistake { color: var(--mistake); }
+.answer-value.best, .answer-value.fine { color: var(--good); }
+.answer-line { width: 100%; height: 52px; display: block; }
+.nl-axis { stroke: var(--grid); stroke-width: 2; }
+.nl-zero { stroke: var(--edge); stroke-width: 1.5; }
+.nl-label { font: 600 12px var(--font-ui); fill: var(--muted); }
+.nl-seen { fill: #fff; stroke: var(--edge); stroke-width: 2; }
+.nl-seen.best, .nl-seen.fine { stroke: var(--good); }
+.nl-seen.mistake { stroke: var(--mistake); }
+.nl-now { fill: var(--ink); stroke: #fff; stroke-width: 3; transition: cx 0.45s ease; }
+.nl-now.mistake { fill: var(--mistake); }
+.nl-now.best, .nl-now.fine { fill: var(--good); }
+
+/* The lesson card: what the number means, and one rule to take away */
+.lesson { border-top: 5px solid var(--good); display: grid; gap: 4px; padding: 12px 16px; }
+.lesson > .label { color: var(--good); line-height: 1.3; }
 .lesson.mistake { border-top-color: var(--mistake); }
 .lesson.mistake > .label { color: var(--mistake); }
-.lesson p { margin: 0; grid-column: 2; }
-.lesson-value { grid-column: 1; grid-row: 2 / span 4; font: 800 52px/1 var(--font-display); font-variant-numeric: tabular-nums; }
+.lesson.first, .lesson.waiting { border-top-color: var(--edge); }
+.lesson.first > .label { color: var(--muted); }
+.lesson p { margin: 0; }
 .lesson-reads { font: 700 17px/1.3 var(--font-display); text-wrap: balance; }
 .lesson-best { color: var(--muted); }
 .lesson-point { margin-top: 6px !important; padding: 7px 12px; border-radius: 10px; background: var(--surface-2); }
-@media (max-width: 520px) { .lesson { grid-template-columns: minmax(0, 1fr); } .lesson p, .lesson-value { grid-column: 1; grid-row: auto; } }
+
+/* Predict first */
+.predict:not(:empty) { margin: 0 0 16px; padding: 14px 16px; border-radius: 14px; background: var(--surface-2); }
+.predict-q { margin: 0 0 10px; font-size: 17px; line-height: 1.5; }
+.predict .blank { display: inline-block; min-width: 2.2em; text-align: center; border-bottom: 2px solid var(--ink); }
+.predict-options { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.predict-options button, #next-step { padding: 9px 16px; border-radius: 12px; border: 1px solid var(--ink); background: #fff; color: var(--ink); font: 700 15px var(--font-ui); cursor: pointer; }
+.predict-options button:hover, #next-step:hover { background: var(--ink); color: #fff; }
+.predict-made { margin: 0; color: var(--muted); }
+.link { padding: 0; border: 0; background: none; color: var(--muted); font: 600 14px var(--font-ui); text-decoration: underline; cursor: pointer; }
+.story-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 16px; }
+.verdict { margin: 10px 2px 0; padding: 8px 12px; border-radius: 10px; font-weight: 600; }
+.verdict.right { background: var(--good-bg); color: var(--good); }
+.verdict.wrong { background: var(--warn-bg); color: var(--warn); }
+
+/* The data under the step you're reading */
+.data-chart { margin: 12px 0 0; padding: 10px 12px 8px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+.data-chart svg { display: block; width: 100%; height: auto; }
+.dc-grid { stroke: var(--grid); stroke-width: 1; }
+.dc-tick { font: 500 11px var(--font-ui); fill: var(--muted); }
+.dc-axis { font: 600 12px var(--font-ui); fill: var(--ink); }
+.dc-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 6px 0 2px; font-size: 13px; }
+.dc-legend i { display: inline-block; width: 10px; height: 10px; margin-right: 5px; border-radius: 50%; vertical-align: -1px; }
+.dc-legend small { color: var(--muted); }
+.data-chart figcaption { font-size: 13px; color: var(--muted); }
 
 /* Case studies: the tutor */
 .side { display: grid; gap: 8px; }

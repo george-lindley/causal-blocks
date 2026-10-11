@@ -9,13 +9,13 @@ export default {
   tag: "UK schools",
   icon: "🏫",
   level: "hard",
-  order: [1, 0, 2, 3],
+  order: [1, 3, 2, 0],
   name: "Small towns and exam results",
   question: "Do children in smaller towns do better at school?",
   about: "1,082 English towns. The education score is the ONS’s measure of how well young people do at school (most towns score between −4 and +5). Town size goes small → medium → large.",
   story: { url: "https://georgelindley.com/do-small-towns-really-provide-better-education-a-uk-detective-story/", label: "The full detective story" },
   intro: [
-    "In England, children who grow up in small towns tend to do better at school than children in big towns. The Office for National Statistics spotted this in 2023 by comparing 1,082 towns. <b>Does living in a smaller town actually help?</b>",
+    "In England, children who grow up in small towns tend to do better at school than children in big towns. The Office for National Statistics spotted this in 2023 by comparing 1,082 towns.",
   ],
   source: "ONS, Why do children and young people in smaller towns do better academically? (2023)",
   tidytuesday: "2024-01-23",
@@ -34,7 +34,7 @@ export default {
   versions: [
     {
       name: "Our map",
-      explain: "So we freeze region, comparing each town only with towns in the same region. The gap grows to {est} per step. Deprivation stays free: bigger towns tend to be poorer, and that's Ms Mediator, the route the effect travels along.",
+      explain: "For the whole effect of town size, freeze region only: some regions have lots of big towns and do well at school for other reasons, so each town is compared with towns in the same region. Deprivation stays free: bigger towns tend to be poorer, and that's Ms Mediator, the route the effect travels along. The whole effect is {est} per step.",
       lesson: "Freeze what pushes on both the cause and the effect. Leave alone what the cause pushes on.",
       pos: { Region: [24, 40], Coastal: [24, 380], "Town size": [240, 130], Deprivation: [350, 330], "Education score": [620, 215] },
       edges: [["Region", "Town size"], ["Region", "Deprivation"], ["Coastal", "Deprivation"],
@@ -43,7 +43,7 @@ export default {
     {
       name: "Just the correlation",
       mistake: true,
-      explain: "At first glance, the ONS comparison says yes: each step up in town size goes with an education score {est} lower. But regions matter. The regions with the most big towns happen to do well at school for other reasons, which hides part of the gap.",
+      explain: "At first glance, the ONS comparison says yes: each step up in town size goes with an education score {est} lower. But is that the whole story?",
       lesson: "A correlation mixes the effect up with everything else that differs between the groups.",
       pos: { "Town size": [190, 205], "Education score": [480, 205] },
       edges: [["Town size", "Education score"]],
@@ -59,7 +59,7 @@ export default {
     {
       name: "Control for everything",
       mistake: true,
-      explain: "It might feel careful to freeze everything at once. But that freezes deprivation too, repeating the last step, and the answer flips again ({est}).",
+      explain: "It might feel careful to freeze every column at once. Look what happens: the answer flips to {est}, and bigger towns seem to do better! Freezing everything includes deprivation, and the next step shows why that matters.",
       lesson: "More controls isn't safer. Only freeze what your map says is a confounder.",
       pos: { Region: [30, 30], Deprivation: [318, 30], University: [606, 30], "Town size": [150, 205],
         "Education score": [486, 205], Coastal: [150, 384], "Adult degrees": [486, 384] },
