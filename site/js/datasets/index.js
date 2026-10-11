@@ -17,6 +17,6 @@ import penguins from "./penguins.js";
 
 export const DATASETS = [
   tortoises, chocolate, cats, beaches, snowman,
-  towns, chess, pokemon, coffee, cappuccino, ultra,
-  mariokart, himalaya, penguins,
+  chess, pokemon, coffee, cappuccino, ultra, himalaya,
+  towns, mariokart, penguins,
 ];

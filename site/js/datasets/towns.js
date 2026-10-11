@@ -7,7 +7,7 @@ export default {
   key: "towns",
   file: "data/samples/towns.csv",
   tag: "UK schools",
-  level: "medium",
+  level: "hard",
   name: "Small towns and exam results",
   question: "Do children in smaller towns do better at school?",
   about: "1,082 English towns. The education score is the ONS’s measure of how well young people do at school (most towns score between −4 and +5). Town size goes small → medium → large.",
