@@ -7,7 +7,7 @@ export const CHARACTER = {
   [Role.OUTCOME]: "The effect",
   [Role.CONFOUNDER]: "Mr Confounder",
   [Role.MEDIATOR]: "Ms Mediator",
-  [Role.COLLIDER]: "Mr Bouncer",
+  [Role.COLLIDER]: "The Bouncer",
   [Role.INSTRUMENT]: "Only moves the cause",
   [Role.PRECISION]: "Also moves the effect",
   [Role.UNRELATED]: "Not involved",
