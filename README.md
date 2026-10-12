@@ -10,7 +10,7 @@ collider — so the graph explains itself.
 
 - **[Play](https://play.causalblocks.com)** — the game: read the headline, draw what
   you think causes what, and catch the characters who make fake links.
-- **[Case studies](https://causalblocks.com/case-studies.html)** — real research data
+- **[Worksheets](https://causalblocks.com/worksheets.html)** — real research data
   and a few fixed maps of each: the best one and the classic mistakes (just the
   correlation, freezing the wrong thing, controlling for everything). Each map
   shows its estimate and explains what changed and why. Datasets so far: small

@@ -1,7 +1,7 @@
 // The case-study tutor: a small chat beside the map. Messages go to
 // play.causalblocks.com/api/tutor, which asks the model. The model never
 // invents a number: for "what if…" it calls try_map, and the page answers
-// with a real estimate (see case-studies.js).
+// with a real estimate (see worksheets.js).
 
 const ENDPOINT = (() => {
   // A local test server can stand in for the real one, on a local page only.

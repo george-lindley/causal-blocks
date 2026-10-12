@@ -257,10 +257,10 @@ footer .foot-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 
 .node.connecting rect.body { stroke: var(--accent); stroke-width: 4; }
 .board-locked .tool { display: none; }
 
-/* Case studies: the page is wider than the reading pages, so story, map and lesson fit side by side */
+/* Worksheets: the page is wider than the reading pages, so story, map and lesson fit side by side */
 .wrap-wide { max-width: 1440px; }
 
-/* Case studies: pick a case by level, easy to hard, left to right */
+/* Worksheets: pick a case by level, easy to hard, left to right */
 .levels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 0 0 22px; }
 .level-pick { display: grid; gap: 6px; padding: 10px 12px; border-radius: 14px; border: 1px solid var(--line); background: #fff; }
 .level-pick.current { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
@@ -272,7 +272,7 @@ footer .foot-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 
 .level-hard .level { color: var(--mistake); background: var(--mistake-bg); }
 @media (max-width: 600px) { .levels { grid-template-columns: minmax(0, 1fr); gap: 8px; } }
 
-/* Case studies: the case, full width: picture, question, then the setting and the data in one paragraph */
+/* Worksheets: the case, full width: picture, question, then the setting and the data in one paragraph */
 .intro-short { padding-block: 16px 16px; }
 .intro-short h1 { margin-bottom: 6px; }
 .case { padding-bottom: 48px; }
@@ -285,7 +285,7 @@ footer .foot-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 
 .case-source { display: block; margin-top: 2px; font-size: 13px; }
 @media (max-width: 600px) { .case-head { grid-template-columns: minmax(0, 1fr) 64px; gap: 12px; } .case-icon { width: 64px; height: 64px; font-size: 38px; border-radius: 16px; } }
 
-/* Case studies: the story on the left; on the right the map, with the lesson and tutor under it.
+/* Worksheets: the story on the left; on the right the map, with the lesson and tutor under it.
    The right side stays in view while the story scrolls. */
 .case-grid { display: grid; grid-template-columns: minmax(320px, 1fr) minmax(0, 1.3fr); gap: 32px; align-items: start; }
 .stage { position: sticky; top: 12px; display: grid; gap: 12px; }
@@ -362,27 +362,6 @@ footer .foot-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 
 .verdict.right { background: var(--good-bg); color: var(--good); }
 .verdict.wrong { background: var(--warn-bg); color: var(--warn); }
 
-/* Your turn: pick what to freeze */
-.step.pick .step-tag { color: var(--accent); }
-.pick-options { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 12px; }
-.chip { padding: 7px 12px; border-radius: 999px; border: 1px solid var(--line); background: #fff; color: var(--ink); font: 600 15px var(--font-ui); cursor: pointer; }
-.chip:hover:not(:disabled) { border-color: var(--edge); }
-.chip[aria-pressed="true"] { background: var(--role-confounder); border-color: var(--role-confounder); color: #fff; }
-.chip:disabled { cursor: default; opacity: 0.85; }
-#pick-check { padding: 9px 16px; border-radius: 12px; border: 1px solid var(--ink); background: var(--ink); color: #fff; font: 700 15px var(--font-ui); cursor: pointer; }
-.pick-verdict { margin: 4px 2px 6px; font-weight: 700; }
-.pick-verdict.right { color: var(--good); }
-.pick-verdict.wrong { color: var(--warn); }
-.pick-marks { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 3px; }
-.pick-marks .right { color: var(--good); }
-.pick-marks .wrong { color: var(--mistake); }
-.pick-marks b { color: var(--ink); }
-.pick-yours { margin: 0 2px; }
-.answer-value.you, .nl-now.you { color: var(--accent); fill: var(--accent); }
-.nl-seen.you { stroke: var(--accent); }
-.lesson.you { border-top-color: var(--accent); }
-.lesson.you > .label { color: var(--accent); }
-
 /* The data under the step you're reading */
 .data-chart { margin: 12px 0 0; padding: 10px 12px 8px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
 .data-chart svg { display: block; width: 100%; height: auto; }
@@ -394,7 +373,7 @@ footer .foot-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 
 .dc-legend small { color: var(--muted); }
 .data-chart figcaption { font-size: 13px; color: var(--muted); }
 
-/* Case studies: the tutor */
+/* Worksheets: the tutor */
 .side { display: grid; gap: 8px; }
 .side-tabs { display: flex; gap: 6px; max-width: 520px; }
 .side-tabs [role=tab] { flex: 1; padding: 7px 12px; border-radius: 12px; border: 2px solid var(--line); background: #fff; color: var(--ink); font: 700 15px var(--font-ui); cursor: pointer; }
