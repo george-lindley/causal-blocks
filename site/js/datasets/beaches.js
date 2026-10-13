@@ -5,7 +5,6 @@ import { Kind } from "../data.js";
 
 export default {
   key: "beaches",
-  file: "data/samples/beaches.csv",
   tag: "Sydney beaches",
   icon: "🏖️",
   level: "easy",

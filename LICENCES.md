@@ -25,15 +25,21 @@ from the data licence.
 **Removed:** the Himalayan Database ("You may not give or distribute the Himalayan Database, or any
 of its … data … to any other person or entity") and ITRA ("Sharing, selling, or redistributing ITRA
 data to third parties" is forbidden) were taken off the site on 13 October 2026, along with their
-hosted CSVs. Their rows stay below as the record of why. Earlier copies remain in this repo's git
-history.
+hosted CSVs. Their rows stay below as the record of why. Their files were also removed from this
+repo's git history.
 
-**How the site uses this:** every dataset config (`site/js/datasets/<key>.js`) carries `credit`,
-`origin` (the original source's URL) and `licence` (`name`, `url`, `group`). Each worksheet shows
-"Data: credit, licence, via TidyTuesday". RED datasets get "Get the data from the original source ↗"
-instead of "Download the data", but the page still loads their sample CSV to compute the estimates
-in the browser, so the file is still reachable. Clearing them fully needs permission, a replacement
-dataset, or precomputed results. `tests/js/datasets_harness.mjs` rejects a dataset without these fields.
+**No data is published.** Since 13 October 2026 neither site hosts any dataset. Each worksheet's
+answers are worked out in advance from private CSVs (`scripts/precompute_worksheets.mjs`, kept on the
+author's machine in `dailycode/worksheet-data/`). That covers the estimate for every possible set of
+frozen blocks, so any map has an answer, and each chart, which shows averages only, never individual
+rows. The results go to `site/data/worksheets/<key>.json`. The game's levels do the same (the
+causal-blocks-game repo's `scripts/precompute_pokemon.mjs`). Every worksheet links to the original
+source for the data.
+
+**Credits:** every dataset config (`site/js/datasets/<key>.js`) carries `credit`, `origin` (the original
+source's URL) and `licence` (`name`, `url`, `group`). Each worksheet shows "Data: credit, licence, via
+TidyTuesday". `tests/js/datasets_harness.mjs` rejects a dataset without these fields, a missing
+precomputed result, or a published CSV.
 
 ## The table
 
@@ -56,13 +62,11 @@ dataset, or precomputed results. `tests/js/datasets_harness.mjs` rejects a datas
 
 ## Notes
 
-- **Where the data lives:** each worksheet's sample CSV (`site/data/samples/<key>.csv`, offered as
-  "Download the data") is a derived subset of the source. The game's Level 2 also hosts
-  `src/levels/pokemon/pokemon.csv` in the causal-blocks-game repo. All are built locally from the raw
-  TidyTuesday files in `dailycode/case-studies/<key>/` (not in this repo).
+- **Where the data lives:** only on the author's machine (`dailycode/worksheet-data/` and the raw
+  TidyTuesday files in `dailycode/case-studies/<key>/`). The sites publish worked-out results only.
 - **Attribution for AMBER sets** must sit next to the data where it's shown or downloaded, and say
   what was changed (we filter rows and rename columns): e.g. "adapted: rows filtered, columns
   renamed".
-- **Ways to clear a RED dataset:** ask the source for written permission (the Himalayan Database and
-  ITRA both describe a permission process), replace it with a comparable open dataset, or keep it as
-  a worksheet that links to the original source without hosting the data.
+- **RED datasets** (no stated licence) are still analysed in worksheets, with results and averages
+  only, and a link to the source. Before charging for anything built on them, ask the source for
+  permission or replace them with an open dataset.

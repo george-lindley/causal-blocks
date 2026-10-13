@@ -5,7 +5,6 @@ import { Kind } from "../data.js";
 
 export default {
   key: "chess",
-  file: "data/samples/chess.csv",
   tag: "Online chess",
   icon: "♟️",
   level: "medium",

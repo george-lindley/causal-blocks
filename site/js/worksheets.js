@@ -5,17 +5,16 @@
 
 import { createBoard } from "./board.js";
 import { dowhyBackdoor, primaryRole, roles, Role } from "./causal.js";
-import { encode, Kind } from "./data.js";
-import { estimateEffect } from "./estimate.js";
 import { CHARACTER } from "./names.js";
 import { fmt } from "./ui.js";
 import { createTutor } from "./tutor.js";
 import { DATASETS } from "./datasets/index.js";
-import { dataChart } from "./datachart.js";
+import { drawChart } from "./datachart.js";
+import { lookup } from "./results.js";
 
 const $ = (id) => document.getElementById(id);
-const state = { set: null, table: null, results: [], version: 0, whatIf: null, revealed: 0, guess: null };
-const cache = new Map(); // dataset key -> {table, results}
+const state = { set: null, answers: null, results: [], version: 0, whatIf: null, revealed: 0, guess: null };
+const cache = new Map(); // dataset key -> {answers, results}
 const MAX_BLOCKS = 8;
 
 const board = createBoard($("canvas"), {
@@ -31,19 +30,12 @@ const plain = (html) => html.replace(/<[^>]+>/g, "");
 
 // ---- Data ------------------------------------------------------------------
 
-// The sample CSVs are written by scripts/build_case_study_data.py: a header
-// row, then plain comma-separated values with no quoting.
-function parseCsv(text) {
-  const [head, ...lines] = text.trim().split(/\r?\n/).map((l) => l.split(","));
-  return { head, rows: lines };
-}
-
 /**
  * One map's estimate on the dataset: what the backdoor rule freezes, the
  * effect and its 95% range, and each block's roles. Throws with a plain
  * message if the map can't be estimated.
  */
-function estimateMap(set, { head, rows }, edges) {
+function estimateMap(set, results, edges) {
   const nodes = [...new Set([set.cause, set.effect, ...edges.flat()])];
   for (const c of nodes) if (!set.columns[c]) throw new Error(`There's no column called “${c}”.`);
   const g = { nodes, edges };
@@ -56,28 +48,22 @@ function estimateMap(set, { head, rows }, edges) {
   if (id.noDirectedPath) throw new Error(`There's no path of arrows from ${set.cause} to ${set.effect}, so this map says it has no effect at all.`);
   if (!id.adjustmentSet) throw new Error("No set of blocks can be frozen to make this a fair comparison.");
   const adjust = id.adjustmentSet;
-  const ids = [set.cause, set.effect, ...adjust];
-  const data = Object.fromEntries(ids.map((c) => [c, []]));
-  for (const row of rows) {
-    const vals = ids.map((c) => encode(set.columns[c], row[head.indexOf(c)]));
-    if (vals.some((x) => x === null)) continue;
-    vals.forEach((x, i) => data[ids[i]].push(x));
-  }
-  const categorical = new Set(adjust.filter((c) => [Kind.ORDERED, Kind.CATEGORIES].includes(set.columns[c].kind)));
-  const r = estimateEffect(data, { treatment: set.cause, outcome: set.effect, adjust, categorical });
-  return { ...r, adjust, roles: roles(g, set.cause, set.effect) };
+  const r = lookup(results, adjust);                 // worked out in advance for every set of frozen columns
+  if (!r) throw new Error("That combination of frozen blocks hasn't been worked out for this worksheet.");
+  if (r.error) throw new Error("Those frozen blocks repeat each other (one is calculated from the others), so there's nothing left to compare.");
+  return { effect: r.effect, ci: r.ci, n: r.n, chart: r.chart, adjust, roles: roles(g, set.cause, set.effect) };
 }
 
 async function open(key) {
   const set = DATASETS.find((d) => d.key === key) ?? DATASETS[0];
   if (!cache.has(set.key)) {
-    const res = await fetch(set.file);
-    const table = parseCsv(await res.text());
-    cache.set(set.key, { table, results: set.versions.map((v) => estimateMap(set, table, v.edges)) });
+    const res = await fetch(`data/worksheets/${set.key}.json`);
+    const answers = await res.json();                // worked out in advance (results.js), not the data itself
+    cache.set(set.key, { answers, results: set.versions.map((v) => estimateMap(set, answers, v.edges)) });
   }
   const changed = state.set !== set;
   state.set = set;
-  ({ table: state.table, results: state.results } = cache.get(set.key));
+  ({ answers: state.answers, results: state.results } = cache.get(set.key));
   state.whatIf = null;
   state.revealed = 0;
   state.guess = null;
@@ -121,7 +107,7 @@ function tryMap({ name, edges }) {
   if (new Set(clean.flat()).size > MAX_BLOCKS) return fail(`That's more than ${MAX_BLOCKS} blocks; the board can't fit them.`);
   let r;
   try {
-    r = estimateMap(set, state.table, clean);
+    r = estimateMap(set, state.answers, clean);
   } catch (err) {
     return fail(err.message);
   }
@@ -169,7 +155,7 @@ function tutorContext() {
   }
   return `CASE STUDY: ${set.name}
 Question: ${set.question}
-About the data: ${plain(set.about)} ${state.table.rows.length} rows.
+About the data: ${plain(set.about)} ${state.answers.rows} rows.
 The cause: ${set.cause}. The effect: ${set.effect}.
 How to read an estimate: ${set.reads.replace("{est}", "<estimate>")}
 Columns: ${JSON.stringify(set.columns)}
@@ -252,13 +238,11 @@ function renderCase() {
   const story = set.story ? `<a href="${set.story.url}" target="_blank" rel="noopener">${set.story.label} ↗</a> · ` : "";
   const week = set.tidytuesday
     ? ` via <a href="${TIDYTUESDAY}${set.tidytuesday.slice(0, 4)}/${set.tidytuesday}" target="_blank" rel="noopener">TidyTuesday ${set.tidytuesday} ↗</a>` : "";
-  // Credit the original source and its licence. Data with no licence to share it isn't offered for
-  // download: the link goes to the original source instead (see LICENCES.md).
+  // Credit the original source and its licence. The data itself isn't published here: the results are
+  // worked out in advance (results.js), and the link goes to the original source (see LICENCES.md).
   const lic = set.licence;
   const licence = lic.url ? `<a href="${lic.url}" target="_blank" rel="noopener">${lic.name}</a>` : lic.name;
-  const get = lic.group === "red"
-    ? `<a href="${set.origin}" target="_blank" rel="noopener">Get the data from the original source ↗</a>`
-    : `<a href="${set.file}" download>Download the data</a>`;
+  const get = `<a href="${set.origin}" target="_blank" rel="noopener">Get the data from the original source ↗</a>`;
   $("case-about").innerHTML = `${story}${get}
     <span class="case-source">Data: <a href="${set.origin}" target="_blank" rel="noopener">${set.credit}</a>, ${licence}${week}. Filtered and renamed for this worksheet.</span>`;
   // The story, one map at a time: each step's sentence sits beside the map it describes.
@@ -351,7 +335,7 @@ function show(i) {
     board.load(w.pos, w.edges);
     board.draw(w.r.roles, { frozen: new Set(w.r.adjust) });
     renderAnswer(w.r.effect, "whatif");
-    $("whatif-slot").querySelector(".step")?.insertAdjacentHTML("beforeend", dataChart({ set, table: state.table, frozen: w.r.adjust }));
+    $("whatif-slot").querySelector(".step")?.insertAdjacentHTML("beforeend", drawChart(set, w.r.chart));
     $("lesson").className = "card lesson whatif";
     $("lesson").innerHTML = `
       <span class="label">🧪 The tutor's map: ${escapeHtml(w.name)}</span>
@@ -375,7 +359,7 @@ function show(i) {
   }
   const kind = kindOf(v, i);
   renderAnswer(r.effect, kind);
-  document.querySelector(`#steps .step[data-step="${i}"] .step-extra`)?.insertAdjacentHTML("beforeend", dataChart({ set, table: state.table, frozen: r.adjust }));
+  document.querySelector(`#steps .step[data-step="${i}"] .step-extra`)?.insertAdjacentHTML("beforeend", drawChart(set, r.chart));
   const best = kind !== "best" ? `<p class="lesson-best">The best map says <b>${fmt(state.results[0].effect)}</b>.</p>` : "";
   $("lesson").className = `card lesson ${kind}`;
   $("lesson").innerHTML = `

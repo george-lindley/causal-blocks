@@ -1,4 +1,6 @@
-"""Write the case-study datasets (site/data/samples/).
+"""Write the towns worksheet's data to a private folder (never the site).
+
+Then run scripts/precompute_worksheets.mjs, which publishes only the worked-out results.
 
 Each one is a small CSV with friendly column names and only the columns its
 story needs. The towns data uses exactly the variables of the original
@@ -14,7 +16,7 @@ import pandas as pd
 from build_demo_data import VARIABLES, load
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "site" / "data" / "samples"
+OUT = Path.home() / "Desktop/programming/dailycode/worksheet-data"   # private: not published
 
 # Ordered levels become words, listed low → high in each dataset module.
 WORDS = {

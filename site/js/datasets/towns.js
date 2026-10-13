@@ -5,7 +5,6 @@ const EVERYTHING = ["Region", "Deprivation", "University", "Coastal", "Adult deg
 
 export default {
   key: "towns",
-  file: "data/samples/towns.csv",
   tag: "UK schools",
   icon: "🏫",
   level: "hard",

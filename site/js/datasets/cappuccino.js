@@ -5,7 +5,6 @@ import { Kind } from "../data.js";
 
 export default {
   key: "cappuccino",
-  file: "data/samples/cappuccino.csv",
   tag: "Cappuccino Index",
   icon: "☕",
   level: "medium",

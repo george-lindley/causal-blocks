@@ -5,7 +5,6 @@ import { Kind } from "../data.js";
 
 export default {
   key: "pokemon",
-  file: "data/samples/pokemon.csv",
   tag: "Pokémon",
   icon: "⚡",
   level: "medium",

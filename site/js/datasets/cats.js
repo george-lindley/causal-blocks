@@ -5,7 +5,6 @@ import { Kind } from "../data.js";
 
 export default {
   key: "cats",
-  file: "data/samples/cats.csv",
   tag: "Pet cats",
   icon: "🐈",
   level: "easy",

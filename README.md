@@ -182,10 +182,12 @@ notebooks/
 site/           causalblocks.com: static pages, no server
   js/causal.js      DoWhy's adjustment-set choice and variable roles, in JavaScript
   js/estimate.js    DoWhy's linear-regression estimate and refuters, in JavaScript
-  js/datasets/       the case studies' datasets: maps and teaching text, one module each
-  data/samples/     their CSVs (scripts/build_case_study_data.py)
+  js/datasets/       the worksheets: maps, story and licence, one module each
+  js/results.js     worked-out answers for every set of frozen blocks (no data on the site)
+  data/worksheets/  those answers, one JSON per worksheet (scripts/precompute_worksheets.mjs)
 scripts/
-  build_demo_data.py      the towns variables (shared by the towns case study)
+  build_demo_data.py      the towns variables (shared by the towns worksheet)
+  precompute_worksheets.mjs  worksheet answers from private CSVs (see LICENCES.md)
   build_essay_figures.py  the essay's charts, from the data
 essay/          the write-up, and its figures
 docs/dowhy-reference.md

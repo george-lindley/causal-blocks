@@ -1,5 +1,6 @@
 // Every case study, in the order the picker shows them: easy, then medium, then hard. To add one:
-// put its CSV in data/samples/, write a module like towns.js, list it here.
+// write a module like towns.js, list it here, and run scripts/precompute_worksheets.mjs on its
+// (private) CSV to make site/data/worksheets/<key>.json.
 import tortoises from "./tortoises.js";
 import chocolate from "./chocolate.js";
 import cats from "./cats.js";

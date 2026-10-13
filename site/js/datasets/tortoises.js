@@ -9,7 +9,6 @@ const BELOW = [318, 384];
 
 export default {
   key: "tortoises",
-  file: "data/samples/tortoises.csv",
   tag: "Island tortoises",
   icon: "🐢",
   level: "easy",

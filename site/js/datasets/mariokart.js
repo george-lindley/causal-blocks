@@ -5,7 +5,6 @@ import { Kind } from "../data.js";
 
 export default {
   key: "mariokart",
-  file: "data/samples/mariokart.csv",
   tag: "Mario Kart 64",
   icon: "🏎️",
   level: "hard",
