@@ -1,5 +1,6 @@
 // Shortcuts and world records: Mario Kart 64 world records from mkwrs.com.
-// Source: Mario Kart World Records (mkwrs.com); via TidyTuesday 2021-05-25.
+// Data: Mario Kart World Records (mkwrs.com), no licence stated; via TidyTuesday 2021-05-25.
+// See LICENCES.md for how the licence was checked.
 import { Kind } from "../data.js";
 
 export default {
@@ -15,7 +16,9 @@ export default {
   intro: [
     "Mario Kart 64 players have been setting world records since 1997, on 16 tracks, in one-lap and three-lap races, with and without shortcuts.",
   ],
-  source: "Mario Kart World Records (mkwrs.com)",
+  credit: "Mario Kart World Records (mkwrs.com)",
+  origin: "https://mkwrs.com/",
+  licence: { name: "no licence stated", url: null, group: "red" },
   tidytuesday: "2021-05-25",
   cause: "Shortcut",
   effect: "Time (s)",

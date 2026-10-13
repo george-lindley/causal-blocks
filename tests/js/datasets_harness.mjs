@@ -10,7 +10,10 @@ const out = DATASETS.map((set) => {
   const text = readFileSync(new URL(`../../site/${set.file}`, import.meta.url), "utf8");
   const [head, ...rows] = text.trim().split(/\r?\n/).map((l) => l.split(","));
   const problems = [];
-  if (!set.source) problems.push("no source: every case study credits its data");
+  // Every dataset credits its original source and states its licence (see LICENCES.md).
+  if (!set.credit || !set.origin) problems.push("no credit or origin: every worksheet credits its original source");
+  if (!set.licence?.name || !["green", "amber", "red"].includes(set.licence?.group)) problems.push("licence needs a name and a group (green, amber or red)");
+  if (set.licence?.group !== "red" && !set.licence?.url) problems.push("a green or amber licence needs a url");
   const order = set.order ?? set.versions.map((_, i) => i);
   if ([...order].sort().join() !== set.versions.map((_, i) => i).join()) problems.push("order must list every map once");
   const first = set.versions[order[0]];

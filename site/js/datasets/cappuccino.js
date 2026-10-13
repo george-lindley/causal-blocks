@@ -1,5 +1,6 @@
 // Wages and coffee prices: James Hoffmann's Cappuccino Index.
-// Source: James Hoffmann's Cappuccino Index; via TidyTuesday 2026-09-08.
+// Data: James Hoffmann's Cappuccino Index, no licence stated; via TidyTuesday 2026-09-08.
+// See LICENCES.md for how the licence was checked.
 import { Kind } from "../data.js";
 
 export default {
@@ -15,7 +16,9 @@ export default {
   intro: [
     "Coffee YouTuber James Hoffmann collected the price of a cappuccino and local wages from cafés around the world.",
   ],
-  source: "James Hoffmann's Cappuccino Index",
+  credit: "James Hoffmann's Cappuccino Index",
+  origin: "https://www.youtube.com/watch?v=WtlE3BW9Nqs",
+  licence: { name: "no licence stated", url: null, group: "red" },
   tidytuesday: "2026-09-08",
   cause: "Hourly wage (£)",
   effect: "Cappuccino (£)",

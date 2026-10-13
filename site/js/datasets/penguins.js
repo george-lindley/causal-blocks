@@ -1,5 +1,6 @@
 // Penguin bills: the palmerpenguins data (Gorman, Williams & Fraser).
-// Source: palmerpenguins (Gorman, Williams & Fraser), CC0; via TidyTuesday 2020-07-28.
+// Data: palmerpenguins (Gorman, Williams & Fraser), CC0; via TidyTuesday 2020-07-28.
+// See LICENCES.md for how the licence was checked.
 import { Kind } from "../data.js";
 
 export default {
@@ -15,7 +16,9 @@ export default {
   intro: [
     "Scientists in Antarctica measured hundreds of penguins of three species.",
   ],
-  source: "palmerpenguins (Gorman, Williams & Fraser), CC0",
+  credit: "palmerpenguins (Gorman, Williams & Fraser)",
+  origin: "https://allisonhorst.github.io/palmerpenguins/",
+  licence: { name: "CC0", url: "https://creativecommons.org/publicdomain/zero/1.0/", group: "green" },
   tidytuesday: "2020-07-28",
   cause: "Bill length (mm)",
   effect: "Bill depth (mm)",

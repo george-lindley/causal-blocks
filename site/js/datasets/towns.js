@@ -17,7 +17,9 @@ export default {
   intro: [
     "In England, children who grow up in small towns tend to do better at school than children in big towns. The Office for National Statistics spotted this in 2023 by comparing 1,082 towns.",
   ],
-  source: "ONS, Why do children and young people in smaller towns do better academically? (2023)",
+  credit: "ONS, Educational attainment of young people in English towns (2023)",
+  origin: "https://www.ons.gov.uk/peoplepopulationandcommunity/educationandchildcare/datasets/educationalattainmentofyoungpeopleinenglishtownsdata",
+  licence: { name: "Open Government Licence v3.0", url: "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/", group: "amber" },
   tidytuesday: "2024-01-23",
   cause: "Town size",
   effect: "Education score",

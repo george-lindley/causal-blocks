@@ -1,5 +1,6 @@
 // Mountain coffee: Coffee Quality Institute ratings.
-// Source: Coffee Quality Institute database (James LeDoux); via TidyTuesday 2020-07-07.
+// Data: Coffee Quality Institute database, collected by James LeDoux, no licence stated; via TidyTuesday 2020-07-07.
+// See LICENCES.md for how the licence was checked.
 import { Kind } from "../data.js";
 
 export default {
@@ -15,7 +16,9 @@ export default {
   intro: [
     "Coffee experts grade beans from farms all over the world, scoring each coffee out of 100. Many people say coffee grown high in the mountains tastes best.",
   ],
-  source: "Coffee Quality Institute database (James LeDoux)",
+  credit: "Coffee Quality Institute database, collected by James LeDoux",
+  origin: "https://github.com/jldbc/coffee-quality-database",
+  licence: { name: "no licence stated", url: null, group: "red" },
   tidytuesday: "2020-07-07",
   cause: "Altitude (km)",
   effect: "Cup score",

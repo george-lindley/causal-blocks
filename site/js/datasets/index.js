@@ -10,13 +10,11 @@ import chess from "./chess.js";
 import pokemon from "./pokemon.js";
 import coffee from "./coffee.js";
 import cappuccino from "./cappuccino.js";
-import ultra from "./ultra.js";
 import mariokart from "./mariokart.js";
-import himalaya from "./himalaya.js";
 import penguins from "./penguins.js";
 
 export const DATASETS = [
   tortoises, chocolate, cats, beaches, snowman,
-  chess, pokemon, coffee, cappuccino, ultra, himalaya,
+  chess, pokemon, coffee, cappuccino,
   towns, mariokart, penguins,
 ];

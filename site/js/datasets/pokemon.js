@@ -1,5 +1,6 @@
 // Heavy Pokémon and attack: the {pokemon} R package.
-// Source: {pokemon} R package (William Amorim), from PokéAPI; via TidyTuesday 2025-04-01.
+// Data: {pokemon} R package (William Amorim), MIT; via TidyTuesday 2025-04-01.
+// See LICENCES.md for how the licence was checked.
 import { Kind } from "../data.js";
 
 export default {
@@ -15,7 +16,9 @@ export default {
   intro: [
     "There are hundreds of Pokémon, from tiny to enormous, and each has battle stats, including Attack.",
   ],
-  source: "{pokemon} R package (William Amorim), from PokéAPI",
+  credit: "{pokemon} R package (William Amorim)",
+  origin: "https://cran.r-project.org/package=pokemon",
+  licence: { name: "MIT", url: "https://opensource.org/license/mit", group: "amber" },
   tidytuesday: "2025-04-01",
   cause: "Weight (100 kg)",
   effect: "Attack",

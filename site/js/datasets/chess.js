@@ -1,5 +1,6 @@
 // Stronger players and winning: Lichess games.
-// Source: Lichess games via Kaggle (Mitchell J); via TidyTuesday 2024-10-01.
+// Data: Lichess games via Kaggle (Mitchell J), CC0; via TidyTuesday 2024-10-01.
+// See LICENCES.md for how the licence was checked.
 import { Kind } from "../data.js";
 
 export default {
@@ -15,7 +16,9 @@ export default {
   intro: [
     "On Lichess, a free online chess site, every player has a rating that measures their strength. We follow the player with the white pieces.",
   ],
-  source: "Lichess games via Kaggle (Mitchell J)",
+  credit: "Lichess games via Kaggle (Mitchell J)",
+  origin: "https://www.kaggle.com/datasets/datasnaek/chess",
+  licence: { name: "CC0", url: "https://creativecommons.org/publicdomain/zero/1.0/", group: "green" },
   tidytuesday: "2024-10-01",
   cause: "White rating",
   effect: "White wins",

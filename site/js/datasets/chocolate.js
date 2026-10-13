@@ -1,5 +1,6 @@
 // Dark chocolate and ratings: Flavors of Cacao chocolate bar reviews.
-// Source: Flavors of Cacao chocolate bar ratings (Brady Brelinski); via TidyTuesday 2022-01-18.
+// Data: Flavors of Cacao (Brady Brelinski), no licence stated; via TidyTuesday 2022-01-18.
+// See LICENCES.md for how the licence was checked.
 import { Kind } from "../data.js";
 
 export default {
@@ -15,7 +16,9 @@ export default {
   intro: [
     "Chocolate experts have rated thousands of bars from around the world, on a scale from 1 to 4. Bars with 80% cocoa or more are intensely dark and bitter.",
   ],
-  source: "Flavors of Cacao chocolate bar ratings (Brady Brelinski)",
+  credit: "Flavors of Cacao (Brady Brelinski)",
+  origin: "http://flavorsofcacao.com/chocolate_database.html",
+  licence: { name: "no licence stated", url: null, group: "red" },
   tidytuesday: "2022-01-18",
   cause: "Very dark",
   effect: "Rating",

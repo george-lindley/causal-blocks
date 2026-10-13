@@ -252,8 +252,15 @@ function renderCase() {
   const story = set.story ? `<a href="${set.story.url}" target="_blank" rel="noopener">${set.story.label} ↗</a> · ` : "";
   const week = set.tidytuesday
     ? ` via <a href="${TIDYTUESDAY}${set.tidytuesday.slice(0, 4)}/${set.tidytuesday}" target="_blank" rel="noopener">TidyTuesday ${set.tidytuesday} ↗</a>` : "";
-  $("case-about").innerHTML = `${story}<a href="${set.file}" download>Download the data</a>
-    <span class="case-source">Data: ${set.source}${week}</span>`;
+  // Credit the original source and its licence. Data with no licence to share it isn't offered for
+  // download: the link goes to the original source instead (see LICENCES.md).
+  const lic = set.licence;
+  const licence = lic.url ? `<a href="${lic.url}" target="_blank" rel="noopener">${lic.name}</a>` : lic.name;
+  const get = lic.group === "red"
+    ? `<a href="${set.origin}" target="_blank" rel="noopener">Get the data from the original source ↗</a>`
+    : `<a href="${set.file}" download>Download the data</a>`;
+  $("case-about").innerHTML = `${story}${get}
+    <span class="case-source">Data: <a href="${set.origin}" target="_blank" rel="noopener">${set.credit}</a>, ${licence}${week}. Filtered and renamed for this worksheet.</span>`;
   // The story, one map at a time: each step's sentence sits beside the map it describes.
   $("steps").innerHTML = storyOrder(set).map((i) => [set.versions[i], i]).map(([v, i]) => `
     <li class="step ${kindOf(v, i)}" data-step="${i}">

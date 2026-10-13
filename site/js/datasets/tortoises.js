@@ -21,7 +21,9 @@ export default {
   intro: [
     "On a tiny island in a lake in North Macedonia, male tortoises outnumber females by about nine to one. The males harass the females so much that some fall off the island's cliffs. Scientists weighed over 2,000 tortoises there and on the nearby mainland.",
   ],
-  source: "Arsovski et al., Ecology Letters (2026), CC BY 4.0",
+  credit: "Arsovski et al., Ecology Letters (2026)",
+  origin: "https://doi.org/10.6084/m9.figshare.30752687.v1",
+  licence: { name: "CC BY 4.0", url: "https://creativecommons.org/licenses/by/4.0/", group: "amber" },
   tidytuesday: "2026-03-03",
   cause: "Island",
   effect: "Body mass (kg)",

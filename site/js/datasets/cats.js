@@ -1,5 +1,6 @@
 // Indoor cats and hunting: UK pet cats from the Kays et al. tracking study.
-// Source: Kays et al. (2020), Pet cats UK, Movebank; via TidyTuesday 2023-01-31.
+// Data: Kays et al. (2020), Pet cats UK, Movebank, CC0; via TidyTuesday 2023-01-31.
+// See LICENCES.md for how the licence was checked.
 import { Kind } from "../data.js";
 
 export default {
@@ -15,7 +16,9 @@ export default {
   intro: [
     "Scientists fitted GPS trackers to pet cats across the UK, and owners reported how long their cats stay indoors each day and how much prey they bring home.",
   ],
-  source: "Kays et al. (2020), Pet cats UK, Movebank",
+  credit: "Kays et al. (2020), Pet cats UK, Movebank",
+  origin: "https://doi.org/10.5441/001/1.pf315732",
+  licence: { name: "CC0", url: "https://creativecommons.org/publicdomain/zero/1.0/", group: "green" },
   tidytuesday: "2023-01-31",
   cause: "Hours indoors",
   effect: "Prey per month",

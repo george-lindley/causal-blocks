@@ -1,5 +1,6 @@
 // Rain and safe swimming: Sydney's Beachwatch water tests with Open-Meteo rainfall.
-// Source: NSW Beachwatch water quality; Open-Meteo weather; via TidyTuesday 2025-05-20.
+// Data: Beachwatch, NSW Government; weather by Open-Meteo.com, CC BY (Beachwatch) and CC BY 4.0 (Open-Meteo); via TidyTuesday 2025-05-20.
+// See LICENCES.md for how the licence was checked.
 import { Kind } from "../data.js";
 
 export default {
@@ -15,7 +16,9 @@ export default {
   intro: [
     "Sydney tests the water at its swimming spots for gut bacteria. Too many, and the water is unsafe to swim in.",
   ],
-  source: "NSW Beachwatch water quality; Open-Meteo weather",
+  credit: "Beachwatch, NSW Government; weather by Open-Meteo.com",
+  origin: "https://www.beachwatch.nsw.gov.au/waterMonitoring/waterQualityData",
+  licence: { name: "CC BY (Beachwatch) and CC BY 4.0 (Open-Meteo)", url: "https://creativecommons.org/licenses/by/4.0/", group: "amber" },
   tidytuesday: "2025-05-20",
   cause: "Rain (cm)",
   effect: "Unsafe to swim",

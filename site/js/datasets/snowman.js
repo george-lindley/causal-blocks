@@ -1,5 +1,6 @@
 // The exploding snowman: Zürich's Böögg burn times and summer weather.
-// Source: Sechseläuten Böögg burn times; MeteoSwiss Zürich weather; via TidyTuesday 2025-12-02.
+// Data: Böögg burn times from Sechselaeuten-data (Philip Shemella); Source: MeteoSwiss, MIT (burn times) and CC BY 4.0 (MeteoSwiss); via TidyTuesday 2025-12-02.
+// See LICENCES.md for how the licence was checked.
 import { Kind } from "../data.js";
 
 export default {
@@ -15,7 +16,9 @@ export default {
   intro: [
     "Every April in Zürich, a giant snowman called the Böögg is set on fire. Folklore says the faster its head explodes, the hotter the summer will be.",
   ],
-  source: "Sechseläuten Böögg burn times; MeteoSwiss Zürich weather",
+  credit: "Böögg burn times from Sechselaeuten-data (Philip Shemella); Source: MeteoSwiss",
+  origin: "https://github.com/philshem/Sechselaeuten-data",
+  licence: { name: "MIT (burn times) and CC BY 4.0 (MeteoSwiss)", url: "https://opendatadocs.meteoswiss.ch/general/terms-of-use", group: "amber" },
   tidytuesday: "2025-12-02",
   cause: "Burn time (min)",
   effect: "Summer temp (C)",
