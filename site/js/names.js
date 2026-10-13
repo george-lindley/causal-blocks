@@ -3,7 +3,7 @@
 import { Role } from "./causal.js";
 
 export const CHARACTER = {
-  [Role.TREATMENT]: "The cause",
+  [Role.TREATMENT]: "The Suspect",
   [Role.OUTCOME]: "The effect",
   [Role.CONFOUNDER]: "Mr Confounder",
   [Role.MEDIATOR]: "Ms Mediator",
