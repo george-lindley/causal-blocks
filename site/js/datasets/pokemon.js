@@ -26,7 +26,7 @@ export default {
     "Weight (100 kg)": { kind: Kind.NUMERIC },
     Attack: { kind: Kind.NUMERIC },
     "Height (m)": { kind: Kind.NUMERIC },
-    "Base stat total": { kind: Kind.NUMERIC },
+    "Sum of all stats": { kind: Kind.NUMERIC },
     Type: { kind: Kind.CATEGORIES },
   },
   versions: [
@@ -46,12 +46,12 @@ export default {
       edges: [["Weight (100 kg)", "Attack"]],
     },
     {
-      name: "Freeze base stat total",
+      name: "Freeze sum of all stats",
       mistake: true,
-      explain: "What if you froze the base stat total? The effect nearly vanishes ({est}). But the total is all six battle stats added up, Attack included, so any extra Attack has to come out of another stat.",
+      explain: "What if you froze the sum of all stats? The effect nearly vanishes ({est}). But the total is all six battle stats added up, Attack included, so any extra Attack has to come out of another stat.",
       lesson: "Never freeze something calculated from the effect.",
-      pos: { "Weight (100 kg)": [80, 215], Attack: [556, 215], "Base stat total": [178, 40], "Height (m)": [458, 40] },
-      edges: [["Height (m)", "Weight (100 kg)"], ["Height (m)", "Attack"], ["Base stat total", "Weight (100 kg)"], ["Base stat total", "Attack"], ["Weight (100 kg)", "Attack"]],
+      pos: { "Weight (100 kg)": [80, 215], Attack: [556, 215], "Sum of all stats": [178, 40], "Height (m)": [458, 40] },
+      edges: [["Height (m)", "Weight (100 kg)"], ["Height (m)", "Attack"], ["Sum of all stats", "Weight (100 kg)"], ["Sum of all stats", "Attack"], ["Weight (100 kg)", "Attack"]],
     },
     {
       name: "Freeze type too",
