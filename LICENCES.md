@@ -28,13 +28,15 @@ data to third parties" is forbidden) were taken off the site on 13 October 2026,
 hosted CSVs. Their rows stay below as the record of why. Their files were also removed from this
 repo's git history.
 
-**No data is published.** Since 13 October 2026 neither site hosts any dataset. Each worksheet's
-answers are worked out in advance from private CSVs (`scripts/precompute_worksheets.mjs`, kept on the
-author's machine in `dailycode/worksheet-data/`). That covers the estimate for every possible set of
-frozen blocks, so any map has an answer, and each chart, which shows averages only, never individual
-rows. The results go to `site/data/worksheets/<key>.json`. The game's levels do the same (the
-causal-blocks-game repo's `scripts/precompute_pokemon.mjs`). Every worksheet links to the original
-source for the data.
+**Publishing data (policy changed 16 October 2026).** Data may be published where its licence allows
+redistribution: 🟢 GREEN and 🟠 AMBER datasets, with their required credit next to the data, saying what
+was changed ("adapted: rows filtered, columns renamed"). The game's levels serve their rows this way
+(e.g. Heavy Pokémon's `rows.json`, MIT; the towns lab level's, OGL). 🔴 RED datasets stay results-only:
+answers worked out in advance from private CSVs, charts of averages, and a link to the source. ⛔
+REMOVED datasets are not used at all. The worksheets on this site still publish results only
+(`scripts/precompute_worksheets.mjs`, results in `site/data/worksheets/<key>.json`), and
+`tests/js/datasets_harness.mjs` still rejects a published CSV here. That's this site's choice, not a
+licence requirement. Before 16 October 2026 the rule was that no dataset was published anywhere.
 
 **Credits:** every dataset config (`site/js/datasets/<key>.js`) carries `credit`, `origin` (the original
 source's URL) and `licence` (`name`, `url`, `group`). Each worksheet shows "Data: credit, licence, via
@@ -62,8 +64,8 @@ precomputed result, or a published CSV.
 
 ## Notes
 
-- **Where the data lives:** only on the author's machine (`dailycode/worksheet-data/` and the raw
-  TidyTuesday files in `dailycode/case-studies/<key>/`). The sites publish worked-out results only.
+- **Where the data lives:** for the worksheets, only on the author's machine (`dailycode/worksheet-data/` and the raw
+  TidyTuesday files in `dailycode/case-studies/<key>/`). This site publishes worked-out results only.
 - **Attribution for AMBER sets** must sit next to the data where it's shown or downloaded, and say
   what was changed (we filter rows and rename columns): e.g. "adapted: rows filtered, columns
   renamed".
