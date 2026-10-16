@@ -26,8 +26,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+      # The worksheets are unpublished for now (2026-10-16): their pages and data stay in the repo, but
+      # not on the site. Delete these lines to bring them back.
+      - name: Copy the site, without the worksheets
+        run: |
+          mkdir _site && cp -r site/. _site/
+          rm -f _site/worksheets.html _site/case-studies.html
+          rm -rf _site/data/worksheets
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v4

@@ -1,4 +1,4 @@
-/* The homepage: hero lineup, a small puzzle, the suspects, three doors, teachers. */
+/* The homepage: the family photo, a small puzzle, meet the family, two doors, teachers. */
 .wrap > section { margin-block: 28px; }
 .wrap h2 { margin: 0 0 10px; font: 800 clamp(26px, 3.2vw, 34px)/1.1 var(--font-display); }
 
@@ -8,13 +8,10 @@
   display: flex; justify-content: center; align-items: flex-end;
   padding: 18px clamp(12px, 4vw, 48px) 0;
   border-bottom: 1px solid var(--line);
-  /* The lineup wall's height marks, kept faint. */
-  background:
-    linear-gradient(to top, #e8ecf0 0 12px, transparent 12px),
-    repeating-linear-gradient(to bottom, transparent 0 30px, rgba(31, 41, 51, 0.05) 30px 32px),
-    #f6f8fa;
+  /* The family photo: a soft backdrop, and a floor to stand on. */
+  background: linear-gradient(to top, #e8ecf0 0 12px, transparent 12px), linear-gradient(#eef6fd, #f6f8fa);
 }
-.hero-lineup img { display: block; width: 100%; max-width: 860px; height: auto; margin-bottom: 4px; }
+.hero-lineup img { display: block; width: 100%; max-width: 980px; height: auto; margin-bottom: 4px; }
 .hero-text { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 28px; padding: 24px clamp(18px, 4vw, 48px) 26px; }
 .hero h1 { margin: 0; font: 800 clamp(30px, 4.4vw, 52px)/1.05 var(--font-display); }
 .hero h1 span { display: block; color: var(--accent); }
@@ -47,22 +44,26 @@
 #taste.solved .together, #taste.solved .together-label { opacity: 0; }
 .link-button { font: 600 15px var(--font-ui); background: none; border: 0; padding: 0; color: var(--muted); text-decoration: underline; cursor: pointer; }
 
-/* Meet the suspects */
-.suspects ul { list-style: none; margin: 14px 0 6px; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
-@media (max-width: 900px) { .suspects ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.suspect { display: grid; justify-items: center; text-align: center; gap: 4px; padding: 16px 12px 18px; border-radius: 18px; background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--c); }
-.suspect img { width: 96px; height: auto; }
-.suspect strong { font: 800 20px/1.1 var(--font-display); }
-.suspect span { font-size: 15px; color: var(--muted); }
-.suspect.cause { --c: var(--role-treatment); }
-.suspect.effect { --c: var(--role-outcome); }
-.suspect.confounder { --c: var(--role-confounder); }
-.suspect.mediator { --c: var(--role-mediator); }
-.suspect.bouncer { --c: var(--role-collider); }
+/* Meet the family: eight characters, four to a line. */
+.family-sub { margin: 0; color: var(--muted); }
+.family ul { list-style: none; margin: 14px 0 6px; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 900px) { .family ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.member { display: grid; justify-items: center; align-content: start; text-align: center; gap: 4px; padding: 16px 12px 18px; border-radius: 18px; background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--c); }
+.member img { width: 96px; height: auto; }
+.member strong { font: 800 20px/1.1 var(--font-display); }
+.member span { font-size: 15px; color: var(--muted); }
+.member.cause { --c: var(--role-treatment); }
+.member.effect { --c: var(--role-outcome); }
+.member.confounder { --c: var(--role-confounder); }
+.member.mediator { --c: var(--role-mediator); }
+.member.bouncer { --c: var(--role-collider); }
+.member.bystander { --c: #c3ccd1; }
+.member.nudge { --c: #f1c40f; }
+.member.wobble { --c: #f7a8c4; }
 .more { margin: 8px 0 0; font: 700 17px var(--font-ui); }
 
-/* Three doors */
-.doors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+/* Two doors (the worksheets door is off until they come back) */
+.doors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 @media (max-width: 760px) { .doors { grid-template-columns: minmax(0, 1fr); } }
 .door { display: grid; gap: 6px; align-content: start; padding: 20px 22px; border-radius: 18px; text-decoration: none; color: var(--ink); background: #fff; border: 1px solid var(--line); transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s; }
 .door:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(31, 41, 51, 0.1); border-color: #d3d9df; }
