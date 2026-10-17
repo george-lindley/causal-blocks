@@ -1,4 +1,4 @@
-/* The homepage: the family photo, a small puzzle, meet the family, two doors, teachers. */
+/* The homepage: the family photo, a small puzzle, meet the family, two doors, what you didn't learn at school. */
 .wrap > section { margin-block: 28px; }
 .wrap h2 { margin: 0 0 10px; font: 800 clamp(26px, 3.2vw, 34px)/1.1 var(--font-display); }
 
@@ -72,12 +72,12 @@
 .door strong { font: 800 26px/1.1 var(--font-display); }
 .door span:last-child { color: var(--muted); }
 
-/* For teachers */
-.teachers { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 20px 32px; padding-top: 28px; border-top: 1px solid var(--line); }
-@media (max-width: 860px) { .teachers { grid-template-columns: minmax(0, 1fr); } }
-.teachers h2 { font-size: 26px; }
-.teachers p { margin: 0; }
-.teachers ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; align-content: center; }
-.teachers li a { font-weight: 700; }
-.teachers li span { display: block; font-size: 15px; color: var(--muted); }
+/* What you didn't learn at school */
+.school { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 20px 32px; padding-top: 28px; border-top: 1px solid var(--line); }
+@media (max-width: 860px) { .school { grid-template-columns: minmax(0, 1fr); } }
+.school h2 { font-size: 26px; }
+.school p { margin: 0; }
+.school ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; align-content: center; }
+.school li a { font-weight: 700; }
+.school li span { display: block; font-size: 15px; color: var(--muted); }
 @media (prefers-reduced-motion: reduce) { .big-button, .door { transition: none; } }
