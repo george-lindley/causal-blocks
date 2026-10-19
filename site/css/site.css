@@ -18,12 +18,12 @@
 
   /* Role colours: the same palette as causalblocks/style.py, so the site and
      the notebooks draw a confounder the same way. */
-  --role-treatment: #fa953d;
-  --role-outcome: #16a085;
-  --role-confounder: #3498db;
-  --role-mediator: #9b59b6;
-  --role-collider: #e74c3c;
-  --role-instrument: #f1c40f;
+  --role-treatment: #ff8a1f;
+  --role-outcome: #00b386;
+  --role-confounder: #1e90ff;
+  --role-mediator: #a24bd8;
+  --role-collider: #f03e3e;
+  --role-instrument: #ffc61a;
   --role-precision: #e6ebee;
   --role-unrelated: #b3bfc0;
   --on-role: #1f2933;

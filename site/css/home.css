@@ -58,8 +58,8 @@
 .member.mediator { --c: var(--role-mediator); }
 .member.bouncer { --c: var(--role-collider); }
 .member.bystander { --c: #c3ccd1; }
-.member.nudge { --c: #f1c40f; }
-.member.wobble { --c: #f7a8c4; }
+.member.nudge { --c: #ffc61a; }
+.member.wobble { --c: #ff9ec4; }
 .more { margin: 8px 0 0; font: 700 17px var(--font-ui); }
 
 /* Two doors (the worksheets door is off until they come back) */
