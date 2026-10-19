@@ -219,8 +219,6 @@ export function createBoard(svg, {
         "stroke-width": frozen.has(id) ? 5 : selected ? 3.5 : 2.4,
         "stroke-dasharray": role === Role.COLLIDER ? "6 4" : "none",
       }, g);
-      // The manga finish, as in the game: one hard shadow across the lower right, inside the corners.
-      el("path", { class: "shade", d: `M${BW} ${BH * 0.5} V${BH - 12} A12 12 0 0 1 ${BW - 12} ${BH} H${BW * 0.42} Q${BW * 0.8} ${BH * 0.92} ${BW} ${BH * 0.5} Z`, fill: "#000", opacity: 0.09 }, g);
       const full = label(id);
       const name = el("text", { class: "name", x: 14, y: 26, fill: text }, g);
       name.textContent = full.length > MAX_LABEL ? `${full.slice(0, MAX_LABEL - 1)}…` : full;
@@ -237,7 +235,6 @@ export function createBoard(svg, {
         for (const ex of [BW - 46, BW - 28]) {
           el("circle", { cx: ex, cy: 0, r: 8, fill: "#fff", stroke: "var(--ink)", "stroke-width": 1.8 }, g);
           el("circle", { cx: ex + 1.5, cy: 1, r: 3.8, fill: "#1f2933" }, g);
-          el("circle", { cx: ex + 0.3, cy: -0.3, r: 1.3, fill: "#fff" }, g);           // the glint, as on the characters
         }
       }
 
