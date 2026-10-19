@@ -69,8 +69,7 @@ a:hover { text-decoration-thickness: 2px; }
   font: 800 23px/1 var(--font-display);
   text-decoration: none;
 }
-.brand-mark { display: grid; grid-template-columns: repeat(2, 12px); gap: 3px; }
-.brand-mark span { width: 12px; height: 12px; border-radius: 4px; }
+.brand-logo { flex: none; width: 34px; height: 34px; } /* the logo lives on play.causalblocks.com, with the rest of the artwork */
 .top nav { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font: 700 16px var(--font-ui); }
 .top nav a { white-space: nowrap; text-decoration: none; padding: 8px 14px; border-radius: 999px; }
 .top nav a:hover { background: var(--surface-2); }
