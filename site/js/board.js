@@ -219,9 +219,8 @@ export function createBoard(svg, {
         "stroke-width": frozen.has(id) ? 5 : selected ? 3.5 : 2.4,
         "stroke-dasharray": role === Role.COLLIDER ? "6 4" : "none",
       }, g);
-      // The manga finish, as in the game: one hard shadow across the lower right, inside the corners, and a shine.
-      el("path", { class: "shade", d: `M${BW} ${BH * 0.5} V${BH - 12} A12 12 0 0 1 ${BW - 12} ${BH} H${BW * 0.42} Q${BW * 0.8} ${BH * 0.92} ${BW} ${BH * 0.5} Z`, fill: "#000", opacity: 0.12 }, g);
-      el("path", { class: "shine", d: "M8 17 Q9 8 18 7", fill: "none", stroke: "#fff", "stroke-width": 3, "stroke-linecap": "round", opacity: 0.75 }, g);
+      // The manga finish, as in the game: one hard shadow across the lower right, inside the corners.
+      el("path", { class: "shade", d: `M${BW} ${BH * 0.5} V${BH - 12} A12 12 0 0 1 ${BW - 12} ${BH} H${BW * 0.42} Q${BW * 0.8} ${BH * 0.92} ${BW} ${BH * 0.5} Z`, fill: "#000", opacity: 0.09 }, g);
       const full = label(id);
       const name = el("text", { class: "name", x: 14, y: 26, fill: text }, g);
       name.textContent = full.length > MAX_LABEL ? `${full.slice(0, MAX_LABEL - 1)}…` : full;
