@@ -179,7 +179,7 @@ export function createBoard(svg, {
     s.frozen = frozen;
     svg.replaceChildren();
     const defs = el("defs", {}, svg);
-    for (const [name, color] of [["arrow", "var(--edge)"], ["arrow-on", "var(--accent)"]]) {
+    for (const [name, color] of [["arrow", "var(--ink)"], ["arrow-on", "var(--accent)"]]) {
       const m = el("marker", {
         id: name, viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 7, markerHeight: 7, orient: "auto-start-reverse",
       }, defs);
@@ -215,10 +215,13 @@ export function createBoard(svg, {
       const selected = s.selectedNode === id;
       el("rect", {
         class: "body", width: BW, height: BH, rx: 12, fill: `var(--role-${role})`,
-        stroke: frozen.has(id) ? "var(--frozen, #7cc4ef)" : selected ? "var(--ink)" : "rgba(0,0,0,0.18)",
-        "stroke-width": frozen.has(id) ? 5 : 2,
+        stroke: frozen.has(id) ? "var(--frozen, #7cc4ef)" : "var(--ink)",
+        "stroke-width": frozen.has(id) ? 5 : selected ? 3.5 : 2.4,
         "stroke-dasharray": role === Role.COLLIDER ? "6 4" : "none",
       }, g);
+      // The manga finish, as in the game: one hard shadow across the lower right, inside the corners, and a shine.
+      el("path", { class: "shade", d: `M${BW} ${BH * 0.5} V${BH - 12} A12 12 0 0 1 ${BW - 12} ${BH} H${BW * 0.42} Q${BW * 0.8} ${BH * 0.92} ${BW} ${BH * 0.5} Z`, fill: "#000", opacity: 0.12 }, g);
+      el("path", { class: "shine", d: "M8 17 Q9 8 18 7", fill: "none", stroke: "#fff", "stroke-width": 3, "stroke-linecap": "round", opacity: 0.75 }, g);
       const full = label(id);
       const name = el("text", { class: "name", x: 14, y: 26, fill: text }, g);
       name.textContent = full.length > MAX_LABEL ? `${full.slice(0, MAX_LABEL - 1)}…` : full;
@@ -233,8 +236,9 @@ export function createBoard(svg, {
       if (faces && id in roleMap) {
         // Two eyes peeking over the top edge: it's a character now.
         for (const ex of [BW - 46, BW - 28]) {
-          el("circle", { cx: ex, cy: 0, r: 8, fill: "#fff", stroke: "rgba(0,0,0,0.18)", "stroke-width": 1.5 }, g);
+          el("circle", { cx: ex, cy: 0, r: 8, fill: "#fff", stroke: "var(--ink)", "stroke-width": 1.8 }, g);
           el("circle", { cx: ex + 1.5, cy: 1, r: 3.8, fill: "#1f2933" }, g);
+          el("circle", { cx: ex + 0.3, cy: -0.3, r: 1.3, fill: "#fff" }, g);           // the glint, as on the characters
         }
       }
 

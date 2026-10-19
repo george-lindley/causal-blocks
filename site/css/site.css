@@ -29,9 +29,9 @@
   --on-role: #1f2933;
   --on-role-strong: #ffffff;
 
-  --font-display: "Baloo 2", "Trebuchet MS", system-ui, sans-serif;
-  --font-body: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --font-ui: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display: "Dela Gothic One", "Zen Kaku Gothic New", system-ui, sans-serif;
+  --font-body: "Zen Kaku Gothic New", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-ui: "Zen Kaku Gothic New", "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -66,10 +66,10 @@ a:hover { text-decoration-thickness: 2px; }
   display: flex;
   align-items: center;
   gap: 10px;
-  font: 800 23px/1 var(--font-display);
+  font: 400 27px/1 var(--font-display);
   text-decoration: none;
 }
-.brand-logo { flex: none; width: 34px; height: 34px; } /* the logo lives on play.causalblocks.com, with the rest of the artwork */
+.brand-logo { flex: none; width: 46px; height: 46px; margin-top: -6px; } /* the logo lives on play.causalblocks.com, with the rest of the artwork */
 .top nav { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font: 700 16px var(--font-ui); }
 .top nav a { white-space: nowrap; text-decoration: none; padding: 8px 14px; border-radius: 999px; }
 .top nav a:hover { background: var(--surface-2); }
@@ -128,7 +128,7 @@ a:hover { text-decoration-thickness: 2px; }
 .port path { stroke: var(--edge); stroke-width: 2; stroke-linecap: round; pointer-events: none; }
 .port:hover path, .port.active path { stroke: var(--surface); }
 .edge { cursor: pointer; }
-.edge .line { stroke: var(--edge); stroke-width: 2.5; fill: none; }
+.edge .line { stroke: var(--ink); stroke-width: 3; fill: none; }
 .edge.selected .line { stroke: var(--accent); stroke-width: 3; }
 .edge .hit { stroke: transparent; stroke-width: 18; fill: none; }
 .pending { stroke: var(--accent); stroke-width: 2.5; stroke-dasharray: 6 5; fill: none; pointer-events: none; }
@@ -429,3 +429,7 @@ footer .foot-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 
 .why-more summary { cursor: pointer; font: 700 18px var(--font-display); }
 .why-more ul { margin-top: 12px; }
 @media (max-width: 520px) { .why-card { grid-template-columns: 56px minmax(0, 1fr); } .why-card img { width: 56px; } .why-arrow { width: 52px; height: 52px; font-size: 28px; } }
+
+/* Dela Gothic One has one weight: never let the browser fake a bolder one. */
+html { font-synthesis: none; }
+.node .shade, .node .shine { pointer-events: none; }
