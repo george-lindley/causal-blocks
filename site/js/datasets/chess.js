@@ -33,7 +33,7 @@ export default {
     {
       name: "Our map",
       explain: "Freeze black's rating. The site pairs you with players of a similar rating, so a strong white player usually faces a strong opponent: black's rating pushes on both. Against equally strong opponents, each 100 points is worth {est}, about three times the first look.",
-      lesson: "Mr Confounder can hide an effect, not just fake one.",
+      lesson: "Confounder can hide an effect, not just fake one.",
       pos: { "White rating": [80, 215], "White wins": [556, 215], "Black rating": [318, 40] },
       edges: [["Black rating", "White rating"], ["Black rating", "White wins"], ["White rating", "White wins"]],
     },

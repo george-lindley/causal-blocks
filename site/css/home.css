@@ -1,4 +1,4 @@
-/* The homepage: the family photo, a small puzzle, meet the family, two doors, what you didn't learn at school. */
+/* The homepage: the family photo, a small puzzle, meet the family, two doors, Causal Blocks Kids, what you didn't learn at school. */
 .wrap > section { margin-block: 28px; }
 .wrap h2 { margin: 0 0 10px; font: 800 clamp(26px, 3.2vw, 34px)/1.1 var(--font-display); }
 
@@ -71,6 +71,21 @@
 .door.play .door-icon { background: var(--ink); color: #fff; }
 .door strong { font: 800 26px/1.1 var(--font-display); }
 .door span:last-child { color: var(--muted); }
+
+/* The big advert for Causal Blocks Kids: a warm card, the words and a button, three of the family. */
+.kids { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 20px 32px; align-items: center;
+  padding: clamp(22px, 4vw, 44px); border-radius: 26px; background: #fff4dc; border: 3px solid var(--ink); box-shadow: 8px 8px 0 var(--ink); }
+@media (max-width: 860px) { .kids { grid-template-columns: minmax(0, 1fr); } }
+.kids-kicker { margin: 0 0 6px; font: 800 14px var(--font-ui); letter-spacing: 0.08em; text-transform: uppercase; color: var(--warn); }
+.wrap .kids h2 { font-size: clamp(34px, 5vw, 56px); margin-bottom: 12px; }
+.kids-text p:not(.kids-kicker) { margin: 0 0 20px; font-size: 19px; max-width: 46ch; }
+.kids-button { background: var(--role-treatment); color: var(--ink); }
+.kids-button:hover { background: var(--ink); color: #fff; }
+.kids-cast { display: flex; justify-content: center; align-items: flex-end; min-width: 0; }
+.kids-cast img { width: clamp(90px, 13vw, 160px); height: auto; }
+.kids-cast .k1 { transform: rotate(-8deg) translateY(10px); }
+.kids-cast .k2 { width: clamp(100px, 15vw, 180px); margin-inline: -10px; }
+.kids-cast .k3 { transform: rotate(8deg) translateY(10px); }
 
 /* What you didn't learn at school */
 .school { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 20px 32px; padding-top: 28px; border-top: 1px solid var(--line); }

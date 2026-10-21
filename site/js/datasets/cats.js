@@ -32,7 +32,7 @@ export default {
   versions: [
     {
       name: "Our map",
-      explain: "Freeze age: older cats stay in more and bring home less. Comparing cats of the same age, the answer is {est}. Close to the first look: age is a real Mr Confounder, but a weak one.",
+      explain: "Freeze age: older cats stay in more and bring home less. Comparing cats of the same age, the answer is {est}. Close to the first look: age is a real Confounder, but a weak one.",
       lesson: "Freeze what pushes on both the cause and the effect.",
       pos: { "Hours indoors": [80, 215], "Prey per month": [556, 215], "Age (years)": [318, 40], Hunts: [318, 384] },
       edges: [["Age (years)", "Hours indoors"], ["Age (years)", "Prey per month"], ["Hours indoors", "Prey per month"], ["Prey per month", "Hunts"]],
@@ -41,7 +41,7 @@ export default {
       name: "Just the correlation",
       fine: true,
       explain: "At first glance, each extra hour indoors means {est} prey animals a month. But is something else pushing on both?",
-      lesson: "A weak Mr Confounder only nudges the answer. Drawing the map tells you how much to worry.",
+      lesson: "A weak Confounder only nudges the answer. Drawing the map tells you how much to worry.",
       pos: { "Hours indoors": [190, 205], "Prey per month": [480, 205] },
       edges: [["Hours indoors", "Prey per month"]],
     },

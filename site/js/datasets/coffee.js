@@ -33,7 +33,7 @@ export default {
     {
       name: "Our map",
       explain: "Freeze country: compare farms only with farms in the same country. Each kilometre is then worth {est} points, about half the first look.",
-      lesson: "Mr Confounder can be a group, like a country. Freezing it means comparing within each group.",
+      lesson: "Confounder can be a group, like a country. Freezing it means comparing within each group.",
       pos: { "Altitude (km)": [80, 215], "Cup score": [556, 215], Country: [318, 40] },
       edges: [["Country", "Altitude (km)"], ["Country", "Cup score"], ["Altitude (km)", "Cup score"]],
     },

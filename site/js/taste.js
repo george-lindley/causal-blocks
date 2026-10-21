@@ -1,6 +1,6 @@
 // The homepage's ten-second taste: ice cream sales and shark attacks are
 // linked (the dotted line). Draw Hot weather → both, and the link vanishes:
-// Mr Confounder made it. Uses the same board as the game and the Sandbox.
+// Confounder made it. Uses the same board as the game and the Sandbox.
 import { createBoard } from "./board.js";
 import { Role } from "./causal.js";
 
@@ -48,7 +48,7 @@ function draw() {
   const result = $("taste-result");
   if (solved) {
     result.className = "taste-result won";
-    result.innerHTML = `<img src="https://play.causalblocks.com/img/cast/confounder.svg" alt="">Fake link! Hot weather was behind both. Meet Mr Confounder.`;
+    result.innerHTML = `<img src="https://play.causalblocks.com/img/cast/confounder.svg" alt="">Fake link! Hot weather was behind both. Meet Confounder.`;
   } else if (has(edges, "ice", "sharks") || has(edges, "sharks", "ice")) {
     result.className = "taste-result nope";
     result.textContent = "That's the newspaper's guess. Can a cone make a shark bite?";

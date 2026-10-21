@@ -31,7 +31,7 @@ export default {
   versions: [
     {
       name: "Our map",
-      explain: "Freeze the year. It's a small Mr Confounder: ratings crept up over time while fewer very dark bars were reviewed. With the year frozen the answer is {est}, barely different: here the first look was already almost fair.",
+      explain: "Freeze the year. It's a small Confounder: ratings crept up over time while fewer very dark bars were reviewed. With the year frozen the answer is {est}, barely different: here the first look was already almost fair.",
       lesson: "Freeze what pushes on both the cause and the effect.",
       pos: { "Very dark": [80, 215], Rating: [556, 215], "Year reviewed": [318, 40] },
       edges: [["Year reviewed", "Very dark"], ["Year reviewed", "Rating"], ["Very dark", "Rating"]],

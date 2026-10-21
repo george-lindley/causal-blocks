@@ -5,9 +5,9 @@ import { Role } from "./causal.js";
 export const CHARACTER = {
   [Role.TREATMENT]: "Suspect",
   [Role.OUTCOME]: "Effect",
-  [Role.CONFOUNDER]: "Mr Confounder",
-  [Role.MEDIATOR]: "Ms Mediator",
-  [Role.COLLIDER]: "Mr Bouncer",
+  [Role.CONFOUNDER]: "Confounder",
+  [Role.MEDIATOR]: "Mediator",
+  [Role.COLLIDER]: "Bouncer",
   [Role.INSTRUMENT]: "Only moves the cause",
   [Role.PRECISION]: "Also moves the effect",
   [Role.UNRELATED]: "Not involved",

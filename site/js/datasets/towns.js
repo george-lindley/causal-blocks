@@ -35,7 +35,7 @@ export default {
   versions: [
     {
       name: "Our map",
-      explain: "Freeze region only: some regions have lots of big towns and do well at school for other reasons, so each town is compared with towns in the same region. Deprivation stays free: bigger towns tend to be poorer, and that's Ms Mediator, the route the effect travels along. The whole effect is {est} per step.",
+      explain: "Freeze region only: some regions have lots of big towns and do well at school for other reasons, so each town is compared with towns in the same region. Deprivation stays free: bigger towns tend to be poorer, and that's Mediator, the route the effect travels along. The whole effect is {est} per step.",
       lesson: "Freeze what pushes on both the cause and the effect. Leave alone what the cause pushes on.",
       pos: { Region: [24, 40], Coastal: [24, 380], "Town size": [240, 130], Deprivation: [350, 330], "Education score": [620, 215] },
       edges: [["Region", "Town size"], ["Region", "Deprivation"], ["Coastal", "Deprivation"],

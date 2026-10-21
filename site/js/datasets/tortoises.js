@@ -55,7 +55,7 @@ export default {
       name: "Freeze shell length",
       mistake: true,
       explain: "What if you froze shell length too, as if size decided where a tortoise lives? The answer shrinks to {est} kg. But it's the island that makes tortoises smaller, so this switches off most of the effect.",
-      lesson: "Never freeze Ms Mediator: you only measure what's left of the effect.",
+      lesson: "Never freeze Mediator: you only measure what's left of the effect.",
       pos: { Sex: SEX, Island: ISLAND, "Body mass (kg)": MASS, "Shell length (cm)": BELOW },
       edges: [["Sex", "Island"], ["Sex", "Body mass (kg)"], ["Shell length (cm)", "Island"],
         ["Shell length (cm)", "Body mass (kg)"], ["Island", "Body mass (kg)"]],

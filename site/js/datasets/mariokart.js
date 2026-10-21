@@ -32,8 +32,8 @@ export default {
   versions: [
     {
       name: "Our map",
-      explain: "Freeze the track and the laps. Shortcuts only exist on some tracks, and those tracks are longer; and shortcut records are more often one-lap races, which are short anyway. With both frozen, a shortcut saves {est} seconds. The first look landed close only by luck: the two Mr Confounders cancelled out.",
-      lesson: "When two Mr Confounders push in opposite directions, freeze both.",
+      explain: "Freeze the track and the laps. Shortcuts only exist on some tracks, and those tracks are longer; and shortcut records are more often one-lap races, which are short anyway. With both frozen, a shortcut saves {est} seconds. The first look landed close only by luck: the two Confounders cancelled out.",
+      lesson: "When two Confounders push in opposite directions, freeze both.",
       pos: { Shortcut: [80, 215], "Time (s)": [556, 215], Laps: [178, 40], Track: [458, 40] },
       edges: [["Track", "Shortcut"], ["Track", "Time (s)"], ["Laps", "Shortcut"], ["Laps", "Time (s)"], ["Shortcut", "Time (s)"]],
     },
@@ -49,7 +49,7 @@ export default {
       name: "Freeze the track only",
       mistake: true,
       explain: "What if you froze only the track? The saving balloons to {est} seconds, because shortcuts get the credit for the short one-lap races.",
-      lesson: "Missing one Mr Confounder can make an effect look too big.",
+      lesson: "Missing one Confounder can make an effect look too big.",
       pos: { Shortcut: [80, 215], "Time (s)": [556, 215], Track: [318, 40] },
       edges: [["Track", "Shortcut"], ["Track", "Time (s)"], ["Shortcut", "Time (s)"]],
     },
@@ -57,7 +57,7 @@ export default {
       name: "Freeze the laps only",
       mistake: true,
       explain: "Freeze only the laps, and it swings the other way, to {est}: shortcuts exist mainly on long tracks, which hides part of the time they save.",
-      lesson: "Missing a different Mr Confounder can make the same effect look too small.",
+      lesson: "Missing a different Confounder can make the same effect look too small.",
       pos: { Shortcut: [80, 215], "Time (s)": [556, 215], Laps: [318, 40] },
       edges: [["Laps", "Shortcut"], ["Laps", "Time (s)"], ["Shortcut", "Time (s)"]],
     },
