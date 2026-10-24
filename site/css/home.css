@@ -11,7 +11,7 @@
   /* The family photo: a soft backdrop, and a floor to stand on. */
   background: linear-gradient(to top, #e8ecf0 0 12px, transparent 12px), linear-gradient(#eef6fd, #f6f8fa);
 }
-.hero-lineup img { display: block; width: 100%; max-width: 980px; height: auto; margin-bottom: 4px; }
+.hero-lineup img { display: block; width: 100%; max-width: 1120px; height: auto; margin-bottom: 4px; }
 .hero-text { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 28px; padding: 24px clamp(18px, 4vw, 48px) 26px; }
 .hero h1 { margin: 0; font: 800 clamp(30px, 4.4vw, 52px)/1.05 var(--font-display); }
 .hero h1 span { display: block; color: var(--accent); }
